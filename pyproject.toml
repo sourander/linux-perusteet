@@ -1,11 +1,9 @@
 [tool.poetry]
-name = "doc-skeleton"
+name = "linux-perusteet"
 version = "0.1.0"
 description = ""
 authors = ["Jani Sourander <sourander@gmail.com>"]
 readme = "README.md"
-# We do not actually have a package, but if we did, you would add:
-# packages = [{include = "doc_skeleton"}]
 
 [tool.poetry.dependencies]
 python = "^3.10"

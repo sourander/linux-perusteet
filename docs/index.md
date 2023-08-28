@@ -1,18 +1,20 @@
-# Welcome to MkDocs
+# Tervetuloa kurssille
 
-For full documentation visit [mkdocs.org](https://www.mkdocs.org).
+Oppimateriaali on tarkoitettu Kajaanin Ammattikorkeakoulun ensimmäisen tai toisen vuoden opiskelijoille. Kurssilla tutustutaan Linuxiin käyttöliittymänä sekä graafiseen ympäristöön että komentoriviin. Kurssin esimerkit ovat pääosin ajettu Ubuntu distribuutiota käyttäen, mutta liiallista "distribution-lockia" vältellään parhaan mukaan. Aiempi kokemus Linuxista ei ole millään tavoin vaadittua.
 
-## Commands
 
-* `mkdocs new [dir-name]` - Create a new project.
-* `mkdocs serve` - Start the live-reloading docs server.
-* `mkdocs build` - Build the documentation site.
-* `mkdocs -h` - Print help message and exit.
+## Kurssin rakenne
 
-## Project layout
+* TODO
+    * TODO
+* TODO
+    * TODO
 
-    mkdocs.yml    # The configuration file.
-    docs/
-        index.md    # The documentation homepage.
-        index.fi.md # The documentation homepage in Finnish.
-        ...         # Other markdown pages, images and other files.
+Huomaathan, että varsinaiset harjoitukset ja kurssitehtävät ovat muualla. Katso kurssin Moodle-sivulta tai kysy opettajalta.
+
+## Faktavirheet
+
+Mikäli kurssimateriaali sisältää virheellistä tietoa, tee jompi kumpi:
+
+* Forkkaa GitHubin repository ja tarjoa Pull Request, joka sisältää korjausehdotukset.
+* Ota yhteyttä ylläpitoon ja esittele virheellisen tiedon korjaus.
