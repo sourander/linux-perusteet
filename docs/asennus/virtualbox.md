@@ -70,7 +70,7 @@ partition #2 of SCSI3 (0,0,0) (sda) as ESP
 partition #3 of SCSI3 (0,0,0) (sda) as ext4
 ```
 
-Et välttämättä tällä hetkellä ymmärrä yllä olevasta tekstiä, mutta kurssin edetessä opit mitä lyhenteet tarkoittavat.
+Et välttämättä tällä hetkellä ymmärrä yllä olevaa tekstiä, mutta kurssin edetessä opit mitä lyhenteet tarkoittavat.
 
 Kun odottelet hetken, Ubuntu 22.04 pyytää käynnistämään tietokoneen uusiksi, ja voit aloittaa käytön.
 
@@ -103,6 +103,8 @@ exit
 # Sudo toimii kun kirjaudut taas sisään
 exit
 ```
+
+Mikäli yllä oleva koodi toimi, ja todellakin pystyit kirjautumaan root-käyttäjä sisään syöttämättä salasanaa, on syytä olla huolissaan. Varmistathan, että jatkossa sillä ei pysty kirjautumaan. Vinkki: etsi huutomerkkiä (`!`) ohjeesta `man 5 shadow`.
 
 
 #### K: Ruudun yllä kalenterissa näkyy kummallisia merkkejä. Terminaali ei myöskään aukea.
