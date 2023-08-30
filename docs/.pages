@@ -1,2 +1,7 @@
 nav:
+    - index.md
+    - linux
+    - asennus
+    - Peruskäyttö: peruskaytto
+    - paketinhallinta
     - ...
