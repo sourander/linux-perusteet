@@ -165,13 +165,14 @@ flowchart
 
 ## Näppärät pikanäppäimet
 
-| Pikanäppäin           | Toiminto                                                     |
-| --------------------- | ------------------------------------------------------------ |
-| ++ctrl+l++            | Tyhjentää ruudun. Sama kuin komento `clear`.                 |
-| ++tab++               | Automaattinen täydennys. Tunnistaa sekä kansion tiedostoja että PATH:ssa olevia ohjelmia. |
-| ++tab+tab++           | Tuplaklikkaus. Automaattinen täydennys, joka näyttää useammat vaihtoehdot. |
-| ++ctrl+u++            | Poistaa kaikki merkit kirjaisimesta vasemmalle. Näppärä tapa tyhjentää rivi plöröstä. |
-| ++up++<br /> ++down++ | Historian kelaaminen. Voit plärät vanhoja komentoja.         |
+| Klikattavat näppäimet             | Toiminto                                                     |
+| --------------------------------- | ------------------------------------------------------------ |
+| ++ctrl+l++                        | Tyhjentää ruudun. Sama kuin komento `clear`.                 |
+| ++tab++                           | Automaattinen täydennys. Tunnistaa sekä kansion tiedostoja että PATH:ssa olevia ohjelmia. |
+| ++tab+tab++                       | Tuplaklikkaus. Automaattinen täydennys, joka näyttää useammat vaihtoehdot. |
+| ++ctrl+u++                        | Poistaa kaikki merkit kirjaisimesta vasemmalle. Näppärä tapa tyhjentää rivi plöröstä. |
+| ++up++<br /> ++down++             | Historian kelaaminen. Voit plärät vanhoja komentoja.         |
+| ++ctrl+left++<br />++ctrl+right++ | Sanojen hyppiminen vasemmalle ja oikealle. Myös ++alt+b++ ja ++alt+f++ tekevät saman. |
 
 
 
