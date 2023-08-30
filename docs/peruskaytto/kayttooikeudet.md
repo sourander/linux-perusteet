@@ -79,13 +79,13 @@ my
 └── tralalaa
 
 $ chmod 666                            # Anna muut paitsi execute kaikille
-$ touch my/soul
-touch: cannot touch 'my/soul': Permission denied
+$ touch my/dingdingdong
+touch: cannot touch 'my/dingdingdong': Permission denied
 
 $ cat my/inner/peace
 cat: my/inner/piece: Permission denied
 
-$ ls -la | grep my                     # Kansion itsensä voi listata
+$ ls -la | grep my                     # Kansion itsensä voi listata, sisältöä ei.
 drw-rw-rw-  2 opettaja opettaja 4096 elo    30 15:51 my
 
 $ rm -rf my/                           # Yritä poistaa
