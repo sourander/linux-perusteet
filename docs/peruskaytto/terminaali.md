@@ -95,6 +95,10 @@ flowchart
 	ohjelma .-> |stderr|näyttö
 ```
 
+
+
+## Uudelleenohjaus
+
 Standardivirtaa voi uudelleenohjata tiedostoihin tai tiedostoista. Kohdetiedosto luodaan jos sitä ei ole olemassa.
 
 | Operaattori  |                                                              |
