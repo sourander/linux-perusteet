@@ -40,20 +40,20 @@ Täytä VirtualBoxissa aukeavaan pop-uppiin tarvittavat tiedot:
 
 * Käynnistä VM Start-näppäimellä.
 * Ruutuun ilmestyy GRUB.
-  * Valitse `Try or Install Ubuntu`
+    * Valitse `Try or Install Ubuntu`
 * Ubuntu installer käynnistyy.
-  * Valitse `Install Ubuntu`. Anna kielen olla `English`.
-  * Klikkaa Next.
+    * Valitse `Install Ubuntu`. Anna kielen olla `English`.
+    * Klikkaa Next.
 * Ubuntu installer kysyy tietoja:
-  * Valitse näppäimistöasetteluksi `Finnish -> Finnish`.
-  * Klikkaa Continue
+    * Valitse näppäimistöasetteluksi `Finnish -> Finnish`.
+    * Klikkaa Continue
 * Ubuntu installer kysyy tietoja:
-  * Valitse `Minimal Installation`
-  * Valitse `Download updates while installing Ubuntu`
-  * Klikkaa Continue
+    * Valitse `Minimal Installation`
+    * Valitse `Download updates while installing Ubuntu`
+    * Klikkaa Continue
 * Ubuntu installer kysyy tietoja:
-  * Valitse `Erase disk and install Ubuntu`
-  * Klikkaa Install Now.
+    * Valitse `Erase disk and install Ubuntu`
+    * Klikkaa Install Now.
   
 
 Seuraavissa ruuduissa kysellään maakohtaisia asetuksia, nimeä, käyttäjätunnusta, salasanaa ja niin edelleen. Valitse ne mielihalujesi mukaan.
