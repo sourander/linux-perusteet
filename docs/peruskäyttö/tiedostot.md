@@ -37,7 +37,7 @@ Linuxin tiedostojärjestelmän standardi löytyy [Filesystem Hierarchy Standard 
 | Hakemisto    | Sisältää                                                     |
 | ------------ | ------------------------------------------------------------ |
 | /bin, /sbin  | C-kielestä käännettynä ajettavia binääritiedostoja, kuten yllä käytetty `lsbkl` tai hakemistojen luontiin tarkoitettu `mkdir`. Tyypillisesti viittaa lokaatioon `/usr/bin/` sekä `usb/sbin`. |
-| /boot        | Kernel image                                                 |
+| /boot        | Kernel image, jota käytetään konetta käynnistäessä.          |
 | /dev         | Fyysisiä laitteita, kuten yllä näkyvä `sda`, tai loogisia/virtuaalisia laitteita kuten partitio `sda1` tai työpöytäympäristössä käyttämäsi terminaali `/dev/pts/0`. Kokeile ajaa komento `tty`. |
 | /etc         | Koko järjestelmää koskevat konfiguraatiotiedostot, kuten `/etc/hosts`, josta tarkistetaan tunnetut hostnamet ennen DNS-kyselyitä, tai `/etc/passwd`, jossa määritellään käyttäjät ja aikoinaan jopa salasanat, tai `/etc/fstab/` |
 | /home        | Käyttäjien kotikansiot.                                      |
@@ -45,7 +45,6 @@ Linuxin tiedostojärjestelmän standardi löytyy [Filesystem Hierarchy Standard 
 | /mnt, /media | Automaattisesti mountattavat mediat kuten CD- sekä USB-asemat tai jopa verkkolevyt. |
 | /opt         | Riippuu distribuutiosta. Paketinhallinta käyttää tai on käyttämättä. |
 | /proc, /sys  | Kernelin rajapintoja, kuten `/proc/version`, joka sisältää kernelin ja distron versioon liittyvää tietoa. |
-| /sbin        | Tyypillisesti viittaa lokaatioon `/usr/bin/`.                |
 | /tmp         | Väliaikaiset tiedostot. Eivät säily ikuisesti.               |
 | /usr, /var   | Käyttäjille tarkoitettuna ohjelmia.                          |
 
