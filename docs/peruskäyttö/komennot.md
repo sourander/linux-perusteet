@@ -215,4 +215,16 @@ Jos mietit, että mikä on `\n` yllä näkyvässä `echo $'c\nb\na'` komennossa,
 
 ## Hyödyllisiä komentoja
 
-TODO
+Ota selvää kustakin komennosta alla olevasta taulukosta.
+
+| Käyttötarkoitus                          | Komentoja                                                    |
+| ---------------------------------------- | ------------------------------------------------------------ |
+| Avun etsiminen                           | `man`, `info`, `<komento> --help`                            |
+| Tiedostoissa ja hakemistoissa navigointi | `pwd`, `ls`, `cd`, `tree`, `clear`                           |
+| Tiedostojen pläräys                      | `less`, `cat`, `diff`, `head`, `tail`, `find`, `locate`, `type`, `stat` |
+| Tiedostojen luominen ja muokkaus         | `touch`, `mkdir`, `nano`, `vi` tai `vim`, `vimtutor`, `cp`, `mv`, `ln` |
+| Tiedostojen ja kansioiden poisto         | `rm`, `rmdir`                                                |
+| Tiedostojen prosessointi                 | `wc`, `tr`,  `sort`, `uniq`, `grep`, `aws`                   |
+| Käyttäjään tai ympäristöön liittyviä     | `id`, `who`, `whoami`, `groups`, `history`, `tty`, `exit`, `printenv`, `alias` |
+| Tiedostojen pakkaus                      | `gzip`, `tar`                                                |
+
