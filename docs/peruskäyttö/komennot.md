@@ -221,7 +221,7 @@ Ota selvää kustakin komennosta alla olevasta taulukosta.
 | ---------------------------------------- | ------------------------------------------------------------ |
 | Avun etsiminen                           | `man`, `info`, `<komento> --help`                            |
 | Tiedostoissa ja hakemistoissa navigointi | `pwd`, `ls`, `cd`, `tree`, `clear`                           |
-| Tiedostojen pläräys                      | `less`, `cat`, `diff`, `head`, `tail`, `find`, `locate`, `type`, `stat` |
+| Tiedostojen pläräys                      | `less`, `cat`, `diff`, `head`, `tail`, `find`, `locate`, `file`, `type`, `stat` |
 | Tiedostojen luominen ja muokkaus         | `touch`, `mkdir`, `nano`, `vi` tai `vim`, `vimtutor`, `cp`, `mv`, `ln` |
 | Tiedostojen ja kansioiden poisto         | `rm`, `rmdir`                                                |
 | Tiedostojen prosessointi                 | `wc`, `tr`,  `sort`, `uniq`, `grep`, `aws`                   |

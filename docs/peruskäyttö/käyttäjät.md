@@ -171,3 +171,26 @@ Häshäämätöntä salasanaa ei siis tallenneta laisinkaan. Kun käyttäjä yri
 
 !!! question "Tehtävä"
     Kuvittele tilanne, jossa salasana policy määrää, että salasanan pitää noudattaa kaavaa `^[a-zA-Z0-9]{8,32}$` (eli 8-32 symbolia, jotka ovat isoja tai pieniä kirjaimia tai numeroita; erikoismerkkejä tai suomalaisia ääkkösiä ei sallita). Kuinka monta eri vaihtoehtoa pitäisi enimmillään käydä läpi löytääkseen häshi, jos oikea salasana on 8 merkkiä pitkä? Entä jos salasana onkin 10 merkkiä pitkä?
+
+
+
+## Käyttäjien luominen
+
+Lokaaleja käyttäjiä voi luoda komennolla:
+
+```bash
+sudo adduser <username>
+```
+
+**HUOM!** Ethän luo käyttäjiä ympäristöihin, joissa on keskitetty käyttäjänhallinta (LDAP, Kerberos, Ansible, ...). Tee uusiin käyttäjiin liittyvät kokeilut virtuaalikoneessa, joka on täysin sinun hallinnoima.
+
+Tiedostojen omistajuutta voi vaihtaa komennolla `chown`. Alla lyhyt esimerkki.
+
+```bash
+# Vaihda owner
+chown <username> kissa.txt
+
+# Vaihda sekä owner että group
+chown <username>:<group> kissa.tx
+```
+
