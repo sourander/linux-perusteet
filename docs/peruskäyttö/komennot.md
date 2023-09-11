@@ -31,7 +31,7 @@ $ ls -ihalI Desktop ~/
 ls -ihalIDesktop ~/
 ```
 
-Syötteessä ei ole muita metamerkkejä kuin välilyönti, joten kyseessä on yksinkertainen komento. Bash etsii itse komentoa useista eri paikoista (funktioista, aliaksista, built-ineista, `$PATH`:sta) ja ajaa ensimmäisen löytyneen. Muut osat eli `-lah`, `--inode` ja ``--ignore=Desktop``  syötetään ohjelmalle, ja ohjelma parsii ne parhaaksi katsomallaan tavalla optionseiksi, optioneiden argumenteiksi, ja itsensä argumenteiksi.
+Syötteessä ei ole muita metamerkkejä kuin välilyönti, joten kyseessä on yksinkertainen komento. Bash etsii itse komentoa useista eri paikoista (funktioista, aliaksista, built-ineista, `$PATH`:sta) ja ajaa ensimmäisen löytyneen. Muut osat eli `-lah`, `--inode` ja ``--ignore=Desktop``  syötetään ohjelmalle, ja ohjelma parsii ne parhaaksi katsomallaan tavalla optionseiksi, optioneiden argumenteiksi, ja argumenteiksi. Lue lisää esimerkkejä täältä: [Conventions for Command Line Options (nullprogram.com)](https://nullprogram.com/blog/2020/08/01/)
 
 Huomaa, että lyhyet komennot eivät ole mikään itsetarkoitus. Yllä olevan komennon voi kirjoittaa huomattavasti luettavammassa muodossa näin:
 
@@ -48,6 +48,9 @@ $ ls \
 > --inode \
 > --ignore=Desktop ~
 ```
+
+!!! question "Tehtävä"
+    Kokeile yllä olevaa monirivistä komentoa shellissä. Kirjoita se rivi riviltä: älä yritä kopioida ja liittää rimpsua kokonaisuudessaan.
 
 
 
