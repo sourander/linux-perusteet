@@ -56,8 +56,6 @@ Täytä VirtualBoxissa aukeavaan pop-uppiin tarvittavat tiedot:
     * Klikkaa Install Now.
   
 
-Seuraavissa ruuduissa kysellään maakohtaisia asetuksia, nimeä, käyttäjätunnusta, salasanaa ja niin edelleen. Valitse ne mielihalujesi mukaan.
-
 Ubuntu installer vahvistaa sinulta muutokset suunnilleen näin:
 ```
 If you continue, the changes listed below will be written to the disk. Otherwise, you will be able to make further changes manually.
@@ -66,11 +64,13 @@ The partition tables of the following devices are changed:
 SCSI3 (0,0,0)(sda)
 
 The following partitions are going to be formatted
-partition #2 of SCSI3 (0,0,0) (sda) as ESP
-partition #3 of SCSI3 (0,0,0) (sda) as ext4
+partition #1 of SCSI3 (0,0,0) (sda) as ESP
+partition #2 of SCSI3 (0,0,0) (sda) as ext4
 ```
 
 Et välttämättä tällä hetkellä ymmärrä yllä olevaa tekstiä, mutta kurssin edetessä opit mitä lyhenteet tarkoittavat.
+
+Seuraavissa ruuduissa kysellään maakohtaisia asetuksia, nimeä, käyttäjätunnusta, salasanaa ja niin edelleen. Valitse ne mielihalujesi mukaan.
 
 Kun odottelet hetken, Ubuntu 22.04 pyytää käynnistämään tietokoneen uusiksi, ja voit aloittaa käytön.
 
