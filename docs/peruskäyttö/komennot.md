@@ -189,7 +189,7 @@ $ echo Liian \                  # Line continuation
 > yhdelle riville
 Liian pitkä lause yhdelle riville
 
-$ touch my/{tralala|dingdingdong}   # Brace expansion
+$ touch my/{tralala,dingdingdong}   # Brace expansion
 
 echo Elämän tarkoitus: \        # Parameter expansion
 > ${MEANING_OF_LIFE:-42}  

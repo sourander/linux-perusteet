@@ -78,7 +78,7 @@ my
 │   └── peace
 └── tralalaa
 
-$ chmod 666                            # Anna muut paitsi execute kaikille
+$ chmod 666 my                         # Anna muut paitsi execute kaikille
 $ touch my/dingdingdong
 touch: cannot touch 'my/dingdingdong': Permission denied
 
