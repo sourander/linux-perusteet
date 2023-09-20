@@ -17,12 +17,13 @@ Huomaathan, että varsinaiset harjoitukset ja kurssitehtävät ovat muualla. Kat
 
 ## Koodin lukuohje
 
-Kurssin komennot esitetään koodisnippeteissä siten, että rivi alkaa joko `$`-merkillä tai `#`-merkillä. Tuloste kirjoitetaan alle ilman etuliitteitä. Ennen seuraavaa komentoa jätetään tyhjä rivi. Kommentit alkavat `#`-merkillä, ja selvyyden vuoksi ne sijoitetaan mieluummin rivin perään kuin alkuun, jotta kommentit ja komennot eivät mene sekaisin. Mikäli kommentin vieressä on ristipääruuvia muistutava ikoni, sitä klikkaamalla aukeaa pidempi kommentti.
+Kurssin komennot esitetään koodisnippeteissä siten, että rivi alkaa tyypillisesti `$`-merkillä. Tuloste kirjoitetaan alle ilman etuliitteitä. Ennen seuraavaa komentoa jätetään tyhjä rivi. Kommentit alkavat `#`-merkillä, ja ne voivat olla joko omina riveinään tai koodirivin perässä. Mikäli kommentin vieressä on ristipääruuvia muistutava ikoni, sitä klikkaamalla aukeaa pidempi kommentti.
 
 ```sh
 $ komento
 tuloste
 
+# Omalla rivillä oleva kommentti
 $ komento-kaksi --parametri
 tuloste
 tuloste jatkuu

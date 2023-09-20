@@ -146,7 +146,18 @@ TODO
 
 #### Flatpak
 
-Flatpakin avulla asennettavia ohjelmia voi etsiä [Flathub](https://flathub.org/):sta.
+Flatpakin itsensä voi asentaa Ubuntuun [Flatpakin ohjeiden mukaisesti](https://flatpak.org/setup/Ubuntu) komennolla:
+
+```bash
+$ sudo apt install flatpak
+
+# Lisää Flatpak repo
+$ flatpak remote-add \
+--if-not-exists flathub \
+https://dl.flathub.org/repo/flathub.flatpakrepo
+```
+
+Flatpakin avulla asennettavia ohjelmia voi etsiä [Flathub](https://flathub.org/):sta, mikäli lisäsit sen yllä olevalla komennolla.
 
 Esimerkiksi HandBrake CLI:n, jolla voi muun muassa enkoodata videotiedostoja, voi asentaa ilman sudo-oikeuksia näin:
 
@@ -154,6 +165,18 @@ Esimerkiksi HandBrake CLI:n, jolla voi muun muassa enkoodata videotiedostoja, vo
 # Lokaalista tiedostosta
 $ flatpak --user install HandBrakeCLI-1.4.2-x86_64.flatpak
 ```
+
+Tai kenties haluat eroon Snapin hallitsemasta Firefoxista ja siirtyä Flatpakin asentamaan ja hallitsemaan chromiumiin?
+
+```bash
+# Poista Snap koko järjestelmästä. Ethän tee tätä koneilla, joilla muut käyttäjät saattavat haluta käyttää Firefoxia. Se oikeasti poistuu.
+$ sudo snap remove firefox
+
+# Asenna Chromium
+$ flatpak install flathub org.chromium.Chromium
+```
+
+Yllä olevan komennon jälkeen sinun pitää logata ulos ja sisään Gnomesta (tai muusta työpöytäympäristöstä.) Tämän jälkeen voit painaa ++windows++ (tai ++command++) näppäintä, etsiä Chromiumin, ja joko käynnistää sen tai lisätä sen hiiren oikealla korvalla Favoritesiin, missä Firefox todennäköisesti aiemmin oli.
 
 Flatpak eristää sovellukset muusta käyttöjärjestelmästä omiin sandboxeihin. Lue lisää siitä, kuinka Flatpak toimii konepellin alla: [Under the Hood — Flatpak documentation](https://docs.flatpak.org/en/latest/under-the-hood.html)
 
