@@ -171,6 +171,9 @@ $ mount | grep sda
 
 Yksi pieni ongelma on vielä jäljellä. Nykyisellään levyä ei mountata buutin yhteydessä mihinkään, joten joutuisit aina ajamaan käsin `sudo mount ...`-komennon. Tätä varten meidän tarvitsee lisätä kyseinen osio `fstab`-tiedostoon. Luethan ohjekirjan ennen fstab-tiedostoon kajoamista! Ubuntun fstab ohjeet löytyvät esimerkiksi verkkoversiona [Ubuntun manpagesista](https://manpages.ubuntu.com/manpages/jammy/man5/fstab.5.html) tai vanhalla tutulla `man`-komennolla.
 
+!!! tip
+   Tähän on myös mahdollista käyttää graafisia työkaluja, kuten `gnome-disk-utility` alias Disks. Sinulla ei kuitenkaan ole välttämättä aina työpöytäympäristöä käytettävänä, joten kannattaa opetella myös komentorivin käyttö.
+
 ```bash
 # Tarkista osion UUID. Ei siis levyn vaan osion (sda1)
 $ sudo blkdid /dev/sda1
