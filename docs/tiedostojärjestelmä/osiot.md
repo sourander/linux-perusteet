@@ -145,6 +145,13 @@ Filesystem UUID: 2923e1e0-d42a-42d0-a702-abf4d814dd43
 ...
 ```
 
+Tässä tapauksessa loimme levyjärjestelmän ext4, mutta myös muita vaihtoehtoja löytyy. Näitä ovat muiden muassa:
+
+* **Extended filesystemin** vanhemmat versiot kuten ext2
+* **B-tree filesystem** (btrfs), lausuttuna "better FS", joka tukee monia ext4:stä puuttuvia featureita kuten kryptausta.
+* **File allocation table** (FAT). Jo MS-DOS-ajoilta tuttu tiedostojärjestelmä, jonka variantteja (EXFAT jne.) käytetään usein USB-muisteissa ja SD-muistikorteissa. GPT:n käyttämä EFI system partition eli /boot/efi on FAT-osio.
+* **XFS**. Red Hat Enterprise Linuxin vakiona käyttämä tiedostojärjestelmä.
+
 
 
 ## Osion mounttaus
@@ -172,7 +179,7 @@ $ mount | grep sda
 Yksi pieni ongelma on vielä jäljellä. Nykyisellään levyä ei mountata buutin yhteydessä mihinkään, joten joutuisit aina ajamaan käsin `sudo mount ...`-komennon. Tätä varten meidän tarvitsee lisätä kyseinen osio `fstab`-tiedostoon. Luethan ohjekirjan ennen fstab-tiedostoon kajoamista! Ubuntun fstab ohjeet löytyvät esimerkiksi verkkoversiona [Ubuntun manpagesista](https://manpages.ubuntu.com/manpages/jammy/man5/fstab.5.html) tai vanhalla tutulla `man`-komennolla.
 
 !!! tip
-   Tähän on myös mahdollista käyttää graafisia työkaluja, kuten `gnome-disk-utility` alias Disks. Sinulla ei kuitenkaan ole välttämättä aina työpöytäympäristöä käytettävänä, joten kannattaa opetella myös komentorivin käyttö.
+    Tähän on myös mahdollista käyttää graafisia työkaluja, kuten `gnome-disk-utility` alias Disks. Sinulla ei kuitenkaan ole välttämättä aina työpöytäympäristöä käytettävänä, joten kannattaa opetella myös komentorivin käyttö.
 
 ```bash
 # Tarkista osion UUID. Ei siis levyn vaan osion (sda1)
@@ -215,4 +222,32 @@ vda    252:0    0   64G  0 disk
 
 ## Osion poisto
 
-TODO
+Aloita poistamalla rivi, jonka lisäsit `fstab`-tiedostoon. Jos käytät `nano`-editoria, valittu rivi poistuu näppärästi ++ctrl+k++ pikanäppäimellä.
+
+Tämän jälkeen voit poistaa mountin. Tämä hoituu komennolla `sudo umount /mnt/mydata`.
+
+Ja tämän jälkeen voit poistaa partition:
+
+```bash
+$ sudo parted /dev/sda
+
+# Varmista osion ID erityisesti jos niitä on levyllä monta
+(parted) print
+...
+Number  Start   End     Size    File system  Name    Flags
+ 1      1049kB  10,7GB  10,7GB  ext4         mydata
+
+# Poista valittu id
+(parted) rm 1
+
+# Tarkista, että osio poistui. Huomaathan, että GPT eli
+# partitiointitaulu on yhä tallella. Sitä ei ole tarve
+# poistaa tässä harjoituksessa.
+(parted) print
+...
+Partition Table: gpt
+...
+
+(parted) quit
+```
+
