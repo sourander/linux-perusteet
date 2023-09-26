@@ -132,7 +132,7 @@ sudo apt autoremove # Riippuvuudet
 
 ![ubuntu-software-text-editor](../images/ubuntu-software-text-editor.png)
 
-**Kuvio 1**: *Ubuntu Software store. Useimmat ohjelmat, kuten Text Editor, voi asentaa Snap Storesta. Joskus vaihtoehtona näkyy myös perinteinen repository kuten jammy main, jossa jammy viittaa Ubuntun versioon 22.04.*
+**Kuvio 1**: *Ubuntu Software store. Useimmat ohjelmat, kuten Text Editor, voi asentaa Snap Storesta. Joskus vaihtoehtona näkyy ATP, kuten kuvakaappauksessa (ubuntu-jammy-main, joka viittaa apt repositorioon main, versioon jammy eli 22.04)*
 
 Yllä mainittujen, tiettyyn distribuutioon (tai sen jälkiläisiin) sidottujen paketinhallintajärjestelmien lisäksi on olemassa myös järjestelmiä, jotka toimivat useissa eri distribuutioissa. Näistä esitellään lyhyesti alla kolme: **Flatpak**, **AppImage** ja **Snap**, joista jälkimmäiseen viitataan myös yllä näkyvässä Kuvio 1:ssä. Helpon asennuksen lisäksi useimmat näistä pyrkivät tarjoamaan turvallisuuteen liittyviä ominaisuuksia joko siten, että ohjelma voidaan asentaa ja ajaa lokaalisti käyttäjän omilla tunnuksilla ja oikeuksilla, tai siten, että ohjelma ajetaan konttia muistuttavassa sandbox-ympäristössä.
 
@@ -140,7 +140,26 @@ Yllä mainittujen, tiettyyn distribuutioon (tai sen jälkiläisiin) sidottujen p
 
 #### AppImage
 
-TODO
+AppImage on äärimmäisen yksinkertainen paketti käyttää. Toisin kuin muut tässä dokumentissa mainitut paketinhallintajärjestelmät, AppImage ei asenna mitään minnekään, eikä paketinhallinta itsessään vaadi minkään sortin asentamista.
+
+Vaiheet ovat näinkin simppelit:
+
+1. Etsi haluamasi sovellus AppImageHubista, kuten vaikkapa e-kirjojen lukemiseen soveltuva Calibre.
+2. Lataa tuore versio ohjelmisto .
+
+```bash
+# Navigoi kotikansiosi lokaalien sovellusten hakemistoon
+cd ~/.local/bin/
+
+# Siirrä tiedosto latauskansiosta
+$ mv ~/Downloads/Calibre-x86-64-20230918202913.AppImage calibre.AppImage
+
+# Tee tiedostosta ajettava ja aja se
+$ chmod u+x calibre.AppImage
+$ ./calibre.AppImage
+```
+
+Sovellusvalikoima on kuitenkin AppImagessa ainakin kirjoitushetkellä huomattavasti suppeampi kuin kilpailijoissa, ja lisäksi ARM-prosessorille soveltuvia sovelluksia on merkittävästi vähemmän kuin `x84_64`:lle.
 
 
 
