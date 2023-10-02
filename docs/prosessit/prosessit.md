@@ -210,3 +210,20 @@ MIAW   # Huomaathan, että bg ei estä ohjelmaa tulostamasta stdouttia tty:iin
 $ kill %1
 $ rm kissa.txt
 ```
+
+## Prosessien lokien lukeminen
+
+Tyypilliset, ad-hocina käynnistetyt komennot tulostavat standardivirran terminaaliin, eivätkä kirjoita lokeja muualle. Suuremmat applikaatiot ja servicet kirjoittavat lokit yleensä joko system journaliin (`journald`, fyysinen lokaatio `/var/logs/journal/`) tai applikaation omiin lokitiedostoihin (`/var/log/app-name/`) tai (eri lokit) kumpaankin.
+
+Mikäli ohjelma ajetaan daemonina eli tuoreissa distribuutioissa servicenä systemd:ssä, löydät siihen liittyviä lokeja `systemctl` ja `journalctl` komentojen avulla.
+
+```bash
+# Listaa palvelut
+$ systemctl list-units --type=service
+
+# Katso yhden palvelun lokit
+$ journalctl -u cron.service
+```
+
+!!! question "Tehtävä"
+   Pohdi ja selvitä, kuinka saisit lokit siirrettyä usealta koneelta keskitetysti yhteen paikkaan. Hakusanoja: rsyslog, fluentd, Datadog.

@@ -10,6 +10,18 @@ Alla näkyy kartta ytimen sisuksista jaettuna ulkoisten rajapintojen mukaisiin k
 
 **Kuvio 1**: *Kartta Linuxin kernelistä. Alkuperäinen, interaktiivinen kuva löytyy: [Interactive map of Linux kernel (makelinux.github.io)](https://makelinux.github.io/kernel/map/). Kuva tallennettu kurssimateriaaliin saatavuuden varmistamiseksi.*
 
+Mikäli haluat nähdä, mitä Standard C-libraryn kutsuja jokin komento kutsuu, voit tehdä sen `ltrace`-ohjelmalla. Jos sen sijaan haluat nähdä, mitä alemman rajapinnan eli syscallin kutsuja komento kutsuu, voit tehdä sen `strace`-ohjelmalla.
+
+```bash
+# Kokeile
+ltrace ls
+
+# Kokeile myös
+strace ls
+
+# ...ja kenties
+strace python3 -c 'print("Hello")'
+```
 
 
 ## Ytimen ja käyttäjän avaruus
@@ -26,4 +38,10 @@ Ohjelmat, jotka suoritetaan ytimen avaruudessa, suoritetaan todella laajoilla k�
 
 ## Laiteajurit
 
-TODO
+Laitteisiin on suora pääsy vain ytimen avaruudessa ajettavilla ohjelmilla. Laiteajurit itsessään ajetaan täten ytimen avaruudessa. Ajuri on joukko ytimen funktioita tai käskyjä, jotka tarjoavat ulospäin rajapinnan, joka noudattaa Virtual File System:n mukaisia käskyjä (open, read, lseek jne.). Laitet itsessään voi olla joko fyyinen laite tai virtuaalinen laite kuten pseudoterminaali. Osa laiteajureista on käännetty staattisesti kerneliin (eng. `statically compiled`), osa lisätään myöhemmin moduuleina (ks. `insmod`, `modprobe`), ja moduulit voidaan myös poistaa muistista.
+
+Moduulit löytyvät polusta `/lib/modules/<kernel-versio-tähän>/kernel/drivers/`. Kerneliin ladatujen moduuleiden statuksen voi listata `lsmod`-komennolla.
+
+Laiteajureiden mukana saatetaan asentaa myös käyttäjän avaruuteen ohjelmia. NVidian ajureiden mukana tulee esimerkiksi `nvidia-settings`-binääri, joka asennetaan tuttuun `/usr/bin`-lokaatioon.
+
+Tyypillisesti ajureihin ei kuitenkaan tarvitse käyttäjän puuttua, ja tarvittavat ajurit voi asentaa paketinhallintaohjelmistoa käyttäen, joskin niitä varten voi joutua lisäämään uuden repositoryn.
