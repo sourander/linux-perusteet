@@ -1,5 +1,4 @@
 site_name: Linux Perusteet
-dev_addr: 127.0.0.1:8888
 
 theme:
   name: material

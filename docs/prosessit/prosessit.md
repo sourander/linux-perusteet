@@ -226,4 +226,4 @@ $ journalctl -u cron.service
 ```
 
 !!! question "Tehtävä"
-   Pohdi ja selvitä, kuinka saisit lokit siirrettyä usealta koneelta keskitetysti yhteen paikkaan. Hakusanoja: rsyslog, fluentd, Datadog.
+    Pohdi ja selvitä, kuinka saisit lokit siirrettyä usealta koneelta keskitetysti yhteen paikkaan. Hakusanoja: rsyslog, fluentd, Datadog.
