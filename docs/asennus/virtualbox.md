@@ -132,4 +132,4 @@ Jos kohdan 3 ohje ei toimi, pakota levy ulos. Valitse VirtualBoxista `Devices =>
 
 #### K: VM on päällä, mutta ruutu on musta.
 
-Anna koneelle lisää muistia. Sammuta kone ja säädä sen asetuksista `Display => Video Memory: 64 MB`
+Anna koneen näytönohjaimelle lisää muistia. Sammuta kone ja säädä sen asetuksista `Display => Video Memory: 64 MB`
