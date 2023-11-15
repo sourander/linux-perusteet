@@ -23,7 +23,7 @@ Alla oleva ohjeistus on testattu Windows 11 Home -versiossa.
 ## Luo virtuaalikone
 
 1. Asenna Oracle VM VirtualBox 7.x ([linkki](https://www.virtualbox.org/wiki/Downloads))
-2. Lataa Ubuntu 20.04 Desktop Image, 64-bit AMD ([linkki](https://releases.ubuntu.com/20.04/))
+2. Lataa Ubuntu 22.04 Desktop Image, 64-bit AMD ([linkki](https://releases.ubuntu.com/22.04/))
 3. Valitse VirtualBoxissa `Machine => New` tai klikkaa ++ctrl+n++
 
 Täytä VirtualBoxissa aukeavaan pop-uppiin tarvittavat tiedot: 
