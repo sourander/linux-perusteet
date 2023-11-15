@@ -203,8 +203,18 @@ a
 
 1. Yksittäisten lainausmerkkien välissä oleva, dollareiden edeltävä merkkijono, voi sisältää poistumismerkillä (kenoviiva, `\`)   alkavia taikasanoja, joista dekoodataan myöhemmin haluttu merkki. Yleisesti tarpeellisin on rivinvaihto eli `\n`. Lue lisää: [Bash Reference Manual (gnu.org)](https://www.gnu.org/savannah-checkouts/gnu/bash/manual/bash.html#ANSI_002dC-Quoting)
 
-Jos mietit, että mikä on `\n` yllä näkyvässä `echo $'c\nb\na'` komennossa, niin kyseessä on line feed eli newline character.
+Jos mietit, että mikä on `\n` yllä näkyvässä `echo $'c\nb\na'` komennossa, niin kyseessä on line feed eli newline character. Huomaa, että echo lisää vakiona newlinen aina rivin perään. Jos alla olevat komennot hämmentävät, kokeile `man xxd` ja esimerkiksi `xxd tiedosto.txt`.
 
+```bash
+# Echo ilman parametrejä sisältää newlinen
+$ echo "" | xxd
+
+# Echo -n poistaa newlinen
+$ echo -n "" | xxd
+
+# Huomaa, että ASCII:ta seuraavat merkit ovat UTF-8 enkoodattuja, monen tavun arvoja:
+$ echo -n "ä" | xxd
+```
 
 
 ![CR-LF](../images/CR-LF.png)
@@ -220,14 +230,14 @@ Jos mietit, että mikä on `\n` yllä näkyvässä `echo $'c\nb\na'` komennossa,
 
 Ota selvää kustakin komennosta alla olevasta taulukosta.
 
-| Käyttötarkoitus                          | Komentoja                                                    |
-| ---------------------------------------- | ------------------------------------------------------------ |
-| Avun etsiminen                           | `man`, `info`, `<komento> --help`                            |
-| Tiedostoissa ja hakemistoissa navigointi | `pwd`, `ls`, `cd`, `tree`, `clear`                           |
+| Käyttötarkoitus                          | Komentoja                                                                       |
+| ---------------------------------------- | ------------------------------------------------------------------------------- |
+| Avun etsiminen                           | `man`, `info`, `<komento> --help`                                               |
+| Tiedostoissa ja hakemistoissa navigointi | `pwd`, `ls`, `cd`, `tree`, `clear`                                              |
 | Tiedostojen pläräys                      | `less`, `cat`, `diff`, `head`, `tail`, `find`, `locate`, `file`, `type`, `stat` |
-| Tiedostojen luominen ja muokkaus         | `touch`, `mkdir`, `nano`, `vi` tai `vim`, `vimtutor`, `cp`, `mv`, `ln` |
-| Tiedostojen ja kansioiden poisto         | `rm`, `rmdir`                                                |
-| Tiedostojen prosessointi                 | `wc`, `tr`,  `sort`, `uniq`, `grep`, `aws`                   |
-| Käyttäjään tai ympäristöön liittyviä     | `id`, `who`, `whoami`, `groups`, `history`, `tty`, `exit`, `printenv`, `alias` |
-| Tiedostojen pakkaus                      | `gzip`, `tar`                                                |
+| Tiedostojen luominen ja muokkaus         | `touch`, `mkdir`, `nano`, `vi` tai `vim`, `vimtutor`, `cp`, `mv`, `ln`          |
+| Tiedostojen ja kansioiden poisto         | `rm`, `rmdir`                                                                   |
+| Tiedostojen prosessointi                 | `wc`, `tr`,  `sort`, `uniq`, `grep`, `aws`                                      |
+| Käyttäjään tai ympäristöön liittyviä     | `id`, `who`, `whoami`, `groups`, `history`, `tty`, `exit`, `printenv`, `alias`  |
+| Tiedostojen pakkaus                      | `gzip`, `tar`                                                                   |
 
