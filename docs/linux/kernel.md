@@ -14,13 +14,20 @@ Mikäli haluat nähdä, mitä Standard C-libraryn kutsuja jokin komento kutsuu, 
 
 ```bash
 # Kokeile
-ltrace ls
+$ ltrace ls
 
 # Kokeile myös
-strace ls
+$ strace ls
 
 # ...ja kenties
-strace python3 -c 'print("Hello")'
+$ strace python3 -c 'print("Hello")'
+```
+
+Vaihtoehtoisesti voit listata object dependencyt komennolla `ldd`.
+
+```bash
+# Kokeile
+$ ldd /usr/bin/ls
 ```
 
 
