@@ -30,6 +30,15 @@ $ echo $TERM
 linux
 ```
 
+Kokeile myös vaihtoehtoista tapaa vaihtaa virtual terminaalia:
+
+```bash
+# Lue
+$ man chvt
+
+# Kokeile
+$ chvt 4
+```
 
 
 ## Pseudoterminaalit
