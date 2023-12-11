@@ -49,6 +49,48 @@ Laitteisiin on suora pääsy vain ytimen avaruudessa ajettavilla ohjelmilla. Lai
 
 Moduulit löytyvät polusta `/lib/modules/<kernel-versio-tähän>/kernel/drivers/`. Kerneliin ladatujen moduuleiden statuksen voi listata `lsmod`-komennolla.
 
+```bash
+# Etsi jokin moduuli
+$ lsmod
+
+# Tsekkaa tiedot moduulista
+$ modinfo <moduulin-nimi>
+```
+
+Moduulien parametrejä (ks. modinfo output) voi muuttaa `modprobe`-komennolla runtime-ajossa. Pysyvästi parametrejä voi muuttaa `/etc/modprobe.d/`-kansiossa.
+
+```bash
+# Käy katsomassa löytyykö
+$ sudo ls /etc/modprobe.d/*.conf
+
+# Entäpä täältä
+$ sudo ls /etc/module/*/parameters/
+```
+
 Laiteajureiden mukana saatetaan asentaa myös käyttäjän avaruuteen ohjelmia. NVidian ajureiden mukana tulee esimerkiksi `nvidia-settings`-binääri, joka asennetaan tuttuun `/usr/bin`-lokaatioon.
 
 Tyypillisesti ajureihin ei kuitenkaan tarvitse käyttäjän puuttua, ja tarvittavat ajurit voi asentaa paketinhallintaohjelmistoa käyttäen, joskin niitä varten voi joutua lisäämään uuden repositoryn.
+
+## Proc
+
+`/proc` on virtuaalinen tiedostojärjestelmä, joka tarjoaa käyttäjälle ja ohjelmille tiedon ytimen tilasta. Tiedostojärjestelmä on virtuaalinen, koska se ei ole tallennettu massamuistiin. Tiedostojen koko on siis 0 KB. Kernel vastaa tiedostojen sisältämän informaation ajantasaisuudesta.
+
+```bash
+# Listaa tiedostot. Nuemerot ovat prosessien PIDejä. Näihin tutustut myöhemmissä luvuissa.
+$ ls /proc
+
+# Kurkkaa jonkin tiedoston sisältöä. Alla pari esimerkkiä.
+$ cat /proc/version
+$ cat /proc/cmdline
+$ cat /proc/cpuinfo
+$ cat /proc/meminfo
+```
+
+Hakemisto `/proc/sys/` sisältää tiedostoja, joilla voi muuttaa ytimen asetuksia. Tiedostot ovat tavallisia tekstitiedostoja, joiden sisältöä voi muuttaa. Muutokset eivät kuitenkaan ole pysyviä, vaan ne katoavat, kun tietokone käynnistetään uudelleen.
+
+```bash
+# Katso IP forwarding asetus ("reititys")
+$ cat /proc/sys/net/ipv4/ip_forward
+
+# Katso se myös sysctl ohjelmalla
+$ sysctl net.ipv4.ip_forward
