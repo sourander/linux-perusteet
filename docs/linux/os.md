@@ -1,6 +1,8 @@
 ## Tarvitaanko käyttöjärjestelmää?
 
+!!! question "Tehtävä"
 
+    Pohdi, mihin käyttöjärjestelmää ylipäätänsä tarvitaan. Onko se välttämätön osa tietokonetta? Olisiko tietokone nopeampi vai hitaampi ilman käyttöjärjestelmää? Mitä käyttöjärjestelmä tuo tietokoneelle tai sen käyttäjälle, jota ei ilman sitä voisi saavuttaa?
 
 ## Unixista alkaen
 

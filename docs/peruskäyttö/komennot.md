@@ -241,3 +241,6 @@ Ota selvää kustakin komennosta alla olevasta taulukosta.
 | Käyttäjään tai ympäristöön liittyviä     | `id`, `who`, `whoami`, `groups`, `history`, `tty`, `exit`, `printenv`, `alias`  |
 | Tiedostojen pakkaus                      | `gzip`, `tar`                                                                   |
 
+!!! tip
+
+    Komentoriviltä ajettavien käskyjen ajamiseen löydät reilusti esimerkkejä ja snippettejä Github-repositoriosta nimeltään [the-art-of-command-line](https://github.com/jlevy/the-art-of-command-line)
