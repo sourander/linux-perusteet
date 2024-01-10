@@ -1,13 +1,13 @@
 Useimmissa Linux-distribuutioissa käyttäjien ID:t (eng. user id, UID) noudattavat seuraavaa numerointia:
 
-| UID        | Käyttäjä                                                     |
-| ---------- | ------------------------------------------------------------ |
-| 0          | root                                                         |
-| 1-999      | Järjestelmän omia "system usereita".                         |
-| 1000-59999 | Komennolla `adduser` luodut tavalliset käyttäjät.            |
-| 60000-     | Useita eri alueita ja poikkeustunnuksia. Lue esimerkiksi [debian policy](https://www.debian.org/doc/debian-policy/ch-opersys.html#uid-and-gid-classes). |
+| UID        | Käyttäjä                                          |
+| ---------- | ------------------------------------------------- |
+| 0          | root                                              |
+| 1-999      | Järjestelmän omia "system usereita".              |
+| 1000-59999 | Komennolla `adduser` luodut tavalliset käyttäjät. |
+| 60000-     | Useita eri alueita ja poikkeustunnuksia.          |
 
-Käyttäjät ja salasanat säilötään Linuxissa seuraaviin tiedostoihin:
+Yllä mainittuihin poikkeustunnuksiin voit tutustua esimerkiksi lukemalla[debian policyn](https://www.debian.org/doc/debian-policy/ch-opersys.html#uid-and-gid-classes). Käyttäjät ja salasanat säilötään Linuxissa seuraaviin tiedostoihin:
 
 | Käyttö               | Oikeudet | Tiedosto       |
 | -------------------- | -------- | -------------- |
@@ -17,7 +17,6 @@ Käyttäjät ja salasanat säilötään Linuxissa seuraaviin tiedostoihin:
 | Ryhmien salasanat    | 640      | `/etc/gshadow` |
 
 Mikäli haluat tarkistaa, onko sinun järjestelmässäsi juuri sanat tiedostot samoine oikeuksineen, aja komento `stat -c '%a %n' /etc/passwd /etc/group /etc/shadow /etc/gshadow`.
-
 
 
 ## Passwd sisältö
@@ -38,15 +37,15 @@ cat /etc/passwd | grep opettaja | tr : "\n"
 
 Alla tulostuvat rivit selitettyinä:
 
-| #    | Kenttä         | Selite                                                       |
-| ---- | -------------- | ------------------------------------------------------------ |
-| 1    | username       | Uniikki tekstimuotoinen tunniste käyttäjälle. Tällä käyttäjä kirjautuu sisään. Primääriavain. |
-| 2    | password       | Käyttäjän salasana tai `x`-kirjain indikoimassa, että salasana löytyy `shadow`-tiedostosta. |
-| 3    | user id, UID   | Ei-uniikki numeraalinen tunniste käyttäjälle tai käyttäjille. Yleensä jokaisella käyttäjällä on kuitenkin oma ID. |
-| 4    | group id, GID  | Ei-uniikki numeraalinen tunniste käyttäjän ensisijaiselle groupille. Monta käyttäjää voi kuulua yhteen grouppiin. |
-| 5    | contact, GECOS | Pilkulla erotettu lista arvoista: Full Name, Room number, Work phone, Home phone, Other. Komento `finger <username>` palauttaa tämän tiedon. |
-| 6    | home           | Käyttäjän kotikansio. Mikäli käyttäjällä ei ole kotikansiota, `/nonexistent` on arvona. |
-| 7    | shell          | Shell (tai muu ohjelma) joka ajetaan aina kun käyttäjänä kirjaudutaan sisään. Mikäli käyttäjä on täysin ei-interaktiivinen käyttäjä, jolla ei koskaan kuulu kirjautua sisään, arvona on `/usr/sbin/nologin`. |
+| #   | Kenttä         | Selite                                                                                                                                                                                                       |
+| --- | -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| 1   | username       | Uniikki tekstimuotoinen tunniste käyttäjälle. Tällä käyttäjä kirjautuu sisään. Primääriavain.                                                                                                                |
+| 2   | password       | Käyttäjän salasana tai `x`-kirjain indikoimassa, että salasana löytyy `shadow`-tiedostosta.                                                                                                                  |
+| 3   | user id, UID   | Ei-uniikki numeraalinen tunniste käyttäjälle tai käyttäjille. Yleensä jokaisella käyttäjällä on kuitenkin oma ID.                                                                                            |
+| 4   | group id, GID  | Ei-uniikki numeraalinen tunniste käyttäjän ensisijaiselle groupille. Monta käyttäjää voi kuulua yhteen grouppiin.                                                                                            |
+| 5   | contact, GECOS | Pilkulla erotettu lista arvoista: Full Name, Room number, Work phone, Home phone, Other. Komento `finger <username>` palauttaa tämän tiedon.                                                                 |
+| 6   | home           | Käyttäjän kotikansio. Mikäli käyttäjällä ei ole kotikansiota, `/nonexistent` on arvona.                                                                                                                      |
+| 7   | shell          | Shell (tai muu ohjelma) joka ajetaan aina kun käyttäjänä kirjaudutaan sisään. Mikäli käyttäjä on täysin ei-interaktiivinen käyttäjä, jolla ei koskaan kuulu kirjautua sisään, arvona on `/usr/sbin/nologin`. |
 
 !!! question "Tehtävä"
     Kokeile ajaa ohjelma, joka ajetaan ei-interaktiivisilla käyttäjillä loginin yhteydessä eli `/usr/sbin/nologin`. Mitä näet?
@@ -74,12 +73,12 @@ opettaja:x:1000:
 
 Alla rivien `:`-merkillä erotellut tiedot selitettyinä:
 
-| #    | Kenttä         | Selite                                                       |
-| ---- | -------------- | ------------------------------------------------------------ |
-| 1    | group name     | Ryhmän nimi, joka näkyy muun muassa `ls -la` komennon tulosteessa. |
-| 2    | group password | Ryhmän salasana. Kuten käyttäjien kohdalla, myös täällä `x` tarkoittaa, että salasana löytyy muualta (ks. `/etc/gshadow`). |
-| 3    | group id       | Ryhmän uniikki tunniste.                                     |
-| 4    | users          | Pilkulla erotettu lista käyttäjänimistä, jotka kuuluvat ryhmään. |
+| #   | Kenttä         | Selite                                                                                                                     |
+| --- | -------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| 1   | group name     | Ryhmän nimi, joka näkyy muun muassa `ls -la` komennon tulosteessa.                                                         |
+| 2   | group password | Ryhmän salasana. Kuten käyttäjien kohdalla, myös täällä `x` tarkoittaa, että salasana löytyy muualta (ks. `/etc/gshadow`). |
+| 3   | group id       | Ryhmän uniikki tunniste.                                                                                                   |
+| 4   | users          | Pilkulla erotettu lista käyttäjänimistä, jotka kuuluvat ryhmään.                                                           |
 
 Muistele aiempaa lukua käyttöoikeuksista. Jokaisella tiedostolla ja kansiolla on kolme permissionia: owner, group ja others. Jos `opettaja` kuuluu ryhmiin `cdrom` ja `adm`, niin mitä näillä voi tehdä? Tietenkin se, mitä permissionit sallivat. Sopivilla group-omistuksilla olevia tiedostoja voi etsiä seuraavanlaisilla komennoilla:
 
@@ -98,6 +97,7 @@ find: ‘/var/log/private’: Permission denied
 ```
 
 !!! question "Tehtävä"
+
     Katso mihin ryhmiin kuulut ja selvitä, mitä oikeuksia sinulla on niiden puolesta. Muista, että sudo antaa pääsyn käytännössä kaikkialle.
 
 
@@ -114,16 +114,16 @@ opettaja:$y$hidden:19598:0:99999:7:::
 
 Yksittäisen rivin voi rikkoa osatekijöiksi tutulla komennolla, mutta tällä kertaa tarvitse root-oikeudet, tai sinun tulee kuulua ryhmään shadow: `´sudo cat /etc/shadow| grep opettaja | tr : "\n"`.
 
-| #    | Kenttä               | Selite                                                       |
-| ---- | -------------------- | ------------------------------------------------------------ |
-| 1    | username             | Käyttäjänimi kuten `opettaja`. (ks. `/etc/passwd`)           |
-| 2    | password             | Merkki `*` tai `!` tarkoittavat, että käyttäjänä ei voi kirjautua sisään salasanaa käyttäen, mutta esimerkiksi root-oikeuksin tai ssh-avainta käyttäen kirjautuminen voi yhä olla mahdollista. `*NP*` ja `!!` viittaavat siihen, että salasanaa ei ole (vielä) asetettu. `*LK*` tarkoittaa, että käyttäjä on lukittu. Mikäli kenttä sisältää jotain muuta, niin kyseessä on käyttäjän häshätty salasana. Lue alta **Salasanakentän sisältö**. |
-| 3    | last password change | Päivä, jolloin salasana on edellisen kerran vaihdettu. Kyseessä ei ole päivämäärä vaan päivän lukujärjestys alkaen 1970-luvun alusta eli UNIX timestampin alkuhetkestä alkaen. Lue alta **Päivämäärän laskeminen**. |
-| 4    | min days             | Minimi-intervalli salasanavaihtojen välillä. Katso `man chage`. |
-| 5    | max days             | Maksimi-intervalli salasanavaihtojen välillä. Katso `man chage`. |
-| 6    | warn days            | Varoituksen näyttämisen aloitus ennen salasanan vanhentumista. |
-| 7    | inactive days        | Käyttäjän deaktivoinnin päiväluku salasanan vanhentumisen jälkeen. |
-| 8    | expiry               | Päivä, jolloin käyttäjä on deaktivoitu. Käyttää samaa päivämääräkaavaa kuin kenttä `#3`. |
+| #   | Kenttä               | Selite                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| --- | -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1   | username             | Käyttäjänimi kuten `opettaja`. (ks. `/etc/passwd`)                                                                                                                                                                                                                                                                                                                                                                                            |
+| 2   | password             | Merkki `*` tai `!` tarkoittavat, että käyttäjänä ei voi kirjautua sisään salasanaa käyttäen, mutta esimerkiksi root-oikeuksin tai ssh-avainta käyttäen kirjautuminen voi yhä olla mahdollista. `*NP*` ja `!!` viittaavat siihen, että salasanaa ei ole (vielä) asetettu. `*LK*` tarkoittaa, että käyttäjä on lukittu. Mikäli kenttä sisältää jotain muuta, niin kyseessä on käyttäjän häshätty salasana. Lue alta **Salasanakentän sisältö**. |
+| 3   | last password change | Päivä, jolloin salasana on edellisen kerran vaihdettu. Kyseessä ei ole päivämäärä vaan päivän lukujärjestys alkaen 1970-luvun alusta eli UNIX timestampin alkuhetkestä alkaen. Lue alta **Päivämäärän laskeminen**.                                                                                                                                                                                                                           |
+| 4   | min days             | Minimi-intervalli salasanavaihtojen välillä. Katso `man chage`.                                                                                                                                                                                                                                                                                                                                                                               |
+| 5   | max days             | Maksimi-intervalli salasanavaihtojen välillä. Katso `man chage`.                                                                                                                                                                                                                                                                                                                                                                              |
+| 6   | warn days            | Varoituksen näyttämisen aloitus ennen salasanan vanhentumista.                                                                                                                                                                                                                                                                                                                                                                                |
+| 7   | inactive days        | Käyttäjän deaktivoinnin päiväluku salasanan vanhentumisen jälkeen.                                                                                                                                                                                                                                                                                                                                                                            |
+| 8   | expiry               | Päivä, jolloin käyttäjä on deaktivoitu. Käyttää samaa päivämääräkaavaa kuin kenttä `#3`.                                                                                                                                                                                                                                                                                                                                                      |
 
 
 

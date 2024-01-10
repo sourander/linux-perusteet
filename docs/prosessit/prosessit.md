@@ -1,4 +1,9 @@
-Linuxin kerneli luo jokaiselle käynnistetylle ohjelmalle oman prosessin, ja jokaisella prosessilla on oma tunniste (PID, Process ID). Käyttämäsi shell, kuten GNU bash, on yksi monista ohjelmista, jonka voi käynnistää, ja siten se saa oman PID:n. Ympäristömuuttuja `$0` sisältää ohjelman nimen, kun taas `$$` sisältää ohjelman PID:n. Tutki alla olevaa koodia ajatuksella:
+Linuxin kerneli luo jokaiselle käynnistetylle ohjelmalle oman prosessin, ja jokaisella prosessilla on oma tunniste (PID, Process ID). Ohjelma voi olla ajossa etualalla tai taustalla. Linuxissa on `init process`, joka käynnistää kaikki muut prosessit. Kaksi init-prosessia ovat:
+
+* SysVinit (vanha)
+* Systemd (uusi)
+
+Käyttämäsi shell, kuten GNU bash, on yksi monista ohjelmista, jonka voi käynnistää, ja siten se saa oman PID:n. Ympäristömuuttuja `$0` sisältää ohjelman nimen, kun taas `$$` sisältää ohjelman PID:n. Tutki alla olevaa koodia ajatuksella:
 
 ```bash
 Last login: Fri Sep 15 09:10:36 on ttys005
@@ -65,27 +70,23 @@ Windowsista tutun tehtävienhallinnan (task manager) tai macOS:stä tutun Activi
 $ top -o mem   # Järjestä muistinkäytön mukaan laskevasti
 ```
 
-
-
 Tutustu komentoon `man`-komennon avulla.
 
 Tutki myös, löytyykö käyttämästäsi työpöytäympäristöstäsi (esim. GNOME) vastaava graafinen sovellus kuten System Monitor.
-
-
 
 ## Jumiutuneiden ohjelmien tappaminen
 
 Mikäli jokin ohjelma on auttamattomasti jumissa, voit viime kädessä tappaa sen aina `kill -9 pid`-komennolla. Option `-9` on signaalille `KILL` annettu numero. Kaikki kill-signaalit ja niiden numerot ovat alla:
 
-| #    | Signaali | Selitys                                                      |
-| ---- | -------- | ------------------------------------------------------------ |
-| 1    | HUP      | Hang up. Aikoinaan tällä lyötiin "luuri korvaan" modeemissa. Nykyisin tällä voidaan esimerkiksi pakottaa daemon lataamaan konfiguraatiotiedostot uusiksi. |
-| 2    | INT      | Interrupt. Sama kuin ++ctrl+c++. Ohjelmaa pyydetään sulkeutumaan nätisti. |
-| 3    | QUIT     | Quit. Ohjelmaa pyydetään sulkeutumaan ja kirjoittamaan core dump. |
-| 6    | ABRT     | Abort. Ohjelmaa pyydetään sulkeutumaan ja kirjoittamaan core dump. |
-| 9    | KILL     | Kill. Ohjelmalta ei pyydetä mitään eikä ohjelma täten voi jättää tätä tekemättä. Kernel lopettaa prosessin ajon ja poistaa sen muistista. |
-| 14   | ALRM     | Alarm.                                                       |
-| 15   | TERM     | Terminate. Komennon `kill` default. Ohjelmaa pyydetään sulkemaan itsensä. |
+| #   | Signaali | Selitys                                                                                                                                                   |
+| --- | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1   | HUP      | Hang up. Aikoinaan tällä lyötiin "luuri korvaan" modeemissa. Nykyisin tällä voidaan esimerkiksi pakottaa daemon lataamaan konfiguraatiotiedostot uusiksi. |
+| 2   | INT      | Interrupt. Sama kuin ++ctrl+c++. Ohjelmaa pyydetään sulkeutumaan nätisti.                                                                                 |
+| 3   | QUIT     | Quit. Ohjelmaa pyydetään sulkeutumaan ja kirjoittamaan core dump.                                                                                         |
+| 6   | ABRT     | Abort. Ohjelmaa pyydetään sulkeutumaan ja kirjoittamaan core dump.                                                                                        |
+| 9   | KILL     | Kill. Ohjelmalta ei pyydetä mitään eikä ohjelma täten voi jättää tätä tekemättä. Kernel lopettaa prosessin ajon ja poistaa sen muistista.                 |
+| 14  | ALRM     | Alarm.                                                                                                                                                    |
+| 15  | TERM     | Terminate. Komennon `kill` default. Ohjelmaa pyydetään sulkemaan itsensä.                                                                                 |
 
 Tyypillisesti `kill`-komentoa ei pitäisi tarvita laisinkaan. Jos sitä kuitenkin tarvitsee, kokeile ensin `TERM`:n avulla eli `kill pid`. Mikäli ohjelma ei näytä sammutan, aja perään `KILL`. Alla esimerkki:
 
@@ -111,8 +112,6 @@ $ kill -TERM 29527
 
 [1]    29527 terminated  sleep $((60 * 60 * 24))
 ```
-
-
 
 ## Tausta-ajo
 
@@ -186,8 +185,6 @@ $ kill 71645
 $ rm errors.log
 ```
 
-
-
 ## Avoimien tiedostojen etsiminen
 
 Mikäli haluat saada tietää, mikä ohjelmaa lukee tai kirjoittaa paraikaa johonkin tiedostoon, tähän auttaa komento `lsof`. FD-kentässä olevat numerot viittaavat "Descriptor ID":hen, joista 0 on standard input, 1 on standard output ja 2 on standard error. Numeroa 2 suuremmat ovat ohjelmien itsensä avaamia uusia descriptoreita (esimerkiksi `open()`-funktion puolesta.)
@@ -226,4 +223,5 @@ $ journalctl -u cron.service
 ```
 
 !!! question "Tehtävä"
+
     Pohdi ja selvitä, kuinka saisit lokit siirrettyä usealta koneelta keskitetysti yhteen paikkaan. Hakusanoja: rsyslog, fluentd, Datadog.

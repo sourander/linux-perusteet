@@ -222,6 +222,7 @@ $ echo -n "ä" | xxd
 **Kuvio 1:** *Notepad++ Windowsissa tuottaa vakiona rivinvaihdossa kaksi merkkiä: CR (`\r`) sekä LF (`\n`). Linuxissa käytössä on tyypillisesti vain jälkimmäinen.*
 
 !!! question "Tehtävä"
+
     Nämä merkit voivat joskus aiheuttaa hämmennystä, jos joku lähettää Linux-ympäristöön esimerkiksi konfiguraatiotiedoston, joka on luotu Windows-ympäristössä huolimattomasti. Selvitä, mikä on "CR LF":n historia rivivaihtona. Mitä CR ja LF käytännössä edustavat? 
 
 
