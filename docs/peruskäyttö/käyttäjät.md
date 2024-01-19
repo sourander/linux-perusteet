@@ -179,7 +179,14 @@ Häshäämätöntä salasanaa ei siis tallenneta laisinkaan. Kun käyttäjä yri
 Lokaaleja käyttäjiä voi luoda komennolla:
 
 ```bash
-sudo adduser <username>
+# Luo käyttäjä (vertaa vaihtoehtoiseen komentoon useradd !)
+$ sudo adduser <username>
+
+# Luo tarpeen mukaan uusi ryhmä
+$ sudo addgroup <groupname>
+
+# Jos loit ryhmän, lisää käyttäjä ryhmään
+$ sudo usermod --append --groups <groupname> <username>
 ```
 
 **HUOM!** Ethän luo käyttäjiä ympäristöihin, joissa on keskitetty käyttäjänhallinta (LDAP, Kerberos, Ansible, ...). Tee uusiin käyttäjiin liittyvät kokeilut virtuaalikoneessa, joka on täysin sinun hallinnoima.
@@ -188,9 +195,22 @@ Tiedostojen omistajuutta voi vaihtaa komennolla `chown`. Alla lyhyt esimerkki.
 
 ```bash
 # Vaihda owner
-chown <username> kissa.txt
+$ chown <username> kissa.txt
 
 # Vaihda sekä owner että group
-chown <username>:<group> kissa.tx
+$ chown <username>:<group> kissa.tx
 ```
 
+## Toisena käyttäjänä esiintyminen
+
+Jos haluat kokeilla, kuinka tiedosto- sekä hakemisto-oikeudet käyttäytyvät toisen käyttäjän näkökulmasta, niin vaikea tapa on kirjautua graafisesta käyttöliittymästä ulos, ja tämän jälkeen kirjautua uudella käyttäjällä sisään. Helpompi tapa on käyttää `su`-komentoa (substitute user).
+
+```bash
+# Avaa toisen käyttäjän shell sinun shellisi prosessina
+# Selvitä, mitä "-" eli "--login" optio tekee.
+$ sudo su - <username>
+```
+
+!!! question "Tehtävä"
+
+    Selvitä, kuinka käyttäjän voi poistaa kotihakemistoineen. Poista tämän jälkeen myös tyhjiksi jääneet ryhmät.
