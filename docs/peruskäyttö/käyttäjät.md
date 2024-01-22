@@ -48,8 +48,12 @@ Alla tulostuvat rivit selitettyinä:
 | 7   | shell          | Shell (tai muu ohjelma) joka ajetaan aina kun käyttäjänä kirjaudutaan sisään. Mikäli käyttäjä on täysin ei-interaktiivinen käyttäjä, jolla ei koskaan kuulu kirjautua sisään, arvona on `/usr/sbin/nologin`. |
 
 !!! question "Tehtävä"
+
     Kokeile ajaa ohjelma, joka ajetaan ei-interaktiivisilla käyttäjillä loginin yhteydessä eli `/usr/sbin/nologin`. Mitä näet?
 
+!!! tip
+
+    Voit katsella tai jopa muokata passwd tiedoston sisältöä komennolla `vipw`. Ulos editorista pääset painamalla ESC, minkä jälkeen `:q!` ja enteriä. Kyseessä on siis VIM-editori.
 
 
 ## Group sisältö
@@ -100,6 +104,9 @@ find: ‘/var/log/private’: Permission denied
 
     Katso mihin ryhmiin kuulut ja selvitä, mitä oikeuksia sinulla on niiden puolesta. Muista, että sudo antaa pääsyn käytännössä kaikkialle.
 
+!!! tip
+
+    Voit katsella tai jopa muokata passwd tiedoston sisältöä komennolla `vigr`.
 
 
 ## Shadow sisältö
@@ -170,6 +177,7 @@ $5$salt$ZjhiY2I2NmVmOWMwMTRlYjRiMDBjZmY4N2U0YThhNjUgIC0K
 Häshäämätöntä salasanaa ei siis tallenneta laisinkaan. Kun käyttäjä yrittää kirjautua sisään, järjestelmä häshää käyttäjän syötteen saltin kanssa, vertaa sitä `shadow`-tiedoston arvoon, ja joko päästää käyttäjän sisään tai ei päästä. Mikäli `shadow`-tiedosto vuotaa vääriin käsiin, ja joku ulkopuolinen yrittää päätellä mitä häshäämättömät salasanat ovat, hänellä ei ole käytännössä muuta vaihtoehtoa kuin kokeilla kaikki vaihtoehdot läpi.
 
 !!! question "Tehtävä"
+
     Kuvittele tilanne, jossa salasana policy määrää, että salasanan pitää noudattaa kaavaa `^[a-zA-Z0-9]{8,32}$` (eli 8-32 symbolia, jotka ovat isoja tai pieniä kirjaimia tai numeroita; erikoismerkkejä tai suomalaisia ääkkösiä ei sallita). Kuinka monta eri vaihtoehtoa pitäisi enimmillään käydä läpi löytääkseen häshi, jos oikea salasana on 8 merkkiä pitkä? Entä jos salasana onkin 10 merkkiä pitkä?
 
 
@@ -179,17 +187,27 @@ Häshäämätöntä salasanaa ei siis tallenneta laisinkaan. Kun käyttäjä yri
 Lokaaleja käyttäjiä voi luoda komennolla:
 
 ```bash
-# Luo käyttäjä (vertaa vaihtoehtoiseen komentoon useradd !)
-$ sudo adduser <username>
+# Luo käyttäjä
+# - Vertaa komentoon "adduser". Miten se eroaa tästä? Kokeile kumpaakin.
+# - Selvitä, mitä -m optio tekee.
+$ sudo useradd <-m> <username>
 
 # Luo tarpeen mukaan uusi ryhmä
-$ sudo addgroup <groupname>
+$ sudo groupadd <groupname>
 
 # Jos loit ryhmän, lisää käyttäjä ryhmään
 $ sudo usermod --append --groups <groupname> <username>
 ```
 
-**HUOM!** Ethän luo käyttäjiä ympäristöihin, joissa on keskitetty käyttäjänhallinta (LDAP, Kerberos, Ansible, ...). Tee uusiin käyttäjiin liittyvät kokeilut virtuaalikoneessa, joka on täysin sinun hallinnoima.
+!!! tip
+
+    Uuden käyttäjän luomiseen liittyy default-asetuksia. Käy katsomassa, mitä tiedosto `/etc/login.defs` sisältää. Mitä manuaali sanoo tiedostosta?
+
+    Uuden käyttäjän kotihakemistolle voi luoda jonkin pohjarakenteen. Käy katsomassa, mitä kansio `/etc/skel` sisältää. Mitä manuaali sanoo siitä (ks. USERADD(8) )?
+
+!!! warning
+
+    Ethän luo tai poista käyttäjiä koulun ympäristöissä, joissa on keskitetty käyttäjänhallinta (LDAP, Kerberos, Ansible-skriptejä, ...). Tee uusiin käyttäjiin liittyvät kokeilut virtuaalikoneessa, joka on täysin sinun hallinnoima.
 
 Tiedostojen omistajuutta voi vaihtaa komennolla `chown`. Alla lyhyt esimerkki.
 
