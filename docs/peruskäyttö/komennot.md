@@ -116,6 +116,11 @@ Alla joitakin hyödyllisiä tapoja tutustua komennon sielunelämään.
 2. Shellin omat built-init tyypillisesti tulostavat helpin komennolla `help <komento>`. Huomaa, että help itsessään on yksi built-in.
 3. Komento `man <komento>` tulostaa komennon käyttöohjeen, mikäli se löytyy man pagesista (ks. `usr/share/man`). Komennon itsensä ohjeet löytyvät myös sieltä: kokeila ajaa `man man`.
 4. Komento `man -k <hakusana>` palauttaa listan sivuista, jotka sisältävät hakusanan. Tätä voi käyttää myös komentojen etsimiseen.
+
+    !!! tip
+    
+        Jos asennuksesi on kovin tuore, man-sivuston tietokantaa ei ole välttämättä päivitetty. Jos saat outputin `<hakusana>: nothing appropriate` sellaiselle hakusanalle, jolle voisi kuvitella löytyvän tietoa (esim. `user`), päivitä tietokanta komennolla `sudo mandb`.
+
 5. Komento `info <komento>` palauttaa infosivuston, joka sisältää Internet-sivuilta tutun tavan linkittää documenteja yhteen. Voit navigoida linkkiin painamalla ++enter++.
 6. Komento `type <komento>` paljastaa, onko komento alias, built-in vai jossakin PATH:n lokaatiossa oleva ohjelma.
 7. Internetin hakukoneet. Varmistathan, että ymmärrät mitä komennot tekevät ennen kuin ajat niitä.
