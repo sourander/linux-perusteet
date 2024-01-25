@@ -79,7 +79,7 @@ $ sudo apt upgrade
 $ dnf list installed
 
 # APT
-$ apt list installed
+$ apt list --installed
 ```
 
 #### Etsi uusia ohjelmia ja lue info
