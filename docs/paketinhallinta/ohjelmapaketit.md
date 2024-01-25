@@ -1,12 +1,12 @@
 Kuten aiemmassa luvussa todettiin, applikaatiot jaellaan perinteisesti ohjelmapaketteina (eng. package). Tyypillisesti paketit ovat joitakin seuraavista:
 
-| Tiedostopääte          | Kuvaus                                                       |
-| ---------------------- | ------------------------------------------------------------ |
-| .deb                   | Debian-pohjaisten distribuutioiden käyttämä formaatti.       |
-| .rpm                   | Red Hat  -pohjaisten distribuutioiden käyttämä formaatti.    |
-| .pkg.tar.zst           | Arch Linuxin pacmanin käyttämä formaatti.                    |
-| .apk                   | Alpine:n apk:n käyttämä formaatti.                           |
-| .ebuild                | Gentoo:n Portagen käyttämä formaatti.                        |
+| Tiedostopääte          | Kuvaus                                                                                                                                                                                                |
+| ---------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| .deb                   | Debian-pohjaisten distribuutioiden käyttämä formaatti.                                                                                                                                                |
+| .rpm                   | Red Hat  -pohjaisten distribuutioiden käyttämä formaatti.                                                                                                                                             |
+| .pkg.tar.zst           | Arch Linuxin pacmanin käyttämä formaatti.                                                                                                                                                             |
+| .apk                   | Alpine:n apk:n käyttämä formaatti.                                                                                                                                                                    |
+| .ebuild                | Gentoo:n Portagen käyttämä formaatti.                                                                                                                                                                 |
 | .tar, .tar.gz, tar.bz2 | Ei varsinaisesti oma formaatti paketeille, mutta osa ohjelmistoista levitetään pakattuina tar-paketteina (tarball), ja macOS:n ekosysteemistä tuttu HomeBrew käyttää tätä formaattia konepellin alla. |
 
 !!! warning
@@ -92,6 +92,7 @@ $ dnf info <package-name>
 # APT
 $ apt search "hakusana"
 $ apt info <package-name>
+$ apt-cache search <package-name>
 ```
 
 #### Listaa ohjelman tiedostot
@@ -205,12 +206,12 @@ Flatpak eristää sovellukset muusta käyttöjärjestelmästä omiin sandboxeihi
 
 Snap-ohjelmaan liittyvät seuraavat termit:
 
-| Termi      | Selitys                                                      |
-| ---------- | ------------------------------------------------------------ |
-| Snap       | Applikaatio-bundle, joka sisältää kaikki tarvittavat riippuvuudet. |
-| Snapd      | Taustalla ajettava daemon eli service, joka huolehtii asennetuista snapeista. |
+| Termi      | Selitys                                                                                                                      |
+| ---------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| Snap       | Applikaatio-bundle, joka sisältää kaikki tarvittavat riippuvuudet.                                                           |
+| Snapd      | Taustalla ajettava daemon eli service, joka huolehtii asennetuista snapeista.                                                |
 | Snap Store | Alusta tai katalogi, joka löytyy [verkosta](https://snapcraft.io/store), ja johon snapit lähetetään käyttäjien ladattaviksi. |
-| Snapcraft  | Ajettavan komennon ja frameworkin nimi.                      |
+| Snapcraft  | Ajettavan komennon ja frameworkin nimi.                                                                                      |
 
 Snap eristää ohjelmat muusta käyttöjärjestelmästä omiin sandboxeihin:
 
