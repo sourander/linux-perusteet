@@ -81,3 +81,26 @@ $ man man    # Manuaalin manuaali
 ```
 
 1. Komento `man` avaa ohjeet pitkiä tekstitiedostoja sivuttavassa ohjelmassa nimeltään `pager`. Lue ohjeet ohjelman tulosteen eli ruudun alalaidasta. 
+
+## Näppärät pikanäppäimet
+
+Alla olevat pikanäppäimet toimivat tyypillisesti Bash:ssä ja sitä vastaavissa shelleissä.
+
+| Klikattavat näppäimet             | Toiminto                                                                                  |
+| --------------------------------- | ----------------------------------------------------------------------------------------- |
+| ++ctrl+l++                        | Tyhjentää ruudun. Sama kuin komento `clear`.                                              |
+| ++tab++                           | Automaattinen täydennys. Tunnistaa sekä kansion tiedostoja että PATH:ssa olevia ohjelmia. |
+| ++tab+tab++                       | Tuplaklikkaus. Automaattinen täydennys, joka näyttää useammat vaihtoehdot.                |
+| ++ctrl+u++                        | Poistaa kaikki merkit kirjaisimesta vasemmalle. Näppärä tapa tyhjentää rivi plöröstä.     |
+| ++up++<br /> ++down++             | Historian kelaaminen. Voit plärät vanhoja komentoja.                                      |
+| ++ctrl+left++<br />++ctrl+right++ | Sanojen hyppiminen vasemmalle ja oikealle. Myös ++alt+b++ ja ++alt+f++ tekevät saman.     |
+
+
+
+## Vaarallisemmat pikanäppäimet
+
+| Pikanäppäin | Toiminto                                                                                                                                                                                                                                      |
+| ----------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ++ctrl+d++  | Virallisesti EOF. Sillä pääsee esimerkiksi `cat`-sovelluksesta ulos, mutta `bash`:ssä käytettynä se on sama kuin kirjoittaisi `exit`.                                                                                                         |
+| ++ctrl+c++  | Interrupt-signaali (SIGINT). Lopettaa ohjelman, millä voi pyrkiä tappamaan jumiin jääneen sovelluksen.                                                                                                                                        |
+| ++ctrl+z++  | Pysäyttää sovelluksen ja siirtää sen taka-alalle. Ohjelman toistoa voi jatkaa komennolla `fg`. Vaihtoehtoisesti sen voi käydä myöhemmin tappamassa `kill`-komennolla, mikäli se oli jumissa, eikä siitä pääse eroon yllä olevalla SIGINT:llä. |

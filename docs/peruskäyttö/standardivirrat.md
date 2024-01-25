@@ -33,14 +33,18 @@ Standardivirtaa voi uudelleenohjata tiedostoihin tai tiedostoista. Kohdetiedosto
 
 Käytännössä tämä mahdollista muun muassa komennon ajamisen siten, että onnistunut output kirjoitetaan yhteen tiedostoon, errorit toiseen:
 
-```
+```bash
+# Stdout ja Stderr eri tiedostoihin
 somecommand > success.output 2> errors.log
+
+# Stdout bittiavaruuteen
+find / -name ".bashrc" 2> /dev/null
 ```
 
 
 ## Putket
 
-Standardivirran voi myöhemmin päättää putkittaa (`piping`) käyttäen putkisymbolia (`|`) seuraavalle ohjelmalle. Linux-komentoihin tutustutaan myöhemmin syvemmin, mutta tarkkaile mitä alla oleva liuta komentoja tekee:
+Standardivirran voi myöhemmin päättää putkittaa (`piping`) käyttäen putkisymbolia (`|`) seuraavalle ohjelmalle. Tarkkaile, mitä alla oleva liuta komentoja tekee:
 
 ```sh
 $ echo "c" > myfile   # Ylikirjoita
@@ -81,28 +85,9 @@ flowchart
 	tr .-> |stderr|näyttö
 ```
 
+!!! question "Tehtävä"
 
-
-## Näppärät pikanäppäimet
-
-| Klikattavat näppäimet             | Toiminto                                                                                  |
-| --------------------------------- | ----------------------------------------------------------------------------------------- |
-| ++ctrl+l++                        | Tyhjentää ruudun. Sama kuin komento `clear`.                                              |
-| ++tab++                           | Automaattinen täydennys. Tunnistaa sekä kansion tiedostoja että PATH:ssa olevia ohjelmia. |
-| ++tab+tab++                       | Tuplaklikkaus. Automaattinen täydennys, joka näyttää useammat vaihtoehdot.                |
-| ++ctrl+u++                        | Poistaa kaikki merkit kirjaisimesta vasemmalle. Näppärä tapa tyhjentää rivi plöröstä.     |
-| ++up++<br /> ++down++             | Historian kelaaminen. Voit plärät vanhoja komentoja.                                      |
-| ++ctrl+left++<br />++ctrl+right++ | Sanojen hyppiminen vasemmalle ja oikealle. Myös ++alt+b++ ja ++alt+f++ tekevät saman.     |
-
-
-
-## Vaarallisemmat pikanäppäimet
-
-| Pikanäppäin | Toiminto                                                                                                                                                                                                                                      |
-| ----------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ++ctrl+d++  | Virallisesti EOF. Sillä pääsee esimerkiksi `cat`-sovelluksesta ulos, mutta `bash`:ssä käytettynä se on sama kuin kirjoittaisi `exit`.                                                                                                         |
-| ++ctrl+c++  | Interrupt-signaali (SIGINT). Lopettaa ohjelman, millä voi pyrkiä tappamaan jumiin jääneen sovelluksen.                                                                                                                                        |
-| ++ctrl+z++  | Pysäyttää sovelluksen ja siirtää sen taka-alalle. Ohjelman toistoa voi jatkaa komennolla `fg`. Vaihtoehtoisesti sen voi käydä myöhemmin tappamassa `kill`-komennolla, mikäli se oli jumissa, eikä siitä pääse eroon yllä olevalla SIGINT:llä. |
+    Selvitä, mitä komento `tee` tekee. Se liittyy standardivirtoihin, mutta kuinka?
 
 ## Here document
 
