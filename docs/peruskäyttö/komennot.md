@@ -106,6 +106,26 @@ $ echo $PATH | tr ":" "\n"   # Paranna luettavuutta (1)
 
 1. Komento tr vaihtaa tässä tapauksessa kaksoispisteen rivivaihdoksi. Tutustu komentoon `tr` alla olevien ohjeiden avulla.
 
+Jos haluat selvittää, missä polussa jokin ajettava PATH:ssa oleva ohjelma on, tai mikä on jonkin aliaksen määritelmä, kokeile seuraavia komentoja:
+
+```bash
+# Tämä on deprekoitunut ainakin Debianissa mutta toimii yhä
+$ which ls
+ls: aliased to ls -G
+
+# Tämä on ylemmän sijasta suositeltu komento
+$ command -v ls
+alias ls='ls -G'
+
+# Myös type palauttaa polun. Alias vaatii -a flagin.
+$ type -a ls
+ls is an alias for ls -G
+ls is /bin/ls
+```
+
+!!! question "Tehtävä"
+
+    Kokeile yllä olevia komentoja jotakin toista ohjelmaa, kuten `bash` tai `nano` tai `python3` vasten.
 
 
 ## Komentojen ohjeiden löytäminen
