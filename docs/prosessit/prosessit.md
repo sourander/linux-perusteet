@@ -1,7 +1,7 @@
 Linuxin kerneli luo jokaiselle käynnistetylle ohjelmalle oman prosessin, ja jokaisella prosessilla on oma tunniste (PID, Process ID). Ohjelma voi olla ajossa etualalla tai taustalla. Linuxissa on `init process`, joka käynnistää kaikki muut prosessit. Kaksi init-prosessia ovat:
 
-* SysVinit (vanha)
-* Systemd (uusi)
+* SysVinit (ja yhteensopivat init-järjestelmät kuten Upstart)
+* Systemd (uusi korvaaja)
 
 Käyttämäsi shell, kuten GNU bash, on yksi monista ohjelmista, jonka voi käynnistää, ja siten se saa oman PID:n. Ympäristömuuttuja `$0` sisältää ohjelman nimen, kun taas `$$` sisältää ohjelman PID:n. Tutki alla olevaa koodia ajatuksella:
 

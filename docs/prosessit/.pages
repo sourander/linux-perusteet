@@ -1,4 +1,6 @@
 nav:
   - prosessit.md
+  - systemd.md
+  - cron.md
   - kontit.md
   - ...
