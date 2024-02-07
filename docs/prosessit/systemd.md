@@ -1,7 +1,7 @@
 Systemd on Linux-järjestelmien init-prosessi, joka on korvannut sen edeltäjänsä (ks. Upstart: [init(8) - Linux man page](https://linux.die.net/man/8/init)). Systemd on ensimmäinen prosessi, joka käynnistetään (kernelin jälkeen) ja se on vastuussa muiden prosessien käynnistämisestä ja hallinnasta. Nämä asiat, joita se käynnistää, tunnetaan termillä ==unit==. Systemd reagoi eri triggeri-tapahtumiin ja on täten ==event-driven==. Tyypillisten deamon-prosessien hallinnan lisäksi sillä voi hallita myös muiden muassa mountteja ja laitteita. Tutustu systemd:n kontrollerin toimintaan joko kirjoittamalla `man 1 systemd` tai online-version avulla: [Ubuntu Manpages: systemctl - Control the systemd system and service manager](https://manpages.ubuntu.com/manpages/jammy/man1/systemctl.1.html)
 
 ```bash
-# Tarkista kaikki saatavill olevat komennot
+# Tarkista kaikki saatavilla olevat komennot
 $ systemctl --help
 
 # Listaa unit-tyypit
@@ -77,7 +77,20 @@ $ curl localhost
 
     Ohjelmalla on erikseen status "started/stopped" ja "enabled/disabled". Ohjelman pysäytys stop-komennolla ei siis estä ohjelmaa käynnistymästä ensi bootissa! Sinun pitää erikseen asettaa `sudo systemctl disable <service>`.
 
-### Muokataan lennosta
+!!! tip
+
+    Jos ihmettelet, mikä on service-konfiguraatiotiedossa näyknyt `After=network.target`, niin se tarkoittaa, että ohjelma käynnistyy vasta kun verkko on käytettävissä. Huomaa, että systemd itsessään on ensimmäinen käynnistettävä ohjelma, joten sen asetuksilla voi määrittää, mitä kaikkea käynnistetään ja missä järjestyksessä. Targetit ovat systemd:n tapa määritellä tämä.
+
+    Jos haluat, että Linux ei käynnisty laisinkaan graafiseen käyttöliittymään, voit muuttaa `multi-user.target`-targetiksi. Tämä on hyödyllistä esimerkiksi palvelimilla, joissa ei ole tarvetta graafiselle käyttöliittymälle.
+
+    ```bash
+    $ sudo systemctl get-default
+    $ sudo systemctl set-default multi-user.target # vaihtoehtona graphical.target
+    $ sudo systemctl reboot
+    ```
+
+
+### Muokataan oletussivua
 
 Komento `curl localhost` palauttaa nginx:n oletussivun. Tutkitaan, mistä se löytyy ja muokataan sitä.
 
@@ -97,10 +110,46 @@ $ sudo sed -i 's/Welcome/Tervetuloa/' /var/www/html/index.nginx-debian.html
 $ curl localhost
 
 # Käynnistä nginx uudelleen
-$ sudo systemctl restart nginx
+$ sudo systemctl rest nginx
 
 # Kokeile päivittyiskö sivu nyt
 $ curl localhost
+```
+
+### Service-tiedoston muokkaus
+
+Service-tiedostot määrittelevät, miten ohjelma käynnistetään. Tiedostojen muokkaus suoraan tekstieditorilla ei ole suositeltavaa. Luo mieluummin uudet ==drop-in -tiedostot==, joissa määrittelet uudet asetukset.
+
+```bash
+# Luo uusi drop-in -tiedosto
+$ sudo systemctl edit nginx
+```
+
+Tiedosto aukeaa systemctl:n vakioeditorilla (yleensä nano). Lisää tiedostoon seuraava sisältö (sille ohjeistettuun paikkaan - lue kommentit tiedostosta!):
+
+```ini
+[Unit]
+Description=This is my fake description!
+```
+
+!!! tip 
+
+    Tiedosto on niin sanottu `drop-in`-konfiguraatio. Linuxissa nämä toimivat yleensä siten, että `/etc/program`:n drop-in konfiguraatiotiedostot löytyvät hakemistosta `/etc/program.d/`. Tässä tapauksessa tiedosto löytyy hakemistosta `/etc/systemd/system/nginx.service.d/override.conf`. Joissakin tapauksissa drop-in -tiedostot ovat numeroituja, jolloin niiden suoritusjärjestys on määritelty tiedostonimessä.
+
+    Järjestelmän käynnistyessä systemd lukee kaikki konfiguraatiotiedostot ja yhdistää ne yhdeksi kokonaisuudeksi. Mikäli samasta asetuksesta on useampi määritely, viimeisin voittaa. Drop-in -tiedostoilla voidaan siis ylikirjoittaa alkuperäisiä asetuksia.
+
+```bash
+# Tarpeen mukaan saatat joutua lataamaan systemd:n konffit uudelleen
+$ sudo systemctl daemon-reload
+
+# Kokeile käynnistää nginx uudelleen
+$ sudo systemctl restart nginx
+
+# Tarkista, että uusi kuvaus näkyy
+$ systemctl status nginx
+
+# Katso myös cat:lla
+$ systemctl cat nginx
 ```
 
 !!! warning
@@ -136,6 +185,10 @@ $ cd ~/.local/bin/testprocessor/
 $ touch main.py
 $ chmod u+x main.py
 ```
+
+!!! question "Tehtävä"
+
+    Muistele, miksi tiedostolle annetaan `u+x`-oikeus. Mikäli et muista, kertaa aiempia materiaaleja tiedostojen oikeuksista. Tiedostojen käyttöoikeuksien ymmärtäminen on Linux-perusteiden kannalta kriittistä.
 
 Lisää seuraava sisältö `main.py`-tiedostoon:
 
@@ -231,6 +284,10 @@ $ systemctl --user start testprocessor.timer
 # Tarkista myös statukset
 $ systemctl --user status testprocessor.timer
 $ systemctl --user status testprocessor.service
+
+# Tarkista myös list:llä
+$ systemctl --user list-units
+$ systemctl --user list-timers
 ```
 
 Mikäli teet muutoksia `main.py`-tiedostoon tai daemonin määritelytiedostoihin, aja komento `systemctl --user daemon-reload` uusiksi.
