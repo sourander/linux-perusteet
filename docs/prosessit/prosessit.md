@@ -3,6 +3,16 @@ Linuxin kerneli luo jokaiselle käynnistetylle ohjelmalle oman prosessin, ja jok
 * SysVinit (ja yhteensopivat init-järjestelmät kuten Upstart)
 * Systemd (uusi korvaaja)
 
+## Komennot
+
+Käytät useimmiten prosessien seurantaan seuraavia komentoja:
+
+* ps
+* pstree
+* top
+
+### Ps ja pstree
+
 Käyttämäsi shell, kuten GNU bash, on yksi monista ohjelmista, jonka voi käynnistää, ja siten se saa oman PID:n. Ympäristömuuttuja `$0` sisältää ohjelman nimen, kun taas `$$` sisältää ohjelman PID:n. Tutki alla olevaa koodia ajatuksella:
 
 ```bash
@@ -60,9 +70,7 @@ $ ps -o ppid= -p 1
 $ ps -x -o pid,user,%mem,%cpu,comm
 ```
 
-
-
-## Prosessori- ja muistinkäytön seuranta
+### top
 
 Windowsista tutun tehtävienhallinnan (task manager) tai macOS:stä tutun Activity Monitorin kaltaiset tiedot saa shellissä esiin komennolla `top`. Kyseinen komento näyttää järjestetyn eli sortatun listan järjestelmän prosesseista. Sorttaukseen käytettyä saraketta voi vaihtaa parametreillä tai pikanäppäimillä.
 
@@ -208,20 +216,3 @@ $ kill %1
 $ rm kissa.txt
 ```
 
-## Prosessien lokien lukeminen
-
-Tyypilliset, ad-hocina käynnistetyt komennot tulostavat standardivirran terminaaliin, eivätkä kirjoita lokeja muualle. Suuremmat applikaatiot ja servicet kirjoittavat lokit yleensä joko system journaliin (`journald`, fyysinen lokaatio `/var/logs/journal/`) tai applikaation omiin lokitiedostoihin (`/var/log/app-name/`) tai (eri lokit) kumpaankin.
-
-Mikäli ohjelma ajetaan daemonina eli tuoreissa distribuutioissa servicenä systemd:ssä, löydät siihen liittyviä lokeja `systemctl` ja `journalctl` komentojen avulla.
-
-```bash
-# Listaa palvelut
-$ systemctl list-units --type=service
-
-# Katso yhden palvelun lokit
-$ journalctl -u cron.service
-```
-
-!!! question "Tehtävä"
-
-    Pohdi ja selvitä, kuinka saisit lokit siirrettyä usealta koneelta keskitetysti yhteen paikkaan. Hakusanoja: rsyslog, fluentd, Datadog.
