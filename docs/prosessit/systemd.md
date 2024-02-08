@@ -77,18 +77,6 @@ $ curl localhost
 
     Ohjelmalla on erikseen status "started/stopped" ja "enabled/disabled". Ohjelman pysäytys stop-komennolla ei siis estä ohjelmaa käynnistymästä ensi bootissa! Sinun pitää erikseen asettaa `sudo systemctl disable <service>`.
 
-!!! tip
-
-    Jos ihmettelet, mikä on service-konfiguraatiotiedossa näyknyt `After=network.target`, niin se tarkoittaa, että ohjelma käynnistyy vasta kun verkko on käytettävissä. Huomaa, että systemd itsessään on ensimmäinen käynnistettävä ohjelma, joten sen asetuksilla voi määrittää, mitä kaikkea käynnistetään ja missä järjestyksessä. Targetit ovat systemd:n tapa määritellä tämä.
-
-    Jos haluat, että Linux ei käynnisty laisinkaan graafiseen käyttöliittymään, voit muuttaa `multi-user.target`-targetiksi. Tämä on hyödyllistä esimerkiksi palvelimilla, joissa ei ole tarvetta graafiselle käyttöliittymälle.
-
-    ```bash
-    $ sudo systemctl get-default
-    $ sudo systemctl set-default multi-user.target # vaihtoehtona graphical.target
-    $ sudo systemctl reboot
-    ```
-
 
 ### Muokataan oletussivua
 
@@ -107,12 +95,6 @@ $ less /etc/nginx/sites-enabled/default
 $ sudo sed -i 's/Welcome/Tervetuloa/' /var/www/html/index.nginx-debian.html
 
 # Kokeile päivittyikö sivu
-$ curl localhost
-
-# Käynnistä nginx uudelleen
-$ sudo systemctl rest nginx
-
-# Kokeile päivittyiskö sivu nyt
 $ curl localhost
 ```
 
@@ -151,6 +133,18 @@ $ systemctl status nginx
 # Katso myös cat:lla
 $ systemctl cat nginx
 ```
+
+!!! tip
+
+    Jos ihmettelet, mikä on service-konfiguraatiotiedossa näkynyt `After=network.target`, niin se tarkoittaa, että ohjelma käynnistyy vasta kun verkko on käytettävissä. Huomaa, että systemd itsessään on ensimmäinen käynnistettävä ohjelma, joten sen asetuksilla voi määrittää, mitä kaikkea käynnistetään ja missä järjestyksessä. Targetit ovat systemd:n tapa määritellä tämä.
+
+    Jos haluat, että Linux ei käynnisty laisinkaan graafiseen käyttöliittymään, voit muuttaa `multi-user.target`-targetiksi. Tämä on hyödyllistä esimerkiksi palvelimilla, joissa ei ole tarvetta graafiselle käyttöliittymälle.
+
+    ```bash
+    $ sudo systemctl get-default
+    $ sudo systemctl set-default multi-user.target # vaihtoehtona graphical.target
+    $ sudo systemctl reboot
+    ```
 
 !!! warning
 
