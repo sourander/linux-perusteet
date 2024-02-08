@@ -119,12 +119,12 @@ $ dpkg -S /path/to/file
 
 ```bash
 # DNF
-sudo dnf remove <package-name>
-sudo dnf autoremove # Riippuvuudet
+$ sudo dnf remove <package-name>
+$ sudo dnf autoremove # Riippuvuudet
 
 # APT
-sudo apt remove <package-name>
-sudo apt autoremove # Riippuvuudet
+$ sudo apt remove <package-name>
+$ sudo apt autoremove # Riippuvuudet
 ```
 
 

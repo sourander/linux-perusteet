@@ -195,6 +195,6 @@ UUID=<uuid-poistettu>         /               ext4    errors=remount-ro 0       
 
 Jos ihmettelet, miksei LVM:n kohdalla käytetä UUID:tä vaan mapper deviceä, niin lue [Best Practice for Mounting an LVM Logical Volume with /etc/fstab](https://xan.manning.io/2017/05/29/best-practice-for-mounting-an-lvm-logical-volume-with-etc-fstab.html).
 
-## Lisää LVM:ään kolmas levy
+!!! tip
 
-TODO
+    Kannattaa kokeilla lisätä myös kolmas levy, poistaa levyjä, ja poistaa koko LVM. Tämän ohjeen jälkeen sinun pitäisi osata tehdä nämä kaikki - tai vähintään etsiä tietoa, kuinka nämä tehdään.
