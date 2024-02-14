@@ -52,8 +52,8 @@ Kuten yllä mainittiin, sinulla saattaa olla `systemd-journald`:n kyljessä tai 
 Huomaat, että tyypillisiä tiedostoja ovat esimerkiksi:
 
 * `auth.log` - käyttäjän kirjautumiset
-* `syslog` - järjestelmän lokit (binäärimuodossa)
-* `dmseg` - kernel ring buffer (binäärimuodossa)
+* `syslog` - järjestelmän lokit
+* `dmesg` - kernel ring buffer
 
 Binäärimuotoiset tiedostot eivät ole suoraan luettavissa, mutta niitä voi lukea komennolla `dmesg` tai `journalctl`.
 
