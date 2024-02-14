@@ -28,7 +28,7 @@ Number  Start   End     Size    File system  Name                  Flags
  2      538MB   68,7GB  68,2GB  ext4
 ```
 
-Huomaa yllä olevasta tulosteesta, että kummallakaan SCSI-levyllä (sda, sdb) ei ole osiointitaulukkoa olemassa. Sen sijaan Ubuntu Installerin luoma levy on partitioitu GPT-taulukon avulla. Osiointitaulukkoja on kahta sorttia: vanhempi **MBP** ja uudempi **GPT**. Nämä tulevat sanoista Master Boot Record sekä GUID Partition Table. MBP kannattaa uusissa koneissa jättää kokonaisuudessaan historiaan ja käyttää sen uudempaa, UEFI-yhteensopivaa vastinetta eli GPT:tä.
+Huomaa yllä olevasta tulosteesta, että kummallakaan SCSI-levyllä (sda, sdb) ei ole osiointitaulukkoa olemassa. Sen sijaan Ubuntu Installerin luoma levy on partitioitu GPT-taulukon avulla. Osiointitaulukkoja on kahta sorttia: vanhempi **MBR** ja uudempi **GPT**. Nämä tulevat sanoista Master Boot Record sekä GUID Partition Table. MBR kannattaa uusissa koneissa jättää kokonaisuudessaan historiaan ja käyttää sen uudempaa, UEFI-yhteensopivaa vastinetta eli GPT:tä.
 
 Yllä mainittu GUID (eli siis GPT-lyhenteen ensimmäinen kirjain) tulee sanoista Globally Unique Identifier, joka näytetään käyttäjälle tyypillisesti heksadesimaalina, joka on eritelty muutamaan katkoviivalla eriteltyyn ryppääseen, joissa kussakin on seuraava määrä digittejä: `<8-4-4-4-12>`. Alla näkyy nykyisten osioiden GUID:t:
 
