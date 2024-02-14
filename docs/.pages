@@ -2,6 +2,9 @@ nav:
     - index.md
     - linux
     - asennus
-    - Peruskäyttö: peruskäyttö
+    - Peruskäyttö: peruskaytto
     - paketinhallinta
+    - prosessit
+    - Tiedostojärjestelmä: tiedostojarjestelma
+    - C-ohjelmointi: c_ohjelmointi
     - ...

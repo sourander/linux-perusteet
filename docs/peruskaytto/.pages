@@ -1,8 +1,8 @@
 nav:
   - tiedostot.md
   - komennot.md
-  - Käyttöoikeudet: käyttöoikeudet.md
+  - Käyttöoikeudet: kayttooikeudet.md
   - terminaali.md
-  - Käyttäjät: käyttäjät.md
+  - Käyttäjät: kayttajat.md
   - standardivirrat.md
   - ...
