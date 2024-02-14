@@ -62,7 +62,7 @@ Mikäli et paravirtualisoi massamuistia virtio:lla kuten yllä, laitteet käsite
 Mikäli virtuaalikoneeseen lisätään kaksi SCSI-rajapintaa käyttävää levyä, ja ajetaan aiemmin tuttu list block devices komento, tulostuu ruudulle alla näkyvä tuloste. Mikäli `--exclude`:n viittaamaa sekä tulostuneessa taulussa näkymä MAJ eli major numero kiinnostaa, tutki tiedostoa `/proc/devices`, jossa ne ovat listattuina.
 
 ```bash
-$ lsblk --exlude 7
+$ lsblk --exclude 7
 NAME   MAJ:MIN RM  SIZE RO TYPE MOUNTPOINTS
 sda      8:0    0   10G  0 disk 
 sdb      8:16   0   10G  0 disk 
