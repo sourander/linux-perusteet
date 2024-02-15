@@ -145,10 +145,10 @@ Anna kirjain (vihje Z): <anna oikea kirjain>
 Kuinka monta kertaa haluat voittaa?: <keksi epäsopiva vastaus>
 
 # Katso, mitä tämä ympäristömuuttuja sisältää.
-$ echo $1
+$ echo $?
 
 # Vertaa tätä johonkin tutun applikaatioon vikatilanteessa (esim. ls)
 $ ls /foldernotexists
-$ echo $1
+$ echo $?
 ```
 
