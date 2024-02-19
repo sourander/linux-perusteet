@@ -2,4 +2,9 @@ nav:
   - yleista.md
   - muuttujat.md
   - merkkijonot.md
+  - pointterit.md
+  - streams.md
+  - args.md
+  - tiedostot.md
+  - headers.md
   - ...

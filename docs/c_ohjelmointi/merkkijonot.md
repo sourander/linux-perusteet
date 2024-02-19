@@ -34,52 +34,40 @@ int main()
     
     Mitä ongelmia ö-kirjain aiheuttaa? Toimiiko koodi jos korvaat sen o-kirjaimella?
 
+## Merkkijonot listassa
 
-## Standard inputin käsittely
+Lista voi sisältää listoja. Selvitä, mitä alla oleva koodi tekee:
 
-Tutustu alla näkyvään koodiin (`reverser.c`). Ennen kuin kokeilet ajaa koodia, yritä päätellä mitä se tekee standard inputille, joka on vakiossa `stdin`, joka on määritelty `stdio.h` kirjastossa.
-
-```c title="reverser.c"
+```c
 #include <stdio.h>
 #include <string.h>
 
-#define MAX_LINE_LENGTH 100
+char imdb_top_movies[][50] = {
+    "The Shawshank Redemption",
+    "The Godfather",
+    "The Dark Knight",
+    "The Godfather: Part II",
+    "12 Angry Men",
+    "Schindler's List",
+    "The Lord of the Rings: The Return of the King",
+    "Pulp Fiction",
+    "The Lord of the Rings: The Fellowship of the Ring",
+    "The Good, the Bad and the Ugly",
+};
 
-void reverse(char str[]) {
-    int length = strlen(str);
-    for (int i = 0; i < length / 2; i++) {
-        char temp = str[i];
-        str[i] = str[length - i - 1];
-        str[length - i - 1] = temp;
-    }
-}
+int n = sizeof(imdb_top_movies) / sizeof(imdb_top_movies[0]);
 
 int main() {
-    char line[MAX_LINE_LENGTH];
-    while (fgets(line, MAX_LINE_LENGTH, stdin) != NULL) {
-        reverse(line);
-        printf("%s", line);
+    
+    char search_word[50];
+    printf("Search for a movie title: ");
+    scanf("%s", search_word);
+
+    for (int i = 0; i < n; i++) {
+
+        if (strstr(imdb_top_movies[i], search_word)) {
+            printf("Found: %s\n", imdb_top_movies[i]);
+        }
     }
-    return 0;
 }
 ```
-
-Kun olet lukenut koodin huolella, käännä se binääritiedostoksi ja selvitä, kuinka ohjelmaa käytetään. Kokeile ainakin seuraavia:
-
-```bash
-# Perus ajo. Lopeta CTRL+D tai CTRL+C.
-$ ./reverser
-
-# Heredoc-tyylinen syöte. Etsi lisätietoa Heredocista omatoimisesti.
-$ ./reverser <<'EOF'
-> kissa
-> koira
-> EOF
-
-# Standard inputin syöttäminen putkittamalla
-$ ls -1 | ./reverser
-
-# Standard outputin jatkaminen putkittamalla
-$ ls -1 | ./reverser | wc -l
-```
-

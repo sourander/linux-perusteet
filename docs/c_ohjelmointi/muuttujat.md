@@ -71,7 +71,7 @@ int main() {
 
 Muuttujia voi castata muuttujatyypistä toiseen asettamalla haluttu muuttujatyyppi suluissa muuttajan eteen.
 
-```c
+```c title="casting.c"
 #include <stdio.h>
 
 int main() {
@@ -81,4 +81,3 @@ int main() {
     printf("float %f is %i as int\n", f, i);
 }
 ```
-

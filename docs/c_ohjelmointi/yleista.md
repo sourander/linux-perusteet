@@ -49,7 +49,7 @@ $ gcc -o hello hello.c
 
     Gcc:n optio `-o <tiedostonimi>` antaa sinun asettaa tiedostolle nimen. Windowsissa executable eli ajettava tiedosto olisi tyypillisesti päätteeltään `.exe`, mutta Linuxissa executable tunnistaa tiedosto-oikeuksista. Kokeile, mikä tiedostonimeksi tulee, jos jätät tiedostonimen kokonaan määrittelemättä eli ajat `gcc hello.c`.
 
-### 03: Binäärin ajaminen
+### Binäärin ajaminen
 
 Kääntäjä luo ajettavan tiedoston. Voit tarkistaa tämän `ls -l tiedostonnimi` komennolla. Huomaat, millä käyttäjätyypeillä on `x`-oikeus tiedostoon. Tiedoston ajaminen itsessään on helppoa. Kuten kurssin muissa materiaaleissa on opetettu, sinun tulee antaa absoluuttinen tai relatiivinen polku binääriin, ellei tiedosto löydy `$PATH`:sta. Meidän nykyinen kansio ei oletettavasti ole PATH-ympäristömuuttujan kansioiden listassa, joten koodin voi ajaa relatiivisella polulla näin:
 
