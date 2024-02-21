@@ -9,7 +9,7 @@ int main() {
     
   	// Char on 1-tavuinen muuttuja: ASCII-merkin koodipiste tai
     // ihan vain pieni numero (-128...127)
-    char num;
+    signed char num;
     num = 127;
     num += 1;
     printf("Num = %d\n", num);
