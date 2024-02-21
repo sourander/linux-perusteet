@@ -79,5 +79,6 @@ int main() {
     int i = (int)f;
 
     printf("float %f is %i as int\n", f, i);
+    return 0;
 }
 ```
