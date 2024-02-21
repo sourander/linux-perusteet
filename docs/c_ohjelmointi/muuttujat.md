@@ -62,7 +62,7 @@ int main() {
 | ----------- | ----------------- | --------------------------- |
 | c           | kirjain           | `printf("%c", 'A')`         |
 | d tai i     | kokoluku          | `printf("%d", 123)`         |
-| f           | desimaaliluku     | `printf("%f", '3.14')`      |
+| f           | desimaaliluku     | `printf("%f", 3.14)`        |
 | s           | merkkijono        | `printf("%s", "abc")`       |
 | X tai x     | numero (heksaksi) | `printf("hex = %02x", 101)` |
 | p           | pointteri         | `printf("%p", &my_integer)` |
