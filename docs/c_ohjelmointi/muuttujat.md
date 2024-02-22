@@ -34,8 +34,8 @@ Alla tyypillisiä C-kielen muuttujatyyppejä niiden tavumäärän sekä lukuavar
 | Kokonaisluku  | short  | 2     | -32,768 to 32,767     | %hd    |
 | Kokonaisluku  | int    | 4     | -2.1E+9 to 2.1E+9     | %d     |
 | Kokonaisluku  | long   | 8     | -9.2E+18 to 9.2E+18   | %ld    |
-| Desimaaliluku | float  | 4     | -3.4E-38 to 3.4E+38   | %f     |
-| Desimaaliluku | double | 8     | -1.7E-308 to 1.7E+308 | %lf    |
+| Desimaaliluku | float  | 4     | -3.4E+38 to 3.4E+38   | %f     |
+| Desimaaliluku | double | 8     | -1.7E+308 to 1.7E+308 | %lf    |
 
 
 Mikäli haluat selvittää oman prosessoriarkkitehtuurisi mukaisen `int`- ja `float`-tyyppien bittisyvyyden, voit tehdä sen `sizeof()` funktiota käyttäen. Käännä ja aja alla näkyvä `limits.c`-tiedoston sisältö. (Koodi olettaa, että tavu on tasan 8 bittiä. Tavun leveys voi vaihdella eri arkkitehtuurien välillä. 🤓)
