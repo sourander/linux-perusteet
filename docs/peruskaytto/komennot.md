@@ -77,6 +77,10 @@ $ ls -- ~/Downloads ~/Documents
 
 ## Komentojen löytäminen
 
+![Touch on vaikea arvata](../images/turnoff_just-touch-it.png)
+
+**Kuvio 1:** *Osa komennoista pitää vain tietää; niiden päättely nimestä voi olla vaikeaa. Tiedostojen luominen (`touch`) tai uudelleen nimeäminen (`mv`) saattaa yllättää.*
+
 Bashin tuntemat built-init löytää (built-in)-komennolla:
 
 ```bash
