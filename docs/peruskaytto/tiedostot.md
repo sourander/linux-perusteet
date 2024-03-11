@@ -34,23 +34,23 @@ Alla erittäin karkea taulukko Linuxin ja Windowsin tiedosto/kansiorakenteen ero
 
 Linuxin tiedostojärjestelmän standardi löytyy [Filesystem Hierarchy Standard (linuxfoundation.org)](https://refspecs.linuxfoundation.org/FHS_3.0/fhs/index.html)-sivustolta, mutta alla on listattuna tärkeimmät juuritason kansiot:
 
-| Hakemisto    | Sisältää                                                     |
-| ------------ | ------------------------------------------------------------ |
-| /bin, /sbin  | C-kielestä käännettynä ajettavia binääritiedostoja, kuten yllä käytetty `lsbkl` tai hakemistojen luontiin tarkoitettu `mkdir`. Tyypillisesti viittaa lokaatioon `/usr/bin/` sekä `/usr/sbin`. |
-| /boot        | Kernel image, jota käytetään konetta käynnistäessä.          |
-| /dev         | Fyysisiä laitteita, kuten yllä näkyvä `sda`, tai loogisia/virtuaalisia laitteita kuten partitio `sda1` tai työpöytäympäristössä käyttämäsi terminaali `/dev/pts/0`. Kokeile ajaa komento `tty`. |
-| /etc         | Koko järjestelmää koskevat konfiguraatiotiedostot, kuten `/etc/hosts`, josta tarkistetaan tunnetut hostnamet ennen DNS-kyselyitä, tai `/etc/passwd`, jossa määritellään käyttäjät ja aikoinaan jopa salasanat, tai `/etc/fstab/` |
-| /home        | Käyttäjien kotikansiot.                                      |
-| /lib         | Jaettuja kirjastoja, joita `/bin`:ssä ja `/sbin`:ssä olevat ohjelmat tarvitsevat, kuten C-kielen kirjastot `libc.so`. |
-| /mnt, /media | Automaattisesti mountattavat mediat kuten CD- sekä USB-asemat tai jopa verkkolevyt. |
-| /opt         | Riippuu distribuutiosta. Paketinhallinta käyttää tai on käyttämättä. |
-| /proc, /sys  | Kernelin rajapintoja, kuten `/proc/version`, joka sisältää kernelin ja distron versioon liittyvää tietoa. |
-| /tmp         | Väliaikaiset tiedostot. Eivät säily ikuisesti.               |
-| /usr, /var   | Käyttäjille tarkoitettuna ohjelmia.                          |
+| Hakemisto    | Sisältää                                                                                                                                                                                                                        |
+| ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| /bin, /sbin  | Useimmiten C-kielestä käännettynä ajettavia binääritiedostoja, kuten yllä käytetty `lsbkl` tai hakemistojen luontiin tarkoitettu `mkdir`. Tyypillisesti viittaa lokaatioon `/usr/bin/` sekä `/usr/sbin/`.                       |
+| /boot        | Kernel image, jota käytetään konetta käynnistäessä.                                                                                                                                                                             |
+| /dev         | Fyysisiä laitteita, kuten yllä näkyvä `sda`, tai loogisia/virtuaalisia laitteita kuten partitio `sda1` tai työpöytäympäristössä käyttämäsi terminaali `/dev/pts/0`. Kokeile ajaa komento `tty`.                                 |
+| /etc         | Koko järjestelmää koskevat konfiguraatiotiedostot, kuten `/etc/hosts`, josta tarkistetaan tunnetut hostnamet ennen DNS-kyselyitä, tai `/etc/passwd`, jossa määritellään käyttäjät ja aikoinaan jopa salasanat, tai `/etc/fstab` |
+| /home        | Käyttäjien kotikansiot.                                                                                                                                                                                                         |
+| /lib         | Jaettuja kirjastoja, joita `/bin`:ssä ja `/sbin`:ssä olevat ohjelmat tarvitsevat, kuten C-kielen kirjastot `libc.so`.                                                                                                           |
+| /mnt, /media | Automaattisesti mountattavat mediat kuten CD- sekä USB-asemat tai jopa verkkolevyt.                                                                                                                                             |
+| /opt         | Riippuu distribuutiosta. Paketinhallinta käyttää tai on käyttämättä.                                                                                                                                                            |
+| /proc, /sys  | Kernelin rajapintoja, kuten `/proc/version`, joka sisältää kernelin ja distron versioon liittyvää tietoa.                                                                                                                       |
+| /tmp         | Väliaikaiset tiedostot. Eivät säily ikuisesti.                                                                                                                                                                                  |
+| /usr         | Käyttäjien ohjelmat ja tiedostot.                                                                                                                                                                                               |
+| /var         | Usein muuttuva, ohjelmien sisältämä data. Erikoimaininta lokitiedostoja sisältävä alihakemisto `/var/log/`                                                                                                                      |
 
+!!! tip
 
+    Tyypillisesti distribuution oma paketinhallinta (esim. apt) asentaa ohjelman eri tyyppiä edustavat tiedostot eri lokaatioihin: binääri `/usr/bin` hakemistoon, kirjastot `/usr/lib`-hakemistoon, konfiguraatiot `/etc`-hakemistoon, data `/var`-hakemistoon ja niin edelleen.
 
-
-
-
-
+    Tälle on vaihtoehtona `/opt`, mihin ohjelmat asennetaan jonkin paketinhallinnan (esim. Homebrew) toimesta. Ohjelmat ovat tällöin self-contained, eivätkä ole pirstaloitu `/usr`-hakemistoon. Tämä on tyypilisesti Windows-käyttäjille tutumpi tapa (vrt. `C:\Program Files\Ohjelmannimi`).
