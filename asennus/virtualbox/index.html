@@ -1,0 +1,1554 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../../linux/kernel/">
+      
+      
+        <link rel="next" href="../utm/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.13">
+    
+    
+      
+        <title>VirtualBox - Linux Perusteet</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.7e359304.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#asennus" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Linux Perusteet" class="md-header__button md-logo" aria-label="Linux Perusteet" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Linux Perusteet
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              VirtualBox
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Linux Perusteet" class="md-nav__button md-logo" aria-label="Linux Perusteet" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Linux Perusteet
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tervetuloa kurssille
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Linux
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Linux
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/os/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    OS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/kernel/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Kernel
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Asennus
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Asennus
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    VirtualBox
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    VirtualBox
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#esiasetukset" class="md-nav__link">
+    <span class="md-ellipsis">
+      Esiasetukset
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#luo-virtuaalikone" class="md-nav__link">
+    <span class="md-ellipsis">
+      Luo virtuaalikone
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#asenna-os" class="md-nav__link">
+    <span class="md-ellipsis">
+      Asenna OS
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ukk" class="md-nav__link">
+    <span class="md-ellipsis">
+      UKK
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="UKK">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#k-kayttaja-ei-ole-sudoers-ryhmassa" class="md-nav__link">
+    <span class="md-ellipsis">
+      K: Käyttäjä ei ole sudoers-ryhmässä.
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#k-ruudun-ylla-kalenterissa-nakyy-kummallisia-merkkeja-terminaali-ei-myoskaan-aukea" class="md-nav__link">
+    <span class="md-ellipsis">
+      K: Ruudun yllä kalenterissa näkyy kummallisia merkkejä. Terminaali ei myöskään aukea.
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#k-en-voi-kopioida-leikepoydalta-tietoa-vmn-ja-hostin-valilla" class="md-nav__link">
+    <span class="md-ellipsis">
+      K: En voi kopioida leikepöydältä tietoa VM:n ja Hostin välillä
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#k-vm-on-paalla-mutta-ruutu-on-musta" class="md-nav__link">
+    <span class="md-ellipsis">
+      K: VM on päällä, mutta ruutu on musta.
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../utm/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    UTM (macOS)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Peruskäyttö
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Peruskäyttö
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../peruskaytto/tiedostot/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tiedostot
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../peruskaytto/komennot/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Komennot
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../peruskaytto/kayttooikeudet/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Käyttöoikeudet
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../peruskaytto/terminaali/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Terminaali
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../peruskaytto/kayttajat/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Käyttäjät
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../peruskaytto/standardivirrat/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Standardivirrat
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Paketinhallinta
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Paketinhallinta
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../paketinhallinta/ohjelmat/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ohjelmat
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../paketinhallinta/ohjelmapaketit/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ohjelmapaketit
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../paketinhallinta/cross-distro/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cross-distro
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Prosessit
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Prosessit
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prosessit/prosessit/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Prosessit
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prosessit/systemd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Systemd
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prosessit/cron/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cron
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prosessit/lokit/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lokit
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prosessit/kontit/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Kontit
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Tiedostojärjestelmä
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Tiedostojärjestelmä
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tiedostojarjestelma/levyt/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Levyt
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tiedostojarjestelma/osiot/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Osiot
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tiedostojarjestelma/lvm/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    LVM
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    C-ohjelmointi
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            C-ohjelmointi
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../c_ohjelmointi/yleista/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Yleistä
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../c_ohjelmointi/muuttujat/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Muuttujat
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../c_ohjelmointi/merkkijonot/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Merkkijonot
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../c_ohjelmointi/pointterit/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Osoittimet
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../c_ohjelmointi/streams/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Standardivirrat
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../c_ohjelmointi/args/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Argumentit
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../c_ohjelmointi/tiedostot/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tiedostot
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../c_ohjelmointi/modularisointi/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Modularisointi
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#esiasetukset" class="md-nav__link">
+    <span class="md-ellipsis">
+      Esiasetukset
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#luo-virtuaalikone" class="md-nav__link">
+    <span class="md-ellipsis">
+      Luo virtuaalikone
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#asenna-os" class="md-nav__link">
+    <span class="md-ellipsis">
+      Asenna OS
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ukk" class="md-nav__link">
+    <span class="md-ellipsis">
+      UKK
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="UKK">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#k-kayttaja-ei-ole-sudoers-ryhmassa" class="md-nav__link">
+    <span class="md-ellipsis">
+      K: Käyttäjä ei ole sudoers-ryhmässä.
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#k-ruudun-ylla-kalenterissa-nakyy-kummallisia-merkkeja-terminaali-ei-myoskaan-aukea" class="md-nav__link">
+    <span class="md-ellipsis">
+      K: Ruudun yllä kalenterissa näkyy kummallisia merkkejä. Terminaali ei myöskään aukea.
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#k-en-voi-kopioida-leikepoydalta-tietoa-vmn-ja-hostin-valilla" class="md-nav__link">
+    <span class="md-ellipsis">
+      K: En voi kopioida leikepöydältä tietoa VM:n ja Hostin välillä
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#k-vm-on-paalla-mutta-ruutu-on-musta" class="md-nav__link">
+    <span class="md-ellipsis">
+      K: VM on päällä, mutta ruutu on musta.
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<div class="admonition tip">
+<p class="admonition-title">Huom!</p>
+<p>Asennukseen liittyvät ohjeet vanhentuvat herkästi. Mikäli tämä dokumentti ei vastaa todellisuutta, olethan ystävällinen ja teet <a href="https://github.com/sourander/linux-perusteet/">linux-perusteet -Github-reposta</a> Forkin, muokkaat ohjeet vastaamaan nykypäivää, ja pyydät Pull Requestia.</p>
+</div>
+<h1 id="asennus">Asennus</h1>
+<p>Alla olevassa ohjeessa asennetaan Ubuntu 22.04 LTS. Voit asentaa esimerkiksi Fedora 38:n hyvin pienin muutoksin.</p>
+<h2 id="esiasetukset">Esiasetukset</h2>
+<p>Alla oleva ohjeistus on testattu Windows 11 Home -versiossa.</p>
+<ol>
+<li>Etsi <code>Turn Windows features on or off</code>-ikkuna Windowsista.</li>
+<li>Kytke <code>Virtual Machine Platform</code> päälle.</li>
+</ol>
+<p><a href="https://docs.docker.com/desktop/faqs/windowsfaqs/#can-i-use-virtualbox-alongside-docker-desktop">Docker:n FAQ</a> suosittelee kytkemään päälle myös <code>Windows Hypervisor Platform</code>, mikäli haluat käyttää VirtualBoxia ja Dockeria joskus rinnakkain. Sama feature neuvotaan kytkemään päälle, mikäli haluat käyttää <code>Hyper-V</code>:tä ja VirtualBoxia yhdessä. Hyper-V vaatii Windows Pro:n, ja VirtualBox on perinteisesti tullut sen kanssa huonosti toimeen - tai ollut kokonaan toimimatta mikäli se on ollut asennettuna.</p>
+<h2 id="luo-virtuaalikone">Luo virtuaalikone</h2>
+<ol>
+<li>Asenna Oracle VM VirtualBox 7.x (<a href="https://www.virtualbox.org/wiki/Downloads">linkki</a>)</li>
+<li>Lataa Ubuntu 22.04 Desktop Image, 64-bit AMD (<a href="https://releases.ubuntu.com/22.04/">linkki</a>)</li>
+<li>Valitse VirtualBoxissa <code>Machine =&gt; New</code> tai klikkaa <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-n">N</kbd></span></li>
+</ol>
+<p>Täytä VirtualBoxissa aukeavaan pop-uppiin tarvittavat tiedot: </p>
+<ul>
+<li>Valitse koneelle nimi (esim. <code>ubuntu2204</code>), kansio johon virtuaalikoneen image sekä muut tiedostot tallennetaan (esim. <code>C:\Users\username\VirtualBox VMs</code>), sekä äsken lataamasi image.</li>
+<li>Laita ruksi kohtaan <code>Skip Unattended Installation</code>. Jos haluat kokeilla <code>Plug'n'Pray</code>-asennusta, voit jättää ruksin paikoilleen, mutta tulet kärsimään tästä myöhemmin.</li>
+<li>Klikkaa Next.</li>
+<li>Kun kysytään, anna virtuaalikoneelle esimerkiksi <code>4 CPU</code>:ta ja <code>8 GB</code> muistia, olettaen että omassa tietokoneessasi on riittämiin tarjolla.</li>
+<li>Klikkaa Next.</li>
+</ul>
+<h2 id="asenna-os">Asenna OS</h2>
+<ul>
+<li>Käynnistä VM Start-näppäimellä.</li>
+<li>Ruutuun ilmestyy GRUB.<ul>
+<li>Valitse <code>Try or Install Ubuntu</code></li>
+</ul>
+</li>
+<li>Ubuntu installer käynnistyy.<ul>
+<li>Valitse <code>Install Ubuntu</code>. Anna kielen olla <code>English</code>.</li>
+<li>Klikkaa Next.</li>
+</ul>
+</li>
+<li>Ubuntu installer kysyy tietoja:<ul>
+<li>Valitse näppäimistöasetteluksi <code>Finnish -&gt; Finnish</code>.</li>
+<li>Klikkaa Continue</li>
+</ul>
+</li>
+<li>Ubuntu installer kysyy tietoja:<ul>
+<li>Valitse <code>Minimal Installation</code></li>
+<li>Valitse <code>Download updates while installing Ubuntu</code></li>
+<li>Klikkaa Continue</li>
+</ul>
+</li>
+<li>Ubuntu installer kysyy tietoja:<ul>
+<li>Valitse <code>Erase disk and install Ubuntu</code></li>
+<li>Klikkaa Install Now.</li>
+</ul>
+</li>
+</ul>
+<p>Ubuntu installer vahvistaa sinulta muutokset suunnilleen näin:
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>If you continue, the changes listed below will be written to the disk. Otherwise, you will be able to make further changes manually.
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>The partition tables of the following devices are changed:
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>SCSI3 (0,0,0)(sda)
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>The following partitions are going to be formatted
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>partition #1 of SCSI3 (0,0,0) (sda) as ESP
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>partition #2 of SCSI3 (0,0,0) (sda) as ext4
+</span></code></pre></div></p>
+<p>Et välttämättä tällä hetkellä ymmärrä yllä olevaa tekstiä, mutta kurssin edetessä opit mitä lyhenteet tarkoittavat.</p>
+<p>Seuraavissa ruuduissa kysellään maakohtaisia asetuksia, nimeä, käyttäjätunnusta, salasanaa ja niin edelleen. Valitse ne mielihalujesi mukaan.</p>
+<p>Kun odottelet hetken, Ubuntu 22.04 pyytää käynnistämään tietokoneen uusiksi, ja voit aloittaa käytön.</p>
+<h2 id="ukk">UKK</h2>
+<h4 id="k-kayttaja-ei-ole-sudoers-ryhmassa">K: Käyttäjä ei ole sudoers-ryhmässä.</h4>
+<p>V: Tämä johtunee siitä, että <code>Skip Unattended Installation</code> ei ole ollut valittuna Ubuntua asentaessa, mutta voit yrittää korjata tilanteen. </p>
+<p>Avaa terminaali jommalla kummalla tavalla:
+1. Klikkaa <span class="keys"><kbd class="key-windows">Win</kbd></span> -näppäintä ja kirjoita Terminal.
+2. Klikkaa <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-alt">Alt</kbd><span>+</span><kbd class="key-t">T</kbd></span></p>
+<p>Mikäli terminaali ei käynnisty jostain syystä, mene virtuaaliterminaaliin. Klikkaa <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-alt">Alt</kbd><span>+</span><kbd class="key-f3">F3</kbd></span> vaihtaaksesi virtuaaliterminaaliin. Siinä pitäisi näkyä sisäänkirjautuminen tekstimuodossa. Kirjaudu sisään. Mikäli F3:lla ei löydy virtuaaliterminaalia, kokeile muut F-näppäimet läpi.</p>
+<p>Kun sinulla on terminaali esissä ja olet kirjaunut sisään, kirjoita:</p>
+<div class="language-sh highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># Loggaa root-käyttäjälle</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>su<span class="w"> </span>-
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="c1"># Lisää oma käyttäjä sudoers-ryhmään</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>usermod<span class="w"> </span>-aG<span class="w"> </span>sudo<span class="w"> </span>&lt;tähän-käyttäjänimesi&gt;
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="c1"># Loggaa ulos root-käyttäjästä</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="nb">exit</span>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="c1"># Loggaa ulos myös omasta käyttäjästäsi</span>
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="c1"># Sudo toimii kun kirjaudut taas sisään</span>
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="nb">exit</span>
+</span></code></pre></div>
+<p>Mikäli yllä oleva koodi toimi, ja todellakin pystyit kirjautumaan root-käyttäjä sisään syöttämättä salasanaa, on syytä olla huolissaan. Varmistathan, että jatkossa sillä ei pysty kirjautumaan. Vinkki: etsi huutomerkkiä (<code>!</code>) ohjeesta <code>man 5 shadow</code>.</p>
+<h4 id="k-ruudun-ylla-kalenterissa-nakyy-kummallisia-merkkeja-terminaali-ei-myoskaan-aukea">K: Ruudun yllä kalenterissa näkyy kummallisia merkkejä. Terminaali ei myöskään aukea.</h4>
+<p>V: Tämä johtunee siitä, että <code>Skip Unattended Installation</code> ei ole ollut valittuna Ubuntua asentaessa, mutta se on helposti korjattavissa. Sinulla ovat kieliasetukset väärin. </p>
+<ol>
+<li>Klikkaa oikealla hiirenkorvalla työpöydän taustakuvaa, valitse <code>Settings</code>. </li>
+<li>Navigoi menuun <code>Region &amp; Languages</code>.</li>
+<li>Vaihda <code>Format =&gt; Finland</code>, <code>Input Sources =&gt; Finnish</code>.</li>
+<li>Loggaa ulos ja sisään.</li>
+</ol>
+<h4 id="k-en-voi-kopioida-leikepoydalta-tietoa-vmn-ja-hostin-valilla">K: En voi kopioida leikepöydältä tietoa VM:n ja Hostin välillä</h4>
+<p>Asenna Guest Additions. Tämä hoituu näin:</p>
+<ol>
+<li>Klikkaa VirtualBoxin menuista <code>Devices =&gt; Ingest Guest Additions CD Image...</code></li>
+<li>Pop-up aukeaa. Klikkaa <code>Run</code>.</li>
+<li>Kun asennus on ohi, poista levyke. Tämä onnistuu klikkaamalla työpöydän CD ROM -ikonia ja valitsemalla ensin <code>Unmount</code> ja sitten <code>Eject</code>.</li>
+<li>Käynnistä virtuaalikone uusiksi (tai vähintään loggaa ulos ja sisään.)</li>
+</ol>
+<p>Jos kohta 2:n Pop-Up ei ilmesty, klikkaa työpöydältä CD ROM -ikonia, jolloin tiedostoselaimeen avautuu virtuaalisen CD:n sisältö kansionäkymänä. Klikkaa <code>autorun.sh</code> oikealla hiirenkorvalla, valitse <code>Run as a Program</code>, ja täytä kysyttäessä salasanasi. Jatka kohtaan 3.</p>
+<p>Jos kohdan 3 ohje ei toimi, pakota levy ulos. Valitse VirtualBoxista <code>Devices =&gt; Optical Drives =&gt; Remove disk from virtual drive</code>. Klikkaa Force pop-uppiin jos ei muuten lähde.</p>
+<h4 id="k-vm-on-paalla-mutta-ruutu-on-musta">K: VM on päällä, mutta ruutu on musta.</h4>
+<p>Anna koneen näytönohjaimelle lisää muistia. Sammuta kone ja säädä sen asetuksista <code>Display =&gt; Video Memory: 64 MB</code></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2023 <a href="https://www.kamk.fi">Kajaanin Ammattikorkeakoulu</a>. 
+Licenced under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">BY-NC-ND 4.0</a>
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "content.code.annotate"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.c8d2eff1.min.js"></script>
+      
+    
+  </body>
+</html>
