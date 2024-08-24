@@ -1,4 +1,5 @@
 nav:
   - VirtualBox: virtualbox.md
   - UTM (macOS): utm.md
+  - Dual Boot: dualboot.md
   - ...
