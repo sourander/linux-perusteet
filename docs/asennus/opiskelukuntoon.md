@@ -18,7 +18,7 @@ Yllä on upotettuna Youtube-video, jossa freesiin Ubuntu-asennukseen suoritetaan
 
 Huomaa, että tämä vaihe on vaihtoehtoinen. Vaihe esiintyy videolla, jotta videon tallennuksen aikana olisi mahdollista luoda TODO-lista, jota seuraamme videon aikana. Päätä itse, tarvitsetko Joplin-sovellusta opiskelemiseen.
 
-Vaiheet: 
+Se hoituu näin: 
 
 1. Avaa App Center
 2. Etsi Joplin
@@ -29,9 +29,10 @@ Vaiheet:
 
 Avaa Terminal (gnome-terminal) eli pseudoterminaali. Tämä onnistuu monella eri tavalla:
 
-* Pikanäppäin ++ctrl+alt+t++, tai hiiren oikealla korvalla työpöydän tyhjällä alueella ja valitsemalla "Open Terminal", tai App Launcherista etsimällä "Terminal" - tähän searchiin pääset super-näppäimellä (yleensä ++win++ näppäimellä)
+* Pikanäppäin ++ctrl+alt+t++
+* Hiiren oikealla korvalla työpöydän tyhjällä alueella ja valitsemalla "Open Terminal"
 * Klikkaa ++win++ -näppäintä ja kirjoita hakukenttään "Terminal" ja paina enter.
-* Avaa ruudun oikeasta alalaidasta "Show Apps" ja kirjoita hakukenttään "Terminal" ja paina enter.
+* Avaa ruudun vasemmasta alalaidasta "Show Apps" ja kirjoita hakukenttään "Terminal" ja paina enter.
 
 Kun Terminal on auki, aja seuraavat komennot, joskin siten, että korvaat oikeisiin paikkoihin oman nimesi ja oman sähköpostiosoitteesi:
     
