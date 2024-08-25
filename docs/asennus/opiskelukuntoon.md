@@ -1,20 +1,22 @@
-Tämän ohjeen tarkoitus on auttaa sinua saamaan opiskelukuntoon tarvittavat ohjelmat ja asetukset käyttöösi, jotta voit alkaa kirjoittaa oppimispäiväkirjaa Linuxista käsin. Mikäli sinulla ei ole aiempaa Linux-kokemusta, ohjeen komennot saattavat tuntua heprealta. Kannattaa palata tähän materiaaliin kurssin lopuksi: todennäköisesti huomaat, että ohjeissa ei ole mitään, mitä et osaisi tehdä.
+Tämän ohjeen tarkoitus on auttaa sinua pika-asentamaan tarvittavat ohjelmat siten, että voit työstää oppimispäiväkirjaa Linuxista käsin. Pohjaoletus on, että sinulla on Ubuntu jo asennettuna. Mikäli sinulla ei ole aiempaa Linux-kokemusta, ohjeen komennot saattavat tuntua osittain heprealta. Kannattaa palata tähän materiaaliin kurssin lopuksi: todennäköisesti huomaat, että ohjeissa ei ole mitään, mitä et osaisi tehdä itsenäisesti, ohjelmien omia dokumentaatioita seuraamalla.
 
-## Video
+## Video-ohjeet
 
-TODO: lisää tähän upotettu video.
+<iframe width="560" height="315" src="https://www.youtube.com/embed/cSvLAXpWsZg?si=WmTRMvGIeGyXMQJv" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
-Yllä video Linux Perusteet 2024 -toteutuksen asennuksesta, jossa freesiin työpöytäkoneeseen asennettuun Ubuntu 24.04:aan laitetaan tarvittavat ohjelmat ja asetukset opiskelukuntoon. Alla on tekstimuodossa videon tärkeimmät vaiheet. Suosittelen seuraamaan videota, mutta jos haluat nopeasti tarkistaa jonkin yksityiskohdan, voit käyttää tätä tekstiä apunasi. 
+**Video 1:** Linux Perusteet 2024 -toteutuksen asennusohjeet.
+
+Yllä on upotettuna Youtube-video, jossa freesiin Ubuntu-asennukseen suoritetaan kaikki tämän ohjeen merkittävät vaiheet. Alla on tekstimuodossa lähes identtiset vaiheet sisältävä ohje. Voit valita, kumpaa haluat seurata - tai tutustutko kumpaankin.
 
 !!! warning
 
-    Tekstissä voi olla myös osa komennoista järkevämmässä järjestyksessä - video on nauhoitettu ad-hoc -periaatteella, joten siinä saatetaan hieman hyppiä.
+    Huomaa, että videon kohdasta "Docker Engine" jäi uupumaan Rootless Moden asennus. Se paikataan hieman myöhemmin ajassa 27 minuuttia. Eroa kirjoitettuun ohjeeseen on myös siinä, että ensimmäistä oppimispäiväkirjaa ei koskaan kirjoiteta, eikä sisältöä pusketa myöskään Gitlabiin.
 
 ## Tekstiohjeet
 
 ### Vaihe 1: Joplin
 
-Huomaa, että tämä vaihe on vaihtoehtoinen. Se on videolla, jotta minulla oli jokin paikka kirjoittaa TODO-lista, jota seuraamme videon aikana.
+Huomaa, että tämä vaihe on vaihtoehtoinen. Vaihe esiintyy videolla, jotta videon tallennuksen aikana olisi mahdollista luoda TODO-lista, jota seuraamme videon aikana. Päätä itse, tarvitsetko Joplin-sovellusta opiskelemiseen.
 
 Vaiheet: 
 
@@ -25,26 +27,30 @@ Vaiheet:
 
 ### Vaihe 2: Git
 
-Avaa Terminaal (gnome-terminal) eli pseudoterminaali. Tämä onnistuu monella eri tavalla:
+Avaa Terminal (gnome-terminal) eli pseudoterminaali. Tämä onnistuu monella eri tavalla:
 
 * Pikanäppäin ++ctrl+alt+t++, tai hiiren oikealla korvalla työpöydän tyhjällä alueella ja valitsemalla "Open Terminal", tai App Launcherista etsimällä "Terminal" - tähän searchiin pääset super-näppäimellä (yleensä ++win++ näppäimellä)
 * Klikkaa ++win++ -näppäintä ja kirjoita hakukenttään "Terminal" ja paina enter.
 * Avaa ruudun oikeasta alalaidasta "Show Apps" ja kirjoita hakukenttään "Terminal" ja paina enter.
 
-Kun Terminal on auki, aja seuraavat komennot, joskin siten, että korvaat oikeisiin paikkoihin oman nimesi ja oman säähköpostiosoitteesi:
+Kun Terminal on auki, aja seuraavat komennot, joskin siten, että korvaat oikeisiin paikkoihin oman nimesi ja oman sähköpostiosoitteesi:
     
 ```bash
 # Upgrade software and install git
-sudo apt update && sudo apt upgrade
-sudo apt install git
+$ sudo apt update && sudo apt upgrade
+$ sudo apt install git
 
 # Set git configuration
-git config --global user.name "Your Name"
-git config --global user.email "your.name@kamk.fi"
-git config --global core.autocrlf input
-git config --global pull.ff only
-git config --global init.defaultBranch main
+$ git config --global user.name "Your Name"
+$ git config --global user.email "your.name@kamk.fi"
+$ git config --global core.autocrlf input
+$ git config --global pull.ff only
+$ git config --global init.defaultBranch main
 ```
+
+!!! warning
+
+    Ethän käytä ajamissasi komennoissa `$`-merkkiä. Se on yllä indikoimassa sitä, että komentoa ajetaan Bash-konsolissa tavallisella käyttäjällä. Se ei ole osa komentoa vaan osa promptia
 
 ### Vaihe 3: Luo avainpari
 
@@ -54,13 +60,13 @@ Komento `ssh-keygen` kysyy sinulta muutamia kysymyksiä. Voit jättää käytän
 
 ```bash
 # Create SSH key pair
-ssh-keygen -t ed25519 -C "your.name@kamk.fi alias-for-computer"
+$ ssh-keygen -t ed25519 -C "your.name@kamk.fi alias-for-computer"
 
 # Install tool for managing clipboard
-sudo apt install xclip
+$ sudo apt install xclip
 
 # Copy public key to clipboard
-xclip -sel clip < ~/.ssh/id_ed25519.pub
+$ xclip -sel clip < ~/.ssh/id_ed25519.pub
 ```
 
 ### Vaihe 4: Lisää avain GitLabiin
@@ -81,7 +87,7 @@ Tämän jälkeen testaa Terminaalissa yhteys komennolla:
 
 ```bash
 # Test connection
-ssh -T ssh://git@repo.kamit.fi:45065
+$ ssh -T ssh://git@repo.kamit.fi:45065
 ```
 
 Sinulle aukeaa seuraavanlainen pop-up -ikkuna, jossa pyydetään syöttämään avaimen salasana. Syötä valitsemasi passphrase, ==ruksaa päälle "Automatically unlock this key when I'm logged in"== ja paina "Unlock".
@@ -90,7 +96,91 @@ Sinulle aukeaa seuraavanlainen pop-up -ikkuna, jossa pyydetään syöttämään 
 
 **Kuvio 1:** Avaimen salasanan syöttöikkuna.
 
-### Vaihe 6: Asenna Docker Engine
+
+### Vaihe 6: Asenna Visual Studio Code
+
+Visual Studio Coden voi asentaa useallakin eri tavalla; me asennetaan se App Centeristä. 
+
+1. Avaa App Center
+2. Etsi "Visual Studio Code"
+3. Asenna se ja avaa se.
+
+### Vaihe 7: Asenna Pyenv
+
+Alla olevat ohjeet perustuvat [Pyenv Wiki: Suggested build environmet](https://github.com/pyenv/pyenv/wiki#suggested-build-environment) sekä [Pyenv Installation](https://github.com/pyenv/pyenv?tab=readme-ov-file#installation) ohjeisiin, jotka kummatkin ovat luettavissa Pyenvin GitHub-projektin sivuilta.
+
+!!!tip 
+
+    Huomaa, että komennossa oleva `\`, jota seuraa välittömästi rivinvaihto, mahdollistaa rivin jakamisen useammalle riville.
+
+```bash
+# Install suggested build environment
+sudo apt install build-essential libssl-dev \
+    zlib1g-dev libbz2-dev libreadline-dev \
+    libsqlite3-dev curl git libncursesw5-dev \
+    xz-utils tk-dev libxml2-dev libxmlsec1-dev \
+    libffi-dev liblzma-dev
+
+# Run installation script
+curl https://pyenv.run | bash
+```
+
+Kun pyenv on asentunut, lisää muutama rivi `.bashrc`-tiedostoon, jotta pyenv toimii oikein. Voit tehdä tämän helposti komennolla:
+
+```bash
+echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.bashrc
+echo 'command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.bashrc
+echo 'eval "$(pyenv init -)"' >> ~/.bashrc
+```
+
+!!! tip
+
+    Jos haluat, että pyenv toimii kaikissa mahdollisissa tilanteissa, lisää samat rivit myös login-shellin konfiguraatiotiedostoon. Tähän löytyy ohjeet [Pyenvin GitHub-sivuilta](https://github.com/pyenv/pyenv?tab=readme-ov-file#set-up-your-shell-environment-for-pyenv). Tämä ei kuitenkaan ole välttämätöntä; todennäköisesti et tällä hetkellä ymmärrä, mitä eroa on interaktiivisella ja login shellilllä. Jälkimmäistä tuskin käytät vahingossa.
+
+
+### Vaihe 8: Asenna Python
+
+Nyt kun sinulla on pyenv, voit asentaa sillä Pythonin.
+
+```bash
+# Install Python 3.11.x
+pyenv install 3.11
+
+# Set is as a global default
+pyenv global 3.11
+
+# Check that it works
+python --version
+```
+
+### Vaihe 9: Asenna Pipx
+
+Pipx on työkalu, joka mahdollistaa globaalin scopen Python-pakettien asentamisen. Huomaa, että jälkimmäinen `pipx ensurepath` -komento lisää rivejä jo sinulle aiemmin tutuksi tulleeseen `.bashrc`-tiedostoon sekä `.profile`-tiedostoon.
+
+```bash
+# Install pipx
+sudo apt install pipx
+
+# Add to path
+pipx ensurepath
+```
+
+!!!note 
+
+    Pipx on erityisen hyödyllinen silloin, kun haluat asentaa työkaluja, jotka ovat käytössä useassa projektissa. Hyvä esimerkki tästä on `cookiecutter`, jota käytämme jo ennen kuin meillä edes on virtuaaliympäristöä (tai kenties koko projektikansiota.)
+
+    Huomaa, että `pipx` ei siis ole `pip`:n korvaaja vaan täydentää sitä.
+
+### Vaihe 10: Asenna Cookiecutter
+
+Tämä vaihe on hyvinkin simppeli. Aja vain seuraava komento:
+
+```bash
+# Install cookiecutter
+pipx install cookiecutter
+```
+
+### Vaihe 11: Asenna Docker Engine
 
 Tässä ohjeessa ei asenneta graafista Docker Desktop -ohjelmaa, vaan Docker Engine. Kannattaa noudattaa Dockerin omia, ajan tasalla olevia ohjeita. Näistä tärkeimmät ovat [Install Docker Engine on Ubuntu](https://docs.docker.com/engine/install/ubuntu/) ja [Run the Docker daemon as a non-root user (Rootless mode)](https://docs.docker.com/engine/security/rootless/).
 
@@ -131,6 +221,8 @@ sudo docker run hello-world
 
     Huomaa, että komento vaati "sudo"-alun. Tähän löytyy hätäinen fix, joka on lisätä oma käyttäjä Docker-ryhmään. Dockerin suosittelema tapa on rootless mode. Tällöin Docker ei vaadi sudo-oikeuksia, mikä lisää järjestelmäsi turvallisuutta, kun ajat tuntemattomia kontteja.
 
+    Huomaa myös, että video-ohjeessa tämä vaihe on osin vasta seuraavan vaiheen jälkeen, kun komento `docker compose -f docker-compose-docs.yml up -d` on ajettu ja se nostaa virheen, että kyseinen käyttäjä ei saa kajota socketiin. Tekstiohjeessa nuo vaiheet on korjattu samaan koodilohkoon.
+
 Aktivoi rootless mode, jotta et jatkossa tarvitse sudo-oikeuksia Docker-konttien ajoon.
 
 ```bash
@@ -146,96 +238,21 @@ sudo rm /var/run/docker.sock
 # Run a script
 dockerd-rootless-setuptool.sh install
 
-# Add DOCKER_HOST env var to startup script
-echo 'export DOCKER_HOST=unix:///run/user/1000/docker.sock' >> ~/.bashrc
+# Add DOCKER_HOST environment variablle to startup script
+echo "export DOCKER_HOST=unix:///run/user/${UID}/docker.sock" >> ~/.bashrc
 
 # Enable the daemon in user-scope
 systemctl --user enable docker.service
 systemctl --user start docker.service
 ```
 
-### Vaihe 7: Asenna Visual Studio Code
-
-Visual Studio Coden voi asentaa useallakin eri tavalla; me asennetaan se App Centeristä. 
-
-1. Avaa App Center
-2. Etsi "Visual Studio Code"
-3. Asenna se ja avaa se.
-
-### Vaihe 8: Asenna Pyenv
-
-Alla olevat ohjeet perustuvat [Pyenv Wiki: Suggested build environmet](https://github.com/pyenv/pyenv/wiki#suggested-build-environment) sekä [Pyenv Installation](https://github.com/pyenv/pyenv?tab=readme-ov-file#installation) ohjeisiin, jotka kummatkin ovat luettavissa Pyenvin GitHub-projektin sivuilta.
-
-!!!tip 
-
-    Huomaa, että komennossa oleva `\`, jota seuraa välittömästi rivinvaihto, mahdollistaa rivin jakamisen useammalle riville.
-
-```bash
-# Install suggested build environment
-sudo apt install build-essential libssl-dev \
-    zlib1g-dev libbz2-dev libreadline-dev \
-    libsqlite3-dev curl git libncursesw5-dev \
-    xz-utils tk-dev libxml2-dev libxmlsec1-dev \
-    libffi-dev liblzma-dev
-
-# Run installation script
-curl https://pyenv.run | bash
-```
-
-Kun pyenv on asentunut, lisää muutama rivi `.bashrc`-tiedostoon, jotta pyenv toimii oikein. Voit tehdä tämän helposti komennolla:
-
-```bash
-echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.bashrc
-echo 'command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.bashrc
-echo 'eval "$(pyenv init -)"' >> ~/.bashrc
-```
-
 !!! tip
 
-    Jos haluat, että pyenv toimii kaikissa mahdollisissa tilanteissa, lisää samat rivit myös login-shellin konfiguraatiotiedostoon. Tähän löytyy ohjeet [Pyenvin GitHub-sivuilta](https://github.com/pyenv/pyenv?tab=readme-ov-file#set-up-your-shell-environment-for-pyenv). Tämä ei kuitenkaan ole välttämätöntä; todennäköisesti et tällä hetkellä ymmärrä, mitä eroa on interaktiivisella ja login shellilllä. Jälkimmäistä tuskin käytät vahingossa.
+    Jos haluat, että Docker käynnistyy automaattisesti **ja pysyy päällä** vaikka et olisi kirjautunut sisään, aja myös seuraava rivi:
 
-
-### Vaihe 9: Asenna Python
-
-Nyt kun sinulla on pyenv, voit asentaa sillä Pythonin.
-
-```bash
-# Install Python 3.11.x
-pyenv install 3.11
-
-# Set is as a global default
-pyenv global 3.11
-
-# Check that it works
-python --version
-```
-
-### Vaihe 10: Asenna Pipx
-
-Pipx on työkalu, joka mahdollistaa globaalin scopen Python-pakettien asentamisen. Huomaa, että jälkimmäinen `pipx ensurepath` -komento lisää rivejä jo sinulle aiemmin tutuksi tulleeseen `.bashrc`-tiedostoon sekä `.profile`-tiedostoon.
-
-```bash
-# Install pipx
-sudo apt install pipx
-
-# Add to path
-pipx ensurepath
-```
-
-!!!note 
-
-    Pipx on erityisen hyödyllinen silloin, kun haluat asentaa työkaluja, jotka ovat käytössä useassa projektissa. Hyvä esimerkki tästä on `cookiecutter`, jota käytämme jo ennen kuin meillä edes on virtuaaliympäristöä (tai kenties koko projektikansiota.)
-
-    Huomaa, että `pipx` ei siis ole `pip`:n korvaaja vaan täydentää sitä.
-
-### Vaihe 11: Asenna Cookiecutter
-
-Tämä vaihe on hyvinkin simppeli. Aja vain seuraava komento:
-
-```bash
-# Install cookiecutter
-pipx install cookiecutter
-```
+    ```bash
+    sudo loginctl enable-linger $(whoami)
+    ```
 
 ### Vaihe 12: Kloonaa repositorio
 
@@ -284,7 +301,6 @@ code .
 Tämän jälkeen toimi Visual Studio Codessa, kuten muilla kursseilla on opetettu. Oppimispäiväkirjan kirjoittamiseen löydät vinkkejä [Oppimispäiväkirja 101](https://sourander.github.io/oat/) -sivustolta.
 
 
-
 ### Vaihe 15: Aja oppimispäiväkirja
 
 Aja oppimispäiväkirja komennoilla, jotka neuvotaan `HOW-TO-DOCS.md`-tiedostossa. Tämä tiedosto löytyy oppimispäiväkirjasi juuresta. Lyhyt vastaus on, että seuraavat komennot toimivat:
@@ -309,4 +325,12 @@ Kun olet tehnyt ensimmäisen merkintäsi oppimispäiväkirjaan, puske muutokset 
 git add .
 git commit -m "First learning diary entry"
 git push
+```
+
+
+
+In Youtube format, the same is:
+
+```plaintext
+
 ```
