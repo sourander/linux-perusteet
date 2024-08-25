@@ -1,0 +1,312 @@
+Tämän ohjeen tarkoitus on auttaa sinua saamaan opiskelukuntoon tarvittavat ohjelmat ja asetukset käyttöösi, jotta voit alkaa kirjoittaa oppimispäiväkirjaa Linuxista käsin. Mikäli sinulla ei ole aiempaa Linux-kokemusta, ohjeen komennot saattavat tuntua heprealta. Kannattaa palata tähän materiaaliin kurssin lopuksi: todennäköisesti huomaat, että ohjeissa ei ole mitään, mitä et osaisi tehdä.
+
+## Video
+
+TODO: lisää tähän upotettu video.
+
+Yllä video Linux Perusteet 2024 -toteutuksen asennuksesta, jossa freesiin työpöytäkoneeseen asennettuun Ubuntu 24.04:aan laitetaan tarvittavat ohjelmat ja asetukset opiskelukuntoon. Alla on tekstimuodossa videon tärkeimmät vaiheet. Suosittelen seuraamaan videota, mutta jos haluat nopeasti tarkistaa jonkin yksityiskohdan, voit käyttää tätä tekstiä apunasi. 
+
+!!! warning
+
+    Tekstissä voi olla myös osa komennoista järkevämmässä järjestyksessä - video on nauhoitettu ad-hoc -periaatteella, joten siinä saatetaan hieman hyppiä.
+
+## Tekstiohjeet
+
+### Vaihe 1: Joplin
+
+Huomaa, että tämä vaihe on vaihtoehtoinen. Se on videolla, jotta minulla oli jokin paikka kirjoittaa TODO-lista, jota seuraamme videon aikana.
+
+Vaiheet: 
+
+1. Avaa App Center
+2. Etsi Joplin
+3. Klikkaa Install
+4. Klikkaa Open
+
+### Vaihe 2: Git
+
+Avaa Terminaal (gnome-terminal) eli pseudoterminaali. Tämä onnistuu monella eri tavalla:
+
+* Pikanäppäin ++ctrl+alt+t++, tai hiiren oikealla korvalla työpöydän tyhjällä alueella ja valitsemalla "Open Terminal", tai App Launcherista etsimällä "Terminal" - tähän searchiin pääset super-näppäimellä (yleensä ++win++ näppäimellä)
+* Klikkaa ++win++ -näppäintä ja kirjoita hakukenttään "Terminal" ja paina enter.
+* Avaa ruudun oikeasta alalaidasta "Show Apps" ja kirjoita hakukenttään "Terminal" ja paina enter.
+
+Kun Terminal on auki, aja seuraavat komennot, joskin siten, että korvaat oikeisiin paikkoihin oman nimesi ja oman säähköpostiosoitteesi:
+    
+```bash
+# Upgrade software and install git
+sudo apt update && sudo apt upgrade
+sudo apt install git
+
+# Set git configuration
+git config --global user.name "Your Name"
+git config --global user.email "your.name@kamk.fi"
+git config --global core.autocrlf input
+git config --global pull.ff only
+git config --global init.defaultBranch main
+```
+
+### Vaihe 3: Luo avainpari
+
+Luo avainpari SSH-yhteyksiä varten. Aja alla olevat komennot, mutta korvaa taas omat tietosi oikeisiin paikkoihin. Keksi tietokoneellesi jokin alias, jolla tunnistat avaimen. Esimerkiksi "dell-laptop" tai "hp-laptop" tai "opiskelulappari".
+
+Komento `ssh-keygen` kysyy sinulta muutamia kysymyksiä. Voit jättää käytännössä kaikki tyhjiksi, jolloin se käyttää vakioasetuksia, mutta ==passphrase kannattaa asettaa==. Muuten olet alttiina sille, että joku voi esiintyä sinuna, mikäli avain joutuu vääriin käsiin.
+
+```bash
+# Create SSH key pair
+ssh-keygen -t ed25519 -C "your.name@kamk.fi alias-for-computer"
+
+# Install tool for managing clipboard
+sudo apt install xclip
+
+# Copy public key to clipboard
+xclip -sel clip < ~/.ssh/id_ed25519.pub
+```
+
+### Vaihe 4: Lisää avain GitLabiin
+
+Navigoi osoitteeseen: [repo.kamit.fi](https://repo.kamit.fi/)
+
+1. Kirjaudu sisään
+2. Klikkaa omaa etunimen alkukirjainta vasemmassa yläkulmassa
+3. Valitse "Settings"
+4. Valitse "SSH Keys"
+5. Paina "Add SSH Key"
+
+Liitä avain leikepöydältäsi ja paina "Add Key". Valitse jokin expiraatioaika, esimerkiksi vuoden tai lukuvuoden loppuun asti.
+
+### Vaihe 5: Testaa yhteys ja tallenna passphrase
+
+Tämän jälkeen testaa Terminaalissa yhteys komennolla:
+
+```bash
+# Test connection
+ssh -T ssh://git@repo.kamit.fi:45065
+```
+
+Sinulle aukeaa seuraavanlainen pop-up -ikkuna, jossa pyydetään syöttämään avaimen salasana. Syötä valitsemasi passphrase, ==ruksaa päälle "Automatically unlock this key when I'm logged in"== ja paina "Unlock".
+
+![Enter password prompt](../images/enter-password-to-unlock-private-key.png)
+
+**Kuvio 1:** Avaimen salasanan syöttöikkuna.
+
+### Vaihe 6: Asenna Docker Engine
+
+Tässä ohjeessa ei asenneta graafista Docker Desktop -ohjelmaa, vaan Docker Engine. Kannattaa noudattaa Dockerin omia, ajan tasalla olevia ohjeita. Näistä tärkeimmät ovat [Install Docker Engine on Ubuntu](https://docs.docker.com/engine/install/ubuntu/) ja [Run the Docker daemon as a non-root user (Rootless mode)](https://docs.docker.com/engine/security/rootless/).
+
+Tämän ohjeen kirjoitushetkellä toimivat komennot alla. Ensiksi lisätään Dockerin repositorio APT-paketinhallintaan.
+
+```bash
+# Add Docker's official GPG key:
+sudo apt-get update
+sudo apt-get install ca-certificates curl
+sudo install -m 0755 -d /etc/apt/keyrings
+sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+sudo chmod a+r /etc/apt/keyrings/docker.asc
+
+# Add the repository to Apt sources:
+echo \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
+  $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
+  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+sudo apt-get update
+```
+
+Tämän jälkeen asennetaan Docker Engine ja Docker Compose.
+
+```bash
+# Install all Docker packages listed by the official documentation
+sudo apt install docker-ce docker-ce-cli \
+    containerd.io docker-buildx-plugin \
+    docker-compose-plugin
+```
+
+Voit tarkistaa, että asennus meni oikein komennolla:
+
+```bash
+sudo docker run hello-world
+```
+
+!!! warning
+
+    Huomaa, että komento vaati "sudo"-alun. Tähän löytyy hätäinen fix, joka on lisätä oma käyttäjä Docker-ryhmään. Dockerin suosittelema tapa on rootless mode. Tällöin Docker ei vaadi sudo-oikeuksia, mikä lisää järjestelmäsi turvallisuutta, kun ajat tuntemattomia kontteja.
+
+Aktivoi rootless mode, jotta et jatkossa tarvitse sudo-oikeuksia Docker-konttien ajoon.
+
+```bash
+# Install prerequisites
+sudo apt install uidmap
+
+# Disable daemon
+sudo systemctl disable --now docker.service docker.socket
+
+# Delete socket file
+sudo rm /var/run/docker.sock
+
+# Run a script
+dockerd-rootless-setuptool.sh install
+
+# Add DOCKER_HOST env var to startup script
+echo 'export DOCKER_HOST=unix:///run/user/1000/docker.sock' >> ~/.bashrc
+
+# Enable the daemon in user-scope
+systemctl --user enable docker.service
+systemctl --user start docker.service
+```
+
+### Vaihe 7: Asenna Visual Studio Code
+
+Visual Studio Coden voi asentaa useallakin eri tavalla; me asennetaan se App Centeristä. 
+
+1. Avaa App Center
+2. Etsi "Visual Studio Code"
+3. Asenna se ja avaa se.
+
+### Vaihe 8: Asenna Pyenv
+
+Alla olevat ohjeet perustuvat [Pyenv Wiki: Suggested build environmet](https://github.com/pyenv/pyenv/wiki#suggested-build-environment) sekä [Pyenv Installation](https://github.com/pyenv/pyenv?tab=readme-ov-file#installation) ohjeisiin, jotka kummatkin ovat luettavissa Pyenvin GitHub-projektin sivuilta.
+
+!!!tip 
+
+    Huomaa, että komennossa oleva `\`, jota seuraa välittömästi rivinvaihto, mahdollistaa rivin jakamisen useammalle riville.
+
+```bash
+# Install suggested build environment
+sudo apt install build-essential libssl-dev \
+    zlib1g-dev libbz2-dev libreadline-dev \
+    libsqlite3-dev curl git libncursesw5-dev \
+    xz-utils tk-dev libxml2-dev libxmlsec1-dev \
+    libffi-dev liblzma-dev
+
+# Run installation script
+curl https://pyenv.run | bash
+```
+
+Kun pyenv on asentunut, lisää muutama rivi `.bashrc`-tiedostoon, jotta pyenv toimii oikein. Voit tehdä tämän helposti komennolla:
+
+```bash
+echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.bashrc
+echo 'command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.bashrc
+echo 'eval "$(pyenv init -)"' >> ~/.bashrc
+```
+
+!!! tip
+
+    Jos haluat, että pyenv toimii kaikissa mahdollisissa tilanteissa, lisää samat rivit myös login-shellin konfiguraatiotiedostoon. Tähän löytyy ohjeet [Pyenvin GitHub-sivuilta](https://github.com/pyenv/pyenv?tab=readme-ov-file#set-up-your-shell-environment-for-pyenv). Tämä ei kuitenkaan ole välttämätöntä; todennäköisesti et tällä hetkellä ymmärrä, mitä eroa on interaktiivisella ja login shellilllä. Jälkimmäistä tuskin käytät vahingossa.
+
+
+### Vaihe 9: Asenna Python
+
+Nyt kun sinulla on pyenv, voit asentaa sillä Pythonin.
+
+```bash
+# Install Python 3.11.x
+pyenv install 3.11
+
+# Set is as a global default
+pyenv global 3.11
+
+# Check that it works
+python --version
+```
+
+### Vaihe 10: Asenna Pipx
+
+Pipx on työkalu, joka mahdollistaa globaalin scopen Python-pakettien asentamisen. Huomaa, että jälkimmäinen `pipx ensurepath` -komento lisää rivejä jo sinulle aiemmin tutuksi tulleeseen `.bashrc`-tiedostoon sekä `.profile`-tiedostoon.
+
+```bash
+# Install pipx
+sudo apt install pipx
+
+# Add to path
+pipx ensurepath
+```
+
+!!!note 
+
+    Pipx on erityisen hyödyllinen silloin, kun haluat asentaa työkaluja, jotka ovat käytössä useassa projektissa. Hyvä esimerkki tästä on `cookiecutter`, jota käytämme jo ennen kuin meillä edes on virtuaaliympäristöä (tai kenties koko projektikansiota.)
+
+    Huomaa, että `pipx` ei siis ole `pip`:n korvaaja vaan täydentää sitä.
+
+### Vaihe 11: Asenna Cookiecutter
+
+Tämä vaihe on hyvinkin simppeli. Aja vain seuraava komento:
+
+```bash
+# Install cookiecutter
+pipx install cookiecutter
+```
+
+### Vaihe 12: Kloonaa repositorio
+
+Jos et ole vielä alustanut repositorioosi oppimispäiväkirjaa, tee se nyt. Aloita luomalla tätä kurssia varten oma hakemisto. Täytä `<kurssin-nimi-tahan-2024>` oikealla kurssinimellä, kuten `linux-perusteet-2024`. Näet tuon Gitlab-urlin namespacesta, esimerkiksi: `https://repo.kamit.fi/linux-perusteet-2024`
+
+!!! note
+
+    Käytä URLia, jonka löydät Reppu Moodlesta tai jonka opettaja on sinulle neuvonut. Älä luo omia repositorioita omatoimisesti, sillä opettaja luo ne skriptillä Moodle-osallistujalistan perusteella. Jos olet hukassa, kysy opettajalta.
+
+```bash
+# Create directory for learning diary
+mkdir -p ~/Code/kurssin-nimi-tahan-2024/
+
+# Change directory
+cd ~/Code/kurssin-nimi-tahan-2024/
+```
+
+Seuraavaksi kloonaa oppimispäiväkirjasi repositorio. Tämä on helppoa tehdä kopioimalla Gitlabin ohjeen tarjoamat komennot. Ohjeet löytyvät sinun tyhjästä repositoriostasi, joka on muotoa: `https://repo.kamit.fi/<kurssin-nimi-2024>/<etunimisukunimi>/`.
+
+```bash title="Gitlabin komento"
+git clone ssh://git@repo.kamit.fi:45065/.../etunimisukunimi/
+cd etunimisukunimi
+git switch --create main
+touch README.md
+git add README.md
+git commit -m "add README"
+git push --set-upstream origin main
+```
+
+### Vaihe 13: Alusta oppimispäiväkirja
+
+Seuraa ohjeita, jotka löytyvät [kamk cookiecutters](https://github.com/sourander/kamk-cookiecutters) repositorion README.md-tiedostosta. Lyhyt vastaus on, että aja seuraava komento ja noudata ohjeita:
+
+```bash
+cookiecutter gh:sourander/kamk-cookiecutters -f
+```
+
+### Vaihe 14: Ensimäinen oppimispäiväkirjamerkintä
+
+Avaa oppimispäiväkirja, eli nykyinen kansio, Visual Studio Codessa. Tämä onnistuu helposti komennolla:
+
+```bash
+code .
+```
+
+Tämän jälkeen toimi Visual Studio Codessa, kuten muilla kursseilla on opetettu. Oppimispäiväkirjan kirjoittamiseen löydät vinkkejä [Oppimispäiväkirja 101](https://sourander.github.io/oat/) -sivustolta.
+
+
+
+### Vaihe 15: Aja oppimispäiväkirja
+
+Aja oppimispäiväkirja komennoilla, jotka neuvotaan `HOW-TO-DOCS.md`-tiedostossa. Tämä tiedosto löytyy oppimispäiväkirjasi juuresta. Lyhyt vastaus on, että seuraavat komennot toimivat:
+
+```bash
+# Run docker compose project
+docker compose -f docker-compose-docs.yml up -d
+```
+
+Avaa nettilelain, Firefox, ja navigoi osoitteeseen `http://localhost:8000`. Siellä pitäisi olla oppimispäiväkirjasi.
+
+```bash
+# Shut down the project
+docker compose -f docker-compose-docs.yml down
+```
+
+### Vaihe 16: Muista versionhallinta!
+
+Kun olet tehnyt ensimmäisen merkintäsi oppimispäiväkirjaan, puske muutokset Repo Kamit Gitlabiin. Tämä neuvotaan toisilla kursseilla, mutta on lyhyimmillään:
+
+```bash
+git add .
+git commit -m "First learning diary entry"
+git push
+```
