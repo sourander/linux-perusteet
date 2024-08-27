@@ -5,7 +5,7 @@
 
 # Asennus
 
-Alla olevassa ohjeessa asennetaan Ubuntu 22.04 LTS Applen tietokoneeseen, jossa on 64-bittinen ARM-prosessori kuten Apple M2. Voit asentaa esimerkiksi Fedora 38:n hyvin pienin muutoksin, kuten myös minkä tahansa muunkin distribuution, josta löytyy 64-bittinen ARM build.
+Alla olevassa ohjeessa asennetaan Ubuntu 24.04 LTS Applen tietokoneeseen, jossa on 64-bittinen ARM-prosessori kuten Apple M2. Voit asentaa esimerkiksi Fedora 38:n hyvin pienin muutoksin, kuten myös minkä tahansa muunkin distribuution, josta löytyy 64-bittinen ARM build.
 
 ## Asenna UTM
 
@@ -86,4 +86,4 @@ partition #2 of Virtual disk 1 (vda) as ext4
 
 Seuraavissa ruuduissa kysellään maakohtaisia asetuksia, nimeä, käyttäjätunnusta, salasanaa ja niin edelleen. Valitse ne mielihalujesi mukaan.
 
-Kun odottelet hetken, Ubuntu 22.04 pyytää käynnistämään tietokoneen uusiksi, ja voit aloittaa käytön. Mikäli kone ei muuten käynnisty, poista asennusmedia CD/DVD-asemasta ja paina Restart VM.
+Kun odottelet hetken, Ubuntu Installer pyytää käynnistämään tietokoneen uusiksi, ja voit aloittaa käytön. Mikäli kone ei muuten käynnisty, poista asennusmedia CD/DVD-asemasta ja paina Restart VM.

@@ -16,7 +16,7 @@ journalctl --since "5 minutes ago"
 
 Teoriassa kukin Linux-distribuutio voi käyttää omaa lokijärjestelmäänsä, mutta käytännössä suurin osa käyttää `systemd-journald`-järjestelmää ja/tai `rsyslogd`-järjestelmää.
 
-Perinteinen Linuxin lokijärjestelmä on `syslog`, mutta systemd on tuonut mukanaan oman journalinsa. `systemd-journald` on järjestelmäpalvelu, joka kerää ja tallentaa lokitietoja. Se luo ja ylläpitää strukturoituja, indeksoituja lokia, jotka perustuvat lokitietoon, joka on saatu monista eri lähteistä. Nämä lähteet listataan sivulla `man 8 systemd-journald`. Distribuutiosta riippuen sinulla voi olla joko pelkästään `systemd-journald` tai lisäksi myös `rsyslogd`. Esimerkiksi Ubuntu 22.04:ssä komennolla `sudo systemctl list-units *log*` löytyy kummatkin.
+Perinteinen Linuxin lokijärjestelmä on `syslog`, mutta systemd on tuonut mukanaan oman journalinsa. `systemd-journald` on järjestelmäpalvelu, joka kerää ja tallentaa lokitietoja. Se luo ja ylläpitää strukturoituja, indeksoituja lokia, jotka perustuvat lokitietoon, joka on saatu monista eri lähteistä. Nämä lähteet listataan sivulla `man 8 systemd-journald`. Distribuutiosta riippuen sinulla voi olla joko pelkästään `systemd-journald` tai lisäksi myös `rsyslogd`. Esimerkiksi Ubuntussa komennolla `sudo systemctl list-units *log*` löytyy kummatkin.
 
     * Kernel log messages, via kmsg
     * Simple system log messages, via the libc syslog(3) call

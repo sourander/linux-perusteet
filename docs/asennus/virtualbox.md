@@ -5,7 +5,7 @@
 
 # Asennus
 
-Alla olevassa ohjeessa asennetaan Ubuntu 22.04 LTS. Voit asentaa esimerkiksi Fedora 38:n hyvin pienin muutoksin.
+Alla olevassa ohjeessa asennetaan Ubuntu 24.04 LTS. Voit asentaa esimerkiksi Fedoran hyvin pienin muutoksin.
 
 
 
@@ -23,7 +23,7 @@ Alla oleva ohjeistus on testattu Windows 11 Home -versiossa.
 ## Luo virtuaalikone
 
 1. Asenna Oracle VM VirtualBox 7.x ([linkki](https://www.virtualbox.org/wiki/Downloads))
-2. Lataa Ubuntu 22.04 Desktop Image, 64-bit AMD ([linkki](https://releases.ubuntu.com/22.04/))
+2. Lataa Ubuntu Desktop Image, 64-bit AMD ([linkki](https://ubuntu.com/download/desktop))
 3. Valitse VirtualBoxissa `Machine => New` tai klikkaa ++ctrl+n++
 
 Täytä VirtualBoxissa aukeavaan pop-uppiin tarvittavat tiedot: 
@@ -72,7 +72,7 @@ Et välttämättä tällä hetkellä ymmärrä yllä olevaa tekstiä, mutta kurs
 
 Seuraavissa ruuduissa kysellään maakohtaisia asetuksia, nimeä, käyttäjätunnusta, salasanaa ja niin edelleen. Valitse ne mielihalujesi mukaan.
 
-Kun odottelet hetken, Ubuntu 22.04 pyytää käynnistämään tietokoneen uusiksi, ja voit aloittaa käytön.
+Kun odottelet hetken, Ubuntu Installer pyytää käynnistämään tietokoneen uusiksi, ja voit aloittaa käytön.
 
 ## UKK
 
