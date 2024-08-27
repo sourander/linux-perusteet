@@ -33,7 +33,7 @@ Linus Torvalds kirjoitti kernelin, jonka tarkoitus oli olla UNIX:n kaltainen, mu
 >  I'd like to know what features most people would want.  Any suggestions
 >  are welcome, but I won't promise I'll implement them :-)
 >
-> - Linux Torvalds, 1991, Usenet group comp.os.minix
+> - Linus Torvalds, 1991, Usenet group comp.os.minix
 
 GNU sen sijaan on Richard Stallmanin perustama projekti, joka pyrki luomaan UNIX-tyylisen käyttöjärjestelmän, joka olisi täysin vapaa. GNU:n Hurd-kernel ei ottanut tuulta alleen, mutta GNU-työkalut olivat jo valmiita, joten Torvalds päätti käyttää niitä. Näin Linux syntyi GNU/Linuxiksi.
 
