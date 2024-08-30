@@ -268,7 +268,9 @@ Jos haluat joskus luopua dual bootista, vaiheet ovat hyvin tiivistetysti seuraav
 3. Poista Ubuntun luomat osiot Windows Disk Managementillä.
 4. Laajenna (engl. extend) Windowsin osio takaisin alkuperäiseen kokoon.
 5. Siirry Windows Recovery Environmentiin ja käynnistä sieltä Command Prompt.
-6. Kirjoita `bootrec /fixmbr` ja paina Enter.
+6. Kirjoita luotettavasta ohjeesta löytämäsi komennot ja paina Enter.
+
+Mikä sitten on luotettava ohje kohdan 6 komentoihin? Esimerkiksi Microsoftin tai jonkin tietokonevalmistajan ohje. Esimerkkinä olkoon Dellin [How to Repair the EFI Bootloader on a GPT Hard Drive for Windows Operating Systems on your Dell Computer](https://www.dell.com/support/kbdoc/en-us/000124331/how-to-repair-the-efi-bootloader-on-a-gpt-hdd-for-windows-7-8-8-1-and-10-on-your-dell-pc). Teethän kuitenkin oman tutkimustyösi ennen näiden tiiviiden ohjeiden noudattamista. Etsi tuore, luotettava ohje.
 
 Jos vaiheet 5-6 eivät onnistu, tarvitset Windowsin asennusmedian (eli USB-tikun jolle on poltettu Windowsin asennusmedia). Käynnistä kone Windowsin asennusmedialta ja etsi menuista "Command prompt". Aja komento kohdasta 6.
 
