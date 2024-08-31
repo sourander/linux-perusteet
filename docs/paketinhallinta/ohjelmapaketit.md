@@ -61,7 +61,7 @@ Repositorion metadatan voi päivittää omalle koneelle yleensä komennolla `upd
 
 #### Päivitä ohjelmat
 
-```bash
+```bash title="Bash"
 # DNF
 $ sudo dnf check-update
 $ sudo dnf upgrade
@@ -74,7 +74,7 @@ $ sudo apt upgrade
 
 #### Listaa asennetut ohjelmat
 
-```bash
+```bash title="Bash"
 # DNF
 $ dnf list installed
 
@@ -84,7 +84,7 @@ $ apt list --installed
 
 #### Etsi uusia ohjelmia ja lue info
 
-```bash
+```bash title="Bash"
 # DNF
 $ dnf search "hakusana"
 $ dnf info <package-name>
@@ -97,7 +97,7 @@ $ apt-cache search <package-name>
 
 #### Listaa ohjelman tiedostot
 
-```bash
+```bash title="Bash"
 # DNF
 $ rpm -ql <package-name>
 
@@ -107,7 +107,7 @@ $ dpkg -L <package-name>
 
 #### Tee reverse-haku eli katso mihin packageen tiedosto kuuluu
 
-```bash
+```bash title="Bash"
 # DNF
 $ dnf provides /path/to/file
 
@@ -117,7 +117,7 @@ $ dpkg -S /path/to/file
 
 #### Poista ohjelma
 
-```bash
+```bash title="Bash"
 # DNF
 $ sudo dnf remove <package-name>
 $ sudo dnf autoremove # Riippuvuudet

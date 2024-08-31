@@ -35,7 +35,7 @@ int main() {
 
 Aja tämä:
 
-```bash
+```bash title="Bash"
 # Aja taustalla
 $ ./noclose &
 
@@ -104,7 +104,7 @@ int main(int argc, char *argv[]) {
 
 Käännä ja aja ohjelma seuraavasti:
 
-```bash
+```bash title="Bash"
 # Kopioi ja katso mitä sisältää
 $ echo "Kissa" > src.txt
 $ ./copyer src.txt dest.txt

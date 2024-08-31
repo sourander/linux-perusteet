@@ -11,7 +11,7 @@ Alla olevassa ohjeessa asennetaan Ubuntu 24.04 LTS Applen tietokoneeseen, jossa 
 
 Asenna UTM joko [UTM:n saitilta](https://mac.getutm.app/) lataamalla, App Storesta tai Homebrew:lla. Homebrew:lla sen asennus hoituu näin simppelisti:
 
-```bash
+```bash title="Zsh"
 $ brew install --cask utm
 ```
 

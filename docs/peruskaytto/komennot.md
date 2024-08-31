@@ -4,7 +4,7 @@ UNIX:stä periytyvissä käyttöjärjestelmissä komennot noudattavat tyypillise
 
 Tutkitaan tätä käytännössä alla olevan syötteen avulla. Stdout on ignoorattu, jotta koodi pysyisi lyhyenä, mutta kokeile toki ajaa lokaalisti komennot:
 
-```bash
+```bash title="Bash"
 # Lähtöpiste
 # Huomaa, että pitkä option toimii sekä yhtäsuuruismerkin
 # kuin välilyönnin avulla eli --ignore Desktop on myös ok.
@@ -28,20 +28,20 @@ $ ls -ihal -I Desktop ~/
 $ ls -ihalI Desktop ~/
 
 # Ja myös välilyönnin voi poistaa
-ls -ihalIDesktop ~/
+$ ls -ihalIDesktop ~/
 ```
 
 Syötteessä ei ole muita metamerkkejä kuin välilyönti, joten kyseessä on yksinkertainen komento. Bash etsii itse komentoa useista eri paikoista (funktioista, aliaksista, built-ineista, `$PATH`:sta) ja ajaa ensimmäisen löytyneen. Muut osat eli `-lah`, `--inode` ja ``--ignore=Desktop``  syötetään ohjelmalle, ja ohjelma parsii ne parhaaksi katsomallaan tavalla optionseiksi, optioneiden argumenteiksi, ja argumenteiksi. Lue lisää esimerkkejä täältä: [Conventions for Command Line Options (nullprogram.com)](https://nullprogram.com/blog/2020/08/01/)
 
 Huomaa, että lyhyet komennot eivät ole mikään itsetarkoitus. Yllä olevan komennon voi kirjoittaa huomattavasti luettavammassa muodossa näin:
 
-```bash
+```bash title="Bash"
 $ ls -l --all --human-readable --inode --ignore=Desktop ~
 ```
 
 Todella pitkät komennot voi jakaa usealle riville `\` merkin avulla. Kyseinen merkki on Bashissä `ESCAPE`, ja se pakenee eli ignooraa seuraavan merkin, joka olisi tässä tapauksessa rivinaihto. Huomaathan, että escapen jälkeen ei saa olla välilyöntiä ennen ++enter++ painamista, tai välilyönti on se merkki, joka on `ESCAPE`:n kohde:
 
-```bash
+```bash title="Bash"
 $ ls \
 > -l --all \
 > --human-readable \
@@ -58,7 +58,7 @@ $ ls \
 
 Huomaa, että monet komennot huolivat useita argumentteja. Alla esimerkki:
 
-```
+```bash title="Bash"
 $ ls ~/Downloads ~/Documents
 Documents/:
 my_file
@@ -69,7 +69,7 @@ Pedra_Azul_Milky_Way.jpg.webp
 
 Joskus, joskin harvoin, optioneiden päättymistä ja argumenttien alkamista erotetaan `--` merkeillä. Näinpä alla oleva komento on sama kuin yllä oleva:
 
-```bash
+```bash title="Bash"
 $ ls -- ~/Downloads ~/Documents
 ```
 
@@ -83,19 +83,17 @@ $ ls -- ~/Downloads ~/Documents
 
 Bashin tuntemat built-init löytää (built-in)-komennolla:
 
-```bash
+```bash title="Bash"
+# Listaa kaikki built-init
 $ compgen -b
-```
 
-...ja kaikki komennot:
-
-```bash
+# Listaa kaikki (muut) komennot
 $ compgen -c
 ```
 
 Bash etsii muita komentoja ympäristömuuttujasta $PATH. Ympäristömuutujat esitellään muualla, mutta voit listata sen sisällön näin:
 
-```bash
+```bash title="Bash"
 $ echo $PATH
 /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
@@ -112,7 +110,7 @@ $ echo $PATH | tr ":" "\n"   # Paranna luettavuutta (1)
 
 Jos haluat selvittää, missä polussa jokin ajettava PATH:ssa oleva ohjelma on, tai mikä on jonkin aliaksen määritelmä, kokeile seuraavia komentoja:
 
-```bash
+```bash title="Bash" title="Bash"
 # Tämä on deprekoitunut ainakin Debianissa mutta toimii yhä
 $ which ls
 ls: aliased to ls -G
@@ -155,9 +153,12 @@ Alla joitakin hyödyllisiä tapoja tutustua komennon sielunelämään.
 
 Voit luoda nykyisen shellin skooppiin muuttujia ja käyttää niitä muun muassa lyhentämään komentoja. Huomaa, että `=`-merkin ympärillä ei saa olla välilyöntejä. Alla esimerkki:
 
-```bash
+```bash title="Bash" title="Bash"
 $ url="https://jsonplaceholder.typicode.com"
 $ curl $url/posts/1   # GET data
+```
+
+```json title="stdout"
 {
   "id": 1,
   "body": "Some really long body."
@@ -166,10 +167,13 @@ $ curl $url/posts/1   # GET data
 
 Mikäli haluamme päivittää yllä näkyvän rivin lyhyemmäksi, voimme uusiokäyttää url-muuttujaa ja luoda pari uutta:
 
-```bash
+```bash title="Bash" title="Bash"
 $ new_data='{"body": "This is a shorter body."}'
 $ header='Content-Type: application/json'
 $ curl -X PATCH -H "$header" -d "$new_data" $url/posts/1
+```
+
+```json title="stdout"
 {
   "id": 1,
   "body": "This is a shorter body."
@@ -178,14 +182,14 @@ $ curl -X PATCH -H "$header" -d "$new_data" $url/posts/1
 
 Paikallisesta shell-muuttujasta voi muuntaa ympäristömuuttujan (eng. environment variable) komennolla `export <muuttuja>`, jolloin niihin pääsee käsiksi prosessit eli ohjelmat, joita käyttäjä ajaa. Näitä käytetään ajoittain konfiguraatiotiedoston jatkeena tai korvikkeena. Esimerkiksi Amazon AWS:n CLI etsii tokeneita sekä asetuksia ympäristömuuttujista. Ne voi asettaa näin:
 
-```bash
+```bash title="Bash"
 $ AWS_ACCESS_KEY_ID=AKIAIOSFODNN7EXAMPLE
 $ export AWS_ACCESS_KEY_ID 
 ```
 
 Saman voi tehdä myös yhdellä rivillä:
 
-```bash
+```bash title="Bash"
 $ export AWS_ACCESS_KEY_ID=AKIAIOSFODNN7EXAMPLE
 ```
 
@@ -200,7 +204,7 @@ Mikäli tunnuksia sisältävät ympäristömuuttujat ovat asetettuina, AWS CLI -
 
 Komennoissa käytetään usein argumentteina merkkijonoja, joten tässä välissä on hyvä oppia, kuinka shell reagoi tiettyihin metamerkkeihin aiheuttaen 
 
-```bash
+```bash title="Bash"
 $ echo 'Onko $USER täällä?'     # ''-merkit tekevät merkkijonosta literaalin
 Onko $USER täällä?
 
@@ -234,7 +238,7 @@ a
 
 Jos mietit, että mikä on `\n` yllä näkyvässä `echo $'c\nb\na'` komennossa, niin kyseessä on line feed eli newline character. Huomaa, että echo lisää vakiona newlinen aina rivin perään. Jos alla olevat komennot hämmentävät, kokeile `man xxd` ja esimerkiksi `xxd tiedosto.txt`.
 
-```bash
+```bash title="Bash"
 # Echo ilman parametrejä sisältää newlinen
 $ echo "" | xxd
 

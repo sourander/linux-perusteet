@@ -1,6 +1,6 @@
 Systemd on Linux-järjestelmien init-prosessi, joka on korvannut sen edeltäjänsä (ks. Upstart: [init(8) - Linux man page](https://linux.die.net/man/8/init)). Systemd on ensimmäinen prosessi, joka käynnistetään (kernelin jälkeen) ja se on vastuussa muiden prosessien käynnistämisestä ja hallinnasta. Nämä asiat, joita se käynnistää, tunnetaan termillä ==unit==. Systemd reagoi eri triggeri-tapahtumiin ja on täten ==event-driven==. Tyypillisten deamon-prosessien hallinnan lisäksi sillä voi hallita myös muiden muassa mountteja ja laitteita. Tutustu systemd:n kontrollerin toimintaan joko kirjoittamalla `man 1 systemd` tai online-version avulla: [Ubuntu Manpages: systemctl - Control the systemd system and service manager](https://manpages.ubuntu.com/manpages/jammy/man1/systemctl.1.html)
 
-```bash
+```bash title="Bash"
 # Tarkista kaikki saatavilla olevat komennot
 $ systemctl --help
 
@@ -24,7 +24,7 @@ Unit määritellään konfiguraatiotiedostossa, ja näitä sijaitsee useissa eri
 
 Tyypillisesti Linux-käyttäjän ei välttämättä tarvitse luoda omia Unit-tiedostoja vaan paketinhallintaohjelmisto (apt, dnf, pacman, yms.) luo ne ohjelmaa asentaessa. On tärkeää osata kuitenkin peruskäyttö, eli daemonin käynnistäminen, pysäyttäminen, uudelleenkäynnistäminen, statuksen tarkistaminen ja lokien seuranta.
 
-```bash
+```bash title="Bash"
 # Listaa kaikki daemon/service-tyyliset unitit
 $ systemctl list-units --type=service
 
@@ -39,7 +39,7 @@ $ systemctl list-unit-files --type=service *bolt*
 
 Asennetaan nginx-palvelin, jotta meillä on jotain, mitä käynnistellä ja pysäytellä.
 
-```bash
+```bash title="Bash"
 # Asenna nginx
 $ sudo apt update
 $ sudo apt install nginx
@@ -63,7 +63,7 @@ $ systemctl status nginx
 
 Kokeile pysäyttää ja käynnistää nginx:
 
-```bash
+```bash title="Bash"
 # Pysäytä ja tarkista vastaako portti 80
 $ sudo systemctl stop nginx
 $ curl localhost
@@ -82,7 +82,7 @@ $ curl localhost
 
 Komento `curl localhost` palauttaa nginx:n oletussivun. Tutkitaan, mistä se löytyy ja muokataan sitä.
 
-```bash
+```bash title="Bash"
 # Optional: Kaiva ilman dokumentaatiota tai ohjeistusta, että
 #   missä nginx:n konfiguraatiotiedostot sijaitsevat. Tässä auttavat ainakin
 #   alla olevat komennot:
@@ -102,7 +102,7 @@ $ curl localhost
 
 Service-tiedostot määrittelevät, miten ohjelma käynnistetään. Tiedostojen muokkaus suoraan tekstieditorilla ei ole suositeltavaa. Luo mieluummin uudet ==drop-in -tiedostot==, joissa määrittelet uudet asetukset.
 
-```bash
+```bash title="Bash"
 # Luo uusi drop-in -tiedosto
 $ sudo systemctl edit nginx
 ```
@@ -120,7 +120,7 @@ Description=This is my fake description!
 
     Järjestelmän käynnistyessä systemd lukee kaikki konfiguraatiotiedostot ja yhdistää ne yhdeksi kokonaisuudeksi. Mikäli samasta asetuksesta on useampi määritely, viimeisin voittaa. Drop-in -tiedostoilla voidaan siis ylikirjoittaa alkuperäisiä asetuksia.
 
-```bash
+```bash title="Bash"
 # Tarpeen mukaan saatat joutua lataamaan systemd:n konffit uudelleen
 $ sudo systemctl daemon-reload
 
@@ -140,7 +140,7 @@ $ systemctl cat nginx
 
     Jos haluat, että Linux ei käynnisty laisinkaan graafiseen käyttöliittymään, voit muuttaa `multi-user.target`-targetiksi. Tämä on hyödyllistä esimerkiksi palvelimilla, joissa ei ole tarvetta graafiselle käyttöliittymälle.
 
-    ```bash
+    ```bash title="Bash"
     $ sudo systemctl get-default
     $ sudo systemctl set-default multi-user.target # vaihtoehtona graphical.target
     $ sudo systemctl reboot
@@ -173,7 +173,7 @@ Alla lyhyt kuvaus ohjelmasta, jonka luomme:
 
 Luo Python-executable kotikansion alaisuuteen:
 
-```bash
+```bash title="Bash"
 $ mkdir -p ~/.local/bin/testprocessor/
 $ cd ~/.local/bin/testprocessor/
 $ touch main.py
@@ -236,7 +236,7 @@ print("[INFO] Processing complete.")
 
 Luo service ja timer konfiguraatiot paikkaan:
 
-```bash
+```bash title="Bash"
 $ mkdir -p ~/.config/systemd/user/
 $ cd ~/.config/systemd/user/
 $ touch testprocessor.service
@@ -271,7 +271,7 @@ OnCalendar=minutely
 
 #### Käynnistä
 
-```bash
+```bash title="Bash"
 $ systemctl --user daemon-reload
 $ systemctl --user start testprocessor.timer
 
@@ -292,7 +292,7 @@ Mikäli teet muutoksia `main.py`-tiedostoon tai daemonin määritelytiedostoihin
 
 Käynnistä uusi terminaali ++ctrl+alt+t++ näppäimillä ja käynnistä lokin seuranta (`-f` optionilla).
 
-```bash
+```bash title="Bash"
 $ journalctl --user -u testprocessor.service -f
 syys 08 16:28:25 opekone systemd[2415]: Starting My Test Processor Service...
 syys 08 16:28:25 opekone main.py[3748]: [INFO] Scanning: /home/opettaja/Documents/todo
@@ -302,7 +302,7 @@ syys 08 16:28:25 opekone main.py[3748]: [INFO] Processing complete.
 
 Lisää toisessa terminaalissa uusi tiedosto hakemistoon, jota skripti vahtii:
 
-```bash
+```bash title="Bash"
 $ echo "TODO" > ~/Documents/todo/tester.txt
 ```
 
@@ -310,7 +310,7 @@ $ echo "TODO" > ~/Documents/todo/tester.txt
 
 #### Pysäytä
 
-```bash
+```bash title="Bash"
 $ systemctl --user stop testprocessor.timer
 
 # Katso myös status

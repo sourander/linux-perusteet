@@ -22,15 +22,15 @@ Käännetään kuvassa näkyvä tiedostojen pääsyhallinta luvuiksi. Katso alla
 
 Huomaa, että selitteen verbit vaihtuvat sen mukaan, onko kyseessä tiedosto vai hakemisto. Verbit ovat selitettynä alla taulukossa. Linuxissa ohjelmat tunnistetaan siitä, että jokin kolmesta permissionista on muotoa `xx1`, kun taas Windowsissa suoritettavat ohjelmat tunnistetaan yleisesti tiedostopäätteestä (`.exe`).
 
-|      | Tiedosto kohdalla entiteetti...                              | Hakemiston kohdalla....                                      |
-| ---- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| 100  | Saa lukea sisällön                                           | Saa listata mitä tiedostoja ja alihakemistoja se sisältää.   |
-| 010  | Saa kirjoittaa tiedostoon tai poistaa tiedoston.             | Saa lisätä ja poistaa tiedostoja sekä alihakemistoja.        |
-| 001  | Saa suorittaa tiedoston. Tiedosto on nyt `executable` eli ohjelma. | Saa suorittaa ohjelmia hakemiston sisällä, listata tiedostojen metadataa, vaihtaa `pwd`:n kyseiseksi kansioksi. |
+|     | Tiedosto kohdalla entiteetti...                                    | Hakemiston kohdalla....                                                                                         |
+| --- | ------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------- |
+| 100 | Saa lukea sisällön                                                 | Saa listata mitä tiedostoja ja alihakemistoja se sisältää.                                                      |
+| 010 | Saa kirjoittaa tiedostoon tai poistaa tiedoston.                   | Saa lisätä ja poistaa tiedostoja sekä alihakemistoja.                                                           |
+| 001 | Saa suorittaa tiedoston. Tiedosto on nyt `executable` eli ohjelma. | Saa suorittaa ohjelmia hakemiston sisällä, listata tiedostojen metadataa, vaihtaa `pwd`:n kyseiseksi kansioksi. |
 
 Käymme Linuxin komennot myöhemmin läpi, mutta voit alustavasti jo miettiä, mitä alla näkyvät komennot tekevät. Komentojen välissä oleva `&&` on looginen AND-operaattori, mikä aiheuttaa sen, että jälkimmäinen komento ajetaan vain jos ensimmäinen ei nostanut varoituksia. Muutoin komennot tekevät hyvinkin sen, miltä ne englanniksi kuulostavat.
 
-```bash
+```bash title="Bash"
 $ echo "This is my file" > myfile   # Merkkijono ammutaan uuteen tiedostoon
 $ ls -la myfile
 -rw-rw-r-- 1 opettaja opettaja 16 elo    30 13:09 myfile
@@ -66,7 +66,7 @@ $ chmod g+r,o+r myfile && ls -la myfile
 
 Hakemiston erottaa tiedostosta Linuxissa siten, että `ls -la` komennon output alkaa d-kirjaimella, kuten `drwx------`. Hakemistolle annettu hassu oikeus saattaa myöhemmin aiheuttaa päänvaivaa, kun pohdit mikset saa muokata jotain aiemmin luotua tiedostoa.
 
-```sh
+```bash title="Bash"
 $ mkdir my                             # Luo kansio
 $ touch my/tralalaa my/dingdingdong    # ja sinne kaksi tiedostoa
 $ mkdir my/inner                       # Luo myös alikansio

@@ -33,7 +33,7 @@ Standardivirtaa voi uudelleenohjata tiedostoihin tai tiedostoista. Kohdetiedosto
 
 Käytännössä tämä mahdollista muun muassa komennon ajamisen siten, että onnistunut output kirjoitetaan yhteen tiedostoon, errorit toiseen:
 
-```bash
+```bash title="Bash"
 # Stdout ja Stderr eri tiedostoihin
 somecommand > success.output 2> errors.log
 
@@ -46,7 +46,7 @@ find / -name ".bashrc" 2> /dev/null
 
 Standardivirran voi myöhemmin päättää putkittaa (`piping`) käyttäen putkisymbolia (`|`) seuraavalle ohjelmalle. Tarkkaile, mitä alla oleva liuta komentoja tekee:
 
-```sh
+```bash title="Bash"
 $ echo "c" > myfile   # Ylikirjoita
 $ echo "b" >> myfile  # Jatka
 $ echo "a" >> myfile  # Jatka
@@ -93,7 +93,7 @@ flowchart
 
 Here document on tapa syöttää useita rivejä komentoriville. Tämä on hyödyllistä esimerkiksi silloin, kun haluat luoda tiedoston sisällön komentoriviltä. Tämä onnistuu esimerkiksi seuraavasti:
 
-```sh
+```bash title="Bash"
 $ cat > tiedosto.txt << EOF
 > Tämä on ensimmäinen rivi.
 > Tämä on toinen rivi.

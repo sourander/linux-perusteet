@@ -6,7 +6,7 @@ Mikäli sinulla on jossakin muussa käyttöjärjestelmässä (kuten Windows tai 
 
 LXC on ainakin kirjoitushetkellä jäänyt pahasti Dockerin ja Podmanin jalkoihin, mutta kokeillaan sitä siitä huolimatta.
 
-```bash
+```bash title="Bash"
 # Tarkista, että lxd on asennettuna
 $ snap list lxd
 

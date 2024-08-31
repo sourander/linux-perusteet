@@ -122,7 +122,7 @@ int main() {
 
 Aja koodi näin:
 
-```bash
+```bash title="Bash"
 $ gcc strings.c -o strings -Wno-sizeof-array-argument && ./strings
 ```
 

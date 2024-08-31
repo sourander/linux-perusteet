@@ -15,7 +15,7 @@ Käytät useimmiten prosessien seurantaan seuraavia komentoja:
 
 Käyttämäsi shell, kuten GNU bash, on yksi monista ohjelmista, jonka voi käynnistää, ja siten se saa oman PID:n. Ympäristömuuttuja `$0` sisältää ohjelman nimen, kun taas `$$` sisältää ohjelman PID:n. Tutki alla olevaa koodia ajatuksella:
 
-```bash
+```bash title="Bash"
 Last login: Fri Sep 15 09:10:36 on ttys005
 $ echo $0
 -zsh        # Tämän käyttäjän login shell ei olekaan bash vaan zsh
@@ -48,7 +48,7 @@ Yllä ajettu pstree paljastaa, että Z Shelli on parent process käynnistämäll
 
 Kokeillaan ajaa sama komento, minkä pstree ajoi sisäisesti. Jos haluat hieman lyhentää command-sarakkeen sisältöä, korvaa `command`-sana argumentista sanalla `comm`.
 
-```bash
+```bash title="Bash"
 # Aja täysin sama komento
 $ sudo ps -axwwo user,pid,ppid,pgid,command
 root                 1     0     1 /sbin/launchd
@@ -59,7 +59,7 @@ root                89     1    89 /usr/libexec/smd
 
 Tutustu `ps`-komentoon `man`:n tai netistä löytyvien esimerkkien avulla. Selvitä muun muassa, mitä alla olevat komennot tekevät. Huomaa, että komento tukee kolmenlaista syntaksia optioneille: UNIX, BSD ja GNU. Jos kokeilet samaa komentoa macOS:lla, huomaat, että vain osa samoista optioneista toimii edes sinne päin samalla tavalla.
 
-```bash
+```bash title="Bash"
 # Mitä tämä tekee?
 $ ps -u $(whoami) | grep python
 
@@ -74,7 +74,7 @@ $ ps -x -o pid,user,%mem,%cpu,comm
 
 Windowsista tutun tehtävienhallinnan (task manager) tai macOS:stä tutun Activity Monitorin kaltaiset tiedot saa shellissä esiin komennolla `top`. Kyseinen komento näyttää järjestetyn eli sortatun listan järjestelmän prosesseista. Sorttaukseen käytettyä saraketta voi vaihtaa parametreillä tai pikanäppäimillä.
 
-```bash
+```bash title="Bash"
 $ top -o mem   # Järjestä muistinkäytön mukaan laskevasti
 ```
 
@@ -98,7 +98,7 @@ Mikäli jokin ohjelma on auttamattomasti jumissa, voit viime kädessä tappaa se
 
 Tyypillisesti `kill`-komentoa ei pitäisi tarvita laisinkaan. Jos sitä kuitenkin tarvitsee, kokeile ensin `TERM`:n avulla eli `kill pid`. Mikäli ohjelma ei näytä sammutan, aja perään `KILL`. Alla esimerkki:
 
-```bash
+```bash title="Bash"
 # Luo prosessi, joka nukkuu 24h
 $ sleep $((60 * 60 * 24))
 
@@ -125,7 +125,7 @@ $ kill -TERM 29527
 
 Ohjelmia voi ajaa myös taustalla päättämällä komentiriviin `&`-merkkiin. Ohjelma siirtyy tausta-ajoon myös siten, että etualalla ajettavan ohjelman kohdalla painetaan ++ctrl+z++ (`SIGTSTP`). Tosin tämä pysäyttää ohjelman ajon. Ohjelman saa takaisin etualalle komennolla `fg`, tai `fg %n`, jossa `n` on se hakasuluissa näytetty numero eli `JOB_SPEC`, joka on useimmiten `[1]`. Vaihtoehtoisesti ohjelman voi laittaa käyntiin ++ctrl+z++ painamisen jälkeen komennolla `bg %n`, jossa `n` on yhä `JOB_SPEC`
 
-```bash
+```bash title="Bash"
 $ sleep $((60 * 60 * 24)) &
 $ sleep $((60 * 60 * 24)) &
 $ sleep $((60 * 60 * 24)) &
@@ -148,7 +148,7 @@ $ jobs
 
 Huomaa, että jos nyt loggaat ulos tai suljet shellin (`exit`), niin kyseiset prosessit päättyvät välittömästi. Tuoreimman jobin rivillä on `+`-merkki, joka viittaa siihen, että ilman parametrejä annettu komento (kuten `fg`) viittaa kyseiseen jobiin.
 
-```bash
+```bash title="Bash"
 $ fg
 [3]  - 71350 running    sleep $((60 * 60 * 24))
 
@@ -171,7 +171,7 @@ $ kill %1 %2 %3
 
 Jos on tarve ajaa ohjelma siten, että se ei sammu terminaalin sulkeutumisen yhteydessä tai logoutin yhteydessä, niin komento `nohup` on avuksi. Ajetaan vanha tuttu `sleep` uusiksi, mutta ohjataan stdout bittiavaruuteen ja stderr tiedostoon `errors.log`. 
 
-```bash
+```bash title="Bash"
 $ nohup sleep $((60 * 60 * 24)) > /dev/null 2> errors.log &
 [1] 71645
 
@@ -197,7 +197,7 @@ $ rm errors.log
 
 Mikäli haluat saada tietää, mikä ohjelmaa lukee tai kirjoittaa paraikaa johonkin tiedostoon, tähän auttaa komento `lsof`. FD-kentässä olevat numerot viittaavat "Descriptor ID":hen, joista 0 on standard input, 1 on standard output ja 2 on standard error. Numeroa 2 suuremmat ovat ohjelmien itsensä avaamia uusia descriptoreita (esimerkiksi `open()`-funktion puolesta.)
 
-```bash
+```bash title="Bash"
 $ echo "Miau" > kissa.txt
 $ tail -f kissa.txt &
 [1] 71967

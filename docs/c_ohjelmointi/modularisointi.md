@@ -45,13 +45,13 @@ Tiedostojen kuvaus:
 
     Jos haluat löytää `stdio.h`-tiedoston, jota GCC käyttää, voit ajaa seuraavan komennon:
 
-    ```bash
+    ```bash title="Bash"
     gcc -E -x c - -v < /dev/null
     ```
 
     Etsi outputista rivejä, jotka näyttävät tältä:
 
-    ```bash
+    ```bash title="Bash"
     #include <...> search starts here:
     /usr/lib/gcc/aarch64-linux-gnu/11/include
     /usr/local/include
@@ -71,7 +71,7 @@ Tiedostojen kuvaus:
 
 Koodi käännetään aivan kuten ennenkin, mutta sinun tulee listata kaikki tarvittavat `*.c`-tiedostot. Käännä ohjelma seuraavasti:
 
-```bash
+```bash title="Bash"
 # Jos hakemistossa ei ole muita .c-tiedostoja
 $ gcc *.c -o app_itself
 
@@ -87,7 +87,7 @@ $ gcc app_itself.c headerdemo.c -o app_itself
 
 Ohjelman kääntämisen sijasta voit kääntää kaikki `jotain.c`-tiedostot objektitiedostoiksi. Tästä on se hyöty, että mikäli jatkossa `egg.c` muuttuu, mutta `ham.c` ja `spam.c` eivät, sinun tarvitsee generoida vain `egg.o` uudelleen.
 
-```bash
+```bash title="Bash"
 # Jos hakemistossa ei ole muita .c-tiedostoja
 $ gcc -c *.c
 
@@ -101,7 +101,7 @@ $ gcc -c app_itself.c headerdemo.c
 
 Hakemistoon luodaan uudet objektitiedostot:
 
-```bash
+```bash title="Bash"
 $ tree
 .
 ├── app_itself.c
@@ -113,7 +113,7 @@ $ tree
 
 Jatkossa, kun `headerdemo.c` muuttuu, sinun tarvitsee kääntää vain `headerdemo.o` uudelleen.
 
-```bash
+```bash title="Bash"
 # Käännä
 $ gcc *.o -o app_itself
 $ ./app_itself
@@ -170,7 +170,7 @@ Makefile on tavallinen ASCII-tekstitiedosto. Komento `make` olettaa hakemistosta
 
 Harjoittele tätä ajamalla seuraavat komennot ajatuksella:
 
-```bash
+```bash title="Bash"
 # Valmistelut: Luo Makefile
 # Katso sisältö yltä
 
@@ -202,7 +202,7 @@ $ make
 
 Huomaat, että viimeinen `make`-komento ei tee mitään, koska `file_x` on jo olemassa ja se on uudempi kuin `file_a`, `file_b` ja `file_c`. Kokeile vielä muokata `file_a`-tiedostoa ja ajaa `make` uudelleen.
 
-```bash
+```bash title="Bash"
 $ touch file_a
 $ make
 ```
@@ -222,7 +222,7 @@ say_goodbye:
     @echo "Goodbye"
 ```
 
-```bash
+```bash title="Bash"
 # Aja ensimmäinen target
 $ make -f MyFakeMakefile say_hi
 
@@ -251,7 +251,7 @@ say_goodbye:
 	@echo "Goodbye"
 ```
 
-```bash
+```bash title="Bash"
 $ make -f ImprovedMakefile
 ```
 

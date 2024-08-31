@@ -10,7 +10,7 @@ Oppimateriaali on tarkoitettu Kajaanin Ammattikorkeakoulun ensimmäisen tai tois
 
 Kurssin komennot esitetään koodisnippeteissä siten, että rivi alkaa tyypillisesti `$`-merkillä. Tuloste kirjoitetaan alle ilman etuliitteitä. Ennen seuraavaa komentoa jätetään tyhjä rivi. Kommentit alkavat `#`-merkillä, ja ne voivat olla joko omina riveinään tai koodirivin perässä. Mikäli kommentin vieressä on ristipääruuvia muistutava ikoni, sitä klikkaamalla aukeaa pidempi kommentti.
 
-```sh
+```bash title="Bash"
 $ komento
 tuloste
 

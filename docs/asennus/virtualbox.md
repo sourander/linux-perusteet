@@ -89,7 +89,7 @@ Mikäli terminaali ei käynnisty jostain syystä, mene virtuaaliterminaaliin. Kl
 
 Kun sinulla on terminaali esissä ja olet kirjaunut sisään, kirjoita:
 
-```sh
+```bash title="Bash"
 # Loggaa root-käyttäjälle
 su -
 

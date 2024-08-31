@@ -22,7 +22,7 @@ Ohjelma, joka tulkitsee `dev/tty`:n sisältöä, on shell. Alunperin tämä oli 
 
 Mikäli olet kirjautunut virtuaaliterminaaliin (++ctrl+alt+f3++), voit tarkistaa mihin virtuaaliterminaaliin shelli on kiinnittynyt:
 
-```sh
+```bash title="Bash"
 $ tty
 /dev/tty3
 
@@ -32,7 +32,7 @@ linux
 
 Kokeile myös vaihtoehtoista tapaa vaihtaa virtual terminaalia:
 
-```bash
+```bash title="Bash"
 # Lue
 $ man chvt
 
@@ -45,7 +45,7 @@ $ chvt 4
 
 Jos ajat saman komennnon työpöytäympäristön terminaalissa (++ctrl+alt+t++), eli esimerkiksi ohjelmassa nimeltään `gnome-terminal`, saat erilaisen tuloksen. Tämä johtuu siitä, että työpöytä itsessään on shell (esim. `GNOME Shell`) ja käyttää `tty`:tä konepellin alla.
 
-```sh
+```bash title="Bash"
 $ tty
 /dev/pts/0
 
@@ -59,7 +59,7 @@ xterm-256color
 
 Huomaa, että käyttämäsi shell voi olla jokin muu kuin bash. Voit selvittää yleensä jollain seuraavista komennoista. Komennon käyttö on simppeliä: kirjoita se ja paina ++enter++.
 
-```sh
+```bash title="Bash"
 $ echo $0
 bash
 
@@ -72,7 +72,7 @@ opettaja:x:1000:1000:Ope Opettaja,,,:/home/opettaja:/bin/bash
 
 Bashin käyttöohjeen löydät joko distribuution sivuilta [Ubuntu Manpage: bash - GNU Bourne-Again SHell](https://manpages.ubuntu.com/manpages/jammy/man1/bash.1.html) tai komennolla:
 
-```bash
+```bash title="Bash"
 $ man 1 bash # Bashin manuaali (1)
 ...
 

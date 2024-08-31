@@ -39,7 +39,7 @@ graph BT
 
 Aloitetaan asentamalla tarvittavat työkalut:
 
-```bash
+```bash title="Bash"
 # Asenna
 $ sudo apt install lvm2
 
@@ -51,7 +51,7 @@ Tämän jälkeen alamme luoda LVM:ää graafin pohjalta ylöspäin järjestykses
 
 ### PV
 
-```bash
+```bash title="Bash"
 # HUOM! Jos levy sisältää edellisen harjoituksen pohjalta GPT:n, poista se:
 # $ sudo wipefs --all /dev/sda
 
@@ -87,7 +87,7 @@ $ sudo
 
 ### VG
 
-```bash
+```bash title="Bash"
 # Luo
 $ sudo vgcreate myvg0 /dev/sda /dev/sdb
   Volume group "myvg0" successfully created
@@ -114,7 +114,7 @@ PE eli Physical Extent on yksikkö, jonka kokoisiin loogisiin palasiin Volume Gr
 
 ### LV
 
-```bash
+```bash title="Bash"
 # Luo
 $ sudo lvcreate --name mydata --extents 100%FREE myvg0
   Logical volume "mydata" created.
@@ -145,7 +145,7 @@ $ sudo lvdisplay myvg0
 
 Jos katsot nyt, mitä block devicejä sinulla on käytössä, huomaat että sekä sda että sdb ovat tyyppiä LVM. Kummankin osiona näkyy Volume Group myvg0-mydata.
 
-```bash
+```bash title="Bash"
 # Listaa
 $ lsblk -e 7 /dev/sda /dev/sdb
 NAME           MAJ:MIN RM SIZE RO TYPE MOUNTPOINTS
@@ -164,7 +164,7 @@ Huomaat, että `myvg0-mydata` on symbolinen linkki `/dev/dm-0` deviceen.
 
 ### Tiedostojärjestelmän luonti
 
-```bash
+```bash title="Bash"
 $ sudo mkfs.ext4 -L MyData /dev/mapper/myvg0-mydata
 mke2fs 1.46.5 (30-Dec-2021)
 Discarding device blocks: done
@@ -174,7 +174,7 @@ Filesystem UUID: 808c8175-4c78-429d-9dcf-c6c58736fd2b
 
 Kun tiedostojärjestelmä on luotu, mountataan osio kuten aiemminkin:
 
-```bash
+```bash title="Bash"
 # Mount
 $ sudo mount /dev/mapper/myvg0-mydata /mnt/mydata/
 

@@ -15,7 +15,7 @@ Vaiheet ovat näinkin simppelit:
 1. Etsi haluamasi sovellus AppImageHubista, kuten vaikkapa e-kirjojen lukemiseen soveltuva Calibre.
 2. Lataa tuore versio ohjelmisto .
 
-```bash
+```bash title="Bash"
 # Navigoi kotikansiosi lokaalien sovellusten hakemistoon
 $ cd ~/.local/bin/
 
@@ -35,7 +35,7 @@ Sovellusvalikoima on kuitenkin AppImagessa ainakin kirjoitushetkellä huomattava
 
 Flatpakin itsensä voi asentaa Ubuntuun [Flatpakin ohjeiden mukaisesti](https://flatpak.org/setup/Ubuntu) komennolla:
 
-```bash
+```bash title="Bash"
 $ sudo apt install flatpak
 ```
 
@@ -44,7 +44,7 @@ Flatpakin avulla asennettavia ohjelmia voi etsiä [Flathub](https://flathub.org/
 
 Esimerkiksi HandBrake CLI:n, jolla voi muun muassa enkoodata videotiedostoja, voi asentaa ilman sudo-oikeuksia näin:
 
-```bash
+```bash title="Bash"
 # Lisää Flatpak repo
 $ flatpak --user remote-add \
 --if-not-exists flathub \
@@ -60,7 +60,7 @@ $ flatpak --user install HandBrakeCLI-1.4.2-x86_64.flatpak
 
 Tai kenties haluat eroon Snapin hallitsemasta Firefoxista ja siirtyä Flatpakin asentamaan ja hallitsemaan chromiumiin?
 
-```bash
+```bash title="Bash"
 # Poista Snap koko järjestelmästä. Ethän tee tätä koneilla, joilla muut käyttäjät saattavat haluta käyttää Firefoxia. Se oikeasti poistuu.
 $ sudo snap remove firefox
 
@@ -95,7 +95,7 @@ Snap eristää ohjelmat muusta käyttöjärjestelmästä omiin sandboxeihin:
 
 Canonical on sekä Snapcraftin että Ubuntun takana. Siispä ei liene liene yllätys, että snap on Ubuntussa valmiiksi asennettuna. Mikäli käytät jotakin toista distribuutiota, jossa snap ei ole vakiona asennettuna, etsi ohje mieluiten suoraan työkalun omasta dokumentaatiosta, kuten: [Installing the daemon](https://snapcraft.io/docs/installing-snapd). Ohjelmien listaaminen ja asentaminen on helppoa, katso komennot alta:
 
-```bash
+```bash title="Bash"
 # Listaa asennetut
 $ snap list
 

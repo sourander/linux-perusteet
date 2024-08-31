@@ -4,7 +4,7 @@
 
 Käytimme [Yleistä](yleista.md)-materiaalissa Zorro-peliä, jolle syötimme näppäimistöä käyttäen syötteen, kuten "Z" ja "3". Huomaa, että syöte on syötettä, tuli se näppäimistöltä tai tiedostosta. Tutustutaan tähän konseptiin hieman:
 
-```bash
+```bash title="Bash"
 # Kokeile syöttää pelkkä Z. Minkä arvon "n" sai?
 $ echo "Z" > zorro_input.txt
 $ cat zorro_input.txt | ./zorro
@@ -22,7 +22,7 @@ $ cat zorro_input.txt
 
     Kokeile putkituksen lisäksi myös syötteen ohjaamista tiedostosta käyttäen `<`-merkkiä.
 
-    ```bash
+    ```bash title="Bash"
     $ ./zorro < zorro_input.txt
     ```
 
@@ -57,7 +57,7 @@ int main() {
 
 Kun olet lukenut koodin huolella, käännä se binääritiedostoksi ja selvitä, kuinka ohjelmaa käytetään. Kokeile ainakin seuraavia:
 
-```bash
+```bash title="Bash"
 # Perus ajo. Lopeta CTRL+D tai CTRL+C.
 $ ./reverser
 
@@ -99,7 +99,7 @@ int main() {
 
 Nyt voimme harjoitella syötteen ohjaamista ja virheilmoitusten käsittelyä. Tutki, mitä seuraavat tulostavat ja minne:
 
-```bash
+```bash title="Bash"
 # Komento 1
 $ ./errors
 

@@ -2,7 +2,7 @@ Kuten aiemmassa luvussa näimme, ajastetun tehtävän voi luoda systemd:n timeri
 
 Huomaa, että cron (kuten kaikki muutkin ohjelmat) ovat systemd:n käynnistämiä daemoneita tai servicejä:
 
-```bash
+```bash title="Bash"
 $ systemctl status cron
 ```
 
@@ -10,7 +10,7 @@ $ systemctl status cron
 
 Cronin käyttö on melko yksinkertaista. Cronin käyttöön liittyy kaksi komentoriviohjelmaa: `crontab` ja `cron`. `crontab`-ohjelmaa käytetään ajastettujen tehtävien hallintaan, kun taas `cron`-ohjelmaa käytetään ajastettujen tehtävien suorittamiseen. Aikoinaan cron-tehtävät määritettiin `/etc/crontab`-tiedostossa, mutta nykyään käytetään `crontab`-ohjelmaa, joka mahdollistaa käyttäjäkohtaiset cron-tehtävät. Käy kuitenkin kurkkaamassa, miltä `/etc/crontab` näyttää.
 
-```bash
+```bash title="Bash"
 $ less /etc/crontab
 ```
 
@@ -24,7 +24,7 @@ Tiedostossa neuvotaan cron-tabin syntaksi, joka on muotoa `* * * * *` (at every 
 
 `crontab`-ohjelmaa käytetään ajastettujen tehtävien hallintaan. `crontab`-ohjelmaa käytetään seuraavasti:
 
-```bash
+```bash title="Bash"
 $ crontab [-u käyttäjä] [-l | -r | -e]
 ```
 
@@ -37,7 +37,7 @@ $ crontab [-u käyttäjä] [-l | -r | -e]
 
 Aluksi sinun käyttäjällä ei todennäköisesti ole laisinkaan cron-tehtäviä. Voit tarkistaa tämän `crontab -l` komennolla. Luodaan uusi tehtävä.
 
-```bash
+```bash title="Bash"
 $ crontab -e
 no crontab for <username> - using an empty one
 
@@ -49,7 +49,7 @@ Select an editor.  To change later, run 'select-editor'.
 
 Valitse haluamasi editori. Tässä esimerkissä valitsen `nano`-editorin. Tämän jälkeen näet tyhjän tiedoston, johon voit kirjoittaa cron-tehtävän. Muutokset kirjoitetaan tiedostoon `/var/spool/cron/crontabs/<username>`, mutta ethän muokkaa tiedostoa käsin. Lisää `crontab -e` komennon avulla tiedostoon seuraava rivi:
 
-```bash
+```bash title="Bash"
 * * * * * echo "Time is $(date)" >> ~/crontesting
 ```
 

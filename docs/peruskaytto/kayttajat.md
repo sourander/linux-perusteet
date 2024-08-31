@@ -23,7 +23,7 @@ Mikäli haluat tarkistaa, onko sinun järjestelmässäsi juuri sanat tiedostot s
 
 Toisin kuin nimestä voisi päätellä, `passwd`-tiedosto ei sisällä salasanoja laisinkaan. Salasanat ovat `passwd`-tiedostossa, johon pureudutaan myöhemmin. Alla näkyy esimerkkinä kolme riviä `passwd`-tiedostosta.
 
-```
+```plaintext title="/etc/passwd"
 root:x:0:0:root:/root:/bin/bash
 nobody:x:65534:65534:nobody:/nonexistent:/usr/sbin/nologin
 opettaja:x:1000:1000:Ope Opettaja,,,:/home/opettaja:/bin/bash
@@ -31,7 +31,7 @@ opettaja:x:1000:1000:Ope Opettaja,,,:/home/opettaja:/bin/bash
 
 Riveissä toimii kenttien erottimena `:`-merkki. Esimerkiksi `opettaja`-nimisen käyttäjän rivin purkaa useaksi riviksi näin:
 
-```bash
+```bash title="Bash"
 cat /etc/passwd | grep opettaja | tr : "\n"
 ```
 
@@ -60,7 +60,7 @@ Alla tulostuvat rivit selitettyinä:
 
 Tiedostosta `/etc/group` löytyvät aiemmin mainitut käyttäjien `root`,  `nobody` ja `opettaja` primääriryhmät. Taulukot joinataan yhteen GID:n eli group id:n avulla.
 
-```
+```plaintext title="/etc/group"
 root:x:0:
 nogroup:x:65534:
 opettaja:x:1000:
@@ -68,7 +68,7 @@ opettaja:x:1000:
 
 Tämän lisäksi tiedostosta löytyy muutkin ryhmät; yksi käyttäjä voi kuulua moneen ryhmään. Käyttäjähallinta (eng. access control) on yleisesti järjestelmissä kannattavaa tehdä siten, että luo ryhmän, johon kiinnittää policyn ja/tai permissionit, joka sallii tekemään asioita x, y ja z. Käyttäjille ei anneta suoraan lupia mihinkään, vaan käyttäjä kiinnitetään ryhmään. Alla esimerkkinä neljä riviä tiedostosta, jotka sisältävät sanan "opettaja":
 
-```
+```plaintext title="/etc/group"
 adm:x:4:syslog,opettaja
 cdrom:x:24:opettaja
 sudo:x:27:opettaja
@@ -86,7 +86,7 @@ Alla rivien `:`-merkillä erotellut tiedot selitettyinä:
 
 Muistele aiempaa lukua käyttöoikeuksista. Jokaisella tiedostolla ja kansiolla on kolme permissionia: owner, group ja others. Jos `opettaja` kuuluu ryhmiin `cdrom` ja `adm`, niin mitä näillä voi tehdä? Tietenkin se, mitä permissionit sallivat. Sopivilla group-omistuksilla olevia tiedostoja voi etsiä seuraavanlaisilla komennoilla:
 
-```sh
+```bash title="Bash"
 $ find /dev -group cdrom
 /dev/sg0
 /dev/sr0
@@ -113,7 +113,7 @@ find: ‘/var/log/private’: Permission denied
 
 Tiedostosta `/etc/shadow` löytyvät aiemmin mainittujen käyttäjien salasanat. Ote tiedoston sisällöstä alla:
 
-```
+```plaintext title="/etc/shadow"
 root:!:19598:0:99999:7:::
 nobody:*:19576:0:99999:7:::
 opettaja:$y$hidden:19598:0:99999:7:::
@@ -138,7 +138,7 @@ Yksittäisen rivin voi rikkoa osatekijöiksi tutulla komennolla, mutta tällä k
 
 Last password change kentän arvon voi kääntää meille ihmiselle tutummaksi arvoksi `date`-komennon avulla.
 
-```bash
+```bash title="Bash"
 $ date -d "1970-01-01 +19598 days" +%Y-%m-%d
 2023-08-29
 ```
@@ -159,14 +159,14 @@ Salasanakentän arvon erottajana toimii `$`-merkki, ja se noudattaa kaavaa `$id$
 
 Salasanan häshäystä voi harjoitella `openssl`-kirjaston avulla.
 
-```bash
+```bash title="Bash"
 $ openssl passwd -5 -salt "suola" "password123"
 $5$suola$NkZwDPPEx8Q9XA2./QA2oJ4QA35JCL9ejielN9DOApD
 ```
 
 Häshäyksessä (eli virallisesti suomeksi "tiivistämisessä") käytetty salt eli suola on arvo, joka ynnätään salasanaan ennen sen häshäystä. Tällä estetään suoraa rainbow table käyttöä: jos käyttäjän salasana olisi jotain turvatonta kuten `qwerty` tai `password123`,  salasanan häshätty arvo löytyisi suoraan jotakin tietokannasta, joka sisältää yleisimmän miljoonan salasanan häshit. Kun salt on käytössä, niin käyttäjan salasana on käytännössä "salt"+"password123". Naiivi esimerkki alla, jossa käytetään turvattomaksi luokiteltua MD5-algoritmia. Ethän käytä MD5:ttä missään tuotannossa! Tässä se on esimerkkinä, koska syntyvä häsh on mukavan lyhyt ruudulle tulostettavaksi.
 
-```bash
+```bash title="Bash"
 $ salt=salt
 $ password=password123
 $ hashed=$(echo "$salt$password" | md5sum | base64)
@@ -186,7 +186,7 @@ Häshäämätöntä salasanaa ei siis tallenneta laisinkaan. Kun käyttäjä yri
 
 Lokaaleja käyttäjiä voi luoda komennolla:
 
-```bash
+```bash title="Bash"
 # Luo käyttäjä
 # - Vertaa komentoon "adduser". Miten se eroaa tästä? Kokeile kumpaakin.
 # - Selvitä, mitä -m optio tekee.
@@ -211,7 +211,7 @@ $ sudo usermod --append --groups <groupname> <username>
 
 Tiedostojen omistajuutta voi vaihtaa komennolla `chown`. Alla lyhyt esimerkki.
 
-```bash
+```bash title="Bash"
 # Vaihda owner
 $ chown <username> kissa.txt
 
@@ -223,7 +223,7 @@ $ chown <username>:<group> kissa.tx
 
 Jos haluat kokeilla, kuinka tiedosto- sekä hakemisto-oikeudet käyttäytyvät toisen käyttäjän näkökulmasta, niin vaikea tapa on kirjautua graafisesta käyttöliittymästä ulos, ja tämän jälkeen kirjautua uudella käyttäjällä sisään. Helpompi tapa on käyttää `su`-komentoa (substitute user).
 
-```bash
+```bash title="Bash"
 # Avaa toisen käyttäjän shell sinun shellisi prosessina
 # Selvitä, mitä "-" eli "--login" optio tekee.
 $ sudo su - <username>

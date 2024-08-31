@@ -14,6 +14,6 @@ Alla oleva lista on tiivistelmä Learning Modern Linux (Hausenblas 2022) -kirjan
 
 Lisäksi ohjelmat käyttävät jaettuja kirjastoja. Yksi näistä on `libc.so`, joka on (useimmiten GCC:n) Standard C Library, ja sisältää esimerkiksi `printf`-funktion. Paketinhallinta huolehtii sinun puolestasi näiden kirjastojen asentamisesta, ja niiden riippuvuuksien hallinnasta. Alla olevalla komennoilla voit tarkistaa, mitä kirjastoja jokin binääri käyttää:
 
-```bash
+```bash title="Bash"
 $ ldd $(which useradd)
 ```

@@ -12,7 +12,7 @@ Tämä sivusto on luotu [Doc Skeleton](https://github.com/sourander/doc-skeleton
 
 ## Kuinka ajaa lokaalisti
 
-```bash
+```bash title="Bash"
 # Kloonaa
 git clone 'this-repo-url'
 

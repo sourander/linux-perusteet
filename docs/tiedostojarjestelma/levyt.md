@@ -2,7 +2,7 @@ Tietokoneessa käynnissä olevat ohjelmat eli prosessit ovat ladattuina tietokon
 
 Alla esimerkki macOS:n UTM-virtuaalikoneessa ajetusta Ubuntusta, josta löytyy seuraavat block devicesit (ks. `man lsblk`).
 
-```bash
+```bash title="Bash"
 $ lsblk --exlude 7
 NAME   MAJ:MIN RM  SIZE RO TYPE MOUNTPOINTS
 sr0     11:0    1 1024M  0 rom  
@@ -21,7 +21,7 @@ P.S. Listalla voi näkyä muutakin kuin, kuten Firefoxin `host-hunspell`.
 
 Mikäli haluat löytää laitteista lisää tietoa, voit tarkistaa esimerkiksi kernel ring bufferin eli kernelin lokiviestit (komento `sudo dmesg`) tai udevin eli laitehallinnan tietoja. Alla jälkimmäisen output kyseisten laitteiden kohdalta.
 
-```bash
+```bash title="Bash"
 # udev
 $ udevadm info /dev/sr0
 P: /devices/pci0000:00/0000:00:04.0/usb1/1-4/1-4.1/1-4.1:1.0/host0/target0:0:0/0:0:0:0/block/sr0
@@ -45,7 +45,7 @@ S: disk/by-path/pci-0000:00:06.0
 
 Huomaa, että laitteet ovat tässä tapauksessa vain virtuaalisia. Tiedostojen lokaatio ja muoto riippuu hypervisorista. Tässä tapauksessa hypervisor on UTM, ja tiedosto löytyy lokaatiosta:
 
-```bash
+```bash title="Bash"
 /Users/<user>/Library/Containers/com.utmapp.UTM/Data/Documents/<vm-name>/Data
 ```
 
@@ -61,7 +61,7 @@ Mikäli et paravirtualisoi massamuistia virtio:lla kuten yllä, laitteet käsite
 
 Mikäli virtuaalikoneeseen lisätään kaksi SCSI-rajapintaa käyttävää levyä, ja ajetaan aiemmin tuttu list block devices komento, tulostuu ruudulle alla näkyvä tuloste. Mikäli `--exclude`:n viittaamaa sekä tulostuneessa taulussa näkymä MAJ eli major numero kiinnostaa, tutki tiedostoa `/proc/devices`, jossa ne ovat listattuina.
 
-```bash
+```bash title="Bash"
 $ lsblk --exclude 7
 NAME   MAJ:MIN RM  SIZE RO TYPE MOUNTPOINTS
 sda      8:0    0   10G  0 disk 
@@ -74,7 +74,7 @@ vda    252:0    0   64G  0 disk
 
 Kuten yllä näkyy, kaksi uutta SCSI-laitetta ovat saaneet nimet `sda` ja `sdb`. Linux näkee siis laitteet, mutta niitä ei ole vielä liitetty millään tavalla file hierarchyyn. Tietokoneessa vapaana oleva kiintolevytila ei ole siis vielä käyttöjärjestelmän näkökulmasta lisääntynyt. Tämän voi varmistaa ajamalla `df`-komennon. Option `-h` kertoo koot ihmisille sopivissa formaateissa, `-e tmpfs` sen sijaan piilottaa muistinsisäiset eli vain RAM:ssa sijaitsevat, väliaikaiset levyjärjestelmät.
 
-```bash
+```bash title="Bash"
 $ df -h --exclude-type tmpfs
 Filesystem      Size  Used Avail Use% Mounted on
 /dev/vda2        63G   13G   47G  22% /
@@ -83,7 +83,7 @@ Filesystem      Size  Used Avail Use% Mounted on
 
 Jos haluat nähdä kaikki SCSI-laitteesi listamuodossa, tutustu tiedostoon `/proc/scsi/scsi` tai aja alla näkymä komento:
 
-```bash
+```bash title="Bash"
 $ lsscsi
 [0:0:0:0]    disk    QEMU     QEMU HARDDISK    2.5+  /dev/sda 
 [0:0:1:0]    disk    QEMU     QEMU HARDDISK    2.5+  /dev/sdb 

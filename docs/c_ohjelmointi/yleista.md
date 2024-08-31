@@ -40,7 +40,7 @@ int main()
 
 Toisin kuin tulkattavat kielet (kuten Python ja JavaScript), C tulee kääntää binääritiedostoksi. Tätä varten tarvitset **kääntäjän**. Linuxissa kääntäjä on tyypillisesti GNU `gcc`, mutta myös muita vaihtoehtoja, kuten `clang` löytyy. Windowsissa tarvitset MinGW:n (Minimalistic GNU for Windows), jotta sinulla on käytössäsi `gcc`. Vaihtoehtoisesti voisit käyttää Microsoftin kaupallista C/C++-kääntäjää, joka asennetaan tyypillisesti Visual Studion mukana. Huomaa, että ==Visual Studio== ja ==Visual Studio Code== ovat eri ohjelmia.
 
-```bash
+```bash title="Bash"
 # Käännä hello.c-tiedosto hello binääriksi
 $ gcc -o hello hello.c
 ```
@@ -53,7 +53,7 @@ $ gcc -o hello hello.c
 
 Kääntäjä luo ajettavan tiedoston. Voit tarkistaa tämän `ls -l tiedostonnimi` komennolla. Huomaat, millä käyttäjätyypeillä on `x`-oikeus tiedostoon. Tiedoston ajaminen itsessään on helppoa. Kuten kurssin muissa materiaaleissa on opetettu, sinun tulee antaa absoluuttinen tai relatiivinen polku binääriin, ellei tiedosto löydy `$PATH`:sta. Meidän nykyinen kansio ei oletettavasti ole PATH-ympäristömuuttujan kansioiden listassa, joten koodin voi ajaa relatiivisella polulla näin:
 
-```bash
+```bash title="Bash"
 $ ./hello
 ```
 
@@ -61,7 +61,7 @@ $ ./hello
 
     Huomaa, että `./`-merkintä tarkoittaa nykyistä kansioa. Voit ajaa toisessa hakemistossa olevan binäärin antamalla absoluuttisen tai relatiivisen polun binääriin.
 
-    ```bash
+    ```bash title="Bash"
     # Absoluuttinen polku
     $ /home/kayttaja/ohjelmat/hello
 
@@ -138,7 +138,7 @@ int main()
 
 Kun olet suorittanut yllä olevan tehtävän, kokeile ajaa yllä oleva koodi siten, että ohjelma suoritetaan `return EXIT_FAILURE;` riviin. Kuinka ohjelma käyttäytyy kun ajat sitä? Kokeila alla olevia komentoja:
 
-```bash
+```bash title="Bash"
 # Häviä peli tarkoituksella epäsopivaan määrään
 $ ./zorro
 Anna kirjain (vihje Z): <anna oikea kirjain>

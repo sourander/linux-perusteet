@@ -4,7 +4,7 @@ Linuxissa tilanne on hyvin toinen. Asemia ja niiden kirjaimia ei ole olemassa. H
 
 Alla näkyy ajettuna komento `lsblk` eli List Block Devices.
 
-```sh
+```bash title="Bash"
 $ lsblk /dev/sda
 AME   MAJ:MIN RM  SIZE RO TYPE MOUNTPOINTS
 sda      8:0    0   30G  0 disk 

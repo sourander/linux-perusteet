@@ -4,7 +4,7 @@ Linuxissa on kattavat lokit lähes kaikesta tapahtuneesta, mikä mahdollistaa vi
 
 ### Lokiin käsin kirjoittaminen ja sen lukeminen
 
-```bash
+```bash title="Bash"
 # Kirjoita merkkijono system logiin
 $ logger "Tämä on testi"
 
@@ -43,7 +43,7 @@ Kuten yllä mainittiin, sinulla saattaa olla `systemd-journald`:n kyljessä tai 
 
     Rsyslog ja muut lokeja kirjoittavat sovellukset luovat lokinsa yleensä `/var/log`-hakemistoon. Kokeile listata kaikki kyseisen hakemiston tiedostot ja kansiot, joissa ei ole numeroita, ja näet mitä kaikkea siellä on. Alla on komento tätä varten.
 
-    ```bash
+    ```bash title="Bash"
     $ ls -1F --group-directories-first /var/log | grep -v '[0-9]'
     ```
 
@@ -63,7 +63,7 @@ Keskitetty lokitus tarkoittaa, että lokitiedostot kerätään yhteen paikkaan. 
 
 Lähettävän koneen konfiguraatio, joka neuvotaan [Rsyslog: Sending Messages to a Remote Syslog Server](https://www.rsyslog.com/sending-messages-to-a-remote-syslog-server/)-ohjeessa, voisi olla:
 
-```bash
+```bash title="Bash"
 # This could be in this file, for example:
 # /etc/rsyslog.d/99-forward.conf
 *.* @somehost.example.com:514
@@ -90,7 +90,7 @@ helmi 07 10:15:12 opettajakone systemd[1280]: tracker-extract-3.service: Schedul
 
 Palvelu ajetaan minun käyttäjäni nimissä, joten se löytyy komennoilla:
 
-```bash
+```bash title="Bash"
 $ systemctl --user status tracker-extract-3
 $ systemctl --user cat tracker-extract-3
 ```
@@ -99,7 +99,7 @@ En koe tarvitsevani kyseistä palvelua. Voin etsiä tiedostoja `find` komennolla
 
 Ensimmäiseksi ohje käskee maskaamaan servicet eli luomaan symbolisen linkin `/dev/null`-tiedostoon. Tämä estää palvelua käynnistymästä. Tämän voi myöhemmin purkaa komennolla `unmask`.
 
-```bash
+```bash title="Bash"
 systemctl --user mask tracker-extract-3.service \
 tracker-miner-fs-3.service \
 tracker-miner-rss-3.service \
@@ -110,6 +110,6 @@ tracker-miner-fs-control-3.service
 
 Lopulta palvelu tulee pysäyttää komennolla:
 
-```bash
+```bash title="Bash"
 tracker3 reset -s -r
 ```

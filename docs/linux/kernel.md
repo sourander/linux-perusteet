@@ -12,7 +12,7 @@ Alla näkyy kartta ytimen sisuksista jaettuna ulkoisten rajapintojen mukaisiin k
 
 Mikäli haluat nähdä, mitä Standard C-libraryn kutsuja jokin komento kutsuu, voit tehdä sen `ltrace`-ohjelmalla. Jos sen sijaan haluat nähdä, mitä alemman rajapinnan eli syscallin kutsuja komento kutsuu, voit tehdä sen `strace`-ohjelmalla.
 
-```bash
+```bash title="Bash"
 # Kokeile
 $ ltrace ls
 
@@ -25,7 +25,7 @@ $ strace python3 -c 'print("Hello")'
 
 Vaihtoehtoisesti voit listata object dependencyt komennolla `ldd`.
 
-```bash
+```bash title="Bash"
 # Kokeile
 $ ldd /usr/bin/ls
 ```
@@ -49,7 +49,7 @@ Laitteisiin on suora pääsy vain ytimen avaruudessa ajettavilla ohjelmilla. Lai
 
 Moduulit löytyvät polusta `/lib/modules/<kernel-versio-tähän>/kernel/drivers/`. Kerneliin ladatujen moduuleiden statuksen voi listata `lsmod`-komennolla.
 
-```bash
+```bash title="Bash"
 # Etsi jokin moduuli
 $ lsmod
 
@@ -59,7 +59,7 @@ $ modinfo <moduulin-nimi>
 
 Moduulien parametrejä (ks. modinfo output) voi muuttaa `modprobe`-komennolla runtime-ajossa. Pysyvästi parametrejä voi muuttaa `/etc/modprobe.d/`-kansiossa.
 
-```bash
+```bash title="Bash"
 # Käy katsomassa löytyykö
 $ sudo ls /etc/modprobe.d/*.conf
 
@@ -75,7 +75,7 @@ Tyypillisesti ajureihin ei kuitenkaan tarvitse käyttäjän puuttua, ja tarvitta
 
 `/proc` on virtuaalinen tiedostojärjestelmä, joka tarjoaa käyttäjälle ja ohjelmille tiedon ytimen tilasta. Tiedostojärjestelmä on virtuaalinen, koska se ei ole tallennettu massamuistiin. Tiedostojen koko on siis 0 KB. Kernel vastaa tiedostojen sisältämän informaation ajantasaisuudesta.
 
-```bash
+```bash title="Bash"
 # Listaa tiedostot. Nuemerot ovat prosessien PIDejä. Näihin tutustut myöhemmissä luvuissa.
 $ ls /proc
 
@@ -88,7 +88,7 @@ $ cat /proc/meminfo
 
 Hakemisto `/proc/sys/` sisältää tiedostoja, joilla voi muuttaa ytimen asetuksia. Tiedostot ovat tavallisia tekstitiedostoja, joiden sisältöä voi muuttaa. Muutokset eivät kuitenkaan ole pysyviä, vaan ne katoavat, kun tietokone käynnistetään uudelleen.
 
-```bash
+```bash title="Bash"
 # Katso IP forwarding asetus ("reititys")
 $ cat /proc/sys/net/ipv4/ip_forward
 

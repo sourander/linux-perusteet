@@ -36,7 +36,7 @@ Avaa Terminal (gnome-terminal) eli pseudoterminaali. Tämä onnistuu monella eri
 
 Kun Terminal on auki, aja seuraavat komennot, joskin siten, että korvaat oikeisiin paikkoihin oman nimesi ja oman sähköpostiosoitteesi:
     
-```bash
+```bash title="Bash"
 # Upgrade software and install git
 $ sudo apt update && sudo apt upgrade
 $ sudo apt install git
@@ -59,7 +59,7 @@ Luo avainpari SSH-yhteyksiä varten. Aja alla olevat komennot, mutta korvaa taas
 
 Komento `ssh-keygen` kysyy sinulta muutamia kysymyksiä. Voit jättää käytännössä kaikki tyhjiksi, jolloin se käyttää vakioasetuksia, mutta ==passphrase kannattaa asettaa==. Muuten olet alttiina sille, että joku voi esiintyä sinuna, mikäli avain joutuu vääriin käsiin.
 
-```bash
+```bash title="Bash"
 # Create SSH key pair
 $ ssh-keygen -t ed25519 -C "your.name@kamk.fi alias-for-computer"
 
@@ -86,7 +86,7 @@ Liitä avain leikepöydältäsi ja paina "Add Key". Valitse jokin expiraatioaika
 
 Tämän jälkeen testaa Terminaalissa yhteys komennolla:
 
-```bash
+```bash title="Bash"
 # Test connection
 $ ssh -T ssh://git@repo.kamit.fi:45065
 ```
@@ -114,7 +114,7 @@ Alla olevat ohjeet perustuvat [Pyenv Wiki: Suggested build environmet](https://g
 
     Huomaa, että komennossa oleva `\`, jota seuraa välittömästi rivinvaihto, mahdollistaa rivin jakamisen useammalle riville.
 
-```bash
+```bash title="Bash"
 # Install suggested build environment
 sudo apt install build-essential libssl-dev \
     zlib1g-dev libbz2-dev libreadline-dev \
@@ -128,7 +128,7 @@ curl https://pyenv.run | bash
 
 Kun pyenv on asentunut, lisää muutama rivi `.bashrc`-tiedostoon, jotta pyenv toimii oikein. Voit tehdä tämän helposti komennolla:
 
-```bash
+```bash title="Bash"
 echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.bashrc
 echo 'command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.bashrc
 echo 'eval "$(pyenv init -)"' >> ~/.bashrc
@@ -143,7 +143,7 @@ echo 'eval "$(pyenv init -)"' >> ~/.bashrc
 
 Nyt kun sinulla on pyenv, voit asentaa sillä Pythonin.
 
-```bash
+```bash title="Bash"
 # Install Python 3.11.x
 pyenv install 3.11
 
@@ -158,7 +158,7 @@ python --version
 
 Pipx on työkalu, joka mahdollistaa globaalin scopen Python-pakettien asentamisen. Huomaa, että jälkimmäinen `pipx ensurepath` -komento lisää rivejä jo sinulle aiemmin tutuksi tulleeseen `.bashrc`-tiedostoon sekä `.profile`-tiedostoon.
 
-```bash
+```bash title="Bash"
 # Install pipx
 sudo apt install pipx
 
@@ -176,7 +176,7 @@ pipx ensurepath
 
 Tämä vaihe on hyvinkin simppeli. Aja vain seuraava komento:
 
-```bash
+```bash title="Bash"
 # Install cookiecutter
 pipx install cookiecutter
 ```
@@ -187,7 +187,7 @@ Tässä ohjeessa ei asenneta graafista Docker Desktop -ohjelmaa, vaan Docker Eng
 
 Tämän ohjeen kirjoitushetkellä toimivat komennot alla. Ensiksi lisätään Dockerin repositorio APT-paketinhallintaan.
 
-```bash
+```bash title="Bash"
 # Add Docker's official GPG key:
 sudo apt-get update
 sudo apt-get install ca-certificates curl
@@ -205,7 +205,7 @@ sudo apt-get update
 
 Tämän jälkeen asennetaan Docker Engine ja Docker Compose.
 
-```bash
+```bash title="Bash"
 # Install all Docker packages listed by the official documentation
 sudo apt install docker-ce docker-ce-cli \
     containerd.io docker-buildx-plugin \
@@ -214,7 +214,7 @@ sudo apt install docker-ce docker-ce-cli \
 
 Voit tarkistaa, että asennus meni oikein komennolla:
 
-```bash
+```bash title="Bash"
 sudo docker run hello-world
 ```
 
@@ -226,7 +226,7 @@ sudo docker run hello-world
 
 Aktivoi rootless mode, jotta et jatkossa tarvitse sudo-oikeuksia Docker-konttien ajoon.
 
-```bash
+```bash title="Bash"
 # Install prerequisites
 sudo apt install uidmap
 
@@ -251,7 +251,7 @@ systemctl --user start docker.service
 
     Jos haluat, että Docker käynnistyy automaattisesti **ja pysyy päällä** vaikka et olisi kirjautunut sisään, aja myös seuraava rivi:
 
-    ```bash
+    ```bash title="Bash"
     sudo loginctl enable-linger $(whoami)
     ```
 
@@ -263,7 +263,7 @@ Jos et ole vielä alustanut repositorioosi oppimispäiväkirjaa, tee se nyt. Alo
 
     Käytä URLia, jonka löydät Reppu Moodlesta tai jonka opettaja on sinulle neuvonut. Älä luo omia repositorioita omatoimisesti, sillä opettaja luo ne skriptillä Moodle-osallistujalistan perusteella. Jos olet hukassa, kysy opettajalta.
 
-```bash
+```bash title="Bash"
 # Create directory for learning diary
 mkdir -p ~/Code/kurssin-nimi-tahan-2024/
 
@@ -273,7 +273,7 @@ cd ~/Code/kurssin-nimi-tahan-2024/
 
 Seuraavaksi kloonaa oppimispäiväkirjasi repositorio. Tämä on helppoa tehdä kopioimalla Gitlabin ohjeen tarjoamat komennot. Ohjeet löytyvät sinun tyhjästä repositoriostasi, joka on muotoa: `https://repo.kamit.fi/<kurssin-nimi-2024>/<etunimisukunimi>/`.
 
-```bash title="Gitlabin komento"
+```bash title="Bash" title="Gitlabin komento"
 git clone ssh://git@repo.kamit.fi:45065/.../etunimisukunimi/
 cd etunimisukunimi
 git switch --create main
@@ -287,7 +287,7 @@ git push --set-upstream origin main
 
 Seuraa ohjeita, jotka löytyvät [kamk cookiecutters](https://github.com/sourander/kamk-cookiecutters) repositorion README.md-tiedostosta. Lyhyt vastaus on, että aja seuraava komento ja noudata ohjeita:
 
-```bash
+```bash title="Bash"
 cookiecutter gh:sourander/kamk-cookiecutters -f
 ```
 
@@ -295,7 +295,7 @@ cookiecutter gh:sourander/kamk-cookiecutters -f
 
 Avaa oppimispäiväkirja, eli nykyinen kansio, Visual Studio Codessa. Tämä onnistuu helposti komennolla:
 
-```bash
+```bash title="Bash"
 code .
 ```
 
@@ -306,14 +306,14 @@ Tämän jälkeen toimi Visual Studio Codessa, kuten muilla kursseilla on opetett
 
 Aja oppimispäiväkirja komennoilla, jotka neuvotaan `HOW-TO-DOCS.md`-tiedostossa. Tämä tiedosto löytyy oppimispäiväkirjasi juuresta. Lyhyt vastaus on, että seuraavat komennot toimivat:
 
-```bash
+```bash title="Bash"
 # Run docker compose project
 docker compose -f docker-compose-docs.yml up -d
 ```
 
 Avaa nettilelain, Firefox, ja navigoi osoitteeseen `http://localhost:8000`. Siellä pitäisi olla oppimispäiväkirjasi.
 
-```bash
+```bash title="Bash"
 # Shut down the project
 docker compose -f docker-compose-docs.yml down
 ```
@@ -322,7 +322,7 @@ docker compose -f docker-compose-docs.yml down
 
 Kun olet tehnyt ensimmäisen merkintäsi oppimispäiväkirjaan, puske muutokset Repo Kamit Gitlabiin. Tämä neuvotaan toisilla kursseilla, mutta on lyhyimmillään:
 
-```bash
+```bash title="Bash"
 git add .
 git commit -m "First learning diary entry"
 git push

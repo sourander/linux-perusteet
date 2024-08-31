@@ -2,7 +2,7 @@ Jotta levyjä voisi käyttää käyttöjärjestelmässä, täytyy niillä olla o
 
 Olemassa olevat osiot voi listata seuraavalla komennolla:
 
-```bash
+```bash title="Bash"
 $ sudo parted -l
 Model: QEMU QEMU HARDDISK (scsi)                                          
 Disk /dev/sda: 10,7GB
@@ -36,7 +36,7 @@ Huomaa yllä olevasta tulosteesta, että kummallakaan SCSI-levyllä (sda, sdb) e
 
 Yllä mainittu GUID (eli siis GPT-lyhenteen ensimmäinen kirjain) tulee sanoista Globally Unique Identifier, joka näytetään käyttäjälle tyypillisesti heksadesimaalina, joka on eritelty muutamaan katkoviivalla eriteltyyn ryppääseen, joissa kussakin on seuraava määrä digittejä: `<8-4-4-4-12>`. Alla näkyy nykyisten osioiden GUID:t:
 
-```bash
+```bash title="Bash"
 $ sudo blkid /dev/vda
 /dev/vda: PTUUID="b617623d-318a-4180-b190-04037556de27" PTTYPE="gpt"
 
@@ -51,13 +51,13 @@ $ sudo blkid /dev/sda
 
 Kokeillaan osioida yllä mainittu levy `sda`, luoda sille file system, ja mountata levy johonkin, missä sitä voidaan käyttää. Aivan ensimmäiseksi on hyvä varmistaa, että levyä ei ole jo mountattu johonkin. Tässä tapauksessa on vähän mahdotonta, kun levyllä ei ole edes osioida joita mountata, mutta tilanne voi olla toinen, mikäli sinulla on fyysinen kone, ja sen kiintolevyillä on entuudestaan jotakin sisältöä.
 
-```bash
+```bash title="Bash"
 $ mount | grep sda # Tuloste on arvatenkin tyhjä
 ```
 
 Käynnistetään partitiointiohjelma.
 
-```bash
+```bash title="Bash"
 $ sudo parted /dev/sda
 GNU Parted 3.4
 Using /dev/sda
@@ -77,7 +77,7 @@ Tämä käynnistää interaktiivisen ohjelman, joten `$`-merkkiä ei jatkossa ol
 
 Ajetaan seuraavat komennot. Risuaidalla alkavat kommentit eivät kuulu komentoihin.
 
-```bash
+```bash title="Bash"
 (parted) mklabel gpt # kommentti (1)
 
 (parted) print       # (2)
@@ -118,7 +118,7 @@ Information: You may need to update /etc/fstab.
 
 Nyt jos tarkistat `parted -l` komennolla, mitä osioita sinulla on, niin huomaat että levylle on ilmestynyt sekä partition table että yksi osio. Osion `File system` on yhä tyhjä.
 
-```bash
+```bash title="Bash"
 $ sudo parted -l
 Model: QEMU QEMU HARDDISK (scsi)
 Disk /dev/sda: 10,7GB
@@ -138,7 +138,7 @@ Number  Start   End     Size    File system  Name    Flags
 
 Linuxista löytyy komento `mkfs`, mutta sen man pages sanoo: `This mkfs frontend is deprecated in favour of filesystem specific mkfs.<type> utils.` Emmehän siis käydä vanhentunutta komentoa, vaan tuoreempaa. Konepellin alla tämä kutsuu `mke2fs`-ohjelmaa.
 
-```bash
+```bash title="Bash"
 $ sudo mkfs.ext4 -L MyData /dev/sda1
 mke2fs 1.46.5 (30-Dec-2021)
 Discarding device blocks: done                            
@@ -158,7 +158,7 @@ Tässä tapauksessa loimme levyjärjestelmän ext4, mutta myös muita vaihtoehto
 
 ## Osion mounttaus
 
-```bash
+```bash title="Bash"
 # Luo kansio mihin osio mountataan
 $ sudo mkdir /mnt/mydata
 
@@ -183,7 +183,7 @@ Yksi pieni ongelma on vielä jäljellä. Nykyisellään levyä ei mountata buuti
 !!! tip
     Tähän on myös mahdollista käyttää graafisia työkaluja, kuten `gnome-disk-utility` alias Disks. Sinulla ei kuitenkaan ole välttämättä aina työpöytäympäristöä käytettävänä, joten kannattaa opetella myös komentorivin käyttö.
 
-```bash
+```bash title="Bash"
 # Tarkista osion UUID. Ei siis levyn vaan osion (sda1)
 $ sudo blkdid /dev/sda1
 /dev/sda1: LABEL="MyData" UUID="2923e1e0-d42a-42d0-a702-abf4d814dd43" BLOCK_SIZE="4096" TYPE="ext4" PARTLABEL="mydata" PARTUUID="d860c8fb-13ba-4ee0-a3a7-d234d7585ec3"
@@ -191,7 +191,7 @@ $ sudo blkdid /dev/sda1
 
 Lisää rivi fstabiin. Alla näkyy`/etc/fstab`-tiedostota vain muutama rivi. Loput on leikattu pois luettavuuden parantamisen takia:
 
-```bash
+```bash title="Bash"
 # <file system> <mount point>   <type>  <options>       <dump>  <pass>
 # / was on /dev/vda2 during installation
 UUID=a094efbe-85e7-4ca3-ad32-fd590709b753 /               ext4    errors=remount-ro 0       1
@@ -200,7 +200,7 @@ UUID=2923e1e0-d42a-42d0-a702-abf4d814dd43 /mnt/mydata     ext4    defaults      
 
 Jatkossa, kun käynnistät koneen, kernel mounttaa bootin yhteydessä levyn sille määrättyyn paikkaan File System Hierarchyssä. Mikäli haluat tutkia siihen kohdistuneita operaatioita, tutki kernel ring bufferia komennolla:
 
-```bash
+```bash title="Bash"
 $ sudo dmesg | grep sda
 [    3.476610] sd 0:0:0:0: [sda] Attached SCSI disk
 [    4.092008] EXT4-fs (sda1): mounted filesystem 2923e1e0-d42a-42d0-a702-abf4d814dd43 with ordered data mode. Quota mode: none.
@@ -208,7 +208,7 @@ $ sudo dmesg | grep sda
 
 Uusi partitio on näkyvillä muun muassa lsblk komennon outputissa:
 
-```bash
+```bash title="Bash"
 $ lsblk -e 7
 NAME   MAJ:MIN RM  SIZE RO TYPE MOUNTPOINTS
 sda      8:0    0   10G  0 disk 
@@ -230,7 +230,7 @@ Tämän jälkeen voit poistaa mountin. Tämä hoituu komennolla `sudo umount /mn
 
 Ja tämän jälkeen voit poistaa partition:
 
-```bash
+```bash title="Bash"
 $ sudo parted /dev/sda
 
 # Varmista osion ID erityisesti jos niitä on levyllä monta

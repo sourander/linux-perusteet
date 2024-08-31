@@ -19,7 +19,7 @@ int main(int argc, char *argv[]) {
 
 Käännä ohjelma ja kokeile ajaa se eri argumenteilla.
 
-```bash
+```bash title="Bash"
 # Ei argumentteja
 $ ./argue
 
@@ -37,7 +37,7 @@ $ ./argue $SHELL $(whoami) $((5+5))
 
     Kokeile ajaa seuraava: 
     
-    ```bash
+    ```bash title="Bash"
     ./argue kissa koira "Hello, World!"`  # <== Huomaa lisätty huutomerkki! 
     ```
     
@@ -47,7 +47,7 @@ $ ./argue $SHELL $(whoami) $((5+5))
 
 Argumenttien käsittely on yleinen ongelma, joten (GNU) C:ssä on valmiita kirjastoja, jotka auttavat standardisoimaan argumenttien käsittelyä. Parametrien parmiseen soveltuu `unistd.h`:sta löytyvä funktio `getopt` sekä `getopt_long`. Tyypillinen Linux-käyttäjä odottaa, että optionit voi antaa haluamassaan järjestyksessä, ja annetaan yleensä seuraavanlaisessa formaatissa: 
 
-```bash
+```bash title="Bash"
 myprog \ 
   -v                         `# lyhyt toggle-optio` \
   -a value                   `# lyhyt arvo-optio` \
@@ -103,7 +103,7 @@ int main(int argc, char *argv[]) {
 
 Käännä ja kokeile ajaa seuraavasti:
 
-```bash
+```bash title="Bash"
 # Ei argumentteja
 $ ./betterargue
 
