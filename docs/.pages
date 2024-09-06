@@ -3,6 +3,7 @@ nav:
     - linux
     - asennus
     - Peruskäyttö: peruskaytto
+    - CLI: cli
     - paketinhallinta
     - prosessit
     - Tiedostojärjestelmä: tiedostojarjestelma
