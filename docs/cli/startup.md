@@ -151,9 +151,29 @@ Mikä siis kuuluu minne? Jos tarvitset jotakin pysyvää, joka on saatavilla my�
 * Bash: `.bash_profile` tai `.bash_login` tai `.profile`
 * Zsh: `.zprofile` tai `.zlogin`
 
-Jos tarvitset jotakin, joka on saatavilla vain virtuaaliterminaalissa, laita se:
+Jos tarvitset jotakin, joka on saatavilla ainakin pseudoterminaalissa, laita se:
 
 * Bash: `.bashrc`
 * Zsh: `.zshrc`
 
 Z-shellin tapauksessa voit myös käyttää `.zshenv`-tiedostoa, joka ajetaan aina, kun Zsh käynnistyy. Tämä on hyvä paikka asettaa ympäristömuuttujia, jotka ovat käytettävissä kaikissa Zsh-sessioissa. Tämän käyttö ei kuitenkaan ole millään tavoin pakollista.
+
+## Extra: Zsh asentaminen
+
+Ubuntu 24.04:ssä saat Zsh:n näin käyttöön:
+
+```bash
+# Update
+sudo apt update && sudo apt upgrade -y
+
+# Install 
+sudo apt install zsh
+
+# Change your default shell
+chsh -s $(which zsh)
+
+# Notice that it appeared in passwd
+grep $USER /etc/passwd
+```
+
+Huomaa, että tämä ei tule välittömästi käytäntöön. Sinun tulee vähintään logata ulos ja sisään.
