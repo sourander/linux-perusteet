@@ -85,7 +85,7 @@ Bash ei ilmoita "login"-tietoa l-kirjaimella, joten sitä pitää kaivaa vähän
 echo $BASHOPTS | tr ":" "\n"
 ```
 
-Jos kokeilet yllä olevaa komentoa **virtuaaliterminaalissa** (esim. ++ctrl+alt+F3++), saat tulosteen, josta löytyy myös `login_shell`.
+Jos kokeilet yllä olevaa komentoa **virtuaaliterminaalissa** (esim. ++ctrl+alt+f3++ ), saat tulosteen, josta löytyy myös `login_shell`.
 
 !!! warning
 
@@ -176,4 +176,10 @@ chsh -s $(which zsh)
 grep $USER /etc/passwd
 ```
 
-Huomaa, että tämä ei tule välittömästi käytäntöön. Sinun tulee vähintään logata ulos ja sisään.
+Tämän jälkeen voit käynnistää `zsh`-komennolla Z-shellin kertaluonteisesti. Sinulle käynnistyy konfiguraatio-ohjelma, joka näkyy kuvassa alla.
+
+![alt text](../images/zsh-newuser-install.png)
+
+**Kuvio 1:** *Ohjelma `zsh-newuser-install` luo sinulle käynnistystiedostot. Jos sinulle kelpaa defaultit, klikkaa ++2++ ja ++enter++*
+
+Huomaa, että Z-shell ei ole välittömästi täysin käytössä. Tämä siksi, että default shell muutokset astuvat voimaan seuraavan loginin yhteydessä. Loggaa Ubuntusta ulos ja takaisin sisään tai käynnistä koko tietokone uusiksi.
