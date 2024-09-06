@@ -16,7 +16,12 @@ flowchart
 	ohjelma .-> |stderr|näyttö
 ```
 
+## Muita lähteitä
 
+Tämän luvun lisäksi sinua saattavat auttaa oppimisessa erilaiset cheat sheetit, kuten:
+
+* [PDF: Bash Redirections Cheat Sheet](https://catonmat.net/ftp/bash-redirections-cheat-sheet.pdf)
+* [Bash One-Liners Explained, Part III: All about redirections](https://catonmat.net/bash-one-liners-explained-part-three)
 
 ## Uudelleenohjaus
 
