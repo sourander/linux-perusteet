@@ -35,7 +35,7 @@ Tulet tarvitsemaan avuksi näiden kummankin ohjekirjat. Alla on linkit näiden P
 
 Se, mitä startup-tiedostoja ajetaan, riippuu siitä, kuinka Bash tai Zsh on käynnistetty. Kaksi tärkeintä tekijää ovat se, onko shell käynnistetty "login shellinä" ja onko se "interaktiivinen". Tiivistetty selitys näistä on:
 
-* **Login shell**: Bash on käynnistynyt login-prosessin yhteydessä. Tämä tapahtuu esimerkiksi, kun kirjaudut sisään terminaaliin. Tämä on helpointa tehdä painamalla ++ctrl+alt+F3++ ja kirjautumalla sisään. Huomaa, että gnome-terminal ei tyypillisesti käynnistä Bashia login-shellinä: GNOME on jo itsessään tehdä loginin, ja pseudoterminaali on sen child-prosessi.
+* **Login shell**: Bash on käynnistynyt login-prosessin yhteydessä. Tämä tapahtuu esimerkiksi, kun kirjaudut sisään terminaaliin. Tämä on helpointa tehdä painamalla ++ctrl+alt+F3++ ja kirjautumalla sisään. Huomaa, että gnome-terminal ei tyypillisesti käynnistä Bashia login-shellinä: GNOME on jo itsessään suorittanut loginin, ja pseudoterminaali on sen child-prosessi.
 * **Interactive shell**: Shell on käynnistetty niin, että käyttäjä voi syöttää komentoja eli sen stdin, stdout ja stderr ovat kiinnitetty terminaaliin.
   
 Näihin tutustutaan alla tarkemmin.
