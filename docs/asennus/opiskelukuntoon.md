@@ -327,11 +327,3 @@ git add .
 git commit -m "First learning diary entry"
 git push
 ```
-
-
-
-In Youtube format, the same is:
-
-```plaintext
-
-```
