@@ -29,10 +29,10 @@ Tyypillisesti Linux-käyttäjän ei välttämättä tarvitse luoda omia Unit-tie
 $ systemctl list-units --type=service
 
 # Etsi hakusanalla (currently in memory)
-$ systemctl list-units *armor*
+$ systemctl list-units "*armor*"
 
 # Etsi hakusanalla (tiedostot, ei välttämättä ajossa)
-$ systemctl list-unit-files --type=service *bolt*
+$ systemctl list-unit-files --type=service "*bolt*"
 ```
 
 ### Asennetaan uusi
@@ -144,6 +144,12 @@ $ systemctl cat nginx
     $ sudo systemctl get-default
     $ sudo systemctl set-default multi-user.target # vaihtoehtona graphical.target
     $ sudo systemctl reboot
+    ```
+
+    Jos haluat ihan listata nykyisen targetin (eli yleensä `graphical.target` )riippuvuudet, voit käyttää `list-dependencies`-komennon.
+
+    ```bash title="Bash"
+    $ systemctl list-dependencies
     ```
 
 !!! warning
