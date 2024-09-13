@@ -84,19 +84,23 @@ Tutki myös, löytyykö käyttämästäsi työpöytäympäristöstäsi (esim. GN
 
 ## Jumiutuneiden ohjelmien tappaminen
 
-Mikäli jokin ohjelma on auttamattomasti jumissa, voit viime kädessä tappaa sen aina `kill -9 pid`-komennolla. Option `-9` on signaalille `KILL` annettu numero. Kaikki kill-signaalit ja niiden numerot ovat alla:
+Mikäli jokin ohjelma on auttamattomasti jumissa, voit viime kädessä tappaa sen aina `kill -9 pid`-komennolla. Option `-9` on signaalille `KILL` annettu numero. 
+
+!!! tip
+
+    Kaikki kill-signaalit ja niiden numerot saat esille ajamalla `kill -l`. Mikäli output on yhdellä rivillä välilyönnillä erotettuna, muista, että voit putkittaa tulosteen toiselle ohjelmistolle. Kokeile ensin korvata välilyönnit rivinvaihdoilla, ja tämän jälkeen lisää rivinumerot.
+
+Alla on joitakin poimintoja lyhyine selityksineen:
 
 | #   | Signaali | Selitys                                                                                                                                                   |
 | --- | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 1   | HUP      | Hang up. Aikoinaan tällä lyötiin "luuri korvaan" modeemissa. Nykyisin tällä voidaan esimerkiksi pakottaa daemon lataamaan konfiguraatiotiedostot uusiksi. |
 | 2   | INT      | Interrupt. Sama kuin ++ctrl+c++. Ohjelmaa pyydetään sulkeutumaan nätisti.                                                                                 |
-| 3   | QUIT     | Quit. Ohjelmaa pyydetään sulkeutumaan ja kirjoittamaan core dump.                                                                                         |
-| 6   | ABRT     | Abort. Ohjelmaa pyydetään sulkeutumaan ja kirjoittamaan core dump.                                                                                        |
 | 9   | KILL     | Kill. Ohjelmalta ei pyydetä mitään eikä ohjelma täten voi jättää tätä tekemättä. Kernel lopettaa prosessin ajon ja poistaa sen muistista.                 |
-| 14  | ALRM     | Alarm.                                                                                                                                                    |
 | 15  | TERM     | Terminate. Komennon `kill` default. Ohjelmaa pyydetään sulkemaan itsensä.                                                                                 |
+| 19  | STOP     | Stop. Ohjelmaa pyydetään pysähtymään. Sama kuin ++ctrl+z++.                                                                                               |
 
-Tyypillisesti `kill`-komentoa ei pitäisi tarvita laisinkaan. Jos sitä kuitenkin tarvitsee, kokeile ensin `TERM`:n avulla eli `kill pid`. Mikäli ohjelma ei näytä sammutan, aja perään `KILL`. Alla esimerkki:
+Tyypillisesti `kill`-komentoa ei pitäisi tarvita laisinkaan. Jos sitä kuitenkin tarvitsee, kokeile ensin `TERM`:n avulla eli `kill pid` eli `kill -15 pid`. Mikäli ohjelma ei näytä sammutan, aja perään `kill -9 pid`.
 
 ```bash title="Bash"
 # Luo prosessi, joka nukkuu 24h
@@ -113,6 +117,7 @@ PID   TTY           TIME CMD
 ...
 
 $ kill -TERM 29527
+# tai kill -15 29527
 
 ###########################################
 # Mene takaisin ensimmäiseen terminaaliin #
