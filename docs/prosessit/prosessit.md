@@ -198,6 +198,12 @@ $ kill 71645
 $ rm errors.log
 ```
 
+!!! question "Kysymys"
+
+    Selvitä, mitä `disown`-komento tekee. Tarkista jonkin jobin id. Jos id on `1`, aja `disown %1`. 
+    
+    Vihje: Komento liittyy toiminnallisesti `nohup`-komentoon.
+
 ## Avoimien tiedostojen etsiminen
 
 Mikäli haluat saada tietää, mikä ohjelmaa lukee tai kirjoittaa paraikaa johonkin tiedostoon, tähän auttaa komento `lsof`. FD-kentässä olevat numerot viittaavat "Descriptor ID":hen, joista 0 on standard input, 1 on standard output ja 2 on standard error. Numeroa 2 suuremmat ovat ohjelmien itsensä avaamia uusia descriptoreita (esimerkiksi `open()`-funktion puolesta.)
