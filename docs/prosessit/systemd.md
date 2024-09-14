@@ -45,7 +45,7 @@ $ sudo apt update
 $ sudo apt install nginx
 
 # Etsi, mitä kaikkea asentui
-$ systemctl list-units *nginx*
+$ systemctl list-units "*nginx*"
 
 # Voit käyttää tähän myös paketinhallintaa
 $ dpkg -L nginx-common | grep systemd
