@@ -6,6 +6,7 @@ nav:
     - CLI: cli
     - paketinhallinta
     - prosessit
+    - Etäkäyttö: etakaytto
     - Tiedostojärjestelmä: tiedostojarjestelma
     - C-ohjelmointi: c_ohjelmointi
     - ...
