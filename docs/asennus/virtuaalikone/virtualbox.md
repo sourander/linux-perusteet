@@ -1,13 +1,12 @@
-!!! tip "Huom!"
-    Asennukseen liittyvät ohjeet vanhentuvat herkästi. Mikäli tämä dokumentti ei vastaa todellisuutta, olethan ystävällinen ja teet [linux-perusteet -Github-reposta](https://github.com/sourander/linux-perusteet/) Forkin, muokkaat ohjeet vastaamaan nykypäivää, ja pyydät Pull Requestia.
+!!! tip
 
+    Jos et jostain syystä voi asentaa Dual boottia (esim. et uskalla, tai sinulla on todella pieni SSD-levy), seuraavaksi suositelluin vaihtoehto on asentaa Linux Oracle Virtualboxin avulla. 
+    
+    Alla olevassa ohjeessa asennetaan Ubuntu 24.04 LTS. Varmista kurssilla suositeltu versio opettajalta.
 
+!!! note
 
-# Asennus
-
-Alla olevassa ohjeessa asennetaan Ubuntu 24.04 LTS. Voit asentaa esimerkiksi Fedoran hyvin pienin muutoksin.
-
-
+    Jos et saa Virtual Boxia jostain syystä toimimaan, älä jää toimettomaksi vaan ota opettajaan yhteyttä. Jos ongelma ei ratkea, etsitään vaihtoehtoinen tapa (esim. VMware vSphere tai WSL2).
 
 ## Esiasetukset
 
@@ -16,8 +15,7 @@ Alla oleva ohjeistus on testattu Windows 11 Home -versiossa.
 1. Etsi `Turn Windows features on or off`-ikkuna Windowsista.
 2. Kytke `Virtual Machine Platform` päälle.
 
-[Docker:n FAQ](https://docs.docker.com/desktop/faqs/windowsfaqs/#can-i-use-virtualbox-alongside-docker-desktop) suosittelee kytkemään päälle myös `Windows Hypervisor Platform`, mikäli haluat käyttää VirtualBoxia ja Dockeria joskus rinnakkain. Sama feature neuvotaan kytkemään päälle, mikäli haluat käyttää `Hyper-V`:tä ja VirtualBoxia yhdessä. Hyper-V vaatii Windows Pro:n, ja VirtualBox on perinteisesti tullut sen kanssa huonosti toimeen - tai ollut kokonaan toimimatta mikäli se on ollut asennettuna.
-
+[Docker:n FAQ](https://docs.docker.com/desktop/troubleshoot-and-support/faqs/windowsfaqs/#can-i-use-virtualbox-alongside-docker-desktop) suosittelee kytkemään päälle myös `Windows Hypervisor Platform`, mikäli haluat käyttää VirtualBoxia ja Dockeria joskus rinnakkain. Sama feature neuvotaan kytkemään päälle, mikäli haluat käyttää `Hyper-V`:tä ja VirtualBoxia yhdessä. Hyper-V vaatii Windows Pro:n, ja VirtualBox on perinteisesti tullut sen kanssa huonosti toimeen - tai ollut kokonaan toimimatta mikäli se on ollut asennettuna.
 
 
 ## Luo virtuaalikone
@@ -34,6 +32,9 @@ Täytä VirtualBoxissa aukeavaan pop-uppiin tarvittavat tiedot:
 * Kun kysytään, anna virtuaalikoneelle esimerkiksi `4 CPU`:ta ja `8 GB` muistia, olettaen että omassa tietokoneessasi on riittämiin tarjolla.
 * Klikkaa Next.
 
+!!! note
+
+    Linux tulee olemaan virtuaalikoneessa hidas jos sitä vertaa dual boot -asennukseen. Jos haluat sukkelamman kokemuksen, asenna Linux suoraan koneellesi. Tätä varten on [Dual Boot -ohje](dualboot.md).
 
 
 ## Asenna OS
@@ -54,60 +55,20 @@ Täytä VirtualBoxissa aukeavaan pop-uppiin tarvittavat tiedot:
 * Ubuntu installer kysyy tietoja:
     * Valitse `Erase disk and install Ubuntu`
     * Klikkaa Install Now.
-  
 
-Ubuntu installer vahvistaa sinulta muutokset suunnilleen näin:
-```
-If you continue, the changes listed below will be written to the disk. Otherwise, you will be able to make further changes manually.
-
-The partition tables of the following devices are changed:
-SCSI3 (0,0,0)(sda)
-
-The following partitions are going to be formatted
-partition #1 of SCSI3 (0,0,0) (sda) as ESP
-partition #2 of SCSI3 (0,0,0) (sda) as ext4
-```
-
-Et välttämättä tällä hetkellä ymmärrä yllä olevaa tekstiä, mutta kurssin edetessä opit mitä lyhenteet tarkoittavat.
 
 Seuraavissa ruuduissa kysellään maakohtaisia asetuksia, nimeä, käyttäjätunnusta, salasanaa ja niin edelleen. Valitse ne mielihalujesi mukaan.
 
-Kun odottelet hetken, Ubuntu Installer pyytää käynnistämään tietokoneen uusiksi, ja voit aloittaa käytön.
+Kun odottelet hetken, Ubuntu Installer pyytää käynnistämään tietokoneen uusiksi, ja voit aloittaa käytön. Jos kone ei meinaa käynnistyä, poista asennusmedia CD/DVD-asemasta ja paina Restart VM.
+
 
 ## UKK
 
+### K: Juuri asennettu Ubuntu ei käynnisty.
 
-#### K: Käyttäjä ei ole sudoers-ryhmässä.
+V: Käynnistä virtuaalikone uudelleen. Jos se ei auta, tarkista että asennusmedia (eli `.ISO`-tiedosto) on poistettu virtuaalikoneen CD/DVD-asemasta.
 
-V: Tämä johtunee siitä, että `Skip Unattended Installation` ei ole ollut valittuna Ubuntua asentaessa, mutta voit yrittää korjata tilanteen. 
-
-Avaa terminaali jommalla kummalla tavalla:
-1. Klikkaa ++win++ -näppäintä ja kirjoita Terminal.
-2. Klikkaa ++ctrl+alt+t++
-
-Mikäli terminaali ei käynnisty jostain syystä, mene virtuaaliterminaaliin. Klikkaa ++ctrl+alt+f3++ vaihtaaksesi virtuaaliterminaaliin. Siinä pitäisi näkyä sisäänkirjautuminen tekstimuodossa. Kirjaudu sisään. Mikäli F3:lla ei löydy virtuaaliterminaalia, kokeile muut F-näppäimet läpi.
-
-Kun sinulla on terminaali esissä ja olet kirjaunut sisään, kirjoita:
-
-```bash title="Bash"
-# Loggaa root-käyttäjälle
-su -
-
-# Lisää oma käyttäjä sudoers-ryhmään
-usermod -aG sudo <tähän-käyttäjänimesi>
-
-# Loggaa ulos root-käyttäjästä
-exit
-
-# Loggaa ulos myös omasta käyttäjästäsi
-# Sudo toimii kun kirjaudut taas sisään
-exit
-```
-
-Mikäli yllä oleva koodi toimi, ja todellakin pystyit kirjautumaan root-käyttäjä sisään syöttämättä salasanaa, on syytä olla huolissaan. Varmistathan, että jatkossa sillä ei pysty kirjautumaan. Vinkki: etsi huutomerkkiä (`!`) ohjeesta `man 5 shadow`.
-
-
-#### K: Ruudun yllä kalenterissa näkyy kummallisia merkkejä. Terminaali ei myöskään aukea.
+### K: Ruudun yllä kalenterissa näkyy kummallisia merkkejä. Terminaali ei myöskään aukea.
 
 V: Tämä johtunee siitä, että `Skip Unattended Installation` ei ole ollut valittuna Ubuntua asentaessa, mutta se on helposti korjattavissa. Sinulla ovat kieliasetukset väärin. 
 
@@ -117,7 +78,7 @@ V: Tämä johtunee siitä, että `Skip Unattended Installation` ei ole ollut val
 4. Loggaa ulos ja sisään.
 
 
-#### K: En voi kopioida leikepöydältä tietoa VM:n ja Hostin välillä
+### K: En voi kopioida leikepöydältä tietoa VM:n ja Hostin välillä
 
 Asenna Guest Additions. Tämä hoituu näin:
 
@@ -130,6 +91,6 @@ Jos kohta 2:n Pop-Up ei ilmesty, klikkaa työpöydältä CD ROM -ikonia, jolloin
 
 Jos kohdan 3 ohje ei toimi, pakota levy ulos. Valitse VirtualBoxista `Devices => Optical Drives => Remove disk from virtual drive`. Klikkaa Force pop-uppiin jos ei muuten lähde.
 
-#### K: VM on päällä, mutta ruutu on musta.
+### K: VM on päällä, mutta ruutu on musta.
 
 Anna koneen näytönohjaimelle lisää muistia. Sammuta kone ja säädä sen asetuksista `Display => Video Memory: 64 MB`

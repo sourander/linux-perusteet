@@ -6,24 +6,9 @@ Oppimateriaali on tarkoitettu Kajaanin Ammattikorkeakoulun ensimmäisen tai tois
 
 **Kuvio 1:** *DALL-E 3:n näkymys `sudo`-oikeuksin varustetusta pingviinistä.*
 
-## Koodin lukuohje
+## Opiskeluvinkki
 
-Kurssin komennot esitetään koodisnippeteissä siten, että rivi alkaa tyypillisesti `$`-merkillä. Tuloste kirjoitetaan alle ilman etuliitteitä. Ennen seuraavaa komentoa jätetään tyhjä rivi. Kommentit alkavat `#`-merkillä, ja ne voivat olla joko omina riveinään tai koodirivin perässä. Mikäli kommentin vieressä on ristipääruuvia muistutava ikoni, sitä klikkaamalla aukeaa pidempi kommentti.
-
-```bash title="Bash"
-$ komento
-tuloste
-
-# Omalla rivillä oleva kommentti
-$ komento-kaksi --parametri
-tuloste
-tuloste jatkuu
-
-$ komento # kommentti (1)
-tuloste
-```
-
-1. Tämä tässä on pidempi kommentti, mikäli yhden tai kahden sanan seloste ei riitä.
+Tämä kurssi vaatii kohtalaisen paljon oma-aloitteisuutta ja itseopiskelua, ja tämän vuoksi kurssin aikana opettaja on resursoinut reilusti aikaa opiskelijoiden auttamiseen. Jos jokin komento ei toimi, älä nosta käsiäsi pystyyn, vaan kysy rohkeasti apua.
 
 
 
