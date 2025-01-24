@@ -1,7 +1,6 @@
 import re
 
 from pathlib import Path
-from typing import Generator
 from dataclasses import dataclass
 from textwrap import dedent
 
