@@ -1,3 +1,13 @@
+---
+priority: 210
+---
+
+# Komennot
+
+## Komentojen perusteet
+
+### Flägit ja argumentit
+
 GNU Bashin shell-syntaksissa välilyönti, tab, newline ja muut metamerkit (`|`, `&`, `;`, `(`,`)`, `<`, `>`) toimivat erottimina, jolla käyttäjän syöttämä (tai tiedosta luettu) syöte jaetaan osiksi, jotka sittemmin tunnistetaan joko komennoiksi tai operaattoreiksi. Komennot voivat olla sisäisiä (eng. built-in) kuten `cd` tai ulkoisia kuten `nano`. Ne voivat olla myös aliaksia tai funktioita. Tarkemmat shellin vaiheet [löytyvät ohjekirjasta](https://www.gnu.org/software/bash/manual/bash.html#Shell-Operation). Tärkeää on muistaa, että välilyönti ja newline ovat erottimia.
 
 UNIX:stä periytyvissä käyttöjärjestelmissä komennot noudattavat tyypillisesti POSIX-standardiperheen ["utility argument syntax"-käytäntöä](https://pubs.opengroup.org/onlinepubs/9699919799/basedefs/V1_chap12.html). Mikäli käytössä on bash-yhteensopiva shell, kuten yleensä on, niin lisämauteena ovat [GNU:n lisäämät pitkät option-nimet](https://www.gnu.org/prep/standards/html_node/Command_002dLine-Interfaces.html#Command_002dLine-Interfaces). Mikäli käytät jotakin muuta shelliä kuin bashiä, toiminnallisuus voi poiketa.
@@ -49,12 +59,8 @@ $ ls \
 > --ignore=Desktop ~
 ```
 
-!!! question "Tehtävä"
-    Kokeile yllä olevaa monirivistä komentoa shellissä. Kirjoita se rivi riviltä: älä yritä kopioida ja liittää rimpsua kokonaisuudessaan.
 
-
-
-## Useat argumentti
+### Useat positio argumentit
 
 Huomaa, että monet komennot huolivat useita argumentteja. Alla esimerkki:
 
@@ -73,9 +79,9 @@ Joskus, joskin harvoin, optioneiden päättymistä ja argumenttien alkamista ero
 $ ls -- ~/Downloads ~/Documents
 ```
 
+## Apua
 
-
-## Komentojen löytäminen
+### Komentojen löytäminen
 
 ![Touch on vaikea arvata](../images/turnoff_just-touch-it.png)
 
@@ -125,12 +131,7 @@ ls is an alias for ls -G
 ls is /bin/ls
 ```
 
-!!! question "Tehtävä"
-
-    Kokeile yllä olevia komentoja jotakin toista ohjelmaa, kuten `bash` tai `nano` tai `python3` vasten.
-
-
-## Komentojen ohjeiden löytäminen
+### Komentojen ohjeiden löytäminen
 
 Alla joitakin hyödyllisiä tapoja tutustua komennon sielunelämään.
 
@@ -147,9 +148,9 @@ Alla joitakin hyödyllisiä tapoja tutustua komennon sielunelämään.
 6. Komento `type <komento>` paljastaa, onko komento alias, built-in vai jossakin PATH:n lokaatiossa oleva ohjelma.
 7. Internetin hakukoneet. Varmistathan, että ymmärrät mitä komennot tekevät ennen kuin ajat niitä.
 
+## Merkkijonot ja muuttujat
 
-
-## Muuttujat
+### Muuttujat
 
 Voit luoda nykyisen shellin skooppiin muuttujia ja käyttää niitä muun muassa lyhentämään komentoja. Huomaa, että `=`-merkin ympärillä ei saa olla välilyöntejä. Alla esimerkki:
 
@@ -195,14 +196,10 @@ $ export AWS_ACCESS_KEY_ID=AKIAIOSFODNN7EXAMPLE
 
 Mikäli tunnuksia sisältävät ympäristömuuttujat ovat asetettuina, AWS CLI -komennot, kuten S3-bucketit listaava `aws s3 ls`, käyvät poimimassa itselleen tärkeitä arvoja ympäristömuuttujista. Huomaathan, että konfiguraatiotiedostot ovat yleisesti turvallisempina pidetty keino asettaa konfiguraatiot paikoilleen: jokin ohjelma saattaa vikatilanteessa tulostaa ympäristömuuttujia, ja näin vuotaa arkaluonteisia arvoja väärien silmäparien katseltaviksi.
 
-!!! question "Tehtävä"
-    Tutustu jo valmiiksi asetettuihin ympäristömuuttujiin komennolla `printenv`.
 
+### Merkkijonot
 
-
-## Merkkijonot
-
-Komennoissa käytetään usein argumentteina merkkijonoja, joten tässä välissä on hyvä oppia, kuinka shell reagoi tiettyihin metamerkkeihin aiheuttaen 
+Komennoissa käytetään usein argumentteina merkkijonoja, joten tässä välissä on hyvä oppia, kuinka shell reagoi tiettyihin metamerkkeihin. Alla on esimerkkejä: 
 
 ```bash title="Bash"
 $ echo 'Onko $USER täällä?'     # ''-merkit tekevät merkkijonosta literaalin
@@ -254,9 +251,9 @@ $ echo -n "ä" | xxd
 
 **Kuvio 1:** *Notepad++ Windowsissa tuottaa vakiona rivinvaihdossa kaksi merkkiä: CR (`\r`) sekä LF (`\n`). Linuxissa käytössä on tyypillisesti vain jälkimmäinen.*
 
-!!! question "Tehtävä"
+!!! note
 
-    Nämä merkit voivat joskus aiheuttaa hämmennystä, jos joku lähettää Linux-ympäristöön esimerkiksi konfiguraatiotiedoston, joka on luotu Windows-ympäristössä huolimattomasti. Selvitä, mikä on "CR LF":n historia rivivaihtona. Mitä CR ja LF käytännössä edustavat? 
+    Nämä merkit voivat joskus aiheuttaa hämmennystä, jos joku lähettää Linux-ympäristöön esimerkiksi konfiguraatiotiedoston, joka on luotu Windows-ympäristössä huolimattomasti. Ota tästä koppi ja selvitä, mikä on "CR LF":n historia rivivaihtona. Mitä CR ja LF käytännössä edustavat? 
 
 
 
@@ -278,3 +275,77 @@ Ota selvää kustakin komennosta alla olevasta taulukosta.
 !!! tip
 
     Komentoriviltä ajettavien käskyjen ajamiseen löydät reilusti esimerkkejä ja snippettejä Github-repositoriosta nimeltään [the-art-of-command-line](https://github.com/jlevy/the-art-of-command-line)
+
+
+
+## Tehtävät
+
+!!! question "Tehtävä: Monirivinen komento"
+    Kokeile alla olevaa monirivistä komentoa shellissä. Kirjoita se rivi riviltä: älä yritä kopioida ja liittää rimpsua kokonaisuudessaan. Kopiointi ei tule toimimaan `>`-merkkien takia, jotka kuuluvat promptiin eivätkä komento.
+
+    ```bash
+    $ ls \
+    > -l --all \
+    > --human-readable \
+    > --inode \
+    > --ignore=Desktop ~
+    ```
+
+!!! question "Tehtävä: Standardoi hakemistorakenne"
+
+    IT-alalla on tärkeää olla järjestelmällinen: älä sotke kotihakemistoasi turhilla tiedostoilla! Päätä ja luo hakemistorakenne, jossa voit kokeilla bash-komentoja ja missä voit tämän kurssin tehtävät.
+
+    Kenties hyvä lokaatio olisi: `~/harjoitukset/<viikkonumero>/<osion_otsikko>/<tehtävä>`.
+
+    Huomaa, että `<jotain>`-merkinnät ovat paikanpitäjiä, jotka tulee korvata oikeilla arvoilla. Esimerkiksi `~/harjoitukset/1/komennot/1_standardi/`. On sinun valintasi, käytätkö viikkonumeroa, ja jos käytät, käytätkö kurssin juoksevaa viikkonumeroa vai kalenteriviikkoa. Ole kuitenkin johdonmukainen ja perustele valintasi.
+
+    Harjoittele kyseisen nestatun hakemistorakenteen luomista ja siihen siirtymistä (`cd`-komennolla).
+
+!!! question "Tehtävä: Graafinen tiedostoselain"
+
+    Tällä kurssilla käytetään pääasiassa terminaalia, mutta koska olemme GNOME-työpöydässä, on hyvä opetella luotujen tiedostojen ja hakemistojen löytäminen myös graafisesti. Tämä voi samalla madaltaa Linuxin käytön kynnystä.
+
+    Navigoi Nautilus-työkalulla luomaasi hakemistorakenteeseen ja tarkastele sen sisältöä.
+
+    Vinkki: kokeile ajaa terminaalissa komento `open .` kun olet aiemmin luomassasi hakemistossa (esim. `~/harjoitukset/1/komennot/1_standardi/`)
+
+!!! question "Tehtävä: IsOt jA PiEnEt kIrJaImEt"
+
+    Kokeile luoda seuraavan nimiset hakemistot samaan lokaatioon (esim. `~/harjoitukset/1/komennot/4_case/`):
+
+    * `CaseSensitive`
+    * `casesensitive`
+    * `CASESENSITIVE`
+
+    Onko se sallittua? Toimiko tämä samoin Windowsissa?
+
+!!! question "Tehtävä: Välilyönnit tiedostonimissä"
+
+    Selvitä, kuinka voit luoda hakemiston, jonka nimessä on välilyönti (esim. `~/harjoitukset/1/komennot/5_space/Hakemiston Nimi`). Voit kokeilla samaa myös tiedostonimellä.
+    
+    Selvitä myös, kuinka voit siirtyä tähän hakemistoon (`cd`-komennolla) tai kuinka voit nimetä sen uudestaan (esim. `hakemiston_nimi`).
+
+!!! question "Tehtävä: Read The Fine Manual ja date-komento"
+
+    Kuvitellaan, että luit juuri, että lipunmyynti Best Summit Ever -tapahtumaan alkaa 2 vuorokauden, 19 tunnin ja 42 minuutin päästä. Selvitä `date`-komennon ja sen parametrien avulla, milloin tämä aika on.
+
+    Käytä tässä dokumentissa neuvottuja tapoja löytää ohjeita komennolle: älä kysy suoraan oikeaa vastausta tekoälyltä. Oppimispäiväkirjassasi pitäisi näkyä päättelyketju ja se, mistä kohtaa mitä dokumenttia löysit tarvittavan tiedon.
+
+!!! question "Tehtävä: Kissa, ananas, avaruus ja pari muuta"
+
+    Tallenna `peruskaytto_luo_filut.sh` tiedosto hakemistoon `~/harjoitukset/komennot/tehtava7/`. Sen voi ladata `wget`-ohjelmalla GitHubista tämän kurssin repositoriosta. Tee scriptistä ajettava ja aja se. Ohjeet alla:
+
+    ```bash
+    # Lataa
+    wget https://raw.githubusercontent.com/sourander/linux-perusteet/refs/heads/main/kurssitiedostot/peruskaytto_luo_filut.sh
+
+    # Tee siitä ajettava
+    chmod +x peruskaytto_luo_filut.sh
+
+    # Aja se
+    ./peruskaytto_luo_filut.sh
+    ```
+
+    Skripti generoi useita hakemistoja ja tiedostoja. Kaikki tiedostot ovat aluksi jarjestelemattomat/-hakemistossa. Siirrä tiedostot komentokehotteella hakemistoihin, joihin luulet niiden kuuluvan.
+
+    Vinkki: Jos sinun tarvitsee aloittaa alusta, tuhoa koko `tehtava7/`-hakemisto ja aloita alusta.

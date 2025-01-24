@@ -1,3 +1,10 @@
+---
+priority: 710
+---
+
+
+# Osiot
+
 Jotta levyjä voisi käyttää käyttöjärjestelmässä, täytyy niillä olla osio tai useampi (eng. partition). Osiointiin voi käyttää ohjelmaa `parted` tai `fdisk`. Ensimmäisestä löytyy myös GUI-versio nimellä `gparted`. Osiot tallennetaan **kyseisellä levyllä** olevaan osiointitaulukkoon (eng. partitioning table), joka on (ainakin loogisen osoitteen puolesta) levyn alussa, eli HDD:n tapauksessa sen voi kuvitella olevan pyörivän kiekon ulkolaidalla. SSD:n tapauksessa pyörivää kiekkoa ei ole, mutta loogiset osoitteet löytyvät silti. Varsinaiset partitiot eli ohjelmien tallentama data tallennetaan kiekon (tai median) alueille, joita ei ole varattu GPT:n käyttöön.
 
 Olemassa olevat osiot voi listata seuraavalla komennolla:

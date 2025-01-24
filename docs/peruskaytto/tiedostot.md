@@ -1,3 +1,11 @@
+---
+priority: 200
+---
+
+# Tiedostot
+
+## Linux vs. Windows
+
 Linuxin (ja UNIX:n) hakemistorakenne voi tuntua oudolta, mikäli on aiemmin tottunut Windowsin vastaavaan. Windowsissa yksi fyysinen tallennuslaite (kiintolevy, optinen asema, muistikortinlukija) löytyy tyypillisesti asemasta, joka merkataan kirjaimella (eng. drive-letter). Kiintolevyn osio, jolle Windows on asennettu, löytyy usein C-asemasta eli polusta `C:\`. Mikäli tietokoneessa on toinen kiintolevy, se voidaan tuntea esimerkiksi `D:\`-asemana. `E:\` on esimerkiksi CD-asema tai toinen kiintolevy. Käyttäjä voi määrittää nämä levykohtaisesti itse. Tarnnuksena mainittakoon, että laite:asema ei ole aina välttämättä one-to-one suhde; käyttäjä voi esimerkiksi luoda useasta kiintolevystä RAID-henkisen `Windows Storage Pool`:n, jolloin monta fyysistä levyä löytyy yhden aseman kirjaimen takaa.
 
 Linuxissa tilanne on hyvin toinen. Asemia ja niiden kirjaimia ei ole olemassa. Hakemistorakenteen juuri ei siis ala laitteen/aseman kirjaimesta vaan `/`-merkistä, joka toimii Linuxissa hakemistoerottimena. Hakemistot muodostavat puurakenteen samalla tavalla kuin Windowsin hakemistot, joten on mahdollista, että `kissa.txt` sijaitsee polussa `/a/b/c/kissa.txt`. Yksittäinen hakemisto, kuten `/home` tai `/var`, voi sijaita saman levyn eri partitiolla tai jopa kokonaan eri levyllä kuin valtaosa käyttöjärjestelmästä.
@@ -29,8 +37,9 @@ Alla erittäin karkea taulukko Linuxin ja Windowsin tiedosto/kansiorakenteen ero
 | Ajettavan tiedoston pääte         | Ei mitään väliä               | .exe                    |
 
 
+## Spesifikaatiot
 
-## Filesystem Hierarchy Standard
+### Filesystem Hierarchy Standard
 
 Linuxin tiedostojärjestelmän standardi löytyy [Filesystem Hierarchy Standard (linuxfoundation.org)](https://refspecs.linuxfoundation.org/FHS_3.0/fhs/index.html)-sivustolta, mutta alla on listattuna tärkeimmät juuritason kansiot:
 
@@ -54,3 +63,32 @@ Linuxin tiedostojärjestelmän standardi löytyy [Filesystem Hierarchy Standard 
     Tyypillisesti distribuution oma paketinhallinta (esim. apt) asentaa ohjelman eri tyyppiä edustavat tiedostot eri lokaatioihin: binääri `/usr/bin` hakemistoon, kirjastot `/usr/lib`-hakemistoon, konfiguraatiot `/etc`-hakemistoon, data `/var`-hakemistoon ja niin edelleen.
 
     Tälle on vaihtoehtona `/opt`, mihin ohjelmat asennetaan jonkin paketinhallinnan (esim. Homebrew) toimesta. Ohjelmat ovat tällöin self-contained, eivätkä ole pirstaloitu `/usr`-hakemistoon. Tämä on tyypilisesti Windows-käyttäjille tutumpi tapa (vrt. `C:\Program Files\Ohjelmannimi`).
+
+### Base Directory Specification
+
+XDG Base Directory Specification (XDG BDS) on FSH:een läheisesti liittyvä määrittely, joka määrittelee, missä käyttäjän tiedostot sijaitsevat. Tähän liittyvä konventio on tallentaa käyttäjän oman binääritiedostot `/home/username/.local/bin/`-hakemistoon. Jos esimerkiksi haluat luoda oman skriptin, jota **juuri sinä** voit ajaa mistä tahansa, voit tallentaa sen tähän hakemistoon. Samaan hakemistoon tallentuvat usein myös käyttäjän omat ohjelmat, jotka eivät ole distribuution paketinhallinnassa.
+
+Aiemmin mainitun `~/.local/bin` lisäksi muita siihen liittyviä merkittäviä hakemistoja ovat:
+
+* `$XDG_CONFIG_HOME` (oletus `~/.config/`) - Käyttäjän konfiguraatiotiedostot
+* `XDG_DATA_HOME` (oletus `~/.local/share/`) - Käyttäjän data, kuten pelitallennukset
+
+Jos ympäristömuuttujaa ei ole asetettu, käytetään oletusarvoja. On tyypillistä, että asentamasi ohjelma luo kotikansioosi binäärejä, konfiguraatioita ja dataa näihin hakemistoihin - ja joskus myös hakemistoon, joka on piilotettu hakemisto kotihakemistossa (esim. `.ohjelmanimi/`, kuten `.kube`, `.azure`, `.ssh`, ...).
+
+## Tehtävät
+
+!!! question "Tehtävä: Hakemistopuu"
+
+    Piirrä valitsemallasi työkalulla hakemistopuu, joka alkaa juuresta, ja sisältää seuraavat tiedostot kaikkine hakemistoineen. Älä unohda juurihakemistoa.
+
+    ```plaintext
+    /home/pekka/.bashrc
+    /home/pekka/Desktop/P.jpg
+    /home/liisa/.bashrc
+    /home/liisa/Desktop/L.jpg
+    /etc/crontab
+    /etc/cron.d/anacron
+    /dev/
+    ```
+
+    Työkalu voi olla kynä ja paperi, Excalidraw, OpenOffice Draw tai vaikkapa ASCII Draw.

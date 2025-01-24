@@ -1,3 +1,9 @@
+---
+priority: 310
+---
+
+# Standardivirrat
+
 Tyypillinen ohjelma ottaa syötteensä näppäimistöltä tai tiedostosta ja tulostaa palautuvan virran näytölle. Tähän työhön osallistuu kolme eri standardivirtaa:  standardisyöte (**stdin**), standardituloste (**stdout**) ja standardivirhe (**stderr**). Näitä striimejä edustavat luvut 0, 1 ja 2 samassa järjestyksessä.
 
 ```mermaid
@@ -90,10 +96,6 @@ flowchart
 	tr .-> |stderr|näyttö
 ```
 
-!!! question "Tehtävä"
-
-    Selvitä, mitä komento `tee` tekee. Se liittyy standardivirtoihin, mutta kuinka?
-
 ## Here document
 
 Here document on tapa syöttää useita rivejä komentoriville. Tämä on hyödyllistä esimerkiksi silloin, kun haluat luoda tiedoston sisällön komentoriviltä. Tämä onnistuu esimerkiksi seuraavasti:
@@ -106,3 +108,9 @@ $ cat > tiedosto.txt << EOF
 ```
 
 Lue aiheesta lisää esimerkiksi [Wikipedia: Here document](https://en.wikipedia.org/wiki/Here_document).
+
+## Tehtävät
+
+!!! question "Tehtävä: tee"
+
+    Selvitä, mitä komento `tee` tekee. Se liittyy standardivirtoihin, mutta kuinka?

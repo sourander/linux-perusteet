@@ -49,6 +49,9 @@ markdown_extensions:
   - pymdownx.superfences
   - pymdownx.tabbed:
       alternate_style: true
+  # Task lists (TODO lists)
+  - pymdownx.tasklist:
+      custom_checkbox: true
 
 plugins:
   # Navigation page ordering

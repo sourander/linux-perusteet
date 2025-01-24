@@ -1,3 +1,11 @@
+---
+priority: 300
+---
+
+# Terminaali
+
+## Terminologiaa
+
 Linuxia voi käyttää usealla eri käyttöliittymällä. Termistö tulee yllättävänkin kaukaa historiasta, lue koko tarina täältä: [A Guide to the Terminal, Console, and Shell (thevaluable.dev)](https://thevaluable.dev/guide-terminal-shell-console/). Alla sama aihe lyhyemmin suomeksi. 
 
 Kaukokirjoitin (eng. teleprinter), suurimpana valmistaja **t**ele**ty**pe (`=> tty`), oli fyysinen laite, joka koostui näppäimistöstä ja tulostimesta, ja joka lähetti viestin vastaanottajalle esimerkiksi puhelinlankoja pitkin. Viesti tulostettiin paperille. Näitä käytettiin ==jo 1800-luvun lopulla==. Myöhemmin, tietokoneiden aikakaudella eli 1900-luvun puolivälin tienoilla, kaukokirjoittimia (`muista: tty`) käytettiin lähettämään viestejä keskustietokoneisiin (eng. mainframe).
@@ -16,11 +24,11 @@ Ohjelma, joka tulkitsee `/dev/tty`:n sisältöä, on shell. Alunperin tämä oli
 | Terminaali               | Terminaali on kone - tai yleisemmin virtuaaliterminaali eli ohjelma - jossa shell ajetaan. Konsoli on käytännössä sama asia.                                                                                                                                                                                                                                                                       |
 | Pseudoterminaali         | Ohjelma, jota käyttäjä ajaa graafisessa käyttöliittymässä, ja joka emuloi terminaalia. Käytät pseudoterminaalia, kun olet graafisessa käyttöliittymässä ja etsit jostakin kuvakkeen "Terminal".                                                                                                                                                                                                    |
 
+## Eri sortin terminaaleja
 
+### Virtuaaliterminaalit
 
-## Virtuaaliterminaalit
-
-Mikäli olet kirjautunut virtuaaliterminaaliin (++ctrl+alt+f3++), voit tarkistaa mihin virtuaaliterminaaliin shelli on kiinnittynyt:
+Et todennäköisesti ole kirjautunut suoraan virtuaaliterminaaliin Bashillä juuri nyt. Mikäli olisit, sinulla ei olisi graafista työpöytäympäristöä vaan Bash aivan koko ruudun leveydeltään. Tällöin voisit tarkistaa `tty`-komennolla, mikä on käyttämäsi virtuaaliterminaalin numero.
 
 ```bash title="Bash"
 $ tty
@@ -30,20 +38,10 @@ $ echo $TERM
 linux
 ```
 
-Kokeile myös vaihtoehtoista tapaa vaihtaa virtual terminaalia:
 
-```bash title="Bash"
-# Lue
-$ man chvt
+### Pseudoterminaalit
 
-# Kokeile
-$ chvt 4
-```
-
-
-## Pseudoterminaalit
-
-Jos ajat saman komennnon työpöytäympäristön terminaalissa (++ctrl+alt+t++), eli esimerkiksi ohjelmassa nimeltään `gnome-terminal`, saat erilaisen tuloksen. Tämä johtuu siitä, että työpöytä itsessään on shell (esim. `GNOME Shell`) ja käyttää `tty`:tä konepellin alla.
+Olet mitä todennäköisemmin GNOME-työpöydällä, joka on siis johonkin `tty#`:ään kiinnittynyt `GNOME Shell`. Sinun varsinainen *shell* on siis graafinen käyttöliittymä. Jos avaat Terminal-sovelluksen, eli `gnome-terminal`, aukeaa pseudoterminaali, joka emuloi terminaalia. Tässä tapauksessa `tty`-komennon tuloste voi olla pettymyksellinen.
 
 ```bash title="Bash"
 $ tty
@@ -53,11 +51,53 @@ $ echo $TERM
 xterm-256color
 ```
 
+### Virtuaaliterminaaliin ja takaisin
+
+Oletetaan, että olet GNOME-työpöydässä. Haluat käydä virtuaaliympäristössä - ja mielellään löytää vielä takaisinkin. Vaihtoehtoja on kaksi:
+
+* Käytä pikanäppäintä ++ctrl+alt+f4++. (tai jokin muu F-näppäin)
+* Käytä komentoa `chvt`.
+
+Ennen kuin teet kumpaakaan, tarkista, mitä sessioneita on jo olemassa:
+
+```bash title="Bash"
+loginctl
+```
+
+```plaintext title="stdout"
+SESSION  UID USER     SEAT  TTY  STATE  IDLE SINCE
+      2 1000 opettaja seat0 tty2 active no   -    
+```
+
+Tässä esimerkissä on vain yksi sessio, joka on aktiivinen - ja näinhän on oletettavaa, jos minä olen ainut koneeseen kirjautunut henkilö. Kyseinen sessio (2) on kiinnitetty tty2:een ja on aktiivinen. Kyseisessä virtuaaliterminaalissa on kiinnittyneenä siis nykyinen GNOME Shell työpöytineen. Kokeillaan vaihtaa johonkin toiseen virtuaaliterminaaliin; tällöin terminaalissa käynnistyy käyttäjän vakioshell eli yleensä Bash. Käytä vaihtamiseen harkintasi mukaan joko pikanäppäinyhdistelmää tai `chvt`-komentoa. Luethan ensin `man chvt`-ohjeet. Ohjeista pääset pois painamalla `q`-näppäintä.
 
 
-## Peruskäyttö
+```bash title="Bash"
+$ sudo chvt 4  # tai paina ctrl+alt+f4
 
-Huomaa, että käyttämäsi shell voi olla jokin muu kuin bash. Voit selvittää yleensä jollain seuraavista komennoista. Komennon käyttö on simppeliä: kirjoita se ja paina ++enter++.
+# HOX! Tässä välissä ruutu muuttuu mustaksi ja sinulle näkyy kirjautumisnäyttö.
+# Kirjoita käyttäjätunnus ja sitten salasana.
+# Sitten:
+
+$ tty        # Tarkista, olisiko tämä kenties /dev/tty4
+$ loginctl   # Tarkista, onko uusi sessio listalla
+```
+
+Pääset takaisin alkuperäiseen istuntoon joko ++ctrl+alt+f2++ tai `chvt 2`-komennolla, olettaen, että tty:n numero on 2 kuten minun esimerkissäni. Jos vaihdat johonkin toiseen, luot uusia istuntoja. Huomaa, että jos yrität jatkossa sammuttaa tietokoneen, niin Ubuntu varoittaa, että muita käyttäjiä on järjestelmään kirjautuneena:
+
+![alt text](image.png)
+
+**Kuvio 1.** Varoitus *Other users are logged in* ilmaantuu, jos yrität sammuttaa tietokoneen.
+
+!!! tip
+
+    Voit sulkea sessioita `loginctl`-komennolla. Esimerkiksi `loginctl terminate-session 3` sulkee session 3. Ja kuten ehkä arvaat, voit tarkistaa `loginctl`-komennolla sarakkeesta `SESSION`, mikä on minkäkin sessionin ID.
+
+## Bashin peruskäyttö
+
+### Tunnistaminen
+
+Huomaa, että käyttämäsi shell voi olla jokin muu kuin Bash. Voit selvittää yleensä jollain seuraavista komennoista. Komennon käyttö on simppeliä: kirjoita se ja paina ++enter++.
 
 ```bash title="Bash"
 $ echo $0
@@ -74,15 +114,12 @@ Bashin käyttöohjeen löydät joko distribuution sivuilta [Ubuntu Manpage: bash
 
 ```bash title="Bash"
 $ man 1 bash # Bashin manuaali (1)
-...
-
 $ man man    # Manuaalin manuaali
-...
 ```
 
 1. Komento `man` avaa ohjeet pitkiä tekstitiedostoja sivuttavassa ohjelmassa nimeltään `pager`. Lue ohjeet ohjelman tulosteen eli ruudun alalaidasta. 
 
-## Näppärät pikanäppäimet
+### Näppärät pikanäppäimet
 
 Alla olevat pikanäppäimet toimivat tyypillisesti Bash:ssä ja sitä vastaavissa shelleissä.
 
@@ -97,10 +134,45 @@ Alla olevat pikanäppäimet toimivat tyypillisesti Bash:ssä ja sitä vastaaviss
 
 
 
-## Vaarallisemmat pikanäppäimet
+### Vaarallisemmat pikanäppäimet
 
 | Pikanäppäin | Toiminto                                                                                                                                                                                                                                      |
 | ----------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | ++ctrl+d++  | Virallisesti EOF. Sillä pääsee esimerkiksi `cat`-sovelluksesta ulos, mutta `bash`:ssä käytettynä se on sama kuin kirjoittaisi `exit`.                                                                                                         |
 | ++ctrl+c++  | Interrupt-signaali (SIGINT). Lopettaa ohjelman, millä voi pyrkiä tappamaan jumiin jääneen sovelluksen.                                                                                                                                        |
 | ++ctrl+z++  | Pysäyttää sovelluksen ja siirtää sen taka-alalle. Ohjelman toistoa voi jatkaa komennolla `fg`. Vaihtoehtoisesti sen voi käydä myöhemmin tappamassa `kill`-komennolla, mikäli se oli jumissa, eikä siitä pääse eroon yllä olevalla SIGINT:llä. |
+
+## Tehtävät
+
+!!! question "Tehtävä 1: tty"
+    
+    1. Aja komento `tty` onnistuneesti pseudoterminaalissa.
+    2. Aja komento `tty` onnistuneesti virtuaaliterminaalissa.
+
+    Tätä varten sinun tarvitsee joko käyttää ++ctrl+alt+f3++ -tyylisiä näppäinkomentoja tai `chvt`-komentoa. Dokumentoi prosessi ja selitä omin sanoinesi (mutta lähteiden avulla), mitä oikeastaan teit.
+
+!!! question "Tehtävä 2: Z-Shellin asennus"
+
+    Ubuntu 24.04:ssä saat Zsh:n näin asennetuksi:
+
+    ```bash
+    # Update
+    sudo apt update && sudo apt upgrade -y
+
+    # Install 
+    sudo apt install zsh
+    ```
+
+    Tämän jälkeen voit käynnistää Z-shellin. Ensimmäisellä ajokerralla käynnistyy konfiguraatio-ohjelma, joka näkyy kuvassa alla. Käynnistä Z-Shell se komennolla `zsh`.
+
+    ![alt text](../images/zsh-newuser-install.png)
+
+    **Kuvio 1:** *Ohjelma `zsh-newuser-install` luo sinulle käynnistystiedostot. Valitse `0` eli tyhjä konfiguraatio.
+
+    !!! tip
+
+        Huomaa, että Zsh ei käynnistyessään ajaa `.bashrc`-tiedostoa. Jos sinulla on yhä "Hello, world!" -tuloste kyseisessä tiedostossa, et näe sitä tässä shellissä.
+
+    !!! tip
+
+        Huomaa, että Zsh ei ole sinun vakioshell. Tämän voit todentaa komennolla `grep $USER /etc/passwd`. Opit myöhemmin tällä kurssilla, miten vaihdat vakioshellisi.

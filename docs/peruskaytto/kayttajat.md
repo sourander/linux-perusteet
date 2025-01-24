@@ -1,3 +1,17 @@
+---
+priority: 220
+---
+
+# Käyttäjät
+
+!!! warning
+
+    Ethän luo tai poista käyttäjiä koulun ympäristöissä, joissa on keskitetty käyttäjänhallinta (LDAP, Kerberos, Ansible-skriptejä, ...). Tee uusiin käyttäjiin liittyvät kokeilut (virtuaali)koneessa, joka on täysin sinun hallinnoima.
+
+## Linux-käyttäjät
+
+### Perusteet
+
 Useimmissa Linux-distribuutioissa käyttäjien ID:t (eng. user id, UID) noudattavat seuraavaa numerointia:
 
 | UID        | Käyttäjä                                          |
@@ -19,7 +33,7 @@ Yllä mainittuihin poikkeustunnuksiin voit tutustua esimerkiksi lukemalla[debian
 Mikäli haluat tarkistaa, onko sinun järjestelmässäsi juuri sanat tiedostot samoine oikeuksineen, aja komento `stat -c '%a %n' /etc/passwd /etc/group /etc/shadow /etc/gshadow`.
 
 
-## Passwd sisältö
+### Passwd
 
 Toisin kuin nimestä voisi päätellä, `passwd`-tiedosto ei sisällä salasanoja laisinkaan. Salasanat ovat `passwd`-tiedostossa, johon pureudutaan myöhemmin. Alla näkyy esimerkkinä kolme riviä `passwd`-tiedostosta.
 
@@ -47,16 +61,12 @@ Alla tulostuvat rivit selitettyinä:
 | 6   | home           | Käyttäjän kotikansio. Mikäli käyttäjällä ei ole kotikansiota, `/nonexistent` on arvona.                                                                                                                      |
 | 7   | shell          | Shell (tai muu ohjelma) joka ajetaan aina kun käyttäjänä kirjaudutaan sisään. Mikäli käyttäjä on täysin ei-interaktiivinen käyttäjä, jolla ei koskaan kuulu kirjautua sisään, arvona on `/usr/sbin/nologin`. |
 
-!!! question "Tehtävä"
-
-    Kokeile ajaa ohjelma, joka ajetaan ei-interaktiivisilla käyttäjillä loginin yhteydessä eli `/usr/sbin/nologin`. Mitä näet?
-
 !!! tip
 
     Voit katsella tai jopa muokata passwd tiedoston sisältöä komennolla `vipw`. Ulos editorista pääset painamalla ESC, minkä jälkeen `:q!` ja enteriä. Kyseessä on siis VIM-editori.
 
 
-## Group sisältö
+### Group
 
 Tiedostosta `/etc/group` löytyvät aiemmin mainitut käyttäjien `root`,  `nobody` ja `opettaja` primääriryhmät. Taulukot joinataan yhteen GID:n eli group id:n avulla.
 
@@ -100,16 +110,12 @@ find: ‘/var/log/private’: Permission denied
 ...
 ```
 
-!!! question "Tehtävä"
-
-    Katso mihin ryhmiin kuulut ja selvitä, mitä oikeuksia sinulla on niiden puolesta. Muista, että sudo antaa pääsyn käytännössä kaikkialle.
-
 !!! tip
 
     Voit katsella tai jopa muokata passwd tiedoston sisältöä komennolla `vigr`.
 
 
-## Shadow sisältö
+### Shadow
 
 Tiedostosta `/etc/shadow` löytyvät aiemmin mainittujen käyttäjien salasanat. Ote tiedoston sisällöstä alla:
 
@@ -134,7 +140,7 @@ Yksittäisen rivin voi rikkoa osatekijöiksi tutulla komennolla, mutta tällä k
 
 
 
-### Päivämäärän laskeminen
+#### Päivämäärän laskeminen
 
 Last password change kentän arvon voi kääntää meille ihmiselle tutummaksi arvoksi `date`-komennon avulla.
 
@@ -145,7 +151,7 @@ $ date -d "1970-01-01 +19598 days" +%Y-%m-%d
 
 
 
-### Salasanakentän sisältö
+#### Salasanakentän sisältö
 
 Salasanakentän arvon erottajana toimii `$`-merkki, ja se noudattaa kaavaa `$id$salt$hash`, tai jos häshäykseen on käytetty custom-parametrejä, niin `$id$param=value,paramb=value$salt$hash`. Kenttä ID viittaa häshäykseen käytettyyn algoritmiin ja arvojen merkitys on:
 
@@ -176,20 +182,19 @@ $5$salt$ZjhiY2I2NmVmOWMwMTRlYjRiMDBjZmY4N2U0YThhNjUgIC0K
 
 Häshäämätöntä salasanaa ei siis tallenneta laisinkaan. Kun käyttäjä yrittää kirjautua sisään, järjestelmä häshää käyttäjän syötteen saltin kanssa, vertaa sitä `shadow`-tiedoston arvoon, ja joko päästää käyttäjän sisään tai ei päästä. Mikäli `shadow`-tiedosto vuotaa vääriin käsiin, ja joku ulkopuolinen yrittää päätellä mitä häshäämättömät salasanat ovat, hänellä ei ole käytännössä muuta vaihtoehtoa kuin kokeilla kaikki vaihtoehdot läpi.
 
-!!! question "Tehtävä"
+!!! note
 
-    Kuvittele tilanne, jossa salasana policy määrää, että salasanan pitää noudattaa kaavaa `^[a-zA-Z0-9]{8,32}$` (eli 8-32 symbolia, jotka ovat isoja tai pieniä kirjaimia tai numeroita; erikoismerkkejä tai suomalaisia ääkkösiä ei sallita). Kuinka monta eri vaihtoehtoa pitäisi enimmillään käydä läpi löytääkseen häshi, jos oikea salasana on 8 merkkiä pitkä? Entä jos salasana onkin 10 merkkiä pitkä?
+    Tässäpä pähkinä. Kuvittele tilanne, jossa salasana-policy määrää, että salasanan pitää noudattaa kaavaa `^[a-zA-Z0-9]{8,32}$` (eli 8-32 symbolia, jotka ovat isoja tai pieniä kirjaimia tai numeroita; erikoismerkkejä tai suomalaisia ääkkösiä ei sallita). Kuinka monta eri vaihtoehtoa pitäisi enimmillään käydä läpi löytääkseen häshi, jos oikea salasana on 8 merkkiä pitkä? Entä jos salasana onkin 10 merkkiä pitkä?
 
 
+## Käytännössä
 
-## Käyttäjien luominen
+### Käyttäjien luominen
 
 Lokaaleja käyttäjiä voi luoda komennolla:
 
 ```bash title="Bash"
 # Luo käyttäjä
-# - Vertaa komentoon "adduser". Miten se eroaa tästä? Kokeile kumpaakin.
-# - Selvitä, mitä -m optio tekee.
 $ sudo useradd <-m> <username>
 
 # Luo tarpeen mukaan uusi ryhmä
@@ -205,9 +210,6 @@ $ sudo usermod --append --groups <groupname> <username>
 
     Uuden käyttäjän kotihakemistolle voi luoda jonkin pohjarakenteen. Käy katsomassa, mitä kansio `/etc/skel` sisältää. Mitä manuaali sanoo siitä (ks. USERADD(8) )?
 
-!!! warning
-
-    Ethän luo tai poista käyttäjiä koulun ympäristöissä, joissa on keskitetty käyttäjänhallinta (LDAP, Kerberos, Ansible-skriptejä, ...). Tee uusiin käyttäjiin liittyvät kokeilut virtuaalikoneessa, joka on täysin sinun hallinnoima.
 
 Tiedostojen omistajuutta voi vaihtaa komennolla `chown`. Alla lyhyt esimerkki.
 
@@ -219,7 +221,7 @@ $ chown <username> kissa.txt
 $ chown <username>:<group> kissa.tx
 ```
 
-## Toisena käyttäjänä esiintyminen
+### Toisena käyttäjänä esiintyminen
 
 Jos haluat kokeilla, kuinka tiedosto- sekä hakemisto-oikeudet käyttäytyvät toisen käyttäjän näkökulmasta, niin vaikea tapa on kirjautua graafisesta käyttöliittymästä ulos, ja tämän jälkeen kirjautua uudella käyttäjällä sisään. Helpompi tapa on käyttää `su`-komentoa (substitute user).
 
@@ -229,6 +231,32 @@ Jos haluat kokeilla, kuinka tiedosto- sekä hakemisto-oikeudet käyttäytyvät t
 $ sudo su - <username>
 ```
 
-!!! question "Tehtävä"
+
+
+## Tehtävät
+
+!!! question "Tehtävä: Nologin"
+
+    Kokeile ajaa ohjelma, joka ajetaan ei-interaktiivisilla käyttäjillä loginin yhteydessä eli `/usr/sbin/nologin`. Mitä näet?
+
+!!! question "Tehävä: Kenen joukoissa seisot?"
+
+    Katso mihin ryhmiin kuulut ja selvitä, mitä oikeuksia sinulla on niiden puolesta. Muista, että sudo antaa pääsyn käytännössä kaikkialle.
+
+!!! question "Tehtävä: Luo käyttäjä"
+
+    Luo käyttäjä, jonka nimi on muunnelma omastasi: esimerkiksi opettaja sourander voisi luoda käyttäjän surrender. Voit käyttää joko `useradd` tai `adduser`-komentoa. Tutki, mitä eroa näillä komennoilla on ja päätä kumpaa käytät. Käyttäjän luomisen jälkeen:
+
+    1. Esiinny toisena käyttäjänä (`su`-komennolla).
+    2. Selvitä, mitä tapahtuu, jos yrität käyttää `sudo`-komentoa.
+    3. Antamatta käyttäjälle **sudoers**-oikeuksia, miten voit sallia lukea ja kirjoittaa tietoa `/srv/antipersoonat` -hakemistossa? Luo hakemisto ja selvitä.
+
+!!! question "Käyttäjät: Käyttäjä ja kirjautuminen"
+
+    Aseta äsken luomallesi käyttäjälle salasana, jos sillä ei vielä ole. Jos olet epävarma, tutki `/etc/shadow`-tiedostoa.
+    
+    Kun käyttäjällä on salasana, kirjaudu ulos pääkäyttäjästäsi ja kirjaudu GNOME:en tällä ei-admin käyttäjällä.
+
+!!! question "Käyttäjät: Poista käyttäjä"
 
     Selvitä, kuinka käyttäjän voi poistaa kotihakemistoineen. Poista tämän jälkeen myös tyhjiksi jääneet ryhmät.

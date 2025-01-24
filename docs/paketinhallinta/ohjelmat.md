@@ -1,3 +1,9 @@
+---
+priority: 400
+---
+
+# Ohjelmat
+
 Jotta voimme käsitellä ohjelmien tai sovellusten asentamista paketinhallintajärjestelmän avulla, meidän pitää ensin selventää, mitä ohjelmalla tarkoitetaan.
 
 Alla oleva lista on tiivistelmä Learning Modern Linux (Hausenblas 2022) -kirjan Chapterin 6 alusta.

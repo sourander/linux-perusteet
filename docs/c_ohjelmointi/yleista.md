@@ -1,3 +1,7 @@
+---
+priority: 800
+---
+
 # Yleistä
 
 Tämä materiaali ei ole C-ohjelmointikielen kurssi, muttta C-kielen kirjoittaminen ja kääntäminen esitellään kurssilla Linuxin näkökulmasta. On oletus, että osaat ohjelmointia jo jollakin kielellä!

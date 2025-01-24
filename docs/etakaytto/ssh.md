@@ -1,3 +1,9 @@
+---
+priority: 600
+---
+
+# SSH
+
 Tässä materiaalissa esitellään Linuxin käyttö etänä joko ilman graafista käyttöliittymää tai sen kanssa. 
 
 Etäkäyttö ilman graafista käyttöliittymää suoritetaan Linux-ympäristössä lähes poikkeuksetta ==Secure Shell eli SSH-protokollalla==, joka on Linuxin kernelin tapaan suomalaislähtöinen keksintö. Alunperin 1990-luvun puolivälissä kehitetty SSH korvasi aiemmat merkittävästi vähemmän turvalliset etäkäyttöprotokollat kuten Telnetin. SSH on myöhemmin lisätty RFC-standardiksi ja kuuluu TCP/IP-protokollaperheeseen.

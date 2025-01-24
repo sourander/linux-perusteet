@@ -1,3 +1,7 @@
+---
+priority: 820
+---
+
 # Merkkijonot
 
 Mikäli et käytä kirjastoja, C-kielestä puuttuu tyystin merkkijono eli string muuttujatyyppi ja avustavat funktiot, joiden avulla voisi esimerkiksi selvittää merkkijonon pituuden tai liimata kaksi merkkijonoa yhteen.

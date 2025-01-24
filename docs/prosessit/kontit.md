@@ -1,3 +1,9 @@
+---
+priority: 540
+---
+
+# Kontit
+
 Tämä otsikko voi äkkiseltään tuntua aiheeseen liittymättömältä, mutta Linux-kontit ovat tavallisia prosesseja Linux-käyttöjärjestelmässä. Kerneliä voi käyttää konttien runtimenä. Tähän löytyy ainakin kaksi hyvinkin Linux-natiivia ratkaisua: LXC (LinuX Containers) sekä systemd-nspawn.
 
 Mikäli sinulla on jossakin muussa käyttöjärjestelmässä (kuten Windows tai macOS) esimerkiksi Docker Desktop asennettuna, sinulla on käytännössä aina myös virtuaalikone, jossa pyörii Linux. Kontit ovat lähes poikkeuksetta Linux-kontteja.

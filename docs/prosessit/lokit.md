@@ -1,3 +1,9 @@
+---
+priority: 530
+---
+
+# Lokit
+
 Linuxissa on kattavat lokit lähes kaikesta tapahtuneesta, mikä mahdollistaa vianselvityksen. Lokitiedostot ovat yleensä `/var/log`-hakemistossa. Tässä luvussa käymme läpi, miten voit lukea lokitiedostoja ja miten voit seurata prosessien lokitapahtumia.
 
 ## Lokit

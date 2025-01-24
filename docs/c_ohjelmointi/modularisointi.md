@@ -1,3 +1,8 @@
+---
+priority: 870
+---
+
+# Modularisointi
 
 Tähän asti kaikki esimerkit ovat sijainneet yhdessä C-tiedostossa. Tämä ei ole kovin käytännöllistä, jos ohjelma on suuri. Tässä tulevat apuun header-tiedostot sekä *build system* nimeltään `make`.
 

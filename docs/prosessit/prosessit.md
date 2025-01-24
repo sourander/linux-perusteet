@@ -1,3 +1,9 @@
+---
+priority: 500
+---
+
+# Prosessit
+
 Linuxin kerneli luo jokaiselle käynnistetylle ohjelmalle oman prosessin, ja jokaisella prosessilla on oma tunniste (PID, Process ID). Ohjelma voi olla ajossa etualalla tai taustalla. Linuxissa on `init process`, joka käynnistää kaikki muut prosessit. Kaksi init-prosessia ovat:
 
 * SysVinit (ja yhteensopivat init-järjestelmät kuten Upstart)

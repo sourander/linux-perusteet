@@ -1,3 +1,9 @@
+---
+priority: 520
+---
+
+# Cron
+
 Kuten aiemmassa luvussa näimme, ajastetun tehtävän voi luoda systemd:n timerillä. Toinen - vanhempi mutta silti yhä käytössä oleva - keino on cron. Cron on ajastettujen tehtävien hallintaan tarkoitettu ohjelma, joka ajaa määriteltyjä tehtäviä määritellyin väliajoin.
 
 Huomaa, että cron (kuten kaikki muutkin ohjelmat) ovat systemd:n käynnistämiä daemoneita tai servicejä:

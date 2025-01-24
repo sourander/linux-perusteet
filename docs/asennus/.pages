@@ -1,5 +1,6 @@
 nav:
-  - Dual Boot: dualboot.md
-  - virtuaalikone
-  - Ubuntu opiskelukuntoon: opiskelukuntoon.md
+  - aloita.md
+  - dualboot.md
+  - virtualbox.md
+  - opiskelukuntoon.md
   - ...

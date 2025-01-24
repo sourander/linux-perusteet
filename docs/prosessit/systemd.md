@@ -1,3 +1,9 @@
+---
+priority: 510
+---
+
+# Systemd
+
 Systemd on Linux-järjestelmien init-prosessi, joka on korvannut sen edeltäjänsä (ks. Upstart: [init(8) - Linux man page](https://linux.die.net/man/8/init)). Systemd on ensimmäinen prosessi, joka käynnistetään (kernelin jälkeen) ja se on vastuussa muiden prosessien käynnistämisestä ja hallinnasta. Nämä asiat, joita se käynnistää, tunnetaan termillä ==unit==. Systemd reagoi eri triggeri-tapahtumiin ja on täten ==event-driven==. Tyypillisten deamon-prosessien hallinnan lisäksi sillä voi hallita myös muiden muassa mountteja ja laitteita. Tutustu systemd:n kontrollerin toimintaan joko kirjoittamalla `man 1 systemd` tai online-version avulla: [Ubuntu Manpages: systemctl - Control the systemd system and service manager](https://manpages.ubuntu.com/manpages/jammy/man1/systemctl.1.html)
 
 ```bash title="Bash"

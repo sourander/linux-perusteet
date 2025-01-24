@@ -11,3 +11,8 @@ name = "linux-perusteet"
 version = "0.1.0"
 description = ""
 readme = "README.md"
+
+[dependency-groups]
+dev = [
+    "pre-commit>=4.1.0",
+]

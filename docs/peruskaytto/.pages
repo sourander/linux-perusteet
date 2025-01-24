@@ -1,6 +1,6 @@
 nav:
   - tiedostot.md
   - komennot.md
-  - Käyttäjät: kayttajat.md
-  - Käyttöoikeudet: kayttooikeudet.md
+  - kayttajat.md
+  - kayttooikeudet.md
   - ...

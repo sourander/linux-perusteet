@@ -1,3 +1,9 @@
+---
+priority: 410
+---
+
+# Ohjelmapaketit
+
 Kuten aiemmassa luvussa todettiin, applikaatiot jaellaan perinteisesti ohjelmapaketteina (eng. package). Tyypillisesti paketit ovat joitakin seuraavista:
 
 | Tiedostopääte          | Kuvaus                                                                                                                                                                                                |

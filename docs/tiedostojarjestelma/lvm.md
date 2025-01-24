@@ -1,3 +1,9 @@
+---
+priority: 720
+---
+
+# LVM
+
 Edellisessä luvussa ([Osiot](osiot.md)) loimme yhden partition levylle `/dev/sda`, mounttasimme sen, lisäsimme sen `fstab`-tiedostoon ja lopulta poistimme osion.
 
 Tässä luvussa otamme käyttöön **Logical Virtual Managerin**:n eli LVM:n, joka muistuttaa jossain määrin Windowsista tuttua Storage Spaces:iä. Kuvittele, että sinulla on edellisessä harjoituksessa luodun osion, joka mountattiin lokaatioon `/mnt/mydata`, levytila lopussa. Huomaat tämän `df -H` komennolla.

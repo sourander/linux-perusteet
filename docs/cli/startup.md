@@ -1,3 +1,9 @@
+---
+priority: 320
+---
+
+# Startup-tiedostot
+
 Tässä luvussa käsittelemme shellin startup-tiedostoja (engl. startup files, initialization files). Nämä tiedostot määrittävät ympäristön, jossa shell käynnistyy. 
 
 !!! tip
@@ -158,28 +164,46 @@ Jos tarvitset jotakin, joka on saatavilla ainakin pseudoterminaalissa, laita se:
 
 Z-shellin tapauksessa voit myös käyttää `.zshenv`-tiedostoa, joka ajetaan aina, kun Zsh käynnistyy. Tämä on hyvä paikka asettaa ympäristömuuttujia, jotka ovat käytettävissä kaikissa Zsh-sessioissa. Tämän käyttö ei kuitenkaan ole millään tavoin pakollista.
 
-## Extra: Zsh asentaminen
 
-Ubuntu 24.04:ssä saat Zsh:n näin käyttöön:
+## Tehtävät
 
-```bash
-# Update
-sudo apt update && sudo apt upgrade -y
+!!! question "Tehtävä: Hello world"
 
-# Install 
-sudo apt install zsh
+    Lisää tiedostoon `.bashrc` rivi, joka tulostaa "Hello world! I am <PID>, child of <PPID>" joka kerta, kun avaat uuden Bash-terminaalin. Komennossa PID on process ID, joihin tutustutaan myöhemmin tällä kurssilla.
 
-# Change your default shell
-chsh -s $(which zsh)
+    Lisättävä rivi on:
 
-# Notice that it appeared in passwd
-grep $USER /etc/passwd
-```
+    ```bash
+    echo "Hello world! I am $$ child of $PPID"
+    ```
 
-Tämän jälkeen voit käynnistää `zsh`-komennolla Z-shellin kertaluonteisesti. Sinulle käynnistyy konfiguraatio-ohjelma, joka näkyy kuvassa alla.
+    !!! warning
+    
+        Ole varovainen typojen kanssa. Tämän tiedoston muokkaaminen voi tehdä Terminaalin avaamisen vaikeaksi. Jos et saa jatkossa Terminaalia auki, käy muokkaamassa tiedostoa tekstieditorilla kuten Visual Studio Code.
 
-![alt text](../images/zsh-newuser-install.png)
+!!! question "Tehtävä: Asenna Oh My Zsh"
 
-**Kuvio 1:** *Ohjelma `zsh-newuser-install` luo sinulle käynnistystiedostot. Jos sinulle kelpaa defaultit, klikkaa ++2++ ja ++enter++*
+    Mene [Oh My Zsh -sivulle](https://ohmyz.sh/) ja seuraa sieltä löytyviä ohjeita. Sinun tulee ajaa yksi komento, joka asentaa Oh My Zsh:n. Lue komennon tuloste tarkkaan, sillä se saattaa sisältää ohjeita, jotka sinun tulee suorittaa. Yksi näistä on tässä:
 
-Huomaa, että Z-shell ei ole välittömästi täysin käytössä. Tämä siksi, että default shell muutokset astuvat voimaan seuraavan loginin yhteydessä. Loggaa Ubuntusta ulos ja takaisin sisään tai käynnistä koko tietokone uusiksi.
+    ```plaintext
+    Time to change your default shell to zsh:
+    Do you want to change your default shell to zsh? [Y/n]
+    ```
+
+    Paina Y ja enter, jonka jälkeen sinun default shell on zsh eli `/usr/bin/zsh`. Voit varmistaa tämän ajamalla `grep $USER /etc/passwd`.
+
+!!! question "Tehtävä: Vaihda Oh My Zsh teema"
+
+    Oh My Zsh tulee oletuksena **bobbyrussell** teeman kanssa. Voit vaihtaa teemaa muokkaamalla tiedostoa `~/.zshrc`. Tutustu tiedoston sisältöön: se sisältää linkkejä ja ohjeita, kuinka voit vaihtaa teemaa tai asentaa plugineita. Vaihda vähintään teemaa, mutta voit kokeilla myös plugineita.
+
+!!! question "Tehtävä: Vaihda Bashiin (ja halutessasi takaisin)"
+
+    ```bash title="Bash"
+    # Vaihda
+    chsh -s $(which bash)
+
+    # Tarkista
+    grep $USER /etc/passwd
+    ```
+
+    Huomaa, että muutos ei ole välittömästi täysin käytössä. Tämä siksi, että default shell muutokset astuvat voimaan seuraavan loginin yhteydessä. Loggaa Ubuntusta ulos ja takaisin sisään tai käynnistä koko tietokone uusiksi. Mikäli kerkesit jo tykästyä Zsh:iin, voit vaihtaa takaisin ajamalla saman komennon uusiksi siten, että `bash` korvataan `zsh`:lla. Jos alat käyttää Zsh:aa, kannattaa tutustua ainakin pintapuoleisesti [ArchWiki: Zsh](https://wiki.archlinux.org/title/zsh)-sivuun, joka sisältää tiiviin tietopaketin Zsh:sta ja sen käytöstä.

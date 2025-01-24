@@ -1,8 +1,8 @@
-## Tarvitaanko käyttöjärjestelmää?
+--
+priority: 110
+---
 
-!!! question "Tehtävä"
-
-    Pohdi, mihin käyttöjärjestelmää ylipäätänsä tarvitaan. Onko se välttämätön osa tietokonetta? Olisiko tietokone nopeampi vai hitaampi ilman käyttöjärjestelmää? Mitä käyttöjärjestelmä tuo tietokoneelle tai sen käyttäjälle, jota ei ilman sitä voisi saavuttaa?
+# OS
 
 ## Unixista BSD:n kautta GNU/Linuxiin
 
@@ -59,12 +59,6 @@ Graafinen käyttöympäristö, joka ei siis ole pakollinen osa Linux-distribuuti
 * ... tai yleisemmin Työpöytäympäristö (eng. desktop environment)
     * GNOME, KDE, Xfce, jne.
 
-!!! question "Tehtävä"
-
-    Tutustu valitsemasi Linux-distribuution graafiseen käyttöliittymään. Mitä näytönhallintajärjestelmää se käyttää? Mitä työpöytäympäristöä (tai ikkunointijärjestelmän)?
-
-    Wayland on korvaamassa/korvannut X11:n. Tutustu Waylandiin ja sen eroihin X11:een esimerkiksi lukemalla artikkelin [Wayland Architecture](https://wayland.freedesktop.org/architecture.html)
-
 !!! tip
 
     Linux ei ole ehkä yleisin työpöytäkäyttöjärjestelmä, mutta se on huomattavan yleinen palvelimissa, sulautetuissa järjestelmissä ja mobiililaitteissa, pilvialustojen taustalla sekä supertietokoneissa.  Tällä kurssilla Linuxiin tutustutaan kuitenkin siitä näkökulmasta, että voiko sitä käyttää työpöytäkäyttöjärjestelmänä.
@@ -87,3 +81,25 @@ Konttien ja Dockerin myötä Linux on myös yleistynyt kehittäjien Windows sek�
 ![Linux Supertietokoneissa](../images/linux_in_supercomputers.png)
 
 **Kuvio 3**: *Linuxin käyttö supertietokoneissa. (By Benedikt.Seidl - Eigenes Werk (own work) / source top500.org, Public Domain, https://commons.wikimedia.org/w/index.php?curid=5932978).*
+
+## Tehtävät
+
+!!! question "Tehtävä: Käyttöjärjestelmän tarve"
+
+    Selvitä, mihin käyttöjärjestelmää ylipäätänsä tarvitaan. Onko se välttämätön osa tietokonetta? Olisiko tietokone nopeampi vai hitaampi ilman käyttöjärjestelmää? Mitä käyttöjärjestelmä tuo tietokoneelle tai sen käyttäjälle, jota ei ilman sitä voisi saavuttaa?
+
+!!! question "Tehtävä: Graafinen käyttöliittymä"
+
+    Tutustu valitsemasi Linux-distribuution graafiseen käyttöliittymään. Mitä näytönhallintajärjestelmää se käyttää? Mitä työpöytäympäristöä (tai ikkunointijärjestelmän)? Vastauksia löydät distribuution omilta sivuilta tai esimerkiksi [DistroWatch](https://distrowatch.com/)-sivustolta, mutta kokeile myös, löytyyko vastaus Terminaalin avulla. Terminaalin käyttö neuvotaan vasta myöhemmin, mutta voit kokeilla jo nyt ajaa löytämiäsi komentoja. 
+
+!!! question "Tehtävä: Wayland vs X11"
+
+    Wayland on korvaamassa/korvannut X11:n. Tutustu Waylandiin ja sen eroihin X11:een esimerkiksi lukemalla artikkelin [Wayland Architecture](https://wayland.freedesktop.org/architecture.html). Miksi Wayland on kehitetty? Mitä eroja Waylandilla on X11:een verrattuna?
+
+!!! question "Tehtävä: Suositellut jakelut"
+
+    Tällä kurssilla suositellaan Ubuntu-jakelua (*eng. distribution*). Etsi internetistä suositeltujen distribuutioiden listoja - erityisesti aloittelijoille, mutta miksei myös eri käyttöihin. Mitä distribuutioita löydät listoilta?
+
+!!! question "Tehtävä: LTS-lyhenne"
+
+    Ubuntun version 24.04 yhteydessä esiintyy LTS-lyhenne. Mitä LTS tarkoittaa?

@@ -1,3 +1,5 @@
+# Option B: VirtualBox
+
 !!! tip
 
     Jos et jostain syystä voi asentaa Dual boottia (esim. et uskalla, tai sinulla on todella pieni SSD-levy), seuraavaksi suositelluin vaihtoehto on asentaa Linux Oracle Virtualboxin avulla. 
@@ -8,17 +10,33 @@
 
     Jos et saa Virtual Boxia jostain syystä toimimaan, älä jää toimettomaksi vaan ota opettajaan yhteyttä. Jos ongelma ei ratkea, etsitään vaihtoehtoinen tapa (esim. VMware vSphere tai WSL2).
 
-## Esiasetukset
+## Video-ohje
 
-Alla oleva ohjeistus on testattu Windows 11 Home -versiossa.
+VirtualBoxin ja tuoreimman Ubuntu LTS:n asennukseen löytyy niin reilusti valmiita videomuotoisia ohjeita, että en turhaan toista niitä. Alla yksi esimerkki.
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/QXdFTEPXJ4M?si=Gd_08P0Ov-Z6nV0y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+**Video 1:** *Open Integrator -tilin ohje Windows 11:lle, jossa asennetaan VirtualBox ja Ubuntu 24.04 LTS.*
+
+## Tekstiohje
+
+### Esiasetukset
+
+Alla oleva ohjeistus on testattu Windows 11 Home -versiossa. Mikäli sinulla on Windows Pro, voit käyttää Hyper-V:tä.
 
 1. Etsi `Turn Windows features on or off`-ikkuna Windowsista.
 2. Kytke `Virtual Machine Platform` päälle.
 
-[Docker:n FAQ](https://docs.docker.com/desktop/troubleshoot-and-support/faqs/windowsfaqs/#can-i-use-virtualbox-alongside-docker-desktop) suosittelee kytkemään päälle myös `Windows Hypervisor Platform`, mikäli haluat käyttää VirtualBoxia ja Dockeria joskus rinnakkain. Sama feature neuvotaan kytkemään päälle, mikäli haluat käyttää `Hyper-V`:tä ja VirtualBoxia yhdessä. Hyper-V vaatii Windows Pro:n, ja VirtualBox on perinteisesti tullut sen kanssa huonosti toimeen - tai ollut kokonaan toimimatta mikäli se on ollut asennettuna.
+!!! note
+
+    [Docker:n FAQ](https://docs.docker.com/desktop/troubleshoot-and-support/faqs/windowsfaqs/#can-i-use-virtualbox-alongside-docker-desktop) suosittelee kytkemään päälle myös `Windows Hypervisor Platform`, mikäli haluat käyttää VirtualBoxia ja Dockeria joskus rinnakkain.
+
+!!! warning
+
+    Tämä ohje ei käsittele Hyper-V:tä. Lyhyesti kuitenkin: se on Type-1 Hypervisor, ja tuoreet VirtualBox-versiot tukevat sitä backendinä (experimental feature). Vaihtoehtoisesti voit luoda Hyper-V -koneita Microsoftin omalla Hyper-V Managerilla. Jos käytät VirtualBoxia Windows Pro -versiossa, ja sinulla on suorituskykyongelmia, kokeile joko kytkeä Hyper-V pois päältä tai luo virtuaalikoneet Hyper-V Managerilla.
 
 
-## Luo virtuaalikone
+### Luo virtuaalikone
 
 1. Asenna Oracle VM VirtualBox 7.x ([linkki](https://www.virtualbox.org/wiki/Downloads))
 2. Lataa Ubuntu Desktop Image, 64-bit AMD ([linkki](https://ubuntu.com/download/desktop))
@@ -27,14 +45,14 @@ Alla oleva ohjeistus on testattu Windows 11 Home -versiossa.
 Täytä VirtualBoxissa aukeavaan pop-uppiin tarvittavat tiedot: 
 
 * Valitse koneelle nimi (esim. `ubuntu2204`), kansio johon virtuaalikoneen image sekä muut tiedostot tallennetaan (esim. `C:\Users\username\VirtualBox VMs`), sekä äsken lataamasi image.
-* Laita ruksi kohtaan `Skip Unattended Installation`. Jos haluat kokeilla `Plug'n'Pray`-asennusta, voit jättää ruksin paikoilleen, mutta tulet kärsimään tästä myöhemmin.
+* ⚠️ Laita ruksi kohtaan `Skip Unattended Installation`. Jos haluat kokeilla `Plug'n'Pray`-asennusta, voit jättää ruksin paikoilleen, mutta tulet kärsimään tästä myöhemmin. ⚠️
 * Klikkaa Next.
 * Kun kysytään, anna virtuaalikoneelle esimerkiksi `4 CPU`:ta ja `8 GB` muistia, olettaen että omassa tietokoneessasi on riittämiin tarjolla.
 * Klikkaa Next.
 
 !!! note
 
-    Linux tulee olemaan virtuaalikoneessa hidas jos sitä vertaa dual boot -asennukseen. Jos haluat sukkelamman kokemuksen, asenna Linux suoraan koneellesi. Tätä varten on [Dual Boot -ohje](dualboot.md).
+    Linux tulee olemaan virtuaalikoneessa hidas jos sitä vertaa dual boot -asennukseen. Jos haluat sukkelamman kokemuksen, asenna Linux suoraan koneellesi. Tätä varten on [Dual Boot -ohje](../dualboot.md).
 
 
 ## Asenna OS
@@ -70,13 +88,7 @@ V: Käynnistä virtuaalikone uudelleen. Jos se ei auta, tarkista että asennusme
 
 ### K: Ruudun yllä kalenterissa näkyy kummallisia merkkejä. Terminaali ei myöskään aukea.
 
-V: Tämä johtunee siitä, että `Skip Unattended Installation` ei ole ollut valittuna Ubuntua asentaessa, mutta se on helposti korjattavissa. Sinulla ovat kieliasetukset väärin. 
-
-1. Klikkaa oikealla hiirenkorvalla työpöydän taustakuvaa, valitse `Settings`. 
-2. Navigoi menuun `Region & Languages`.
-3. Vaihda `Format => Finland`, `Input Sources => Finnish`.
-4. Loggaa ulos ja sisään.
-
+V: Tämä johtunee siitä, että `Skip Unattended Installation` ei ole ollut valittuna Ubuntua asentaessa. Asenna Ubuntu uusiksi.
 
 ### K: En voi kopioida leikepöydältä tietoa VM:n ja Hostin välillä
 

@@ -1,3 +1,9 @@
+---
+priority: 230
+---
+
+# Käyttöoikeudet
+
 Linuxissa tiedostoilla ja hakemistoilla on kullakin omat käyttöoikeudet. Kaikilla Linuxin tiedostoilla on kolmeosainen access control, joka määrää pääsyn kolmella dimensiolla: omistaja (esim. käyttäjä `opettaja`), ryhmä (esim. `sales` tai useammin sama kuin käyttäjä eli `opettaja`), sekä kaikki loput järjestelmään kirjautuneet käyttäjät eli others.
 
 Jokaiselle näistä kolmesta, eli `(owner)(group)(others)`, määräytyy pääsynhallinta kolmen bitin avulla. Näiden tarkat verbit riippuvat siitä, onko kyseessä ==tiedosto vai hakemisto==. Mikäli kyseessä on tiedosto, niin verbit ovat vasemmalta lukien järjestyksessä **read**,  **write** ja **execute**.  Esimerkiksi ownerin pääsy voi olla jotain välillä `000`...`111`. Kurkataan välissä, miltä tämä näyttää GNOME:n tiedostoselaimessa eli Nautiluksessa (ks. Kuvio 1).
@@ -96,5 +102,39 @@ $ chmod u+x my                         # Anna execute ownerille
 $ rm -rf my                            # Nyt kansion ja tiedostot voi poistaa
 ```
 
+## Tehtävät
 
+!!! question "Tehtävä: Käyttöoikeudet"
+
+    ![](../images/kayttooikeudet_tehtava_1-very-nested.png)
+
+    **Kuvio 1.** Tavoiteltu lopputulos näkyy kuvassa.
+
+    Kuvassa näkyy näkyy `tree -ap tehtava1` komennon output. Komento on ajettu hakemistossa `~/harjoitukset/kayttooikeudet`. Luo vastaava hakemisto tehtävää varten, mutta noudattaen sinun omaa hakemistostandardia, jonka olet päättänyt aiemmin tällä kurssilla. 
+    
+    Tarkista komennolla `tree -ap <hakemistonnimitähän>`, että hakemistorakenne on samankaltainen. Vertaile erityisesti tiedostojen ja hakemistojen käyttöoikeuksia (eli merkkijonoa kuten `-rw-rw-r--` tai `drwx---r-x`).
+
+    Jos haluat lisähaastetta, pyri tekemään tämä mahdollisimman pienellä määrällä komentoja. Kuinka esimerkiksi luot tiedostot `file_01 - file_10` yhdellä komennolla? Avaimet vastaukseen löytyy [Komennot](komennot.md) -sivulta.
+
+    !!! tip
+
+        Jos sinulla ei ole `tree` ohjelma asennettu, aja komennot:
+        
+        ```bash
+        sudo apt update
+        sudo apt install tree
+        ```
+
+!!! question "Tehtävä: Tarkista käyttöoikeudet skriptillä"
+
+    Lataa tiedosto yhtä hakemistoa ylemmäs hakemistopolussa kuin mihin loit äskeiset tiedostot. Polku skriptiin on: `https://raw.githubusercontent.com/sourander/linux-perusteet/refs/heads/main/kurssitiedostot/tarkista_kayttooikeudet.sh`
+
+    1. Lataa skripti
+    2. Tee siitä ajettava
+    3. Suorita se
+    4. Tarkastele tulosta. Pitäisi olla 21/21 oikein.
+    
+    Käytä lataukseen joko `wget` tai `curl` ohjelmaa. Ainakin toisen näistä pitäisi olla sinulle jo tältä kurssilta tuttu!
+
+    Vihje suorittamiseen: `./tarkista_kayttooikeudet.sh harjoitus1`
 

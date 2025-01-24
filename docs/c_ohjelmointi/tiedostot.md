@@ -1,3 +1,9 @@
+---
+priority: 860
+---
+
+# Tiedostot
+
 Standardikirjasto sisältää funktioita, jotka ovat tarpeellisia tiedostojen käsittelemiseksi. Alla äärimmäisen pelkistetty esimerkki, jossa luetaan tiedosto read-only tilassa ja suljetaan se.
 
 ```c

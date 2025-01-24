@@ -8,18 +8,37 @@ Tämä sivusto on luotu [Doc Skeleton](https://github.com/sourander/doc-skeleton
 
 ## Riippuvuudet
 * Python >=3.10
-* Python Poetry
+* Python uv
 
 ## Kuinka ajaa lokaalisti
 
-```bash title="Bash"
-# Kloonaa
+Tämä projekti käyttää uv-projektinhallintaa.
+
+```bash
+# Kloonaa 
 git clone 'this-repo-url'
 
-# Päivitä Python Poetry ja asenna projektin riippuvuudet
-poetry self update
-poetry install
+# Aktivoi hookit
+uv run pre-commit install
 
-# Käännä HTML-tiedostoiksi ja käynnistä serveri
-poetry run mkdocs serve
+# Aja development serveri
+uv run mkdocs serve --open
+```
+
+## Pre-commit
+
+Projektissa on käytössä pre-commit, joka varmistaa, että olet muistanut lisätä kaikki Tehtävät sivuston Tehtäväkooste-osioon. Pre-commit ajetaan automaattisesti ennen commitointia. Ajettava skripti luo uuden version `docs/exercises.md`-tiedostosta ja lisää sen commitiin.
+
+Tehtävälista järjestetään prioriteetin mukaan, jonka voi asettaa `docs/exercises.md`-tiedostossa olevan `priority`-avaimen arvolla. Default on 999. Prioriteetti määritellään Markdown-tiedoston metadata-osiossa, jonka tulee olla heti tiedoston alussa. Se näyttää tältä:
+
+```plaintext
+---
+priority: 100
+---
+```
+
+Jos haluat aja hookin käsin, kirjoita:
+
+```bash
+uv run pre-commit run exercise
 ```

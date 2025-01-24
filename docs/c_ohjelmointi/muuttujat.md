@@ -1,3 +1,7 @@
+---
+priority: 810
+---
+
 # Muuttujat
 
 Huomaa, että C-kielessä ei ole samanlaista yleispätevää äärettömältä tuntuvaa "integer"-tyyppiä kuin Pythonissa. Muuttuja tulee alustaa valitsemallasi tietotyypillä.

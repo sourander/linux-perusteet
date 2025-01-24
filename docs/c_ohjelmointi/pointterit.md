@@ -1,3 +1,7 @@
+---
+priority: 830
+---
+
 # Osoittimet
 
 Osoitin (engl. pointer) on muistiosoite. Sen sijaan, että toimitat funktiolle kopion datasta, voit toimittaa funktiolle pointterin. Tällöin säästyy muistia.

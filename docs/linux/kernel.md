@@ -1,4 +1,17 @@
+---
+priority: 120
+---
+
+# Kernel
+
 Ydin eli kernel on C-kielelllä ja pienissä määrin assemblyllä kirjoitettu, käyttämällesi prosessorille sopivaksi binääriksi käännetty ohjelma, joka ladataan muistiin tietokoneen käynnistyessä. Ensimmäisen kernelin on kirjoittanut Linus Torvals, joka yhä hallinnoi Linuxin ytimen kehitystä. Ytimen ensisijaiset tehtävät ovat kommunikoida raudan kanssa ja tarjota muille prosesseille pääsy näihin rajapintojen kautta sekä luoda ympäristö, jossa näitä muita ohjelmia voidaan ajaa. Sulautettu järjestelmä, jossa pyörii vain yksi ohjelma, ei tarvitse käyttöjärjestelmää laisinkaan. Termit "käyttöjärjestelmä" ja "kernel" voidaan käytännössä nähdä synonyymeina.
+
+Kernel hallitsee muun muassa seuraavia asioita:
+
+* Prosessit
+* Muisti
+* Laiteajurit
+* System calls
 
 Ydin on avointa lähdekoodia ja sen voi ladata [kernel.org-sivustolta](https://kernel.org/). Huomaathan, että eli distribuutiot voivat halutessaan muokata ydintä. Esimerkiksi Ubuntun ytimen koodin voi ladata komennolla `sudo apt install linux-source`. Se asentuu lokaatioon `/usr/src/` tarballina.
 
@@ -95,3 +108,11 @@ $ cat /proc/sys/net/ipv4/ip_forward
 # Katso se myös sysctl ohjelmalla
 $ sysctl net.ipv4.ip_forward
 ```
+
+## Tehtävät
+
+!!! question "Tehtävä: Kernelin tehtävät"
+    
+    Selvitä ja kerro omin sanoinesi (lähteisiin nojaten), mitkä ovat Linux kernelin tärkeimmät tehtävät.
+
+    Vinkki: kokeile googlettaa: `linux kernel site:medium.com`

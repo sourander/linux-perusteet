@@ -1,3 +1,9 @@
+---
+priority: 610
+---
+
+# Tmux
+
 Tämä ohje on tarkoitettu SSH-yhteyttä käyttäville, jotka haluavat ratkaista seuraavia ongelmia:
 
 * Pitkään ajettava ohjelma katkeaa kun SSH-yhteys katkeaa.
