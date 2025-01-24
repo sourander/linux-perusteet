@@ -78,7 +78,7 @@ def create_content(directory: Path) -> str:
     return file_prefix + content_as_code_block
 
 def write_content(content: str, destination: Path):
-    with open(EXERCISE_INDEX_DST, "w") as f:
+    with open(destination, "w") as f:
         f.write(content)
 
 if __name__ == "__main__":
