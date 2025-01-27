@@ -44,10 +44,6 @@ graph
 	
 ```
 
-!!! question "Tehtävä"
-    Selvitä, mitä paketinhallintaa sinun distrosi käyttää. Tutustu siihen `man`-komennon avulla.
-
-
 
 ## Repositoriot
 
@@ -133,5 +129,44 @@ $ sudo apt remove <package-name>
 $ sudo apt autoremove # Riippuvuudet
 ```
 
+## Tehtävät
 
+!!! question "Tehtävä: Asenna ohjelma"
+    
+    Asenna jokin ohjelma paketinhallinnan avulla. Valitse ohjelma itse, mutta käytä paketinhallintaa (apt). Voit asentaa esimerkiksi `nsnake`-pelin, joka on terminaalissa toimiva matopeli.
 
+!!! question "Tehtävä: Selvitä ohjelman tiedostot"
+    
+    Selvitä, missä ohjelman `nsnake` tiedostot sijaitsevat. Käytä `dpkg`- tai `rpm`-komentoa.
+
+!!! question "Tehtävä: Asennuslokaatiot"
+
+    Eri tavoin asennetut ohjelmat sijoittuvat eri paikkoihin. Selvitä, mitä eroa on seuraavilla usein käytössä olevilla lokaatioilla.
+
+    * `/usr/bin`
+    * `/usr/local/bin`
+    * `/opt`
+    * `/home/$USER/.local/bin`
+
+!!! question "Tehtävä: Sources.List"
+
+    Tutustu `sources.list`-tiedostoon ja siihen liittyvään `sources.list.d`-hakemistoon. Mistä hakemistosta ne löytyvät? Mikä on niiden tarkoitus. Kannattaa hyödyntää `man 5 sources.list`-komennon antamaa tietoa.
+
+    Käytännön esimerkin löydät Azure CLI:n asennusohjeista: [Install the Azure CLI on Linux](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli-linux?pivots=apt#option-2-step-by-step-installation-instructions)
+
+    Vinkki: tutustu myös [Ubuntu Desktop Guide: Add software repositories](https://help.ubuntu.com/stable/ubuntu-help/addremove-sources.html.en)
+
+!!! question "Tehtävä: Mikä on PPA?"
+
+    Ubuntun ekosysteemissä Launchpad on *forge*-tyylinen palvelu, jossa on sekä koodivarastoja että pakettivarastoja. PPA:n tunnistaa muodosta `ppa:username/ppa-name`, joka viittaa pidempään `http://ppa.launchpad.net/username/ppa-name/ubuntu` URL:iin
+
+    Esimerkki: 
+    
+    * OBS Studio
+        * Asennusohjeet: [obsproject.com/download](https://obsproject.com/download#linux)
+        * Launchpad: [obsproject/obs-studio](https://launchpad.net/~obsproject/+archive/ubuntu/obs-studio)
+        * PPA data: [Index of /obsproject/obs-studio/ubuntu](http://ppa.launchpad.net/obsproject/obs-studio/ubuntu/)
+  
+    Selvitä, mitä PPA tarkoittaa ja miten se liittyy paketinhallintaan. OBS Studion lisäksi löydät myös muita applikaatioita, joita ei joko löydy Ubuntun omista repositorioista. Yksi tällainen on videoeditori OpenShot. Lisäksi jotkin ohjelmat löytyvät apt:sta, kuten python3, mutta sen tuoreimmat versiot tarjoillaan PPA:n kautta. Miten liittyvät toisiinsa sanat: Python3, PPA ja Deadsnakes?
+
+    Vinkki: tutustu myös [Ubuntu Desktop Guide: Add a Personal Package Archive (PPA)](https://help.ubuntu.com/stable/ubuntu-help/addremove-ppa.html.en)

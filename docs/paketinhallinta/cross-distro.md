@@ -58,10 +58,6 @@ https://dl.flathub.org/repo/flathub.flatpakrepo
 $ flatpak --user install HandBrakeCLI-1.4.2-x86_64.flatpak
 ```
 
-!!! question "Tehtävä"
-
-    Tutki, minne Flatpak asensi tämän user-wide asennuksen.
-
 Tai kenties haluat eroon Snapin hallitsemasta Firefoxista ja siirtyä Flatpakin asentamaan ja hallitsemaan chromiumiin?
 
 ```bash title="Bash"
@@ -114,3 +110,53 @@ $ sudo snap install <program>
 Ohjelmia ei ole tarpeellista päivittää käsin. Ne voi päivittää `sudo snap refresh`-komennolla, mutta snap tekee tämän automaattisesti vakiona 6 tunnin välein.
 
 Huomaa, että tämä lyhyt ohje on todellakin vain lyhyt ohje. Snapin käyttöön liittyy paljon muutakin, kuten esimerkiksi oikeuksien hallinta, joka on toteutettu käyttämällä interfaces, tai snapshots, joka sallii ohjelmien palauttamisen aiempaan tilaan. Lisäksi snap:llä asennetut palvelut ovat hallittavissa services-komennolla. Näihin toiminnallisuuksiin voit tutustua [Snap how-to guides](https://snapcraft.io/docs/snap-howto)-sivulla.
+
+## Tehtävät
+
+!!! question "Tehtävä: Asenna snap:llä"
+
+    Käyttäen komentoriviä, asenna valitsemasi ohjelma Canonicalin "app storesta" eli [SnapCraftista](https://snapcraft.io/).
+
+!!! question "Tehtävä: Snap-sovellusten lokaatio"
+
+    Selvitä, missä hakemistossa asentamasi snap-sovellus sijaitsee.
+
+!!! question "Tehtävä: Asenna Flatpakilla"
+
+    Asenna Flatpak. Tutustu Flatpakin tarjontaan ja valitse sinua kiinnostava ohjelma. Asenna se käyttäen Flatpakia.
+
+    Huomaa, että monet ohjelmat voi asentaa useasta eri lähteestä. Esimerkiksi [OBS Studio](https://flathub.org/apps/com.obsproject.Studio) on saatavilla sekä Flathubista että Snapcraftista että PPA:sta, joka on sinulle tuttu aiemmista tehtävistä.
+
+!!! question "Tehtävä: Flatpak-sovellusten lokaatio"
+
+    Selvitä, missä hakemistossa asentamasi Flatpak-sovellus sijaitsee.
+
+!!! question "Tehtävä: Asenna Go"
+
+    Joidenkin ohjelmien tyypillinen asennustapa on purkaa binäärit suoraan oikeaan lokaatioon. FSH:n mukaan tähän sopii `/usr/local/bin`-hakemisto. Yksi näin asennettavista ohjelmista on Go. Kyseessä on Googlen kehittämä ohjelmointikieli ja siihen liittyvä Go Tool CLI-työkalu. Kieltä hyödyntävät Googlen lisäksi [Meta, Dropbox, Paypal ja monet muut](https://go.dev/solutions/case-studies). 
+    
+    Asenna Go [Download and install](https://go.dev/doc/install)-sivuston ohjeiden mukaisesti.
+
+    **Vinkki**: Huomaa, että `&&`-komentojen jälkeen alkaa uusi komento. Jos käytät `sudo`-komentoa, seuraava komento saattaa vaatia uuden `sudo`-kutsun.
+
+    **Vinkki**: Mihin tiedostoon `PATH`-ympäristömuuttujan lisäys kannattaa tehdä, jos sinulla ei olekaan Bash käytössä vaan Zsh? Tarkista [Startup-tiedostot](../cli/startup.md)-tunnin materiaaleista, mikä kotikansion tiedosto on nimenomaan Z-shellin ENV:iä varten.
+
+    Kun olet saanut Go:n asennettua onnistuneesti, kannattaa tehdä se, mikä tehdään aina uuden ohjelmointikielen äärellä: hello world -ohjelma! Tämä onnistuu seuraavanlaisesti. Luo alkuun tiedosto, joka sisältää go-kielistä lähdekoodia:
+
+    ```go title="hello.go"
+    package main
+
+    import "fmt"
+
+    func main() {
+        fmt.Println("Hello, World!")
+    }
+    ```
+
+    Tämän jälkeen aja tiedosto komentoriviltä:
+
+    ```bash title="Bash"
+    go run hello.go
+    ```
+
+    Nyt voit aloittaa uuden ohjelmointikielen opiskelun. Fantastista, eikö? 🎉

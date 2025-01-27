@@ -6,7 +6,7 @@ priority: 110
 
 ## Unixista BSD:n kautta GNU/Linuxiin
 
-Unix on eräänlainen Linuxin esi-isä, joka oli olemassa jo keskustietokoneiden (`mainframe`) aikakaudella, kauan ennen kotikoneen eli PC:n eli personal computerin yleistymistä.
+Unix on eräänlainen Linuxin esi-isä, joka oli olemassa jo keskustietokoneiden (*engl. mainframe*) aikakaudella, kauan ennen kotikoneen (*engl. PC, personal computer*) yleistymistä.
 
 ![unix-like_timeline](../images/unix-like_timeline.svg)
 
@@ -86,11 +86,11 @@ Konttien ja Dockerin myötä Linux on myös yleistynyt kehittäjien Windows sek�
 
 !!! question "Tehtävä: Käyttöjärjestelmän tarve"
 
-    Selvitä, mihin käyttöjärjestelmää ylipäätänsä tarvitaan. Onko se välttämätön osa tietokonetta? Olisiko tietokone nopeampi vai hitaampi ilman käyttöjärjestelmää? Mitä käyttöjärjestelmä tuo tietokoneelle tai sen käyttäjälle, jota ei ilman sitä voisi saavuttaa?
+    Selvitä, mihin käyttöjärjestelmää ylipäätänsä tarvitaan. Onko se välttämätön osa tietokonetta? Olisiko tietokone nopeampi vai hitaampi ilman käyttöjärjestelmää? Mitä käyttöjärjestelmä tuo tietokoneelle tai sen käyttäjälle, jota ei ilman sitä voisi saavuttaa? Oliko esimerkiksi 8-bittisessä NES:ssä (Nintendo Entertainment System) käyttöjärjestelmää?
 
 !!! question "Tehtävä: Graafinen käyttöliittymä"
 
-    Tutustu valitsemasi Linux-distribuution graafiseen käyttöliittymään. Mitä näytönhallintajärjestelmää se käyttää? Mitä työpöytäympäristöä (tai ikkunointijärjestelmän)? Vastauksia löydät distribuution omilta sivuilta tai esimerkiksi [DistroWatch](https://distrowatch.com/)-sivustolta, mutta kokeile myös, löytyyko vastaus Terminaalin avulla. Terminaalin käyttö neuvotaan vasta myöhemmin, mutta voit kokeilla jo nyt ajaa löytämiäsi komentoja. 
+    Tutustu asentamasi Linux-distribuution graafiseen käyttöliittymään. Mitä näytönhallintajärjestelmää se käyttää? Mitä työpöytäympäristöä (tai ikkunointijärjestelmän)? Vastauksia löydät distribuution omilta sivuilta tai esimerkiksi [DistroWatch](https://distrowatch.com/)-sivustolta, mutta kokeile myös, löytyyko vastaus Terminaalin avulla. Terminaalin käyttö neuvotaan vasta myöhemmin, mutta voit kokeilla jo nyt ajaa löytämiäsi komentoja. 
 
 !!! question "Tehtävä: Wayland vs X11"
 

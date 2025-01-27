@@ -20,7 +20,7 @@ Tämän koko luvun *Asennus* tehtävä on poikkeuksellisesti heti alussa. Tämä
     * [Option A: Dual Boot](dualboot.md)
     * [Option B: VirtualBox](virtualbox.md)
 
-    ==Tehtävä on dokumentoida== tämä prosessi oppimispäiväkirjaan. Voit ottaa esimerkiksi kännykällä kuvia asennusprosessista, tai jos kyseessä on virtuaalikone, voit ottaa ruutukaappauksia host-koneelta käsin.
+    ==Tehtävä on dokumentoida== tämä prosessi oppimispäiväkirjaan. Käytäthän dokumentoinnissa monipuolisesti tekstiä, kuvia, lähteitä, komentoja code blokeissa ja muita tarvittavia elementtejä.
 
 
 !!! question "Tehtävä: Ubuntu opiskelukuntoon"
@@ -29,9 +29,9 @@ Tämän koko luvun *Asennus* tehtävä on poikkeuksellisesti heti alussa. Tämä
 
     Tähän löytyy ohjeet dokumentista [Ubuntu opiskelukuntoon](opiskelukuntoon.md).
 
-    ==Tehtävä on dokumentoida== tämä prosessi oppimispäiväkirjaan. Kuvia saat kahdella tavalla:
+    ==Tehtävä on dokumentoida== tämä prosessi oppimispäiväkirjaan. Käytä dokumentaatiossa tekstin, lähteiden ja komentojen lisäksi myös kuvakaappauksia. Kuvia asennusprosessista saat kahdella tavalla:
     
-    * Ruutukaappaukset: Paina linuxissa näppäimistöltä Print Screen -nappia. Etsi tarpeen mukaan työkalun ohjeet.
+    * Ruutukaappaukset: Paina linuxissa näppäimistöltä Print Screen -nappia. Aukeaa ohjelma, jolla voi ottaa kuvakaappauksia.
     * Kännykkäkuvat: Ota kuvia kännykälläsi suoraan näytöltäsi.
 
 ## Kuinka valita sopiva tapa?
@@ -41,7 +41,7 @@ Tämän koko luvun *Asennus* tehtävä on poikkeuksellisesti heti alussa. Tämä
 Alla miellekartta, joka auttaa sinua valitsemaan itsellesi sopivan tavan asentaa Linux.
 
 ```mermaid
-graph LR
+graph TD
     A[Valitse Linuxin asennustapa] --> B{Uskallatko asentaa fyysiselle koneelle?}
     B -->|Kyllä| C[Linux Dual Boot]
     B -->|Ei| D{Oletko Data Center -opiskelija?}

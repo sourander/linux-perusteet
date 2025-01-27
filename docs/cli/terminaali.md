@@ -144,14 +144,14 @@ Alla olevat pikanäppäimet toimivat tyypillisesti Bash:ssä ja sitä vastaaviss
 
 ## Tehtävät
 
-!!! question "Tehtävä 1: tty"
+!!! question "Tehtävä: tty"
     
     1. Aja komento `tty` onnistuneesti pseudoterminaalissa.
     2. Aja komento `tty` onnistuneesti virtuaaliterminaalissa.
 
     Tätä varten sinun tarvitsee joko käyttää ++ctrl+alt+f3++ -tyylisiä näppäinkomentoja tai `chvt`-komentoa. Dokumentoi prosessi ja selitä omin sanoinesi (mutta lähteiden avulla), mitä oikeastaan teit.
 
-!!! question "Tehtävä 2: Z-Shellin asennus"
+!!! question "Tehtävä: Z-Shellin asennus"
 
     Ubuntu 24.04:ssä saat Zsh:n näin asennetuksi:
 

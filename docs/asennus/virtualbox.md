@@ -52,7 +52,7 @@ Täytä VirtualBoxissa aukeavaan pop-uppiin tarvittavat tiedot:
 
 !!! note
 
-    Linux tulee olemaan virtuaalikoneessa hidas jos sitä vertaa dual boot -asennukseen. Jos haluat sukkelamman kokemuksen, asenna Linux suoraan koneellesi. Tätä varten on [Dual Boot -ohje](../dualboot.md).
+    Linux tulee olemaan virtuaalikoneessa hidas jos sitä vertaa dual boot -asennukseen. Jos haluat sukkelamman kokemuksen, asenna Linux suoraan koneellesi. Tätä varten on [Dual Boot -ohje](dualboot.md).
 
 
 ## Asenna OS

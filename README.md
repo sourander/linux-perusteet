@@ -40,5 +40,9 @@ priority: 100
 Jos haluat aja hookin käsin, kirjoita:
 
 ```bash
+# Hook
 uv run pre-commit run exercise
+
+# Tai itse scripti
+uv run python scripts/extract_exercise_list.py
 ```

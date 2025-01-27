@@ -48,7 +48,7 @@ Käytännössä tämä mahdollista muun muassa komennon ajamisen siten, että on
 # Stdout ja Stderr eri tiedostoihin
 somecommand > success.output 2> errors.log
 
-# Stdout bittiavaruuteen
+# Stderr bittiavaruuteen
 find / -name ".bashrc" 2> /dev/null
 ```
 
@@ -114,3 +114,26 @@ Lue aiheesta lisää esimerkiksi [Wikipedia: Here document](https://en.wikipedia
 !!! question "Tehtävä: tee"
 
     Selvitä, mitä komento `tee` tekee. Se liittyy standardivirtoihin, mutta kuinka?
+
+!!! question "Tehtävä: Ohjaa stdout tiedostoon"
+
+    Aja valitsemasi komento siten, että sen stdout kirjoitetaan tiedostoon. 
+    
+    Esimerkiksi voit kirjoittaa `ls`-komennon tulosteen `list-of-my-downloads.txt`-tiedostoon. Mitä `ls`-komennon argumentteja kannattaa käyttää, jotta tulosta ei sisällä muuta kuin tiedostojen nimet?
+
+!!! question "Tehtävä: Ohjaa stderr tiedostoon"
+
+    Aja valitsemasi komento siten, että se tuottaa virheitä. Kirjoita virheet tiedostoon.
+
+    Esimerkiksi voit käyttää komentoa `find` ja etsiä tiedostoja jostakin lokaatiosta, mihin sinulla ei ole oikeuksia.
+
+!!! question "Tehtävä: PATH ja putket"
+
+    Tutustu ympäristömuuttujan PATH sisältöön. Tämä ympäristömuuttuja tulee tuntea niin Linux kuin Windows-ympäristössä. Tavallisesti se on kaksoispisteellä erotettu lista. Tulosta PATH muuttujan siten, että käytät putkia ja `tr` sekä `nl`-ohjelmia. Haluttu tulos on esimerkiksi:
+    
+    ```plaintext
+     1 /home/you/.local/bin
+     2 /opt/homebrew/bin
+    ...
+    12 /usr/local/bin
+    ```

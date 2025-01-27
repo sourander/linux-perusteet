@@ -55,12 +55,15 @@ Kopioi tehtävälista leikepöydälle ja muokkaa se sinun käyttöösi sopivaksi
 
 ## Terminaali (300)
 
-- [ ] Tehtävä 1: tty
-- [ ] Tehtävä 2: Z-Shellin asennus
+- [ ] Tehtävä: tty
+- [ ] Tehtävä: Z-Shellin asennus
 
 ## Standardivirrat (310)
 
 - [ ] Tehtävä: tee
+- [ ] Tehtävä: Ohjaa stdout tiedostoon
+- [ ] Tehtävä: Ohjaa stderr tiedostoon
+- [ ] Tehtävä: PATH ja putket
 
 ## Startup-tiedostot (320)
 
@@ -71,11 +74,19 @@ Kopioi tehtävälista leikepöydälle ja muokkaa se sinun käyttöösi sopivaksi
 
 ## Ohjelmapaketit (410)
 
-- [ ] Tehtävä
+- [ ] Tehtävä: Asenna ohjelma
+- [ ] Tehtävä: Selvitä ohjelman tiedostot
+- [ ] Tehtävä: Asennuslokaatiot
+- [ ] Tehtävä: Sources.List
+- [ ] Tehtävä: Mikä on PPA?
 
 ## Cross-distro (420)
 
-- [ ] Tehtävä
+- [ ] Tehtävä: Asenna snap:llä
+- [ ] Tehtävä: Snap-sovellusten lokaatio
+- [ ] Tehtävä: Asenna Flatpakilla
+- [ ] Tehtävä: Flatpak-sovellusten lokaatio
+- [ ] Tehtävä: Asenna Go
 
 ## Systemd (510)
 
