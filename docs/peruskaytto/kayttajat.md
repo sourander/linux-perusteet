@@ -231,6 +231,18 @@ Jos haluat kokeilla, kuinka tiedosto- sekä hakemisto-oikeudet käyttäytyvät t
 $ sudo su - <username>
 ```
 
+!!! tip
+
+    Jos haluat esiintyä roottina, voit saavuttaa tämän usealla eri tavalla. Kaksi kenties nopeinta ovat:
+
+    ```bash title="Bash"
+    # Sudo
+    $ sudo -i     # eli --login
+
+    # Sudo su
+    $ sudo su -
+    ```
+
 
 
 ## Tehtävät

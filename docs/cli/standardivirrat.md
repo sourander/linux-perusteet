@@ -117,9 +117,9 @@ Lue aiheesta lisää esimerkiksi [Wikipedia: Here document](https://en.wikipedia
 
 !!! question "Tehtävä: Ohjaa stdout tiedostoon"
 
-    Aja valitsemasi komento siten, että sen stdout kirjoitetaan tiedostoon. 
+    Aja valitsemasi komento siten, että sen stdout kirjoitetaan tiedostoon. Kenties `ls`, `diff` tai `grep`?
     
-    Esimerkiksi voit kirjoittaa `ls`-komennon tulosteen `list-of-my-downloads.txt`-tiedostoon. Mitä `ls`-komennon argumentteja kannattaa käyttää, jotta tulosta ei sisällä muuta kuin tiedostojen nimet?
+    Voit ==esimerkiksi== kirjoittaa `ls`-komennon tulosteen `list-of-my-downloads.txt`-tiedostoon. Mitä `ls`-komennon argumentteja kannattaa käyttää, jotta tulosta ei sisällä muuta kuin tiedostojen nimet `~/Downloads/` hakemistossa?
 
 !!! question "Tehtävä: Ohjaa stderr tiedostoon"
 
