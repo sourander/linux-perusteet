@@ -40,7 +40,8 @@ Standardivirtaa voi uudelleenohjata tiedostoihin tai tiedostoista. Kohdetiedosto
 | `&>`         | Ohjaa kummatkin tiedostoon                                                                                                                                 |
 | `>>`         | Tekee saman kuin mikä tahansa aiempi `>`, mutta ei kirjoita tiedostoa alusta alkaen vaan jatkaa (eng. append) tiedostoa.                                   |
 | `<`          | Tuo stdinputin tiedostosta. Tällöin syntaksi olisi `command < input.txt > output.txt`, mikä on tosin useimmiten sama kuin `command input.txt > output.txt` |
-| 2>&1         | Hieman outolintu, joka ohjaa stderrorin sisällön stdoutputtiin. Stdoutput sisältää jatkossa kummatkin.                                                     |
+| `2>&1`       | Hieman outolintu, joka ohjaa stderrorin sisällön stdoutputtiin. Stdoutput sisältää jatkossa kummatkin.                                                     |
+| `>&2`        | Ohjaa stdoutin stderroriin. Näppärä tapa tulostaa virhestriimiin skriptissä.                                                                               |
 
 Käytännössä tämä mahdollista muun muassa komennon ajamisen siten, että onnistunut output kirjoitetaan yhteen tiedostoon, errorit toiseen:
 
