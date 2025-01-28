@@ -16,8 +16,13 @@ class MarkdownWithExercises:
 def extract_md_exercises(file: Path) -> MarkdownWithExercises | None:
 
     def extract_priority(content: str) -> int:
-        priority = re.search(r"priority: (\d+)", content)
-        return int(priority.group(1)) if priority else 999
+        # Keep only the content between rows --- and ---
+        metadata = re.search(r"---\n(.+?)\n---", content, re.DOTALL)
+        if metadata:
+            metadata = metadata.group(1)
+            priority = re.search(r"priority: (\d+)", metadata)
+            return int(priority.group(1)) if priority else 999
+        return 999
 
     def extract_heading(content: str) -> str:
         headings = re.search(r"^# (.+)", content, re.MULTILINE)
