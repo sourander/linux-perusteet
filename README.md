@@ -21,6 +21,9 @@ git clone 'this-repo-url'
 # Aktivoi hookit
 uv run pre-commit install
 
+# ... tai päivitä ne
+uv run pre-commit autoupdate
+
 # Aja development serveri
 uv run mkdocs serve --open
 ```
@@ -41,8 +44,5 @@ Jos haluat aja hookin käsin, kirjoita:
 
 ```bash
 # Hook
-uv run pre-commit run exercise
-
-# Tai itse scripti
-uv run python scripts/extract_exercise_list.py
+uv run pre-commit run extract-exercise-list --all-files
 ```
