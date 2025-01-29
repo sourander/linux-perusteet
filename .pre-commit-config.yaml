@@ -1,5 +1,5 @@
 repos:
   - repo: https://github.com/sourander/pre-commit-hooks
-    rev: main
+    rev: v0.1.0
     hooks:
       - id: extract-exercise-list
