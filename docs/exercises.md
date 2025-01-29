@@ -90,7 +90,8 @@ Kopioi tehtävälista leikepöydälle ja muokkaa se sinun käyttöösi sopivaksi
 
 ## Systemd (510)
 
-- [ ] Tehtävä
+- [ ] Tehtävä: Tutustu Systemd Unittiin
+- [ ] Tehtävä: Systemd timer
 
 ## Lokit (530)
 

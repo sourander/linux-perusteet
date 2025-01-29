@@ -192,10 +192,6 @@ $ touch main.py
 $ chmod u+x main.py
 ```
 
-!!! question "Tehtävä"
-
-    Muistele, miksi tiedostolle annetaan `u+x`-oikeus. Mikäli et muista, kertaa aiempia materiaaleja tiedostojen oikeuksista. Tiedostojen käyttöoikeuksien ymmärtäminen on Linux-perusteiden kannalta kriittistä.
-
 Lisää seuraava sisältö `main.py`-tiedostoon:
 
 ```python
@@ -328,3 +324,15 @@ $ systemctl --user stop testprocessor.timer
 # Katso myös status
 $ systemctl --user status testprocessor.timer
 ```
+
+## Tehtävät
+
+!!! question "Tehtävä: Tutustu Systemd Unittiin"
+
+    Listaa kaikki tyypin `service` unitit. Valitse niistä yksi ja tutustu siihen. Mitä konfiguraatiotiedostoja siihen liittyy? Mikä sen tehtävä on ylipäätänsä? Mikä sen status on ja milloin se käynnistyy tai ajetaan? Mistä löydät listätietoa siitä?
+
+!!! question "Tehtävä: Systemd timer"
+
+    Toteuta yllä esitelty esimerkki omassa Linux-asennuksessasi. Todista kuvien ja journalctl:n avulla, että se toimii.
+
+    Lopuksi poista se käytöstä.

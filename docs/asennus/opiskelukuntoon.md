@@ -1,5 +1,9 @@
 # Lopuksi: Ubuntu opiskelukuntoon
 
+!!! warning
+
+    Tämä ohje on tällä hetkellä aikansa nähnyt. Tilalle tulee yksinkertaisempi ohje, jossa on käytössä Dockerilla ajettu uv, joka pohjustaa cookiecutterin.
+
 Tämän ohjeen tarkoitus on auttaa sinua pika-asentamaan tarvittavat ohjelmat siten, että voit työstää oppimispäiväkirjaa Linuxista käsin. Pohjaoletus on, että sinulla on Ubuntu jo asennettuna. Mikäli sinulla ei ole aiempaa Linux-kokemusta, ohjeen komennot saattavat tuntua osittain heprealta. Kannattaa palata tähän materiaaliin kurssin lopuksi: todennäköisesti huomaat, että ohjeissa ei ole mitään, mitä et osaisi tehdä itsenäisesti, ohjelmien omia dokumentaatioita seuraamalla.
 
 ## Video-ohjeet
