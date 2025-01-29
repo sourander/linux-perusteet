@@ -1,11 +1,5 @@
 repos:
-
-  # Local repository for generating the Exercise List
-  - repo: local
+  - repo: https://github.com/sourander/pre-commit-hooks
+    rev: main
     hooks:
-      - id: run-extract-exercise-list
-        alias: exercise
-        name: Run Exercise List Extractor
-        entry: uv run scripts/extract_exercise_list.py
-        language: system
-        always_run: true
+      - id: extract-exercise-list
