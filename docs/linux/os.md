@@ -42,26 +42,59 @@ GNU sen sijaan on Richard Stallmanin perustama projekti, joka pyrki luomaan UNIX
 
 ## Linuxin komponentit
 
-Linux koostuu käyttöjärjestelmänä neljästä komponentista:
+Linux koostuu käyttöjärjestelmänä neljästä kerroksesta:
 
 1. Linux kernel
 2. GNU utilities
-3. Graafinen työpöytäympäristö (ei välttämätön)
+3. Shell (Graafinen tai ei)
 4. Ohjelmat (eng. application software)
+
+## Graafisen käyttöliittymän komponentit
 
 Graafinen käyttöympäristö, joka ei siis ole pakollinen osa Linux-distribuutiota, koostuu useista eri osista:
 
-* Näytönhallintajärjestelmä:
-    * X Window System (X11)
-    * Wayland
-* ... jonka päällä on Ikkunanhallintaohjelma (eng. window manager)
-    * i3, Openbox, jne.
-* ... tai yleisemmin Työpöytäympäristö (eng. desktop environment)
-    * GNOME, KDE, Xfce, jne.
+```mermaid
+flowchart TD
+    DE[Desktop Environment]
+    DM[Display Manager]
+    WM[Window Manager or Compositor]
+    DS[Display Server or Compositor]
+    K[Kernel]
+
+    DE <--> DM <--> DS
+    DE o--o WM <--> DS
+    DS <--> K
+
+```
+
+**Kuvio 3**: *Graafiseen käyttöliittymään tyypillisesti liittyvät komponentit. Työpöytäympärstön ja ikkunointiohjelman välillä on erilainen nuoli, koska ne voivat olla toisistaan riippumattomia tai hyvinkin toisiinsa integroituja.*
+
+* [Desktop Environment](https://wiki.archlinux.org/title/Desktop_environment) (suom. työpöytäympäristö)
+    * GNOME, KDE, Xfce, Cinammon ja monet muut.
+    * Käyttöliittymä, joka sisältää ikonit, paneelit, widgetit, taustakuvat ynnä muut.
+    * Se UI/UX-kokonaisuus, jota käytät tyypillisimmin.
+* [Window Manager](https://wiki.archlinux.org/title/Window_manager) *(suom. ikkunointiohjelma, näytönjärjestin)*
+    * Hallinnoi ikkunoiden sijaintia ruudulla.
+    * Mutter (for GNOME Shell), i3, [Hyprland](https://hyprland.org/), Sway, jne.
+    * Osa työpöytäympäristöä tai itsenäinen ohjelma.
+    * Waylandin kohdalla tämä on osa Compositoria.
+* [Display Manager](https://wiki.archlinux.org/title/Display_manager) (suom. näytönhallintaohjelma)
+    * GNOME Display Manager (GDM), SDDM, jne.
+    * Graafinen kirjautumisnäyttö. Näet tämän päivittäin.
+    * Hallitsee sessioiden käynnistämistä ja lopettamista.
+* Display Server (suom. näytönhallintajärjestelmä)
+    * Järjestelmät: X, Wayland tai Mir.
+    * Protokollat: X11, Wayland, Mir.
+    * Waylandin kohdalla tämä on osa Compositoria.
+* Kernel *(suom. ydin)*
+    * Ydin esitellään ensi luvussa.
+    * Hiiri ja näppäimistö keskustelevat kernelin kautta Display Serverin kanssa.
+
+Yllä oleva listaus pyrkii olemaan jossain määrin pätevä, vaikka X ja Wayland toimivat eri tavoin. Waylandissä sekä Display Server että Window Manager ovat Compositor. X:ssä Compositor on irrallinen ohjelma, joka puuttuu yllä olevasta graafista ja listauksesta. Tärkeää on kuitenkin muistaa, että Linuxin työpöytäympäristö ei ole yksittäinen ohjelma vaan useista komponenteista koostuva kokonaisuus, jotka ovat jossain määrin vaihdettavissa, jossain määrin toisiinsa integroituja. Jos X:n ja Waylandin ero kiinnostaa, lue Waylandin sivuilta [Wayland Architecture](https://wayland.freedesktop.org/architecture.html). Kyseisessä artikkelissa kuvataan yksittäisen syöttölaitteen (esim. näppäimistön) eventin (esim. painallus) kulkua Kernelistä näytölle X:n ja Waylandin kohdalla.
 
 !!! tip
 
-    Linux ei ole ehkä yleisin työpöytäkäyttöjärjestelmä, mutta se on huomattavan yleinen palvelimissa, sulautetuissa järjestelmissä ja mobiililaitteissa, pilvialustojen taustalla sekä supertietokoneissa.  Tällä kurssilla Linuxiin tutustutaan kuitenkin siitä näkökulmasta, että voiko sitä käyttää työpöytäkäyttöjärjestelmänä.
+    Linux ei ole ehkä yleisin työpöytäkäyttöjärjestelmä, mutta se on huomattavan yleinen palvelimissa, sulautetuissa järjestelmissä ja mobiililaitteissa, pilvialustojen taustalla sekä supertietokoneissa.  Tällä kurssilla Linuxia käytetään graafisena käyttöjärjestelmänä, jotta siihen voi tutustua täysin läpikotaisesti - sinun ei tarvitse ajaa esimerkiksi Visual Studio Codea jossain muualla ja tyytyä käyttämään Linuxia kontissa/virtuaalikoneessa. Kenties voit korvata opiskelukäytössä Windowsin kokonaan Linuxilla?
 
 ## Linux ja distribuutiot tänään
 
