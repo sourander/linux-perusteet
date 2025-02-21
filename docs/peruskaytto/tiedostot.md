@@ -6,11 +6,17 @@ priority: 200
 
 ## Linux vs. Windows
 
-Linuxin (ja UNIX:n) hakemistorakenne voi tuntua oudolta, mikäli on aiemmin tottunut Windowsin vastaavaan. Windowsissa yksi fyysinen tallennuslaite (kiintolevy, optinen asema, muistikortinlukija) löytyy tyypillisesti asemasta, joka merkataan kirjaimella (eng. drive-letter). Kiintolevyn osio, jolle Windows on asennettu, löytyy usein C-asemasta eli polusta `C:\`. Mikäli tietokoneessa on toinen kiintolevy, se voidaan tuntea esimerkiksi `D:\`-asemana. `E:\` on esimerkiksi CD-asema tai toinen kiintolevy. Käyttäjä voi määrittää nämä levykohtaisesti itse. Tarnnuksena mainittakoon, että laite:asema ei ole aina välttämättä one-to-one suhde; käyttäjä voi esimerkiksi luoda useasta kiintolevystä RAID-henkisen `Windows Storage Pool`:n, jolloin monta fyysistä levyä löytyy yhden aseman kirjaimen takaa.
+Linuxin (ja UNIX:n) hakemistorakenne voi tuntua oudolta, mikäli on aiemmin tottunut Windowsin vastaavaan. Windowsissa yksi fyysinen tallennuslaite (kiintolevy, optinen asema, muistikortinlukija) löytyy tyypillisesti asemasta, joka merkataan kirjaimella (eng. drive-letter). Kiintolevyn osio, jolle Windows on asennettu, löytyy usein C-asemasta eli polusta `C:\`. Mikäli tietokoneessa on toinen kiintolevy, sen osio voidaan tuntea esimerkiksi `D:\`-asemana. `E:\` on esimerkiksi CD-asema tai toinen kiintolevy/osio.
+
+!!! note
+
+    Tarkennuksena mainittakoon, että laite:osio:asema suhde ei ole aina välttämättä näin yksiselitteinen. Käyttäjä voi esimerkiksi luoda useasta kiintolevystä RAID-henkisen `Windows Storage Pool`:n, jolloin monta fyysistä levyä löytyy yhden aseman kirjaimen takaa.
+
+    Lisäksi myös Windows-ympäristössä on osioita, joille ei ole tarkoitus tallentaa laisinkaan tietoa käsin. Näitä ovat esimerkiksi UEFI- ja Recovery-osiot. Jos osioit Dual Boot -asennuksen yhteydessä Linuxia varten käyttämätöntä tilaa, törmäsit näihin todennäköisesti. Huomaa, että nämä toki *voi* mountata asematunnukseen esimerkiksi debuggausta varten PowerShellillä.
 
 Linuxissa tilanne on hyvin toinen. Asemia ja niiden kirjaimia ei ole olemassa. Hakemistorakenteen juuri ei siis ala laitteen/aseman kirjaimesta vaan `/`-merkistä, joka toimii Linuxissa hakemistoerottimena. Hakemistot muodostavat puurakenteen samalla tavalla kuin Windowsin hakemistot, joten on mahdollista, että `kissa.txt` sijaitsee polussa `/a/b/c/kissa.txt`. Yksittäinen hakemisto, kuten `/home` tai `/var`, voi sijaita saman levyn eri partitiolla tai jopa kokonaan eri levyllä kuin valtaosa käyttöjärjestelmästä.
 
-Alla näkyy ajettuna komento `lsblk` eli List Block Devices.
+Alla näkyy ajettuna komento `lsblk` eli List Block Devices. Tässä tapauksessa `sda` on laite eli kiintolevy. Sen osiot tunnistaa juoksevasta numerosta jälkiliitteessä. Lähes koko 30 Gt:n levy on varattu `/`-hakemistolle, pois lukien tietokoneen käynnistysprosessin tarvitsemat pikkuosiot, sekä virtuaalinen snap:n hallinnoima osio, joka on varattu Firefoxin oikolukuohjelmistolle.
 
 ```bash title="Bash"
 $ lsblk /dev/sda
@@ -92,3 +98,7 @@ Jos ympäristömuuttujaa ei ole asetettu, käytetään oletusarvoja. On tyypilli
     ```
 
     Työkalu voi olla kynä ja paperi, Excalidraw, OpenOffice Draw tai vaikkapa ASCII Draw.
+
+!!! question "Tehtävä: lsblk"
+
+    Aja komento `lsblk` ja tarkastele tulosta. Mitä laitteita ja osioita löytyy. Jos olet asentanut Dual Bootin, missä näistä osioista on Windows ja missä Linux?

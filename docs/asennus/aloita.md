@@ -17,6 +17,7 @@ Tämän koko luvun *Asennus* tehtävä on poikkeuksellisesti heti alussa. Tämä
     * DC VM: vSphere
 
     Näistä neuvotut tavat ovat:
+    
     * [Option A: Dual Boot](dualboot.md)
     * [Option B: VirtualBox](virtualbox.md)
 
@@ -49,9 +50,9 @@ graph TD
     D -->|Ei| F{Onko sinulla Windows Pro -lisenssi?}
     F -->|Kyllä| G[Hyper-V]
     F -->|Ei| H{Valitse sopivin hypervisor}
-    H -->|Ei| J[VirtualBox]
-    H -->|Ei| K[VMware Workstation]
-    H -->|Ei| L[Parallels]
+    H --> J[VirtualBox]
+    H --> K[VMware Workstation]
+    H --> Mac[VMware Fusion]
 ```
 
 Mikäli sinulla on jokin yllä mainituista poikkeava tilanne, ota yhteyttä opettajaan. Kurssin voi mahdollisesti suorittaa esimerkiksi Azure-virtuaalikoneella tai WSL2-ympäristön avulla. Tähän tarvitsee kuitenkin erikseen luvan.

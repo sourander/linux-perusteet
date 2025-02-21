@@ -32,6 +32,7 @@ Kopioi tehtävälista leikepöydälle ja muokkaa se sinun käyttöösi sopivaksi
 ## Tiedostot (200)
 
 - [ ] Tehtävä: Hakemistopuu
+- [ ] Tehtävä: lsblk
 
 ## Komennot (210)
 

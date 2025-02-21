@@ -12,7 +12,8 @@ GNU Bashin shell-syntaksissa välilyönti, tab, newline ja muut metamerkit (`|`,
 
 UNIX:stä periytyvissä käyttöjärjestelmissä komennot noudattavat tyypillisesti POSIX-standardiperheen ["utility argument syntax"-käytäntöä](https://pubs.opengroup.org/onlinepubs/9699919799/basedefs/V1_chap12.html). Mikäli käytössä on bash-yhteensopiva shell, kuten yleensä on, niin lisämauteena ovat [GNU:n lisäämät pitkät option-nimet](https://www.gnu.org/prep/standards/html_node/Command_002dLine-Interfaces.html#Command_002dLine-Interfaces). Mikäli käytät jotakin muuta shelliä kuin bashiä, toiminnallisuus voi poiketa.
 
-Tutkitaan tätä käytännössä alla olevan syötteen avulla. Stdout on ignoorattu, jotta koodi pysyisi lyhyenä, mutta kokeile toki ajaa lokaalisti komennot:
+Tutkitaan tätä käytännössä alla olevan syötteen avulla. Stdout on ignoorattu, jotta koodi pysyisi lyhyenä, mutta kokeile toki ajaa lokaalisti komennot. Jos ajat eri komentoja, sinun pitäisi huomata, että tuloste pysyy samana, vaikka vaihdamme optioneiden kirjoitusasua.
+
 
 ```bash title="Bash"
 # Lähtöpiste
@@ -201,7 +202,7 @@ Mikäli tunnuksia sisältävät ympäristömuuttujat ovat asetettuina, AWS CLI -
 
 Komennoissa käytetään usein argumentteina merkkijonoja, joten tässä välissä on hyvä oppia, kuinka shell reagoi tiettyihin metamerkkeihin. Alla on esimerkkejä: 
 
-```bash title="Bash"
+```console title="Bash"
 $ echo 'Onko $USER täällä?'     # ''-merkit tekevät merkkijonosta literaalin
 Onko $USER täällä?
 
@@ -281,9 +282,9 @@ Ota selvää kustakin komennosta alla olevasta taulukosta.
 ## Tehtävät
 
 !!! question "Tehtävä: Monirivinen komento"
-    Kokeile alla olevaa monirivistä komentoa shellissä. Kirjoita se rivi riviltä: älä yritä kopioida ja liittää rimpsua kokonaisuudessaan. Kopiointi ei tule toimimaan `>`-merkkien takia, jotka kuuluvat promptiin eivätkä komento.
+    Kokeile alla olevaa monirivistä komentoa shellissä. Kirjoita se rivi riviltä: älä yritä kopioida ja liittää rimpsua kokonaisuudessaan. Kopiointi ei tule toimimaan `>`-merkkien takia, jotka kuuluvat promptiin eivätkä komentoon
 
-    ```bash
+    ```console
     $ ls \
     > -l --all \
     > --human-readable \

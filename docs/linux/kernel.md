@@ -13,9 +13,9 @@ Kernel hallitsee muun muassa seuraavia asioita:
 * Laiteajurit
 * System calls
 
-Ydin on avointa lähdekoodia ja sen voi ladata [kernel.org-sivustolta](https://kernel.org/). Huomaathan, että eli distribuutiot voivat halutessaan muokata ydintä. Esimerkiksi Ubuntun ytimen koodin voi ladata komennolla `sudo apt install linux-source`. Se asentuu lokaatioon `/usr/src/` tarballina.
+Ydin on avointa lähdekoodia ja sen voi ladata [kernel.org-sivustolta](https://kernel.org/). Huomaathan, että eli distribuutiot voivat halutessaan muokata ydintä. Esimerkiksi Ubuntun ytimen koodin voi ladata komennolla `sudo apt install linux-source`. Se tallentuu lokaatioon `/usr/src/` tarballina.
 
-Kun ajossa oleva ohjelma (eli prosessi) haluaa kommunikoida raudan kanssa, se luo ytimen määrittelemän rajapinnan mukaisen pyynnön, ja ydin joko sallii tai estää pääsyn. Tämä rajapinta on `syscall` eli `system call` ja rajapinta käyttää assembly-kieltä (ks. `man 2 intro`). Tyypillisesti ohjelmat kuitenkin käyttävät C Standard Libraryä (ks. `man 3 intro`).  Jos ydin sallii pääsyn, ydin kommunikoi raudan kanssa ja palauttaa vastauksen prosessille rajapinnan mukaisesti. Ydin siis piilottaa kaiken low-level toteutuksen taakseen eli *abstrahoi* sen.
+Kun ajossa oleva ohjelma (eli prosessi) haluaa kommunikoida raudan kanssa, se luo ytimen määrittelemän rajapinnan mukaisen pyynnön, ja ydin joko sallii tai estää pääsyn. Tämä rajapinta on `syscall` eli `system call` ja rajapinta käyttää assembly-kieltä (ks. `man 2 intro`). Tyypillisesti ohjelmat kuitenkin käyttävät C Standard Libraryä (ks. `man 3 intro`), joka on abstraktio ytimen rajapinnasta. Jos ydin sallii pääsyn, ydin kommunikoi raudan kanssa ja palauttaa vastauksen prosessille rajapinnan mukaisesti. Ydin siis piilottaa kaiken low-level toteutuksen taakseen eli *abstrahoi* sen.
 
 Alla näkyy kartta ytimen sisuksista jaettuna ulkoisten rajapintojen mukaisiin kaistoihin.
 
