@@ -2,6 +2,8 @@ site_name: Linux Perusteet
 
 theme:
   name: material
+  favicon: images/favicon.png # Copyright notice: https://fonts.google.com/noto/specimen/Noto+Color+Emoji
+  logo: images/logo.png       # Same as above.
   features:
     - content.code.copy     # add copy button to code blocks
     - content.code.annotate # add annotation support to code blocks
