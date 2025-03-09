@@ -41,8 +41,12 @@ Tiedostojen kuvaus:
 === "headerdemo.h"
 
     ```c
+    #pragma once // #(1)!
+
     void printHello();
     ```
+
+    1. `#pragma once`-direktiivi estää header-tiedoston sisällyttämisen useammin kuin kerran. Tämä auttaa ehkäiseen ongelmia, jotka syntyvät, kun header-tiedosto sisällytetään useammin kuin kerran, kuten *circular dependency*. Vaihtoehto, jos kääntäjä ei tue pragma oncea, on käyttää `#ifndef`-direktiiviä.
 
 !!! tip "Miksi <> merkit?"
 
@@ -90,10 +94,10 @@ $ gcc app_itself.c headerdemo.c -o app_itself
 
 ### Objektitiedostot
 
-Ohjelman kääntämisen sijasta voit kääntää kaikki `jotain.c`-tiedostot objektitiedostoiksi. Tästä on se hyöty, että mikäli jatkossa `egg.c` muuttuu, mutta `ham.c` ja `spam.c` eivät, sinun tarvitsee generoida vain `egg.o` uudelleen.
+Ohjelman kääntämisen sijasta voit kääntää kaikki `jotain.c`-tiedostot objektitiedostoiksi. Tästä on se hyöty, että mikäli jatkossa `egg.c` muuttuu, mutta `ham.c` ja `spam.c` eivät, sinun tarvitsee generoida vain `egg.o` uudelleen. Kevyitä ohjelmia kääntäessä tuskin huomaat eroa, käänsitkö kaikki tiedostot uudelleen vai vain muuttuneet, mutta tämä on hyvä tuntea, koska tulet törmäämään `.o`, `.so`, `.ko` ja vastaaviin objektitiedostoihin.
 
 ```bash title="Bash"
-# Jos hakemistossa ei ole muita .c-tiedostoja
+# Jos hakemistossa ei ole ei-tarpeellisia .c-tiedostoja
 $ gcc -c *.c
 
 # Jos on, määrittele lista
@@ -269,3 +273,60 @@ $ make -f ImprovedMakefile
     * `headerdemo.c`
     * `headerdemo.h`
     * `headerdemo.o`
+
+### Makefilen edistyneempi käyttö
+
+Jos tutustuit yllä mainittuun [Learn Makefile with the tastiest examples](https://makefiletutorial.com/)-oppaaseen, huomasit, että Makefilet voivat olla hyvin monimutkaisia. Syntaksi on vaikeasti lähestyttävä, mutta sillä voi saavuttaa silti näppäriä etuja. On mahdollista luoda `Makefile`-tiedosto, joka esimerkiksi:
+
+* Kääntää `*.c` ja `lib/*.c`-tiedostot
+* Luo binäärin poluun `bin/softa`
+* Ajaa binäärin mennessään, jos `make run` on ajettuna
+* Tuhota binäärit `make clean`-käskyllä
+
+Tämä voi olla hyödyllinen C-kieltä opetellessa, jos sinulla on useita ohjelmia eri hakemistoissa eri harjoituksiin liittyen, jolloin niiden polut olisivat esimerkiksi:
+
+```plaintext
+exer01/
+    Makefile
+    app1.c
+    lib/
+        lib1.c
+        lib1.h
+    build/
+        softa
+exer02/
+    Makefile
+    ...
+exer##/
+    Makefile
+    ...
+```
+
+??? note "Yllä kuvaillun Makefilen esimerkkitoteutus"
+
+    ```makefile
+    CC = gcc
+    CFLAGS = -Wall -Wextra -Werror -std=c99 -Werror=missing-prototypes
+    SRC = $(wildcard *.c lib/*.c)
+    TARGET = softa
+    BUILD_DIR = build
+    BUILD_TARGET = $(BUILD_DIR)/$(TARGET)
+
+    all: $(BUILD_DIR) $(BUILD_TARGET)
+
+    $(BUILD_DIR):
+        mkdir -p $(BUILD_DIR)
+
+    $(BUILD_TARGET): $(SRC)
+        $(CC) $(CFLAGS) -o $(BUILD_TARGET) $(SRC) -lm
+
+    run: all
+        ./$(BUILD_TARGET)
+
+    clean:
+        rm -r $(BUILD_DIR)
+
+    .PHONY: all clean run
+    ```
+
+    Huomaa, että yllä mainitun Makefile Tutorialin perästä löytyy [Makefile Cookbook](https://makefiletutorial.com/#makefile-cookbook), jossa esitellään hieman vastaava Makefile, joka hyödyntää myös objektitiedostoja, ja sallii C++:n käytön.
