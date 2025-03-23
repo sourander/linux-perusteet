@@ -2,11 +2,12 @@ site_name: Linux Perusteet
 
 theme:
   name: material
-  favicon: images/favicon.png # Copyright notice: https://fonts.google.com/noto/specimen/Noto+Color+Emoji
-  logo: images/logo.png       # Same as above.
+  language: fi
+  
   features:
     - content.code.copy     # add copy button to code blocks
     - content.code.annotate # add annotation support to code blocks
+    - content.tabs.link     # content tabs united!
   # Day and night mode
   palette:
     # Palette toggle for dark mode
@@ -47,19 +48,23 @@ markdown_extensions:
   # Admonition call-outs such as "!!! note", and support for making call-outs collapsible
   - admonition
   - pymdownx.details
-  # Content tabs
-  - pymdownx.superfences
-  - pymdownx.tabbed:
-      alternate_style: true
-  # Task lists (TODO lists)
+  # Footnotes
+  - footnotes
+  # Checkboxes
   - pymdownx.tasklist:
       custom_checkbox: true
+  # Content tabs
+  - pymdownx.tabbed:
+      alternate_style: true
 
 plugins:
   # Navigation page ordering
-  - awesome-pages
+  - awesome-nav
   - search
 
+
+
+
 copyright: |
-  Copyright &copy; 2024 <a href="https://www.kamk.fi">Kajaanin Ammattikorkeakoulu</a>. 
+  Copyright &copy; 2025 <a href="https://www.kamk.fi">Kajaanin Ammattikorkeakoulu Oy</a>. 
   Licenced under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">BY-NC-ND 4.0</a>

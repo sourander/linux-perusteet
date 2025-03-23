@@ -2,17 +2,18 @@
 authors = [
     {name = "Jani Sourander", email = "sourander@gmail.com"},
 ]
-requires-python = "<4.0,>=3.10"
+requires-python = "<4.0,>=3.12"
 dependencies = [
-    "mkdocs-material~=9.5",
-    "mkdocs-awesome-pages-plugin~=2.9",
+    "mkdocs-material",
+    "mkdocs-awesome-nav",
 ]
 name = "linux-perusteet"
 version = "0.1.0"
 description = ""
 readme = "README.md"
 
+
 [dependency-groups]
 dev = [
-    "pre-commit>=4.1.0",
+    "pre-commit>=4.1.0"
 ]
