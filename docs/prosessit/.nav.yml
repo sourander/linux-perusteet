@@ -4,4 +4,4 @@ nav:
   - cron.md
   - lokit.md
   - kontit.md
-  - ...
+  - "*"

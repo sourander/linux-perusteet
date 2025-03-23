@@ -7,4 +7,4 @@ nav:
   - args.md
   - tiedostot.md
   - modularisointi.md
-  - ...
+  - "*"

@@ -9,4 +9,4 @@ nav:
     - Etäkäyttö: etakaytto
     - Tiedostojärjestelmä: tiedostojarjestelma
     - C-ohjelmointi: c_ohjelmointi
-    - ...
+    - "*"
