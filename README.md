@@ -1,48 +1,27 @@
-# Linux-perusteet
+# linux-perusteet
 
-Tämä on Linux Perusteet -kurssin oppimateriaali. Projekti löytyy tavallisena HTTP-sivustona verkosta (ks. linkki tämän sivun About-osiosta), mutta sen voi tarpeen mukaan ajaa myös lokaalisti.
+Tämä on Linux Perusteet -oppimateriaali. Projekti löytyy tavallisena HTTP-sivustona verkosta (ks. linkki tämän sivun About-osiosta).
 
-Projekti nojaa vahvasti `Material for MkDocs`-nimiseen Python-kirjastoon. Kyseinen kirjasto luo `docs/`-kansion sisällön perusteella verkkosivuston.
+Projekti hyödyntää vahvasti [MkDocs](https://www.mkdocs.org/)-sivustogeneraattoria, joka luo `docs/`-hakemiston Markdown-tiedostoista staattisen nettisivuston. Projekti käyttää [Material for MkDocs](https://squidfunk.github.io/mkdocs-material/)-teemaa.
 
-Tämä sivusto on luotu [Doc Skeleton](https://github.com/sourander/doc-skeleton)-templaatin avulla.
+Tämä sivusto on luotu [Doc Skeleton](https://github.com/sourander/doc-skeleton)-templaatin avulla useiden muiden sivustojen ohessa: ne listataan [sourander.github.io](https://sourander.github.io/)-indeksisivustolla. Kaikkien näiden projektien konfiguraation- ja yhteisten elementtien ylläpito on keskitetty [doc-flesh](https://github.com/sourander/doc-flesh)-projektiin. Kyseessä on ikään kuin löyhä kopio Ansible-työkalusta: se puskee konfiguraatiotiedostoja ja yhteisiä elementtejä muihin projekteihin.
 
 ## Riippuvuudet
-* Python >=3.10
-* Python uv
+
+* [uv](https://docs.astral.sh/uv/)
+    * ... ja sen riippuvuudet `pyproject.toml`-tiedostossa.
 
 ## Kuinka ajaa lokaalisti
-
-Tämä projekti käyttää uv-projektinhallintaa.
 
 ```bash
 # Kloonaa 
 git clone 'this-repo-url'
 
+
 # Aktivoi hookit
 uv run pre-commit install
 
-# ... tai päivitä ne
-uv run pre-commit autoupdate
 
 # Aja development serveri
 uv run mkdocs serve --open
-```
-
-## Pre-commit
-
-Projektissa on käytössä pre-commit, joka varmistaa, että olet muistanut lisätä kaikki Tehtävät sivuston Tehtäväkooste-osioon. Pre-commit ajetaan automaattisesti ennen commitointia. Ajettava skripti luo uuden version `docs/exercises.md`-tiedostosta ja lisää sen commitiin.
-
-Tehtävälista järjestetään prioriteetin mukaan, jonka voi asettaa `docs/exercises.md`-tiedostossa olevan `priority`-avaimen arvolla. Default on 999. Prioriteetti määritellään Markdown-tiedoston metadata-osiossa, jonka tulee olla heti tiedoston alussa. Se näyttää tältä:
-
-```plaintext
----
-priority: 100
----
-```
-
-Jos haluat aja hookin käsin, kirjoita:
-
-```bash
-# Hook
-uv run pre-commit run extract-exercise-list --all-files
 ```
