@@ -149,6 +149,21 @@ Alla joitakin hyödyllisiä tapoja tutustua komennon sielunelämään.
 6. Komento `type <komento>` paljastaa, onko komento alias, built-in vai jossakin PATH:n lokaatiossa oleva ohjelma.
 7. Internetin hakukoneet. Varmistathan, että ymmärrät mitä komennot tekevät ennen kuin ajat niitä.
 
+### TLDR
+
+Eräs näppärä apuväline komentojen ja niiden optioneiden tutkimiseen on [tldr.inbrowser.app/](https://tldr.inbrowser.app/). Verkkosivun lisäksi voit pyörittää sitä lokaalisti. Tämä onnistuu kenties helpoiten työkalun [uv](https://docs.astral.sh/uv/) avulla. Mikäli sinulla on asennettuna `uv`, kokeile seuraavaa komentoa, joka asentaa [PyPi: tldr](https://pypi.org/project/tldr/)-paketin koneellesi:
+
+```bash
+# Install
+uv tool install tldr
+
+# Get local copy of all pages for faster access
+tldr --update_cache
+
+# Get help for a command
+tldr tar
+```
+
 ## Merkkijonot ja muuttujat
 
 ### Muuttujat

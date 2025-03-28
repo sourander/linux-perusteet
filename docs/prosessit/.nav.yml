@@ -3,5 +3,4 @@ nav:
   - systemd.md
   - cron.md
   - lokit.md
-  - kontit.md
   - "*"
