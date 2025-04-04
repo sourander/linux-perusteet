@@ -89,14 +89,32 @@ Kopioi tehtävälista leikepöydälle ja muokkaa se sinun käyttöösi sopivaksi
 - [ ] Tehtävä: Flatpak-sovellusten lokaatio
 - [ ] Tehtävä: Asenna Go
 
+## Prosessit (500)
+
+- [ ] Tehtävä: Selvitä oman shellisi PID
+- [ ] Tehtävä: Käynnistä ja pysäytä prosessi taustalla
+- [ ] Tehtävä: Tapa prosessi siististi ja väkisin
+
 ## Systemd (510)
 
 - [ ] Tehtävä: Tutustu Systemd Unittiin
 - [ ] Tehtävä: Systemd timer
 
+## Cron (520)
+
+- [ ] Tehtävä: Cron toimii!
+- [ ] Tehtävä: Docker Prune scheduled
+
 ## Lokit (530)
 
 - [ ] Tehtävä
+- [ ] Tehtävä: Kirjoita oma lokimerkintä
+- [ ] Tehtävä: Tarkista palvelun lokit
+- [ ] Tehtävä: Todista tietyn palvelun event
+
+## Kontit (540)
+
+- [ ] Tehtävä: Docker ps
 
 ## Yleistä (800)
 

@@ -26,7 +26,7 @@ Tiedostossa neuvotaan cron-tabin syntaksi, joka on muotoa `* * * * *` (at every 
 
     Harjoittele cron-tabin syntaksi online-generaattorin avulla. Yksi monista on [Crontab.guru](https://crontab.guru/).
 
-### crontab-ohjelma
+## crontab-ohjelma
 
 `crontab`-ohjelmaa käytetään ajastettujen tehtävien hallintaan. `crontab`-ohjelmaa käytetään seuraavasti:
 
@@ -39,7 +39,7 @@ $ crontab [-u käyttäjä] [-l | -r | -e]
 * `-e`-valitsin editoi (tai luo).
 * `-r`-valitsin poistaa
 
-#### Luodaan uusi cron-tehtävä
+### Luodaan uusi cron-tehtävä
 
 Aluksi sinun käyttäjällä ei todennäköisesti ole laisinkaan cron-tehtäviä. Voit tarkistaa tämän `crontab -l` komennolla. Luodaan uusi tehtävä.
 
@@ -59,3 +59,22 @@ Valitse haluamasi editori. Tässä esimerkissä valitsen `nano`-editorin. Tämä
 * * * * * echo "Time is $(date)" >> ~/crontesting
 ```
 
+## Tehtävät
+
+!!! question "Tehtävä: Cron toimii!"
+
+    Käytä `crontab -e` -komentoa lisätäksesi ajastetun tehtävän, joka kirjoittaa "Cron toimii!" -viestin tiedostoon `~/cronlog.txt` kerran minuutissa.  
+    Varmista, että tehtävä toimii tarkistamalla tiedoston sisältö muutaman minuutin kuluttua.
+
+!!! question "Tehtävä: Docker Prune scheduled"
+
+    Luo skripti [bobcares: Crontab Docker Prune Command](https://bobcares.com/blog/crontab-docker-prune/) ohjetta noudattaen, joka tuhoaa yli 30 päivää vanhat kontit ja imaget.
+
+    Huomaa kuitenkin, että tämä vaatii hieman pohtimista. Et voi välttämättä noudattaa ohjetta aivan orjallisesti, jos ==sinulla on Rootless Docker==. Kyseinen `cron.daily` ajetaan root-käyttäjällä, joten kyseinen ohje toimii vain, 
+
+    1. Jos sinun Docker ajetaan roottina, voit käyttää ohjetta sellaisenaan.
+    2. Jos sinulla on rootless Docker, käytä sen sijaan sinun käyttäjän omaa cronia (`crontab -e`).
+
+    Perustele valintasi.
+
+    

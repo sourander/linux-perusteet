@@ -233,3 +233,17 @@ $ kill %1
 $ rm kissa.txt
 ```
 
+## Tehtävät
+
+!!! question "Tehtävä: Selvitä oman shellisi PID"
+
+    Käytä `echo $$` -komentoa selvittääksesi, mikä on oman käynnissä olevan komentotulkintasi prosessitunniste (PID).
+
+!!! question "Tehtävä: Käynnistä ja pysäytä prosessi taustalla"
+
+    Aja ohjelma taustalla käyttäen `&`-merkkiä, tarkista sen tila `jobs`-komennolla ja tuo se takaisin etualalle `fg`-komennolla.
+
+!!! question "Tehtävä: Tapa prosessi siististi ja väkisin"
+
+    Käynnistä pitkäkestoinen prosessi (esim. `sleep 600`) ja yritä ensin pysäyttää se `kill -TERM <pid>` -komennolla.  
+    Jos se ei lopu, pakota lopetus `kill -9 <pid>` -komennolla.

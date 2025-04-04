@@ -81,41 +81,36 @@ Käy katsomassa vastaanottavan koneen konfiguraatio, joka neuvotaan [Rsyslog: Re
 
 Lokien keskittämisen voi hoitaa myös muilla avoimen lähdekoodin ratkaisuilla tai kaupallisilla ratkaisuilla. Lisäksi eri pilvipalveluntarjoajat tarjoavat omia ratkaisujaan. Näiden käsittely on tämän kurssin skoopin ulkopuolella.
 
-## Case: tracker-extract-3
+## Tehtävät
 
-Tässä esimerkissä seuraamme `tracker-extract-3`-prosessia. Tracker on tiedostojen indeksointiin tarkoitettu ohjelma, joka on oletuksena asennettuna monissa Linux-jakeluissa. Trackerin tarkoitus on indeksoida tiedostojärjestelmää, jotta käyttäjä voi helposti löytää tiedostoja. Lokista paljastuu (ks. code block alla), että kyseinen prosessi ei käynnisty, koska se yrittää suorittaa kiellettyjä systeemikutsuja. Tämä luonnollisesti syö turhaan resursseja ja aiheuttaa turhia rivejä lokiin.
+!!! question "Tehtävä: Kirjoita oma lokimerkintä"
 
-```log
-helmi 07 10:15:11 opettajakone systemd[1280]: Starting Tracker metadata extractor...
-helmi 07 10:15:11 opettajakone tracker-extract-3[3116]: Disallowed syscall "epoll_create1" caught in sandbox
-helmi 07 10:15:12 opettajakone systemd[1280]: tracker-extract-3.service: Main process exited, code=dumped, status=31/SYS
-helmi 07 10:15:12 opettajakone systemd[1280]: tracker-extract-3.service: Failed with result 'core-dump'.
-helmi 07 10:15:12 opettajakone systemd[1280]: Failed to start Tracker metadata extractor.
-helmi 07 10:15:12 opettajakone systemd[1280]: tracker-extract-3.service: Scheduled restart job, restart counter is at 5.
-```
+    Käytä `logger`-komentoa kirjoittaaksesi oman testiviestisi järjestelmälokeihin.  
+    Tarkista sitten, että viesti on tallentunut oikein käyttämällä `journalctl --since "5 minutes ago"` -komentoa.
 
-Palvelu ajetaan minun käyttäjäni nimissä, joten se löytyy komennoilla:
+!!! question "Tehtävä: Tarkista palvelun lokit"
 
-```bash title="Bash"
-$ systemctl --user status tracker-extract-3
-$ systemctl --user cat tracker-extract-3
-```
+    Selvitä, miten voit tarkastella tietyn palvelun (esim. `cron` tai `sshd`) lokeja `journalctl`-komennolla.  
+    Vihje: Käytä `-u`-valitsinta ja tutki, mitä tietoa saat irti esimerkiksi komennolla `journalctl -u cron --no-pager | tail -n 10`.
 
-En koe tarvitsevani kyseistä palvelua. Voin etsiä tiedostoja `find` komennolla tai `locate`-komennolla, joista jälkimmäisellä on oma indeksinsä, joka päivitetään komennolla `updatedb`. Tämän vuoksi poistan palvelun käytöstä maskaamalla sen. Tähän, kuten moniin muihinkin Linux-ongelmiin, löytyy hyvää apua Internetistä. Tässä tapauksessa ohje löytyy muun muassa sivustolta [Linux Uprising: How To Completely Disable Tracker, GNOME's File Indexing And Search Tool](https://www.linuxuprising.com/2019/07/how-to-completely-disable-tracker.html)
+!!! question "Tehtävä: Todista tietyn palvelun event"
 
-Ensimmäiseksi ohje käskee maskaamaan servicet eli luomaan symbolisen linkin `/dev/null`-tiedostoon. Tämä estää palvelua käynnistymästä. Tämän voi myöhemmin purkaa komennolla `unmask`.
+    Tee tarkoituksella jotakin, minkä saat näkymään lokissa, ja joka on monimutkaisempi event kuin `logger <viesti>` tai `cron`-palvelun tuloste. Huomaa, että etsi service, joka on vastuussa tapahtumasta, eli siis käytä lopulta komentoa:
 
-```bash title="Bash"
-systemctl --user mask tracker-extract-3.service \
-tracker-miner-fs-3.service \
-tracker-miner-rss-3.service \
-tracker-writeback-3.service \
-tracker-xdg-portal-3.service \
-tracker-miner-fs-control-3.service
-```
+    ```bash title="Bash"
+    $ journalctl -f -u name-of-the-service
+    ```
 
-Lopulta palvelu tulee pysäyttää komennolla:
+    Minkä servicen lokeissa mahtaa näkyä, jos tökkäät USB-muistitikun koneeseen?
 
-```bash title="Bash"
-tracker3 reset -s -r
-```
+    Minkä servicen lokeissa mahtaa näkyä, jos ajat komennon `ssh localhost`?
+
+    Etsi jokin tällainen event, selvitä mikä service on vastuussa siitä, ja käytä `journalctl -f -u <service>`-komentoa nähdäksesi, mitä lokitietoja tulee näkyviin.
+
+    !!! tip
+
+        Jos olet epävarma, minkä servicen piiriin tietty tapahtuma kuuluu, voit käyttää `journalctl -f`-komentoa ilman `-u` optionia. Outputissa näkyy kaikkien servicejen eventit, joten siitä tunnistat helposti mikä service älähtää, kun teet jotakin, mikä näkyy varmana lokeissa! Rivi on syntaksiltaan jotakuinkin:
+
+        ```
+        <timestamp> <hostname> <service>: <message>
+        ```
