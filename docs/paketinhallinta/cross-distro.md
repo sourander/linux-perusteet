@@ -127,6 +127,22 @@ Huomaa, että tämä lyhyt ohje on todellakin vain lyhyt ohje. Snapin käyttöö
 
     Huomaa, että monet ohjelmat voi asentaa useasta eri lähteestä. Esimerkiksi [OBS Studio](https://flathub.org/apps/com.obsproject.Studio) on saatavilla sekä Flathubista että Snapcraftista että PPA:sta, joka on sinulle tuttu aiemmista tehtävistä.
 
+    !!! tip "Apua valintaan?"
+
+        Jos et osaa yhtään päättää, mitä asentaisit, kenties jokin näistä kiinnostaa sinua:
+
+        * **GPU Screen Recorder.** Hyödyllinen, yksinkertainen ohjelma, joka tekee saman kuin OBS Studio, mutta hyödyntäen Nvidia, AMD tai Intel GPU:ta. Tämä voi kiinnostaa sinua, jos sinulla on oikean raudan päälle asennettu Linux.
+        * **Picocrypt**. Ohjelma, joka salaa ja purkaa tiedostoja. Hyödyllinen, jos haluat pitää tiedostosi turvassa.
+        * **Vieb**. Minimalistinen selain.
+        * **Ignition**. Ohjelma, joka mahdollistaa ohjelmien tai skriptien ajamisen loginin yhteydessä yksikertaisen UI:n kautta.
+        * **Gaia Sky**. Ohjelma, joka visualisoi galaksin ja sen sisällön. Pääset lentelemään pitkin linnunrataa 3D:nä.
+        * **PySoIFC**. Yli 1300 erilaista korttipeliä yhdessä ohjelmassa.
+        * **Darktable**. RAW-kuvien käsittelyyn tarkoitettu digitaalinen pimiö. Kilpailija siis Lightroomille tai Capture Onelle.
+        * **Tangram**. Selain, joka keskitty Web Appien eristämiseen toisistaan, joka helpottaa esim. Gmail tai Teams:n Web Appien käyttöä, jos sinulla on useita eri tilejä.
+        
+
+        Ohjelmat on valittu Linux Format lehden April 2025 numerosta (Hot Picks -osiosta).
+
 !!! question "Tehtävä: Flatpak-sovellusten lokaatio"
 
     Selvitä, missä hakemistossa asentamasi Flatpak-sovellus sijaitsee.
