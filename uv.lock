@@ -285,7 +285,7 @@ wheels = [
 
 [[package]]
 name = "mkdocs-awesome-nav"
-version = "3.1.0"
+version = "3.1.1"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "mkdocs" },
@@ -293,9 +293,9 @@ dependencies = [
     { name = "pydantic" },
     { name = "wcmatch" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/2f/79/f9907fc5f1c62ea0661d5b35a74510adffce7a1d9ad2d36183f9f7a175ba/mkdocs_awesome_nav-3.1.0.tar.gz", hash = "sha256:4dbcdc17d36683fb9e384ba9a07094aecaddee1a7155ec38c4231f62feb3d03f", size = 8638 }
+sdist = { url = "https://files.pythonhosted.org/packages/2d/e0/b2185370a35ecc042f648beec27a6d1a5d15d2ad46255d68201d2ba9cc38/mkdocs_awesome_nav-3.1.1.tar.gz", hash = "sha256:0665ab290a3c22b49e07151e3aca82d5d28a42aecf6e940bf295546565d156b5", size = 8656 }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/91/12/132b4aa5bf0cb312310c8ef4fba4e6b4c60289a876d74b7fd9089bff1918/mkdocs_awesome_nav-3.1.0-py3-none-any.whl", hash = "sha256:e82b90754611b62018860c7d49b431ab80ca42037136a904441ade9b63b05541", size = 12360 },
+    { url = "https://files.pythonhosted.org/packages/0b/03/84bdfc698c5307259b269c5c20b8d62c7f2f36667f0a10d4d311dc604546/mkdocs_awesome_nav-3.1.1-py3-none-any.whl", hash = "sha256:50eafd8042274feff2b995ecaa50c55c07807ff33210a064877f6f1aa8d6ee40", size = 12356 },
 ]
 
 [[package]]
