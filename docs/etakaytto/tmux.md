@@ -116,3 +116,11 @@ Session on jaettu ikkunoihin. Voit luoda uuden ikkunan painamalla ++ctrl+b++ ja 
 ## Jatko-ohjeet
 
 Tässä ohjeessa käytiin läpi `tmux`-ohjelman peruskäyttö. Mikäli haluat syventää osaamistasi, voit tutustua `man tmux`-ohjeeseen tai [tmux Wikiin](https://github.com/tmux/tmux/wiki) tai esimerkiksi käyttäjien luomiin [tmux cheat sheet](https://gist.github.com/scottjwood/9067d332f2933a0c0c0e)-tyyliisiin pikaohjeisiin.
+
+## Tehtävät
+
+!!! question
+
+    Asenna tmux. Luo istunto (engl. session), ja splittaa istunnon ikkuna horisontaalisesti kahdeksi ruuduksi (*engl. panes*). Tähän löytyy netistä rutkasti ohjeita, kuten yllä mainittu cheat sheet. Otsikon "Managing split panes" alta löytyy tarvittavat ohjeet.
+
+    Todista luomasi kokonaisuus kuvakaappauksin, aivan kuten edellisissäkin tehtävissä olet tehnyt.

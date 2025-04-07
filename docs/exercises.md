@@ -116,6 +116,10 @@ Kopioi tehtävälista leikepöydälle ja muokkaa se sinun käyttöösi sopivaksi
 
 - [ ] Tehtävä: Docker ps
 
+## SSH (600)
+
+- [ ] Tehtävä: SSH yhteys
+
 ## Yleistä (800)
 
 - [ ] Tehtävä

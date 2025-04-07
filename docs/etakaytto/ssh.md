@@ -211,3 +211,23 @@ Ubuntu 24.04:ssä RDP-serverin luominen on äärimmäisen helppoa.
 Teoriassa minkä tahansa RDP clientin pitäisi toimia, mutta ainakin macOS:llä Microsoftin oma Remote Desktop -sovellus ei suostunut yhdistämään. Client ja server olivat eri mieltä yhteyden kättelyssä turva-asetuksista. Sen sijaan Thincast Remote Desktop Client toimi moitteettomasti.
 
 Muita vaihtoehtojakin löytyy, kuten: Remmina (Linux) tai RustDesk (Linux, macOS, Windows).
+
+## Tehtävät
+
+!!! question "Tehtävä: SSH yhteys"
+
+    Tee yllä näkyvät step, eli:
+
+    * Aktivoi OpenSSH server ja tarkista asetukset
+    * Salli palomuurilla SSH vain ja ainoastaan lähiverkosta
+    * Ota SSH-yhteys koneeseen toisesta koneesta
+    
+    Mikäli kursilla käyttämäsi Linux-kone on virtuaalikone, saatat joutua tutustumaan valitun hypervisorin *port forwarding* -asetuksiin. Tähän löytyy kuitenkin hyviä ohjeita. Kokeile vaikka hakusanoja: `virtualbox how to port forwards ssh`.
+
+    !!! tip "Lisähaaste"
+
+        Jos SSH osoittautui helpoksi tehtäväksi, niin ota kohdekoneeseen yhteys myös Ruskdesk:n avulla! Julkiverkon yli yhdistäessä sinulla tulisi olla Relay Server asennettuna esimerkiksi DC-labran julkiseen IP-osoitteeseen, mutta jos/kun sekä server että client ovat samassa LAN-verkossa, voit yhdistää suoraan IP-osoitteella.
+
+        Huomaa, että tämä mahdollistaa etäkäytön macOS-Windows-Linux –trion käyttöjärjestelmien välillä.
+
+        Tähän löytyy ohjeita, kuten NetworkChuck:n video [YouTube: Your Remote Desktop SUCKS!! Try this instead (FREE + Open Source)](https://youtu.be/EXL8mMUXs88).
