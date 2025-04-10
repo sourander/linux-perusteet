@@ -8,9 +8,9 @@ Tämän ohjeen tarkoitus on auttaa sinua pika-asentamaan tarvittavat ohjelmat si
 
 ## Video-ohjeet
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/cSvLAXpWsZg?si=WmTRMvGIeGyXMQJv" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/GFq3KpAREWg?si=aSEjkqUGbQl6bAQi" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
-**Video 1:** Linux Perusteet 2024 -toteutuksen asennusohjeet.
+**Video 1:** Linux Perusteet 2025 kurssin ohjelmien asennusohjeet.
 
 Yllä on upotettuna Youtube-video, jossa freesiin Ubuntu-asennukseen suoritetaan kaikki tämän ohjeen merkittävät vaiheet. Alla on tekstimuodossa lähes identtiset vaiheet sisältävä ohje. Voit valita, kumpaa haluat seurata - tai tutustutko kumpaankin.
 
@@ -39,7 +39,6 @@ $ sudo apt install git
 # Set git configuration
 $ git config --global user.name "Your Name"
 $ git config --global user.email "your.name@kamk.fi"
-$ git config --global core.autocrlf input
 $ git config --global pull.ff only
 $ git config --global init.defaultBranch main
 ```
@@ -58,20 +57,17 @@ Komento `ssh-keygen` kysyy sinulta muutamia kysymyksiä. Voit jättää käytän
 # Create SSH key pair
 $ ssh-keygen -t ed25519 -C "your.name@kamk.fi alias-for-computer"
 
-# Install tool for managing clipboard
-$ sudo apt install xclip
-
-# Copy public key to clipboard
-$ xclip -sel clip < ~/.ssh/id_ed25519.pub
+# Print the public key to terminal (for copying)
+$ cat ~/.ssh/id_ed25519.pub
 ```
 
 ### Vaihe 3: Lisää avain GitLabiin
 
-Navigoi osoitteeseen: [repo.kamit.fi](https://repo.kamit.fi/)
+Navigoi osoitteeseen: [gitlab.dclabra.fi](https://gitlab.dclabra.fi/)
 
 1. Kirjaudu sisään
 2. Klikkaa omaa etunimen alkukirjainta vasemmassa yläkulmassa
-3. Valitse "Settings"
+3. Valitse "Preferences"
 4. Valitse "SSH Keys"
 5. Paina "Add SSH Key"
 
@@ -83,7 +79,7 @@ Tämän jälkeen testaa Terminaalissa yhteys komennolla:
 
 ```bash title="Bash"
 # Test connection
-$ ssh -T ssh://git@repo.kamit.fi:45065
+$ ssh -T ssh://git@gitlab.dclabra.fi
 ```
 
 Sinulle aukeaa seuraavanlainen pop-up -ikkuna, jossa pyydetään syöttämään avaimen salasana. Syötä valitsemasi passphrase, ==ruksaa päälle "Automatically unlock this key when I'm logged in"== ja paina "Unlock".
@@ -113,6 +109,9 @@ Tässä ohjeessa ei asenneta graafista Docker Desktop -ohjelmaa, vaan Docker Eng
 Säästämme hieman aikaa ajamalla *convenience scriptin*, joka ajaa meidän puolestamme tarvittavat komennot.
 
 ```bash title="Bash"
+# Install prerequisites
+sudo apt install curl
+
 # Save the script as get-docker.sh
 curl -fsSL https://get.docker.com -o get-docker.sh
 
@@ -154,7 +153,8 @@ Aktivoi rootless mode, jotta et jatkossa tarvitse sudo-oikeuksia Docker-konttien
 sudo apt install uidmap
 
 # Disable daemon
-sudo systemctl disable --now docker.service docker.socket
+sudo systemctl disable --now docker.service
+sudo systemctl disable --now docker.socket
 
 # Delete socket file
 sudo rm /var/run/docker.sock
@@ -226,7 +226,7 @@ uvx cookiecutter gh:sourander/kamk-cookiecutters -f
 
     Liitä yllä oleva komento leikepöydälle *Code copy button*:n avulla, joka on koodisnippetin oikeassa yläkulmassa. Se on kuvake, jossa on kaksi paperia päällekkäin. Näin saat komennon kopioitua ilman mahdollisia näkymättömiä merkkejä kaikkine kenoviivoineen ja rivivaihtoineen.
 
-### Vaihe 10: Ensimäinen oppimispäiväkirjamerkintä
+### Vaihe 10: Ensimmäinen oppimispäiväkirjamerkintä
 
 Avaa oppimispäiväkirja, eli nykyinen kansio, Visual Studio Codessa. Tämä onnistuu helposti komennolla:
 
