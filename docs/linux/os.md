@@ -108,7 +108,7 @@ Yllä oleva listaus pyrkii olemaan jossain määrin pätevä, vaikka X ja Waylan
 Linux on nykyään yksi maailman suosituimmista käyttöjärjestelmistä — ellei suosituin. Se on tyypillinen käyttöjärjestelmä palvelimissa, mobiililaitteissa ja monissa sulautetuissa järjestelmissä. Tyypillisesti asennat Linuxin (tai GNU/Linuxin) käyttäen jotakin distribuution asennusohjelmaa, joka kopioidaan asennusmediaan (esim. USB-tikku tai CD-ROM). Jos mobiililaitteet (Android) unohdetaan, niin suurimmat pelurit Linuxin distribuutioiden markkinoilla ovat Debian ja Red Hat. Näitä sanotaan *perheiksi*, joihin kuuluu useita jakeluita, jotka perustuvat yhteiseen alkuperäiseen jakeluun (eli "yhteinen upstream").
 
 * Debian
-    * Debian on itsenäinen Linux-jakelu ja Debian-perheeseen kuuluu Canonicalin Ubuntu ja sen perilliset (Linux Mint, jne.)
+    * Debian on itsenäinen Linux-jakelu ja Debian-perheeseen kuuluu Canonicalin Ubuntu ja sen perilliset (Linux Mint, Zorin OS, Pop!_OS jne.)
 * Red Hat
     * Red Hat -perheeseen kuuluu itsenäinen jakelu Fedora ja sen perilliset sekä perillisten perilliset (RHEL, CentOS Stream, Rocky jne.)
 
@@ -116,7 +116,7 @@ Linux on nykyään yksi maailman suosituimmista käyttöjärjestelmistä — ell
 
     Red Hat Enterprise Linux (RHEL) on maksullinen, mutta jos haluat tutustua siihen, saat ilmaisen lisenssin [Red Hat Developer](https://developers.redhat.com/) -sivustolta ei-kaupalliseen käyttöön. Mikäli tämä kiinnostaa, voit käytä myös Red Hat Academyn kursseja. Ota yhteys opettajaan: hän voi avata sinulle pääsyn näihin kursseihin.
 
-Muitakin itsenäisiä jakeluita löytyy, kuten Slackware, Gentoo, Arch Linux, openSUSE. Tutustu näihin joko heidän omilla sivuillaan tai [DistroWatch](https://distrowatch.com/)-sivustolla. Työelämässä käytät suurella todennäköisyydellä joko Red Hat -perheen tai Debian-perheen jakelua. Näihin voit tutustua esimerkiksi asentamalla CentOS Stream:n ja Ubuntun virtuaalikoneisiin - kuten tällä kurssilla tehdään. 
+Muitakin itsenäisiä jakeluita löytyy, kuten Slackware, Gentoo, Arch Linux, openSUSE. Tutustu näihin joko heidän omilla sivuillaan tai [DistroWatch](https://distrowatch.com/)-sivustolla. Työelämässä käytät suurella todennäköisyydellä joko Red Hat -perheen tai Debian-perheen jakelua. Näihin voit tutustua esimerkiksi asentamalla CentOS Stream:n ja Ubuntun virtuaalikoneisiin - kuten tällä kurssilla tehdään. Huomaa, että edes DistroWatch ei sisällä kaikkia olemassa olevia jakeluita, koska niiden lisääminen sivuilla on vapaaehtoista. Esimerkiksi Opinsys Oy:n jakelu [Puavo OS](https://puavo.org/) puuttuu kirjoitushetkellä DistroWatchista. Puavo OS on Debian-pohjainen jakelu, joka on kehitetty erityisesti koulumaailman tarpeisiin. Tutustu ihmeessä heidän verkkosivuihin.
 
 !!! quote
 
