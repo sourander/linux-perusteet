@@ -263,12 +263,45 @@ $ sudo su - <username>
     2. Selvitä, mitä tapahtuu, jos yrität käyttää `sudo`-komentoa.
     3. Antamatta käyttäjälle **sudoers**-oikeuksia, miten voit sallia lukea ja kirjoittaa tietoa `/srv/antipersoonat` -hakemistossa? Luo hakemisto ja selvitä.
 
-!!! question "Käyttäjät: Käyttäjä ja kirjautuminen"
+!!! question "Tehtävä: Käyttäjä ja kirjautuminen"
 
     Aseta äsken luomallesi käyttäjälle salasana, jos sillä ei vielä ole. Jos olet epävarma, tutki `/etc/shadow`-tiedostoa.
     
     Kun käyttäjällä on salasana, kirjaudu ulos pääkäyttäjästäsi ja kirjaudu GNOME:en tällä ei-admin käyttäjällä.
 
-!!! question "Käyttäjät: Poista käyttäjä"
+!!! question "Tehtävä: Poista käyttäjä"
 
     Selvitä, kuinka käyttäjän voi poistaa kotihakemistoineen. Poista tämän jälkeen myös tyhjiksi jääneet ryhmät.
+
+!!! question "Tehtävä: Pidennä sudo-salasanan kyselytiheyttä"
+
+    Olet varmasti huomannut, että sudo kysyy salasanaa:
+
+    1. Joka kerta kun käytät `sudo`-komentoa uudessa istunnossa.
+    2. Aina `sudo`-komennon jälkeen, kun olet edellisestä promptista on kulunut 15 minuuttia.
+
+    Eikö olisi näppärää, jos salasana kysyttäisiin vaikkapa vain kerran tunnissa - olit missä tahansa shell-istunnossa? Kokeile muokata tätä. Se hoituu `visudo`-komennolla, joka avaa `/etc/sudoers`-tiedoston. Visudo on editori, joka on erikoistettu sudoers-tiedoston muokkaamiseen. Se pyrkii estämään virheellisten asetusten tallentamisen. Ole kuitenkin tarkkana: tämän tiedoston rikkominen voi estää sinua kirjautumasta sisään järjestelmään. 
+    
+    Lisää konfiguraatioon rivi, joka sallii sinulle 60 minuutin cachetuksen salasanalle. Voit käyttää joko `/etc/sudoers`-tiedostoa tai luoda oman drop-in tiedoston `/etc/sudoers.d/my-sudoers`. Drop-in tiedosto on erillinen tiedosto, joka ladataan sudoers-tiedoston lisäksi. Tämä on suositeltava tapa.
+
+    ```console title="Bash"
+    $ sudo sudo -V | grep -i "timestamp timeout"
+    Authentication timestamp timeout: 15,0 minutes
+
+    $ sudo visudo /etc/sudoers.d/my-sudoers
+    ```
+
+    ```ini title="my-sudoers"
+    Defaults    timestamp_timeout=60
+    ```
+
+    Ja mihinkö se cachettaa nämä? Linuxissa lähes kaikki on tiedostoina, kuten myös tämä. Voit tutkia `/run/sudo/ts`-hakemistoa. Sieltä pitäisi löytyä sinun userid:n mukainen tiedosto, jota on muokattu viimeksi kun ajoit sudo-komennon. Lisätietoja löydät komennolla `man 5 sudoers`.
+
+    !!! tip
+    
+        Voit halutessasi lisätä myös toisen arvon, kuten `timestamp_type=global`, joka sallii salasanan kysymisen vain kerran `timeout`-viiveen välein riippumatta siitä, missä istunnossa olet. Voit lisätä sen myös drop-in tiedostoon joko uudelle riville tai samaan riviin pilkulla erotettuna. Sen arvoa voit tutkia näin:
+
+        ```console title="Bash"
+        $ sudo sudo -V | grep -i "type"
+        Type of authentication timestamp record: tty
+        ```

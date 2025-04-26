@@ -48,6 +48,9 @@ Kopioi tehtävälista leikepöydälle ja muokkaa se sinun käyttöösi sopivaksi
 
 - [ ] Tehtävä: Nologin
 - [ ] Tehtävä: Luo käyttäjä
+- [ ] Tehtävä: Käyttäjä ja kirjautuminen
+- [ ] Tehtävä: Poista käyttäjä
+- [ ] Tehtävä: Pidennä sudo-salasanan kyselytiheyttä
 
 ## Käyttöoikeudet (230)
 
