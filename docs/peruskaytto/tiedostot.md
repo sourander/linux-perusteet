@@ -47,7 +47,7 @@ Alla erittäin karkea taulukko Linuxin ja Windowsin tiedosto/kansiorakenteen ero
 
 ### Filesystem Hierarchy Standard
 
-Linuxin tiedostojärjestelmän standardi löytyy [Filesystem Hierarchy Standard (linuxfoundation.org)](https://refspecs.linuxfoundation.org/FHS_3.0/fhs/index.html)-sivustolta, mutta alla on listattuna tärkeimmät juuritason kansiot:
+Linuxin tiedostojärjestelmän standardi löytyy [Filesystem Hierarchy Standard (linuxfoundation.org)](https://refspecs.linuxfoundation.org/FHS_3.0/fhs/index.html)-sivustolta, mutta alla on listattuna tärkeimmät juuritason kansiot taulukossa. On tärkeää kuitenkin huomioida, että vaikka kyseessä on standardi, ei se tarkoita, että kaikki Linux-jakelut noudattaisivat sitä. Esimerkiksi GoboLinux asentaa ohjelmat poikkeukselliseen `/Programs`-hakemistoon. Voit tutustua tähän FHS:stä poikkeavaan tapaan [GoboLinux at a glance](https://gobolinux.org/at_a_glance.html)-sivulla. Esimerkin mukaan esimerkiki Bash asentuisi `/usr/bin/bash` sijasta `/Programs/Bash/4.4/bin/bash`-hakemistoon, ja sen manuaalit olisivat tyypillisen `/usr/share/man` sijasta `/Programs/Bash/4.4/man/`-hakemistossa.
 
 | Hakemisto    | Sisältää                                                                                                                                                                                                                        |
 | ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
