@@ -43,8 +43,32 @@ Vaihtoehtoisesti voit listata object dependencyt komennolla `ldd`.
 $ ldd /usr/bin/ls
 ```
 
+### Kuka sitä kirjoittaa?
 
-## Ytimen ja käyttäjän avaruus
+Linuxin kehityksestä vastaa Linus Torvals, mutta hän ei suinkaan kirjoita koko ydintä yksin. Ydin on avointa lähdekoodia, ja kuka tahansa voi osallistua kehitykseen. Käytännössä merkittävä osa koodista on eri yritysten ja organisaatioiden kehittämää. Sivusto LWN.net julkaisee kernel-versioista ajoittain tilastoja, joissa on pyritty yhdistämään henkilöt heidän työnantajiinsa. Ne löytää koostetusti sivulta [kernelnewbies.org/DevelopmentStatistics](https://kernelnewbies.org/DevelopmentStatistics). Kirjoitushetkellä tuoreimman Ubuntu 25.04:n kernel-versio on 6.14, ja sen tilastot löytyvät [Development statistics for 6.14](https://lwn.net/Articles/1013892/). Alla top 15 rivimuutosten mukaan laskettuna:
+
+| #   | Työnantaja   | Prosentti |
+| --- | ------------ | --------- |
+| 1   | Intel        | 8.9%      |
+| 2   | Google       | 8.6%      |
+| 3   | (Unknown)    | 8.5%      |
+| 4   | Qualcomm     | 8.4%      |
+| 5   | AMD          | 7.3%      |
+| 6   | Red Hat      | 5.9%      |
+| 7   | (None)       | 5.0%      |
+| 8   | Cirrus Logic | 3.6%      |
+| 9   | Linaro       | 3.6%      |
+| 10  | Oracle       | 3.0%      |
+| 11  | Meta         | 2.7%      |
+| 12  | Cisco        | 2.0%      |
+| 13  | Microsoft    | 1.9%      |
+| 14  | NVIDIA       | 1.8%      |
+| 15  | Bootlin      | 1.5%      |
+
+Huomaa, että osuudet vaihtelevat jonkin verran eri kernel-versioiden välillä. Tutustu ihmeessä tuoreimman version tilastoihin – se on tuskin 6.14 kun luet tätä.
+
+
+### Ytimen ja käyttäjän avaruus
 
 Ydin itsessään pyörii omana prosessina, joka luo käyttäjän avaruuden eli **"User spacen"**. Käyttäjän avaruudessa suoritetaan ohjelmat, jotka näkyvät tavalla tai toiselle käyttäjälle. Osa näkyy ilmiselvästi, kuten graafinen työpöytä, osa näkyy esimerkiksi komennon `ps aux` avulla. Huomaa, että vaikka avaruuden nimessä on termi käyttäjä, se ei tarkoita, että ohjelmat ovat nimenomaan ihmiskäyttäjän käynnistämiä ja käyttämiä. Myös vailla interaktiivista shelliä ohjelmia ajava Linux-palvelin suorittaa ohjelmat käyttäjäavaruudessa.
 
@@ -56,7 +80,7 @@ Ohjelmat, jotka suoritetaan ytimen avaruudessa, suoritetaan todella laajoilla k�
 
 
 
-## Laiteajurit
+### Laiteajurit
 
 Laitteisiin on suora pääsy vain ytimen avaruudessa ajettavilla ohjelmilla. Laiteajurit itsessään ajetaan täten ytimen avaruudessa. Ajuri on joukko ytimen funktioita tai käskyjä, jotka tarjoavat ulospäin rajapinnan, joka noudattaa Virtual File System:n mukaisia käskyjä (open, read, lseek jne.). Laitet itsessään voi olla joko fyyinen laite tai virtuaalinen laite kuten pseudoterminaali. Osa laiteajureista on käännetty staattisesti kerneliin (eng. `statically compiled`), osa lisätään myöhemmin moduuleina (ks. `insmod`, `modprobe`), ja moduulit voidaan myös poistaa muistista.
 
