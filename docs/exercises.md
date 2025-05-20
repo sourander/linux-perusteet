@@ -110,7 +110,6 @@ Kopioi tehtävälista leikepöydälle ja muokkaa se sinun käyttöösi sopivaksi
 
 ## Lokit (530)
 
-- [ ] Tehtävä
 - [ ] Tehtävä: Kirjoita oma lokimerkintä
 - [ ] Tehtävä: Tarkista palvelun lokit
 - [ ] Tehtävä: Todista tietyn palvelun event
@@ -122,6 +121,10 @@ Kopioi tehtävälista leikepöydälle ja muokkaa se sinun käyttöösi sopivaksi
 ## SSH (600)
 
 - [ ] Tehtävä: SSH yhteys
+
+## Tmux (610)
+
+- [ ] Tehtävä: tmuxin käyttö
 
 ## Yleistä (800)
 

@@ -119,7 +119,7 @@ Tässä ohjeessa käytiin läpi `tmux`-ohjelman peruskäyttö. Mikäli haluat sy
 
 ## Tehtävät
 
-!!! question
+!!! question "Tehtävä: tmuxin käyttö"
 
     Asenna tmux. Luo istunto (engl. session), ja splittaa istunnon ikkuna horisontaalisesti kahdeksi ruuduksi (*engl. panes*). Tähän löytyy netistä rutkasti ohjeita, kuten yllä mainittu cheat sheet. Otsikon "Managing split panes" alta löytyy tarvittavat ohjeet.
 

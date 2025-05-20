@@ -45,7 +45,7 @@ Kuten yllä mainittiin, sinulla saattaa olla `systemd-journald`:n kyljessä tai 
     Käy kurkkaamassa `man rsyslogd`:ssa mainittua konfiguraatiotiedostoa `/etc/rsyslog.conf` ja `/etc/rsyslog.d/`-hakemistoa.
 
 
-!!! question "Tehtävä"
+!!! tip
 
     Rsyslog ja muut lokeja kirjoittavat sovellukset luovat lokinsa yleensä `/var/log`-hakemistoon. Kokeile listata kaikki kyseisen hakemiston tiedostot ja kansiot, joissa ei ole numeroita, ja näet mitä kaikkea siellä on. Alla on komento tätä varten.
 

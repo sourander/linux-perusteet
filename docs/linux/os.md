@@ -56,7 +56,7 @@ Linux-ytimen päälle rakennetun käyttöjärjestelmän voidaan nähdä koostuva
 3. Shell (Graafinen tai tekstipohjainen)
 4. Ohjelmat (eng. application software)
 
-## Graafisen käyttöliittymän komponentit
+### Graafisen käyttöliittymän komponentit
 
 Graafinen käyttöliittymä ei ole pakollinen osa Linux-jakelua ja usein Linuxia ajetaankin palvelinympäristössä ilman näitä raskaita komponentteja. Käytämme tällä kurssilla Ubuntu Desktop -asennusta, joka hyödyntää vakiona graafista shelliä, joten meidän on syytä tutustua hieman graafisen ympäristön komponentteihin.
 
@@ -102,6 +102,45 @@ Yllä oleva listaus pyrkii olemaan jossain määrin pätevä, vaikka X ja Waylan
 !!! tip
 
     Linux ei ole ehkä yleisin työpöytäkäyttöjärjestelmä, mutta se on huomattavan yleinen palvelimissa, sulautetuissa järjestelmissä ja mobiililaitteissa, pilvialustojen taustalla sekä supertietokoneissa.  Tällä kurssilla Linuxia käytetään graafisena käyttöjärjestelmänä, jotta siihen voi tutustua täysin läpikotaisesti - sinun ei tarvitse ajaa esimerkiksi Visual Studio Codea jossain muualla ja tyytyä käyttämään Linuxia kontissa/virtuaalikoneessa. Kenties voit korvata opiskelukäytössä Windowsin kokonaan Linuxilla?
+
+### WSL komponentit
+
+WSL eli Windows Subsystem for Linux on Windowsin komponentti, joka mahdollistaa Linuxin ajamisen Windowsissa. 
+
+Käytämme tällä kurssilla mieluiten suoraan raudan päälle asennettua Linuxia, jotta vältymme ylimääräiseltä monimutkaisuudelta, jonka eri käyttöjärjestelmien yhteispeli luo. Tulevaisuuden kannalta on hyvä tietää, että Linuxia voi ajaa myös Windowsista käsin. Kenties haluat tämän kurssin jälkeen siirtyä hybridimalliin, jossa Windows on  pääkäyttöjärjestelmäsi, mutta suoritat ohjelmistonkehityksen ==Linuxissa... jolle Windows on GUI!==
+
+Koska tämä on tämän kurssin suhteen tulevaisuusasiaa, niin loppu teksti on admonition-infolaatikossa alla:
+
+!!! info "WSL"
+
+    Kun luet tätä infolaatikkoa, on suositeltavaa avata arkkitehtuurikuvaajat auki selventämään tilannetta. Kirjoitushetkellä kenties parhaat kuvaajat ovat: 
+    
+    - [wsl.dev: WLS Overview](https://wsl.dev/technical-documentation/), 
+    - [code: Developing in WSL](https://code.visualstudio.com/docs/remote/wsl) 
+    - [gh:wslg: WSLg Architecture Overview](https://github.com/microsoft/wslg?tab=readme-ov-file#wslg-architecture-overview).
+
+    Windows Subsystem for Linux (WSL) on Windowsin komponentti, joka mahdollistaa Linux-virtuaalikoneen ajamisen Windowsin rinnalla hyvinkin lähellä rautaa. Jos sinulla on Windowsissa Docker Desktop asennettuna, sinulla on jo mitä varmemmin WSL 2.0 asennettuna ja sinulta löytyy jakelu nimeltään `docker-desktop`. Windowsissa ajettavat Linux-kontit ajetaan siis virtuaalikoneessa, toisin kuin tällä kurssilla esitellyt Linuxissa natiivisti ajettavat kontitetut prosessit (esim. Dockerin avulla).
+
+    Koska tämä on Linux-kurssi, on aiheellista pohtia, mitä WSL:n konepellin alla oikeastaan tapahtuu. Kaiken pohjalla on Microsoftin Virtual Machine Platform, joka pyörittää *Microsoft Linux kerneliä*. Kutakin asennettua jakelua varten **ei asenneta** uutta virtuaalikonetta, vaan eri virtuaalikoneet hyödyntävät samaa kerneliä. Windowsin päässä suoritetaan keskeisenä palveluna WslService, joka hallinnoi istuntoja. Näitä jakeluita voivat olla esimerkiksi::
+    
+    * Käyttäjän asentamat distrot:
+        * esim. Storesta asennettu Ubuntu
+        * esim. PowerShellistä asennettu Fedora
+        * esim. Docker Desktopin asentama Ubuntu (nimeltään `docker-desktop`)
+    * Näkymätön servicetaso:
+        *  WSLg (CBL Mariner Linux)
+
+    Microsoft CBL-Mariner Linux on Azuresta tuttu jakelu, jossa ajetaan tässä tapauksessa Wayland- ja PulseAudio-servereitä. Tämä mahdollistaa graafisten Linux-sovellusten ajamisen Windows-näkymästä käsin. On siis täysin mahdollista ajaa `Ubuntu for Windows`:ssa komento `sudo apt install nautilus` ja avata jatkossa Nautilus Windowsin Windowsin aloitusvalikosta. Nautilus on GNOME-työpöytäympäristön tiedostonhallintaohjelma, mikä tulee sinulle tutuksi kurssin aikana – eli siis Ubuntussa tavallinen tiedostonhallintaohjelma, jolla navigoit hakemistoissa ja avaat tiedostoja.
+
+    Myös tiedostopääsy toimii ristiin:
+
+    * **Windowsista käsin** Linux-tiedostot näkyvät osoitteessa `\\wsl$\` (esim. `\\wsl$\docker-desktop\home\user\`) ja voit käyttää niitä Windowsin tiedostonhallinnassa.
+    * **Linuxista käsin** Windows-tiedostot näkyvät `/mnt/c/`-hakemistossa (esim. `/mnt/c/Users/user/Documents/`).
+
+    Tästä tiedostojen ristiin toiminnasta vastaa Plan 9 -serveri Linuxin puolella. Mikäli kirjoitat Linuxista tiedostoja `/mnt/c/`-hakemistoon, ne näkyvät Windowsin puolella `C:\`-hakemistossa. Kirjoitus- ja lukuoperaatiot käyttävät 9P-protokollaa, mikä luonnollisesti hidastaa tiedostojen käsittelyä verrattuna natiiviin pääsyyn.
+
+    Tämän infolaatikon lukemisen jälkeen sinulla on toivottavasti ajatus, että Linuxia opetellessa tämä kahden järjestelmän rinnakkaiselo on monimutkainen lisä, jonka vuoksi on suositeltavaa käyttää Linuxia natiivisti ainakin aluksi. Kun Linuxin perusteet ovat hallussa, valitse sinulle jatkossa sopivin työskentelytapa.
+
 
 ## Linux ja distribuutiot tänään
 
