@@ -88,7 +88,7 @@ $ gcc *.c -o app_itself
 $ gcc app_itself.c headerdemo.c -o app_itself
 ```
 
-!!! question "Tehtävä"
+!!! question
 
     Luo toinen ohjelma, nimeltään **Another App**, joka hyödyntää samaa kirjastoa.
 
@@ -264,7 +264,7 @@ say_goodbye:
 $ make -f ImprovedMakefile
 ```
 
-!!! question "Tehtävä"
+!!! question
 
     Tee Makefile-tiedosto, joka kääntää `app_itself`-binäärin, mikäli jokin sen dependenssi on muuttunut. Mieti, millaisen puun nämä riippuvuudet muodostavat:
 

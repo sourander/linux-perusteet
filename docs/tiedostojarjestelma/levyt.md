@@ -4,6 +4,10 @@ priority: 700
 
 # Levyt
 
+!!! warning
+
+    Tämä Tiedostojärjestelmä-osio ei sisällä tehtäväpakettia ja on kehitys/odotustilassa; sitä jatketaan, jos sille tulee tarve jossakin toteutuksessa. Voit kuitenkin tutustua tähän raakileeseen vapaasti.
+
 Tietokoneessa käynnissä olevat ohjelmat eli prosessit ovat ladattuina tietokoneen keskusmuistiin (RAM). Jotta jotakin tietoa voisi säilyttää (eng. persist) pysyvästi, tarvitaan massamuistina toimiva laite, kuten kiintolevy tai SSD-puolijohdelevy. Virtuaalikoneessasi tämä laite on virtuaalinen, mutta löytyy `/dev`-lokaatiosta tiedostona, kuten muutkin laitteet Linuxissa.
 
 Alla esimerkki macOS:n UTM-virtuaalikoneessa ajetusta Ubuntusta, josta löytyy seuraavat block devicesit (ks. `man lsblk`).

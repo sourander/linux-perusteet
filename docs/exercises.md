@@ -126,15 +126,5 @@ Kopioi tehtävälista leikepöydälle ja muokkaa se sinun käyttöösi sopivaksi
 
 - [ ] Tehtävä: tmuxin käyttö
 
-## Yleistä (800)
-
-- [ ] Tehtävä
-- [ ] Tehtävä
-
-## Modularisointi (870)
-
-- [ ] Tehtävä
-- [ ] Tehtävä
-
 
 ```

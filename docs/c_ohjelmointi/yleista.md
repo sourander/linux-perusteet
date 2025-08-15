@@ -4,6 +4,10 @@ priority: 800
 
 # Yleistä
 
+!!! warning
+
+    Tämä C-ohjelmointi -osio ei sisällä tehtäväpakettia ja on kehitys/odotustilassa; sitä jatketaan, jos sille tulee tarve jossakin toteutuksessa. Voit kuitenkin tutustua tähän raakileeseen vapaasti.
+
 Tämä materiaali ei ole C-ohjelmointikielen kurssi, muttta C-kielen kirjoittaminen ja kääntäminen esitellään kurssilla Linuxin näkökulmasta. On oletus, että osaat ohjelmointia jo jollakin kielellä!
 
 Mikäli funktiot ja kontrollirakenteet ja niihin liittyvät käskyt (if, while, for, break, continue) eivät ole tuoreessa muistissa, tämä materiaali toimii hyvänä muistinvirkistäjänä samalla. C-kieli on matalan abstraktiotason kieli, joten siinä pitää lähes kaikki se koodata itse (tai käyttää kirjaston implementointia), mikä on korkeamman tason kielessä (esim. Pythonissa) built-in ominaisuus.
@@ -36,7 +40,7 @@ int main()
 }
 ```
 
-!!! question "Tehtävä"
+!!! question
 
     Tutustu siihen, mikä stdio.h on. Saat siitä lisää tietoa lukemalla `man 3 stdio` sivun tai vastaavan sivun Internetistä esimerkiksi [Die.net: stdio](https://linux.die.net/man/3/stdio)-sivustolta.
 
@@ -125,7 +129,7 @@ int main()
 }
 ```
 
-!!! question "Tehtävä"
+!!! question
 
     Etsi koodista:
 
