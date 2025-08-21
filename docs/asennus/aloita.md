@@ -55,9 +55,17 @@ graph TD
     H --> Mac[VMware Fusion]
 ```
 
-Mikäli sinulla on jokin yllä mainituista poikkeava tilanne, ota yhteyttä opettajaan. Kurssin voi mahdollisesti suorittaa esimerkiksi Azure-virtuaalikoneella tai WSL2-ympäristön avulla. Tähän tarvitsee kuitenkin erikseen luvan.
-
 !!! warning
 
     Data center -opiskelijat ovat ainoita, joilla on riittävät oikeudet luoda VMwaren vSphereen virtuaalikone. Mikäli et ole DC-opiskelija, unohda tämä vaihtoehto.
+
+
+## Poikkeustilanteet
+
+Mikäli sinulla on jokin yllä mainituista poikkeava tilanne, ota yhteyttä opettajaan. Kurssin voi mahdollisesti suorittaa esimerkiksi Azure-virtuaalikoneella tai WSL2-ympäristön avulla. Hätätapauksessa kurssin voi suorittaa jopa Linux-luokan koneilla siten, että luot [virt-manager](https://documentation.ubuntu.com/server/how-to/virtualisation/virtual-machine-manager/) avulla virtuaalikoneen. Tähän tarvitsee kuitenkin erikseen luvan, ja korostan, että ==omalle koneelle asentaminen on suositeltavaa==. 
+
+
+!!! tip
+
+    Saatat väheksyä Linuxia ja komentoriviä nyt, mutta työelämässä tulet tietyllä todennäköisyydellä katumaan, mikäli et käytä opintojasi hyödyksi näiden taitojen kartuttamiseen. Asenna Linux ja käytä sitä päivittäin opiskelussa: näin opit sen huomaamatta opiskeluiden aikana.
 
