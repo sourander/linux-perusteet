@@ -250,10 +250,14 @@ Avaa nettiselain, esimerkiksi Firefox, ja navigoi osoitteeseen `http://localhost
 
 ### Vaihe 12: Muista versionhallinta!
 
-Kun olet tehnyt ensimmäisen merkintäsi oppimispäiväkirjaan, puske muutokset Repo Kamit Gitlabiin. Tämä neuvotaan toisilla kursseilla, mutta on lyhyimmillään:
+Kun olet tehnyt ensimmäisen merkintäsi oppimispäiväkirjaan, puske muutokset Gitlabiin. Tämä neuvotaan toisilla kursseilla, mutta on lyhyimmillään:
 
 ```bash title="Bash"
 git add .
 git commit -m "First learning diary entry"
 git push
 ```
+
+### Vaihe 13: Tarkista GitLab Pages
+
+Käy GitLab:n sivuilla sinun repositoriosi GitLab Pages -osiossa. Sieltä löytyy linkki sinun oppimispäiväkirjaasi.
