@@ -97,7 +97,7 @@ Jos tarvitset ohjeistusta, lue alempaa Vaihe 6 ja eteenpäin.
 
 ## Pitkä kuvallinen ohje
 
-Mikäli haluat yllä olevan ohjeen tueksi kuvia, pläräile myös tämä ohje läpi. Huomaa, että vaiheet ovat hyvin samoja kuin yllä linkitetyssä Youtube-videossa. Tässä ohjeessa käytään C-aseman kutistamista. Mikäli asennat erilliselle SSD-levylle, jätä turhat vaiheet (kuten osion kutistaminen) väliin.
+Mikäli haluat yllä olevan ohjeen tueksi kuvia, pläräile myös tämä ohje läpi. Huomaa, että vaiheet ovat hyvin samoja kuin yllä linkitetyssä Youtube-videossa. Tässä ohjeessa käytetään C-aseman kutistamista. Mikäli asennat erilliselle SSD-levylle, jätä turhat vaiheet (kuten osion kutistaminen) väliin.
 
 ### Vaihe 1: Lataa Ubuntu
 
@@ -223,7 +223,9 @@ Alla on tyypilliset asennuksen valinnat vaihe vaiheelta. Mikäli haluat nähdä 
     * Your username: [a-z] ja [0-9] -merkkejä, esim. sukunimesi pienellä.
         * Esimerkiksi: `sourander`
     * Choose a password: Valitse vahva salasana.
-      
+        * Password: Kirjoita salasana uudelleen.
+        * Ruksaa päälle: Require my password to log in
+
         !!! tip "Hyvä salasana"
 
             Hyvä salasana on pitkä, vaikeasti arvattava ja sisältää erikoismerkkejä - mutta kuitenkin kohtalaisen helppo kirjoittaa. Joudut kirjoittaa salasanaa aika-ajoin uudestaan: aina sisäänkirjautuessa ja silloin tällöin ajaessasi `sudo`-komentoja.
@@ -231,8 +233,7 @@ Alla on tyypilliset asennuksen valinnat vaihe vaiheelta. Mikäli haluat nähdä 
         !!! warning
 
             Ethän unohda salasanaasi! Laita se talteen salasananhallintaohjelmaan tai muuhun turvalliseen paikkaan.
-    * Password: Kirjoita salasana uudelleen.
-    * Ruksaa päälle: Require my password to log in
+    
 * **Choose your Location**
     * Location: Helsinki tai vaikka Kajaani
     * Timezone: Europe/Helsinki
