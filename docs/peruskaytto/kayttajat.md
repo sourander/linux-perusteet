@@ -292,8 +292,10 @@ $ sudo su - <username>
     ```
 
     ```ini title="my-sudoers"
-    Defaults    timestamp_timeout=60
+    Defaults    timestamp_timeout=60,timestamp_type=global
     ```
+
+    Yllä olevien vakioarvot ovat 15 minuuttia ja `timestamp_type=tty`, joka tarkoittaa, että salasana kysytään aina kun avaat uuden terminaali-ikkunan tai -välilehden.
 
     Ja mihinkö se cachettaa nämä? Linuxissa lähes kaikki on tiedostoina, kuten myös tämä. Voit tutkia `/run/sudo/ts`-hakemistoa. Sieltä pitäisi löytyä sinun userid:n mukainen tiedosto, jota on muokattu viimeksi kun ajoit sudo-komennon. Lisätietoja löydät komennolla `man 5 sudoers`.
 
