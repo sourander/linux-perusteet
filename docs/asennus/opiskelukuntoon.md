@@ -172,7 +172,7 @@ systemctl --user start docker.service
 
 ??? bug "Kuinka peruuttaa tämä?"
 
-    Jos sinulle ilmaantuu syy ajaa Dockeria **Rootful-moodissa** – keksin sanan juuri itse –, eli `root`-käyttäjänä, voit peruuttaa tämän vaiheen muutokset alla näkyvien komentojen avulla. Mikä tällainen syy voi olla? Esimerkiksi Dev Containers, Nokia Containerlab tai jokin DevOps-kurssi, jonka olet aloittanut netissä, tai jokin muu himmeli, joka vaatii Dockerin ajamista `root`-käyttäjänä.
+    Jos sinulle ilmaantuu syy ajaa Dockeria `root`-käyttäjänä eli **Rootful-moodissa** – keksin sanan juuri itse –, voit peruuttaa tämän vaiheen muutokset alla näkyvien komentojen avulla. Mikä tällainen syy voi olla? Esimerkiksi Dev Containers, Nokia Containerlab tai jokin DevOps-kurssi, jonka olet aloittanut netissä, tai jokin muu himmeli, joka vaatii Dockerin ajamista `root`-käyttäjänä.
 
     ```bash title="Bash"
     # Apuskriptillä poisto (lue tämän output: se neuvoo, kuinka voit tuhota halutessasi myös datan eli kontit, imaget ja muut)
