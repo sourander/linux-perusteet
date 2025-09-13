@@ -170,13 +170,27 @@ systemctl --user enable docker.service
 systemctl --user start docker.service
 ```
 
-!!! tip
+??? bug "Kuinka peruuttaa tämä?"
 
-    Jos haluat, että Docker käynnistyy automaattisesti **ja pysyy päällä** vaikka et olisi kirjautunut sisään, aja myös seuraava rivi:
+    Jos sinulle ilmaantuu syy ajaa Dockeria **Rootful-moodissa** – keksin sanan juuri itse –, eli `root`-käyttäjänä, voit peruuttaa tämän vaiheen muutokset alla näkyvien komentojen avulla. Mikä tällainen syy voi olla? Esimerkiksi Dev Containers, Nokia Containerlab tai jokin DevOps-kurssi, jonka olet aloittanut netissä, tai jokin muu himmeli, joka vaatii Dockerin ajamista `root`-käyttäjänä.
 
     ```bash title="Bash"
-    sudo loginctl enable-linger $(whoami)
+    # Apuskriptillä poisto (lue tämän output: se neuvoo, kuinka voit tuhota halutessasi myös datan eli kontit, imaget ja muut)
+    dockerd-rootless-setuptool.sh uninstall
+
+    nano ~/.bashrc # tai .zshrc tai mikä shelli sinulla onkaan
+    # Kommentoi seuraavannäköinen rivi pois, jos löydät moisen:
+    # export DOCKER_HOST=unix:///run/user/${UID}/docker.sock
+
+    sudo systemctl enable docker.service
+    sudo systemctl enable docker.socket
+
+    sudo groupadd docker
+    sudo usermod -aG docker $USER
     ```
+
+    Lopuksi käynnistä kone vielä uudelleen. Tarkista, että `echo $DOCKER_HOST` ei tulosta mitään. Jos tulostaa, etsi, missä tiedostossa se on saanut arvonsa. Olettaen että kyseinen ympäristömuuttuja on asettamatta, niin jatkossa `docker run hello-world` on käytännössä sama kuin `sudo docker run hello-world`. Eli **Rootful**-moodi on käytössä.
+
 
 ### Vaihe 8: Kloonaa kurssin repositorio
 
