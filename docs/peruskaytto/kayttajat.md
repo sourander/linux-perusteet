@@ -251,7 +251,7 @@ $ sudo su - <username>
 
     Kokeile ajaa ohjelma, joka ajetaan ei-interaktiivisilla käyttäjillä loginin yhteydessä eli `/usr/sbin/nologin`. Mitä näet?
 
-!!! question "Tehävä: Kenen joukoissa seisot?"
+!!! question "Tehtävä: Kenen joukoissa seisot?"
 
     Katso mihin ryhmiin kuulut ja selvitä, mitä oikeuksia sinulla on niiden puolesta. Muista, että sudo antaa pääsyn käytännössä kaikkialle.
 

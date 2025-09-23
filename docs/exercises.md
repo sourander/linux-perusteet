@@ -47,6 +47,7 @@ Kopioi tehtävälista leikepöydälle ja muokkaa se sinun käyttöösi sopivaksi
 ## Käyttäjät (220)
 
 - [ ] Tehtävä: Nologin
+- [ ] Tehtävä: Kenen joukoissa seisot?
 - [ ] Tehtävä: Luo käyttäjä
 - [ ] Tehtävä: Käyttäjä ja kirjautuminen
 - [ ] Tehtävä: Poista käyttäjä
