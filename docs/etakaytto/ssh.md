@@ -92,6 +92,13 @@ Lisätään myös RDP-portti:
 $ sudo ufw allow from 192.168.0.0/24 to any port 3389
 ```
 
+Ufw:ää voi käyttää myös *rate limit* -toimintoon, joka vaikeuttaa brute-force hyökkäyksiä. Ufw rajoittaa yhteydenottojen määrää tiettyyn porttiin tietyn ajan sisällä. Jos salasanatunnistautuminen on pois päältä, brute-force hyökkäykset eivät onnistu, mutta on silti hyvä idea ottaa tämä käyttöön SSH:lle:
+
+```bash title="Bash"
+# Ota käyttöön rate limiting SSH:lle
+$ sudo ufw limit ssh/tcp comment 'Rate limit for SSH'
+```
+
 !!! note "Aloita alusta?"
 
     Jos olet tyystin sotkenut palomuurin säännöt, voit aloittaa alusta komennolla:
@@ -162,11 +169,10 @@ Komento kysyy serverin käyttäjän salasanaa. Syötä se ja odota, että koment
 
 Nyt kun yhteys on testattu, voit palata takaisin serverin puolelle ja muokata SSH-daemonin asetustiedostoa. Tämä tiedosto sijaitsee `/etc/ssh/sshd_config`. Huomaa, että voit halutessasi tehdä muutokset drop-in -tiedostoon, joka sijaitsee `/etc/ssh/sshd_config.d/`. Tämä on jopa suositeltavaa.
 
-
 Salasanan käyttö on lähtökohtaisesti epäsuositeltua. Voit kieltää salasanan käytön muokkaamalla SSH-daemonin asetustiedostoa. Varmista, että seuraava komento on asetettuna alla näkyvällä tavalla. Huomaa, että rivi ei saa alkaa `#`-merkillä; tällöin se olisi kommentti eikä aktiivinen konfiguraatio:
 
 ```bash
-PasswordAuthentication yes
+PasswordAuthentication no
 ```
 
 Mikäli haluat lisätä turvallisuutta entisestään, voit kytkeä `no`-tilaan myös asetukset: PermitRootLogin, ChallengeResponseAuthentication, UsePAM. Voit tutustua näihin asetuksiin `man 5 sshd_config`-ohjeen avulla.
