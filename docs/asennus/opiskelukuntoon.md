@@ -4,6 +4,8 @@
 
     Tämä ohje on tällä hetkellä aikansa nähnyt. Tilalle tulee yksinkertaisempi ohje, jossa on käytössä Dockerilla ajettu uv, joka pohjustaa cookiecutterin.
 
+    Lisäksi Ubuntu 24.04 vaihtuu 26.04:ään.
+
 Tämän ohjeen tarkoitus on auttaa sinua pika-asentamaan tarvittavat ohjelmat siten, että voit työstää oppimispäiväkirjaa Linuxista käsin. Pohjaoletus on, että sinulla on Ubuntu jo asennettuna. Mikäli sinulla ei ole aiempaa Linux-kokemusta, ohjeen komennot saattavat tuntua osittain heprealta. Kannattaa palata tähän materiaaliin kurssin lopuksi: todennäköisesti huomaat, että ohjeissa ei ole mitään, mitä et osaisi tehdä itsenäisesti, ohjelmien omia dokumentaatioita seuraamalla.
 
 ## Video-ohjeet
@@ -275,3 +277,62 @@ git push
 ### Vaihe 13: Tarkista GitLab Pages
 
 Käy GitLab:n sivuilla sinun repositoriosi GitLab Pages -osiossa. Sieltä löytyy linkki sinun oppimispäiväkirjaasi.
+
+### Bonus: Promptin muokkaus
+
+Prompt on se osa komentorivin käyttöliittymästä, joka näkyy ennen kuin kirjoitat komennon. Tyypillinen prompt on pitkä. Se sisältää muun muassa koko polun nykyiseen hakemistoon. Prompt voi olla siis esimerkiksi muotoa:
+
+```bash
+mattimeikalainen@DELL-XPS-15-MODEL123456:~/Code/linux-perusteet-2025/docs/asennus/opiskelukuntoon.md $
+```
+
+Voit lyhentää prompttia muokkaamalla `~/.bashrc`-tiedostoa. Tällöin yllä oleva prompt voisi olla esimerkiksi muotoa:
+
+```bash
+mattimeikalainen:asennus (main) $ 
+```
+
+Prompti määrittyy `PS1`-muuttujassa. Sen syntaksi on hieman hirvittävä, mutta promptin muokkaukseen löytyy paljon valmiita ohjeita netistä – jopa interaktiivisia generaattoreita. Alla on valmis esimerkki, jolla saat yksinkertaisen, mutta informatiivisen promptin, joka näyttää käyttäjänimen, nykyisen hakemiston nimen ja Git-haaran nimen, mikäli olet Git-repositoriossa. 
+
+1. Tee varmuuskopio tiedostosta ensin `cp ~/.bashrc ~/.bashrc.bak`.
+2. Avaa tiedosto `~/.bashrc` Visual Studio Codessa komennolla `code ~/.bashrc`. 
+3. Etsi if-lauseke, jossa määritellään `PS1`
+4. Korvaa koko if-lauseke alla olevalla koodilla.
+
+```bash title=".bashrc"
+if [ "$color_prompt" = yes ]; then
+    # This is the original. You may comment it out.
+    # PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+
+    # This is a naive way to show git branch in prompt
+    # Advanced users may want to use __git_ps1 from git-completion.bash
+    parse_git_branch() {
+        git branch 2>/dev/null | sed -n 's/^\* \(.*\)/ (\1)/p'
+    }
+
+    green='\[\e[32m\]'
+    blue='\[\e[34m\]'
+    red='\[\e[31m\]'
+    nocolor='\[\e[0m\]'
+    PS1="${green}\u${nocolor}:${blue}\W${red}\$(parse_git_branch)${nocolor} \$ "
+
+
+    unset green blue red nocolor
+
+else
+    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
+fi
+unset color_prompt force_color_prompt
+```
+
+!!! warning
+
+    Jos rikot `.bashrc`-tiedoston, saat virheilmoituksia aina avatessasi uuden terminaalin – tai pahimmassa tapauksessa et saa lainkaan terminaalia auki. Tällöin voit korjata tilanteen avaamalla tiedoston graafisella editorilla, kuten Visual Studio Codella, ja poistamalla rikkinäiset rivit, tai palauttamalla varmuuskopion komennolla `cp ~/.bashrc.bak ~/.bashrc`.
+
+!!! tip
+
+    Jos VS Coden Terminaali aiheuttaa päänvaivaa esimerkiksi oudon täydennyksen tai sen omien PS1-lisäysten vuoksi, paina VS Codessa F1, avaa "Preferences: Open Settings (JSON)" ja lisää sinne seuraava rivi:
+
+    ```json
+    "terminal.integrated.shellIntegration.enabled": false,
+    ```
