@@ -1,0 +1,2548 @@
+
+<!doctype html>
+<html lang="fi" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../komennot/">
+      
+      
+        <link rel="next" href="../kayttooikeudet/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>Käyttäjät - Linux Perusteet</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#kayttajat" class="md-skip">
+          Hyppää sisältöön
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Ylätunniste">
+    <a href="../.." title="Linux Perusteet" class="md-header__button md-logo" aria-label="Linux Perusteet" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Linux Perusteet
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Käyttäjät
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Hae" placeholder="Hae" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Haku">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Tyhjää" aria-label="Tyhjää" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Aloitetaan hakua
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigaatio" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Linux Perusteet" class="md-nav__button md-logo" aria-label="Linux Perusteet" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Linux Perusteet
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tervetuloa kurssille
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Asennus
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Asennus
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../asennus/aloita/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aloita tästä
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../asennus/dualboot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Option A: Dual Boot
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../asennus/virtualbox/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Option B: VirtualBox
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../asennus/opiskelukuntoon/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lopuksi: Ubuntu opiskelukuntoon
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Linux
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Linux
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/os/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/kernel/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kernel
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Peruskäyttö
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Peruskäyttö
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tiedostot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tiedostot
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../komennot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Komennot
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Käyttäjät
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Käyttäjät
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Sisällysluettelo">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Sisällysluettelo
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#linux-kayttajat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Linux-käyttäjät
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Linux-käyttäjät">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#perusteet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Perusteet
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passwd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Passwd
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#group" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Group
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shadow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Shadow
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Shadow">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#paivamaaran-laskeminen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Päivämäärän laskeminen
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#salasanakentan-sisalto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Salasanakentän sisältö
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kaytannossa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Käytännössä
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Käytännössä">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#kayttajien-luominen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Käyttäjien luominen
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#toisena-kayttajana-esiintyminen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Toisena käyttäjänä esiintyminen
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tehtavat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tehtävät
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kayttooikeudet/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Käyttöoikeudet
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CLI
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    CLI
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cli/terminaali/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Terminaali
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cli/standardivirrat/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Standardivirrat
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cli/startup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Startup-tiedostot
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Paketinhallinta
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Paketinhallinta
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../paketinhallinta/ohjelmat/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ohjelmat
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../paketinhallinta/ohjelmapaketit/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ohjelmapaketit
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../paketinhallinta/cross-distro/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cross-distro
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Prosessit
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Prosessit
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prosessit/prosessit/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Prosessit
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prosessit/systemd/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Systemd
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prosessit/cron/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cron
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prosessit/lokit/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lokit
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prosessit/kontit/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kontit
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Etäkäyttö
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Etäkäyttö
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../etakaytto/ssh/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SSH
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../etakaytto/tmux/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tmux
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🚧 Tiedostojärjestelmä
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    🚧 Tiedostojärjestelmä
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tiedostojarjestelma/levyt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Levyt
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tiedostojarjestelma/osiot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Osiot
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tiedostojarjestelma/lvm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LVM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🚧 C-ohjelmointi
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    🚧 C-ohjelmointi
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../c_ohjelmointi/yleista/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Yleistä
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../c_ohjelmointi/muuttujat/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Muuttujat
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../c_ohjelmointi/merkkijonot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Merkkijonot
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../c_ohjelmointi/pointterit/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Osoittimet
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../c_ohjelmointi/streams/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Standardivirrat
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../c_ohjelmointi/args/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Argumentit
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../c_ohjelmointi/tiedostot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tiedostot
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../c_ohjelmointi/modularisointi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Modularisointi
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../exercises/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tehtäväkooste
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Sisällysluettelo">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Sisällysluettelo
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#linux-kayttajat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Linux-käyttäjät
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Linux-käyttäjät">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#perusteet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Perusteet
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passwd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Passwd
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#group" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Group
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shadow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Shadow
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Shadow">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#paivamaaran-laskeminen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Päivämäärän laskeminen
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#salasanakentan-sisalto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Salasanakentän sisältö
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kaytannossa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Käytännössä
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Käytännössä">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#kayttajien-luominen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Käyttäjien luominen
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#toisena-kayttajana-esiintyminen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Toisena käyttäjänä esiintyminen
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tehtavat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tehtävät
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="kayttajat">Käyttäjät</h1>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Ethän luo tai poista käyttäjiä koulun ympäristöissä, joissa on keskitetty käyttäjänhallinta (LDAP, Kerberos, Ansible-skriptejä, ...). Tee uusiin käyttäjiin liittyvät kokeilut (virtuaali)koneessa, joka on täysin sinun hallinnoima.</p>
+</div>
+<h2 id="linux-kayttajat">Linux-käyttäjät</h2>
+<h3 id="perusteet">Perusteet</h3>
+<p>Useimmissa Linux-distribuutioissa käyttäjien ID:t (eng. user id, UID) noudattavat seuraavaa numerointia:</p>
+<table>
+<thead>
+<tr>
+<th>UID</th>
+<th>Käyttäjä</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>root</td>
+</tr>
+<tr>
+<td>1-999</td>
+<td>Järjestelmän omia "system usereita".</td>
+</tr>
+<tr>
+<td>1000-59999</td>
+<td>Komennolla <code>adduser</code> luodut tavalliset käyttäjät.</td>
+</tr>
+<tr>
+<td>60000-</td>
+<td>Useita eri alueita ja poikkeustunnuksia.</td>
+</tr>
+</tbody>
+</table>
+<p>Yllä mainittuihin poikkeustunnuksiin voit tutustua esimerkiksi lukemalla<a href="https://www.debian.org/doc/debian-policy/ch-opersys.html#uid-and-gid-classes">debian policyn</a>. Käyttäjät ja salasanat säilötään Linuxissa seuraaviin tiedostoihin:</p>
+<table>
+<thead>
+<tr>
+<th>Käyttö</th>
+<th>Oikeudet</th>
+<th>Tiedosto</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Käyttäjät</td>
+<td>644</td>
+<td><code>/etc/passwd</code></td>
+</tr>
+<tr>
+<td>Ryhmät</td>
+<td>644</td>
+<td><code>/etc/group</code></td>
+</tr>
+<tr>
+<td>Käyttäjien salasanat</td>
+<td>640</td>
+<td><code>/etc/shadow</code></td>
+</tr>
+<tr>
+<td>Ryhmien salasanat</td>
+<td>640</td>
+<td><code>/etc/gshadow</code></td>
+</tr>
+</tbody>
+</table>
+<p>Mikäli haluat tarkistaa, onko sinun järjestelmässäsi juuri sanat tiedostot samoine oikeuksineen, aja komento <code>stat -c '%a %n' /etc/passwd /etc/group /etc/shadow /etc/gshadow</code>.</p>
+<h3 id="passwd">Passwd</h3>
+<p>Toisin kuin nimestä voisi päätellä, <code>passwd</code>-tiedosto ei sisällä salasanoja laisinkaan. Salasanat ovat <code>passwd</code>-tiedostossa, johon pureudutaan myöhemmin. Alla näkyy esimerkkinä kolme riviä <code>passwd</code>-tiedostosta.</p>
+<div class="language-text highlight"><span class="filename">/etc/passwd</span><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>root:x:0:0:root:/root:/bin/bash
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>nobody:x:65534:65534:nobody:/nonexistent:/usr/sbin/nologin
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>opettaja:x:1000:1000:Ope Opettaja,,,:/home/opettaja:/bin/bash
+</span></code></pre></div>
+<p>Riveissä toimii kenttien erottimena <code>:</code>-merkki. Esimerkiksi <code>opettaja</code>-nimisen käyttäjän rivin purkaa useaksi riviksi näin:</p>
+<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>cat<span class="w"> </span>/etc/passwd<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>opettaja<span class="w"> </span><span class="p">|</span><span class="w"> </span>tr<span class="w"> </span>:<span class="w"> </span><span class="s2">&quot;\n&quot;</span>
+</span></code></pre></div>
+<p>Alla tulostuvat rivit selitettyinä:</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Kenttä</th>
+<th>Selite</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>username</td>
+<td>Uniikki tekstimuotoinen tunniste käyttäjälle. Tällä käyttäjä kirjautuu sisään. Primääriavain.</td>
+</tr>
+<tr>
+<td>2</td>
+<td>password</td>
+<td>Käyttäjän salasana tai <code>x</code>-kirjain indikoimassa, että salasana löytyy <code>shadow</code>-tiedostosta.</td>
+</tr>
+<tr>
+<td>3</td>
+<td>user id, UID</td>
+<td>Ei-uniikki numeraalinen tunniste käyttäjälle tai käyttäjille. Yleensä jokaisella käyttäjällä on kuitenkin oma ID.</td>
+</tr>
+<tr>
+<td>4</td>
+<td>group id, GID</td>
+<td>Ei-uniikki numeraalinen tunniste käyttäjän ensisijaiselle groupille. Monta käyttäjää voi kuulua yhteen grouppiin.</td>
+</tr>
+<tr>
+<td>5</td>
+<td>contact, GECOS</td>
+<td>Pilkulla erotettu lista arvoista: Full Name, Room number, Work phone, Home phone, Other. Komento <code>finger &lt;username&gt;</code> palauttaa tämän tiedon.</td>
+</tr>
+<tr>
+<td>6</td>
+<td>home</td>
+<td>Käyttäjän kotikansio. Mikäli käyttäjällä ei ole kotikansiota, <code>/nonexistent</code> on arvona.</td>
+</tr>
+<tr>
+<td>7</td>
+<td>shell</td>
+<td>Shell (tai muu ohjelma) joka ajetaan aina kun käyttäjänä kirjaudutaan sisään. Mikäli käyttäjä on täysin ei-interaktiivinen käyttäjä, jolla ei koskaan kuulu kirjautua sisään, arvona on <code>/usr/sbin/nologin</code>.</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Voit katsella tai jopa muokata passwd tiedoston sisältöä komennolla <code>vipw</code>. Ulos editorista pääset painamalla ESC, minkä jälkeen <code>:q!</code> ja enteriä. Kyseessä on siis VIM-editori.</p>
+</div>
+<h3 id="group">Group</h3>
+<p>Tiedostosta <code>/etc/group</code> löytyvät aiemmin mainitut käyttäjien <code>root</code>,  <code>nobody</code> ja <code>opettaja</code> primääriryhmät. Taulukot joinataan yhteen GID:n eli group id:n avulla.</p>
+<div class="language-text highlight"><span class="filename">/etc/group</span><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>root:x:0:
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>nogroup:x:65534:
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>opettaja:x:1000:
+</span></code></pre></div>
+<p>Tämän lisäksi tiedostosta löytyy muutkin ryhmät; yksi käyttäjä voi kuulua moneen ryhmään. Käyttäjähallinta (eng. access control) on yleisesti järjestelmissä kannattavaa tehdä siten, että luo ryhmän, johon kiinnittää policyn ja/tai permissionit, joka sallii tekemään asioita x, y ja z. Käyttäjille ei anneta suoraan lupia mihinkään, vaan käyttäjä kiinnitetään ryhmään. Alla esimerkkinä neljä riviä tiedostosta, jotka sisältävät sanan "opettaja":</p>
+<div class="language-text highlight"><span class="filename">/etc/group</span><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>adm:x:4:syslog,opettaja
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>cdrom:x:24:opettaja
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>sudo:x:27:opettaja
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>opettaja:x:1000:
+</span></code></pre></div>
+<p>Alla rivien <code>:</code>-merkillä erotellut tiedot selitettyinä:</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Kenttä</th>
+<th>Selite</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>group name</td>
+<td>Ryhmän nimi, joka näkyy muun muassa <code>ls -la</code> komennon tulosteessa.</td>
+</tr>
+<tr>
+<td>2</td>
+<td>group password</td>
+<td>Ryhmän salasana. Kuten käyttäjien kohdalla, myös täällä <code>x</code> tarkoittaa, että salasana löytyy muualta (ks. <code>/etc/gshadow</code>).</td>
+</tr>
+<tr>
+<td>3</td>
+<td>group id</td>
+<td>Ryhmän uniikki tunniste.</td>
+</tr>
+<tr>
+<td>4</td>
+<td>users</td>
+<td>Pilkulla erotettu lista käyttäjänimistä, jotka kuuluvat ryhmään.</td>
+</tr>
+</tbody>
+</table>
+<p>Muistele aiempaa lukua käyttöoikeuksista. Jokaisella tiedostolla ja kansiolla on kolme permissionia: owner, group ja others. Jos <code>opettaja</code> kuuluu ryhmiin <code>cdrom</code> ja <code>adm</code>, niin mitä näillä voi tehdä? Tietenkin se, mitä permissionit sallivat. Sopivilla group-omistuksilla olevia tiedostoja voi etsiä seuraavanlaisilla komennoilla:</p>
+<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>$<span class="w"> </span>find<span class="w"> </span>/dev<span class="w"> </span>-group<span class="w"> </span>cdrom
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>/dev/sg0
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>/dev/sr0
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>$<span class="w"> </span>find<span class="w"> </span>/var/log<span class="w"> </span>-group<span class="w"> </span>adm
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>/var/log/dmesg
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>/var/log/dmesg.0
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>/var/log/syslog.1
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>find:<span class="w"> </span>‘/var/log/private’:<span class="w"> </span>Permission<span class="w"> </span>denied
+</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>/var/log/apt/term.log
+</span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>...
+</span></code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Voit katsella tai jopa muokata passwd tiedoston sisältöä komennolla <code>vigr</code>.</p>
+</div>
+<h3 id="shadow">Shadow</h3>
+<p>Tiedostosta <code>/etc/shadow</code> löytyvät aiemmin mainittujen käyttäjien salasanat. Ote tiedoston sisällöstä alla:</p>
+<div class="language-text highlight"><span class="filename">/etc/shadow</span><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>root:!:19598:0:99999:7:::
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>nobody:*:19576:0:99999:7:::
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>opettaja:$y$hidden:19598:0:99999:7:::
+</span></code></pre></div>
+<p>Yksittäisen rivin voi rikkoa osatekijöiksi tutulla komennolla, mutta tällä kertaa tarvitse root-oikeudet, tai sinun tulee kuulua ryhmään shadow: <code>´sudo cat /etc/shadow| grep opettaja | tr : "\n"</code>.</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Kenttä</th>
+<th>Selite</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>username</td>
+<td>Käyttäjänimi kuten <code>opettaja</code>. (ks. <code>/etc/passwd</code>)</td>
+</tr>
+<tr>
+<td>2</td>
+<td>password</td>
+<td>Merkki <code>*</code> tai <code>!</code> tarkoittavat, että käyttäjänä ei voi kirjautua sisään salasanaa käyttäen, mutta esimerkiksi root-oikeuksin tai ssh-avainta käyttäen kirjautuminen voi yhä olla mahdollista. <code>*NP*</code> ja <code>!!</code> viittaavat siihen, että salasanaa ei ole (vielä) asetettu. <code>*LK*</code> tarkoittaa, että käyttäjä on lukittu. Mikäli kenttä sisältää jotain muuta, niin kyseessä on käyttäjän häshätty salasana. Lue alta <strong>Salasanakentän sisältö</strong>.</td>
+</tr>
+<tr>
+<td>3</td>
+<td>last password change</td>
+<td>Päivä, jolloin salasana on edellisen kerran vaihdettu. Kyseessä ei ole päivämäärä vaan päivän lukujärjestys alkaen 1970-luvun alusta eli UNIX timestampin alkuhetkestä alkaen. Lue alta <strong>Päivämäärän laskeminen</strong>.</td>
+</tr>
+<tr>
+<td>4</td>
+<td>min days</td>
+<td>Minimi-intervalli salasanavaihtojen välillä. Katso <code>man chage</code>.</td>
+</tr>
+<tr>
+<td>5</td>
+<td>max days</td>
+<td>Maksimi-intervalli salasanavaihtojen välillä. Katso <code>man chage</code>.</td>
+</tr>
+<tr>
+<td>6</td>
+<td>warn days</td>
+<td>Varoituksen näyttämisen aloitus ennen salasanan vanhentumista.</td>
+</tr>
+<tr>
+<td>7</td>
+<td>inactive days</td>
+<td>Käyttäjän deaktivoinnin päiväluku salasanan vanhentumisen jälkeen.</td>
+</tr>
+<tr>
+<td>8</td>
+<td>expiry</td>
+<td>Päivä, jolloin käyttäjä on deaktivoitu. Käyttää samaa päivämääräkaavaa kuin kenttä <code>#3</code>.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="paivamaaran-laskeminen">Päivämäärän laskeminen</h4>
+<p>Last password change kentän arvon voi kääntää meille ihmiselle tutummaksi arvoksi <code>date</code>-komennon avulla.</p>
+<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>$<span class="w"> </span>date<span class="w"> </span>-d<span class="w"> </span><span class="s2">&quot;1970-01-01 +19598 days&quot;</span><span class="w"> </span>+%Y-%m-%d
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="m">2023</span>-08-29
+</span></code></pre></div>
+<h4 id="salasanakentan-sisalto">Salasanakentän sisältö</h4>
+<p>Salasanakentän arvon erottajana toimii <code>$</code>-merkki, ja se noudattaa kaavaa <code>$id$salt$hash</code>, tai jos häshäykseen on käytetty custom-parametrejä, niin <code>$id$param=value,paramb=value$salt$hash</code>. Kenttä ID viittaa häshäykseen käytettyyn algoritmiin ja arvojen merkitys on:</p>
+<table>
+<thead>
+<tr>
+<th>$ID$</th>
+<th>Häshäykseen käytetty algoritmi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>MD5</td>
+</tr>
+<tr>
+<td>2, 2a tai 2b</td>
+<td>bcrypt</td>
+</tr>
+<tr>
+<td>5</td>
+<td>SHA-256</td>
+</tr>
+<tr>
+<td>6</td>
+<td>SHA-512</td>
+</tr>
+<tr>
+<td>y</td>
+<td>yescrypt</td>
+</tr>
+</tbody>
+</table>
+<p>Salasanan häshäystä voi harjoitella <code>openssl</code>-kirjaston avulla.</p>
+<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>$<span class="w"> </span>openssl<span class="w"> </span>passwd<span class="w"> </span>-5<span class="w"> </span>-salt<span class="w"> </span><span class="s2">&quot;suola&quot;</span><span class="w"> </span><span class="s2">&quot;password123&quot;</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="nv">$5$suola$NkZwDPPEx8Q9XA2</span>./QA2oJ4QA35JCL9ejielN9DOApD
+</span></code></pre></div>
+<p>Häshäyksessä (eli virallisesti suomeksi "tiivistämisessä") käytetty salt eli suola on arvo, joka ynnätään salasanaan ennen sen häshäystä. Tällä estetään suoraa rainbow table käyttöä: jos käyttäjän salasana olisi jotain turvatonta kuten <code>qwerty</code> tai <code>password123</code>,  salasanan häshätty arvo löytyisi suoraan jotakin tietokannasta, joka sisältää yleisimmän miljoonan salasanan häshit. Kun salt on käytössä, niin käyttäjan salasana on käytännössä "salt"+"password123". Naiivi esimerkki alla, jossa käytetään turvattomaksi luokiteltua MD5-algoritmia. Ethän käytä MD5:ttä missään tuotannossa! Tässä se on esimerkkinä, koska syntyvä häsh on mukavan lyhyt ruudulle tulostettavaksi.</p>
+<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>$<span class="w"> </span><span class="nv">salt</span><span class="o">=</span>salt
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>$<span class="w"> </span><span class="nv">password</span><span class="o">=</span>password123
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>$<span class="w"> </span><span class="nv">hashed</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$salt$password</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>md5sum<span class="w"> </span><span class="p">|</span><span class="w"> </span>base64<span class="k">)</span>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;\$5\$</span><span class="nv">$salt</span><span class="s2">\$</span><span class="nv">$hashed</span><span class="s2">&quot;</span>
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="nv">$5$salt$ZjhiY2I2NmVmOWMwMTRlYjRiMDBjZmY4N2U0YThhNjUgIC0K</span>
+</span></code></pre></div>
+<p>Häshäämätöntä salasanaa ei siis tallenneta laisinkaan. Kun käyttäjä yrittää kirjautua sisään, järjestelmä häshää käyttäjän syötteen saltin kanssa, vertaa sitä <code>shadow</code>-tiedoston arvoon, ja joko päästää käyttäjän sisään tai ei päästä. Mikäli <code>shadow</code>-tiedosto vuotaa vääriin käsiin, ja joku ulkopuolinen yrittää päätellä mitä häshäämättömät salasanat ovat, hänellä ei ole käytännössä muuta vaihtoehtoa kuin kokeilla kaikki vaihtoehdot läpi.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Tässäpä pähkinä. Kuvittele tilanne, jossa salasana-policy määrää, että salasanan pitää noudattaa kaavaa <code>^[a-zA-Z0-9]{8,32}$</code> (eli 8-32 symbolia, jotka ovat isoja tai pieniä kirjaimia tai numeroita; erikoismerkkejä tai suomalaisia ääkkösiä ei sallita). Kuinka monta eri vaihtoehtoa pitäisi enimmillään käydä läpi löytääkseen häshi, jos oikea salasana on 8 merkkiä pitkä? Entä jos salasana onkin 10 merkkiä pitkä?</p>
+</div>
+<h2 id="kaytannossa">Käytännössä</h2>
+<h3 id="kayttajien-luominen">Käyttäjien luominen</h3>
+<p>Lokaaleja käyttäjiä voi luoda komennolla:</p>
+<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="c1"># Luo käyttäjä</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>$<span class="w"> </span>sudo<span class="w"> </span>useradd<span class="w"> </span>&lt;-m&gt;<span class="w"> </span>&lt;username&gt;
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="c1"># Luo tarpeen mukaan uusi ryhmä</span>
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>$<span class="w"> </span>sudo<span class="w"> </span>groupadd<span class="w"> </span>&lt;groupname&gt;
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>
+</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="c1"># Jos loit ryhmän, lisää käyttäjä ryhmään</span>
+</span><span id="__span-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a>$<span class="w"> </span>sudo<span class="w"> </span>usermod<span class="w"> </span>--append<span class="w"> </span>--groups<span class="w"> </span>&lt;groupname&gt;<span class="w"> </span>&lt;username&gt;
+</span></code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Uuden käyttäjän luomiseen liittyy default-asetuksia. Käy katsomassa, mitä tiedosto <code>/etc/login.defs</code> sisältää. Mitä manuaali sanoo tiedostosta?</p>
+<p>Uuden käyttäjän kotihakemistolle voi luoda jonkin pohjarakenteen. Käy katsomassa, mitä kansio <code>/etc/skel</code> sisältää. Mitä manuaali sanoo siitä (ks. USERADD(8) )?</p>
+</div>
+<p>Tiedostojen omistajuutta voi vaihtaa komennolla <code>chown</code>. Alla lyhyt esimerkki.</p>
+<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c1"># Vaihda owner</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>$<span class="w"> </span>chown<span class="w"> </span>&lt;username&gt;<span class="w"> </span>kissa.txt
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="c1"># Vaihda sekä owner että group</span>
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>$<span class="w"> </span>chown<span class="w"> </span>&lt;username&gt;:&lt;group&gt;<span class="w"> </span>kissa.tx
+</span></code></pre></div>
+<h3 id="toisena-kayttajana-esiintyminen">Toisena käyttäjänä esiintyminen</h3>
+<p>Jos haluat kokeilla, kuinka tiedosto- sekä hakemisto-oikeudet käyttäytyvät toisen käyttäjän näkökulmasta, niin vaikea tapa on kirjautua graafisesta käyttöliittymästä ulos, ja tämän jälkeen kirjautua uudella käyttäjällä sisään. Helpompi tapa on käyttää <code>su</code>-komentoa (substitute user).</p>
+<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="c1"># Avaa toisen käyttäjän shell sinun shellisi prosessina</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="c1"># Selvitä, mitä &quot;-&quot; eli &quot;--login&quot; optio tekee.</span>
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>$<span class="w"> </span>sudo<span class="w"> </span>su<span class="w"> </span>-<span class="w"> </span>&lt;username&gt;
+</span></code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Jos haluat esiintyä roottina, voit saavuttaa tämän usealla eri tavalla. Kaksi kenties nopeinta ovat:</p>
+<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="c1"># Sudo</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>$<span class="w"> </span>sudo<span class="w"> </span>-i<span class="w">     </span><span class="c1"># eli --login</span>
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="c1"># Sudo su</span>
+</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>$<span class="w"> </span>sudo<span class="w"> </span>su<span class="w"> </span>-
+</span></code></pre></div>
+</div>
+<h2 id="tehtavat">Tehtävät</h2>
+<div class="admonition question">
+<p class="admonition-title">Tehtävä: Nologin</p>
+<p>Kokeile ajaa ohjelma, joka ajetaan ei-interaktiivisilla käyttäjillä loginin yhteydessä eli <code>/usr/sbin/nologin</code>. Mitä näet?</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Tehtävä: Kenen joukoissa seisot?</p>
+<p>Katso mihin ryhmiin kuulut ja selvitä, mitä oikeuksia sinulla on niiden puolesta. Muista, että sudo antaa pääsyn käytännössä kaikkialle.</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Tehtävä: Luo käyttäjä</p>
+<p>Luo käyttäjä, jonka nimi on muunnelma omastasi: esimerkiksi opettaja sourander voisi luoda käyttäjän surrender. Voit käyttää joko <code>useradd</code> tai <code>adduser</code>-komentoa. Tutki, mitä eroa näillä komennoilla on ja päätä kumpaa käytät. Käyttäjän luomisen jälkeen:</p>
+<ol>
+<li>Esiinny toisena käyttäjänä (<code>su</code>-komennolla).</li>
+<li>Selvitä, mitä tapahtuu, jos yrität käyttää <code>sudo</code>-komentoa.</li>
+<li>Antamatta käyttäjälle <strong>sudoers</strong>-oikeuksia, miten voit sallia lukea ja kirjoittaa tietoa <code>/srv/antipersoonat</code> -hakemistossa? Luo hakemisto ja selvitä.</li>
+</ol>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Tehtävä: Käyttäjä ja kirjautuminen</p>
+<p>Aseta äsken luomallesi käyttäjälle salasana, jos sillä ei vielä ole. Jos olet epävarma, tutki <code>/etc/shadow</code>-tiedostoa.</p>
+<p>Kun käyttäjällä on salasana, kirjaudu ulos pääkäyttäjästäsi ja kirjaudu GNOME:en tällä ei-admin käyttäjällä.</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Tehtävä: Poista käyttäjä</p>
+<p>Selvitä, kuinka käyttäjän voi poistaa kotihakemistoineen. Poista tämän jälkeen myös tyhjiksi jääneet ryhmät.</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Tehtävä: Pidennä sudo-salasanan kyselytiheyttä</p>
+<p>Olet varmasti huomannut, että sudo kysyy salasanaa:</p>
+<ol>
+<li>Joka kerta kun käytät <code>sudo</code>-komentoa uudessa istunnossa.</li>
+<li>Aina <code>sudo</code>-komennon jälkeen, kun olet edellisestä promptista on kulunut 15 minuuttia.</li>
+</ol>
+<p>Eikö olisi näppärää, jos salasana kysyttäisiin vaikkapa vain kerran tunnissa - olit missä tahansa shell-istunnossa? Kokeile muokata tätä. Se hoituu <code>visudo</code>-komennolla, joka avaa <code>/etc/sudoers</code>-tiedoston. Visudo on editori, joka on erikoistettu sudoers-tiedoston muokkaamiseen. Se pyrkii estämään virheellisten asetusten tallentamisen. Ole kuitenkin tarkkana: tämän tiedoston rikkominen voi estää sinua kirjautumasta sisään järjestelmään. </p>
+<p>Lisää konfiguraatioon rivi, joka sallii sinulle 60 minuutin cachetuksen salasanalle. Voit käyttää joko <code>/etc/sudoers</code>-tiedostoa tai luoda oman drop-in tiedoston <code>/etc/sudoers.d/my-sudoers</code>. Drop-in tiedosto on erillinen tiedosto, joka ladataan sudoers-tiedoston lisäksi. Tämä on suositeltava tapa.</p>
+<div class="language-console highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="gp">$ </span>sudo<span class="w"> </span>sudo<span class="w"> </span>-V<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-i<span class="w"> </span><span class="s2">&quot;timestamp timeout&quot;</span>
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="go">Authentication timestamp timeout: 15,0 minutes</span>
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>
+</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="gp">$ </span>sudo<span class="w"> </span>visudo<span class="w"> </span>/etc/sudoers.d/my-sudoers
+</span></code></pre></div>
+<div class="language-ini highlight"><span class="filename">my-sudoers</span><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="na">Defaults    timestamp_timeout</span><span class="o">=</span><span class="s">60,timestamp_type=global</span>
+</span></code></pre></div>
+<p>Yllä olevien vakioarvot ovat 15 minuuttia ja <code>timestamp_type=tty</code>, joka tarkoittaa, että salasana kysytään aina kun avaat uuden terminaali-ikkunan tai -välilehden.</p>
+<p>Ja mihinkö se cachettaa nämä? Linuxissa lähes kaikki on tiedostoina, kuten myös tämä. Voit tutkia <code>/run/sudo/ts</code>-hakemistoa. Sieltä pitäisi löytyä sinun userid:n mukainen tiedosto, jota on muokattu viimeksi kun ajoit sudo-komennon. Lisätietoja löydät komennolla <code>man 5 sudoers</code>.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Voit halutessasi lisätä myös toisen arvon, kuten <code>timestamp_type=global</code>, joka sallii salasanan kysymisen vain kerran <code>timeout</code>-viiveen välein riippumatta siitä, missä istunnossa olet. Voit lisätä sen myös drop-in tiedostoon joko uudelle riville tai samaan riviin pilkulla erotettuna. Sen arvoa voit tutkia näin:</p>
+<div class="language-console highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="gp">$ </span>sudo<span class="w"> </span>sudo<span class="w"> </span>-V<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-i<span class="w"> </span><span class="s2">&quot;type&quot;</span>
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="go">Type of authentication timestamp record: tty</span>
+</span></code></pre></div>
+</div>
+</div>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2025 <a href="https://www.kamk.fi">Kajaanin Ammattikorkeakoulu Oy</a>. 
+Licenced under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">BY-NC-SA 4.0</a>
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.copy", "content.code.annotate", "content.tabs.link"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Kopioitu leikep\u00f6yd\u00e4lle", "clipboard.copy": "Kopioi leikep\u00f6yd\u00e4lle", "search.result.more.one": "1 lis\u00e4\u00e4 t\u00e4ll\u00e4 sivulla", "search.result.more.other": "# lis\u00e4\u00e4 t\u00e4ll\u00e4 sivulla", "search.result.none": "Ei t\u00e4sm\u00e4\u00e4vi\u00e4 dokumentteja", "search.result.one": "1 t\u00e4sm\u00e4\u00e4v\u00e4 dokumentti", "search.result.other": "# t\u00e4sm\u00e4\u00e4v\u00e4\u00e4 dokumenttia", "search.result.placeholder": "Kirjoita aloittaaksesi haun", "search.result.term.missing": "Puuttuu", "select.version": "Valitse versio"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
