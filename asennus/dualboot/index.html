@@ -1,0 +1,2527 @@
+
+<!doctype html>
+<html lang="fi" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../aloita/">
+      
+      
+        <link rel="next" href="../virtualbox/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>Option A: Dual Boot - Linux Perusteet</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#option-a-dual-boot" class="md-skip">
+          Hyppää sisältöön
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Ylätunniste">
+    <a href="../.." title="Linux Perusteet" class="md-header__button md-logo" aria-label="Linux Perusteet" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Linux Perusteet
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Option A: Dual Boot
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Hae" placeholder="Hae" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Haku">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Tyhjää" aria-label="Tyhjää" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Aloitetaan hakua
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigaatio" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Linux Perusteet" class="md-nav__button md-logo" aria-label="Linux Perusteet" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Linux Perusteet
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tervetuloa kurssille
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Asennus
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Asennus
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aloita/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aloita tästä
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Option A: Dual Boot
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Option A: Dual Boot
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Sisällysluettelo">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Sisällysluettelo
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#esivaatimukset" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Esivaatimukset
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lyhyt-ohje" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lyhyt ohje
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lyhyt ohje">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ohjeet-tueksi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ohjeet tueksi
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vaiheet-1-5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Vaiheet 1-5
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vian-selvitys" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Vian selvitys
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#seuraavat-vaiheet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Seuraavat vaiheet?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pitka-kuvallinen-ohje" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pitkä kuvallinen ohje
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Pitkä kuvallinen ohje">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vaihe-1-lataa-ubuntu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Vaihe 1: Lataa Ubuntu
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vaihe-2-polta-iso-image-usb-tikulle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Vaihe 2: Polta ISO-image USB-tikulle
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vaihe-3-valmistele-osio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Vaihe 3: Valmistele osio
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vaihe-4-kytke-fast-boot-pois-paalta" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Vaihe 4: Kytke Fast Boot pois päältä
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vaihe-5-kaynnista-usb-tikulta" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Vaihe 5: Käynnistä USB-tikulta
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vaihe-6-kaynnista-live-cd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Vaihe 6: Käynnistä Live-CD
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vaihe-7-asenna-ubuntu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Vaihe 7: Asenna Ubuntu
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vaihe-8-kaynnista-kone-uudelleen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Vaihe 8: Käynnistä kone uudelleen
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vaihe-9-kokeile-ubuntuun-ja-windowsiin-kaynnistysta" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Vaihe 9: Kokeile Ubuntuun ja Windowsiin käynnistystä
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kuinka-paasta-eroon-ubuntusta" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Kuinka päästä eroon Ubuntusta?
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../virtualbox/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Option B: VirtualBox
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../opiskelukuntoon/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lopuksi: Ubuntu opiskelukuntoon
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Linux
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Linux
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/os/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/kernel/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kernel
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Peruskäyttö
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Peruskäyttö
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../peruskaytto/tiedostot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tiedostot
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../peruskaytto/komennot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Komennot
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../peruskaytto/kayttajat/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Käyttäjät
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../peruskaytto/kayttooikeudet/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Käyttöoikeudet
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CLI
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    CLI
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cli/terminaali/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Terminaali
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cli/standardivirrat/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Standardivirrat
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cli/startup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Startup-tiedostot
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Paketinhallinta
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Paketinhallinta
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../paketinhallinta/ohjelmat/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ohjelmat
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../paketinhallinta/ohjelmapaketit/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ohjelmapaketit
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../paketinhallinta/cross-distro/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cross-distro
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Prosessit
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Prosessit
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prosessit/prosessit/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Prosessit
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prosessit/systemd/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Systemd
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prosessit/cron/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cron
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prosessit/lokit/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lokit
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prosessit/kontit/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kontit
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Etäkäyttö
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Etäkäyttö
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../etakaytto/ssh/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SSH
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../etakaytto/tmux/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tmux
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🚧 Tiedostojärjestelmä
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    🚧 Tiedostojärjestelmä
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tiedostojarjestelma/levyt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Levyt
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tiedostojarjestelma/osiot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Osiot
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tiedostojarjestelma/lvm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LVM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🚧 C-ohjelmointi
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    🚧 C-ohjelmointi
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../c_ohjelmointi/yleista/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Yleistä
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../c_ohjelmointi/muuttujat/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Muuttujat
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../c_ohjelmointi/merkkijonot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Merkkijonot
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../c_ohjelmointi/pointterit/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Osoittimet
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../c_ohjelmointi/streams/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Standardivirrat
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../c_ohjelmointi/args/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Argumentit
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../c_ohjelmointi/tiedostot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tiedostot
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../c_ohjelmointi/modularisointi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Modularisointi
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../exercises/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tehtäväkooste
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Sisällysluettelo">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Sisällysluettelo
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#esivaatimukset" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Esivaatimukset
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lyhyt-ohje" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lyhyt ohje
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lyhyt ohje">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ohjeet-tueksi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ohjeet tueksi
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vaiheet-1-5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Vaiheet 1-5
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vian-selvitys" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Vian selvitys
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#seuraavat-vaiheet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Seuraavat vaiheet?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pitka-kuvallinen-ohje" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pitkä kuvallinen ohje
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Pitkä kuvallinen ohje">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vaihe-1-lataa-ubuntu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Vaihe 1: Lataa Ubuntu
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vaihe-2-polta-iso-image-usb-tikulle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Vaihe 2: Polta ISO-image USB-tikulle
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vaihe-3-valmistele-osio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Vaihe 3: Valmistele osio
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vaihe-4-kytke-fast-boot-pois-paalta" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Vaihe 4: Kytke Fast Boot pois päältä
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vaihe-5-kaynnista-usb-tikulta" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Vaihe 5: Käynnistä USB-tikulta
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vaihe-6-kaynnista-live-cd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Vaihe 6: Käynnistä Live-CD
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vaihe-7-asenna-ubuntu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Vaihe 7: Asenna Ubuntu
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vaihe-8-kaynnista-kone-uudelleen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Vaihe 8: Käynnistä kone uudelleen
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vaihe-9-kokeile-ubuntuun-ja-windowsiin-kaynnistysta" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Vaihe 9: Kokeile Ubuntuun ja Windowsiin käynnistystä
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kuinka-paasta-eroon-ubuntusta" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Kuinka päästä eroon Ubuntusta?
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="option-a-dual-boot">Option A: Dual Boot</h1>
+<div class="admonition warning disclaimer">
+<p class="admonition-title">Warning</p>
+<p>Sinä kannat kaiken vastuun, mikäli päätät ryhtyä tähän prosessiin. Dual boot on opiskeluiden kannalta hyvä, mutta käyttöjärjestelmän asennukseen liittyy luontaisesti riskejä. Ethän tee tätä esimerkiksi tietokoneelle, jossa on perheenjäsenten Windows-tilien takana tärkeitä tiedostoja. Älä myöskään tee tätä tietokoneelle, jonka olet saanut yritykseltä tai oppilaitokselta käyttöön siten, että heidän IT-osasto hallinnoi sinun konettasi. Jatka tämän ohjeen lukemista vain jos olet asentamassa tätä omalle, henkilökohtaiselle tietokoneellesi, ja olet varannut aikaa mahdollista Windowsin uudelleenasennusta tai muuta vianselvittelyä varten.</p>
+</div>
+<h2 id="esivaatimukset">Esivaatimukset</h2>
+<ul>
+<li><strong>Toinen tietokone</strong>. Saatat joutua etsimään ohjeita tai apua kesken asennuksen. Voi esimerkiksi käydä siten, että Wifi-adapterisi ajurit eivät asennu ongelmitta, joten et pääse Internetiin Ubuntusta käsin. Vianselvityksessä auttaa, mikäli sinulla on toinen tietokone.</li>
+<li><strong>Kärsivällisyyttä</strong>. Varaudu siihen, että asennukseen menee vähintään tunti, vaikka kaikki menisi kerralla nappiin. </li>
+<li><strong>Tyhjä USB-tikku.</strong> Kokoa tulisi olla vähintään 8 GB. Vaihtoehtoisesti myös Compact Flash -kortit ja vastaavat saattavat toimia, mikäli koneessasi on kortinlukija.</li>
+<li><strong>Varmuuskopio kaikesta</strong>. Sinulla tulee olla (henkinen) valmius siihen, että saatat joutua asentamaan Windowsin uusiksi, jos pahin katastrofi iskee.</li>
+<li><strong>Tilaa asennusta varten</strong>. Valitse seuraavista asennusvaihtoehdoista yksi:<ul>
+<li><strong>Option A</strong>: C-asemalla (tai vastaavalla) on <strong>ylimääräistä tilaa</strong> josta voit luopua.</li>
+<li><strong>Option B</strong>: Sinulla on ylimääräinen, <strong>käyttämätön SSD-levy</strong>, jonka voit luovuttaa Ubuntun käyttöön.</li>
+</ul>
+</li>
+</ul>
+<details class="tip">
+<summary>Lisäksi mielellään myös ...</summary>
+<ul>
+<li><strong>Emolevyn ohjekirja</strong>. Saatat joutua piipahtaa UEFI-asetuksissa ja/tai vaihtaa boot-järjestystä. Tätä varten sinun tulee selvittää, mikä pikanäppäin sinun järjestelmässäsi toimii.</li>
+<li><strong>Microsoft Account -tunnukset</strong>. Secure Boot ja/tai BitLocker saattaa huolestua asennusprosessista. Jos saat tähän liittyvän varoitusruudun, älä painokoi. Noudata ruudulla näkyviä ohjeita. Saatat joutua esimerkiksi kirjautumaan Microsoft Accountiin ja näpyttelemään ruudulla näkyviä koodeja palveluun.</li>
+<li><strong>Muistiinpanovälineet</strong>. Kannattaa dokumentoida kaikki tekemäsi vaiheet. Ota kuvia ja/tai kirjoita memoa. Tästä voi olla apua mahdollisessa vianselvityksessä.</li>
+<li><strong>Verkkokaapeli</strong>. Mikäli koneessasi on tavallinen Ethernet-portti, saattaa verkkokaapeli osoittautua hyödylliseksi, mikäli sinulla on ongelmia Wifi-adapterin ajureiden kanssa.</li>
+</ul>
+</details>
+<h2 id="lyhyt-ohje">Lyhyt ohje</h2>
+<h3 id="ohjeet-tueksi">Ohjeet tueksi</h3>
+<p>Mikäli seuraat tätä lyhyttä, kuvatonta ohjetta, voi olla hyödyksi kurkata videolta, miltä vaiheet varsinaisesti näyttävät. Video-ohjeessa ei näytetä Fast Boot -vaihetta, mutta se on selitettynä myöhemmin vaihe-vaiheelta ohjeissa.</p>
+<p>Video-ohje ilman Fast Boot -asetuksen disablointia: <a href="https://youtu.be/qq-7X8zLP7g">How to Dual Boot Ubuntu 24.04 LTS and Windows 10 / 11</a></p>
+<h3 id="vaiheet-1-5">Vaiheet 1-5</h3>
+<p>Vaiheet 1-5 auttavat sinua pääsemään Ubuntu Installeriin. Myöhemmät vaiheet ovat samat kuin Ubuntua virtuaalikoneelle asennettaessa - pois lukien vaihe, jossa valitaan <strong>"Install Ubuntu alongside Windows Boot Manager"</strong>. Näistä löytyy kuvallinen ohje tämän sivun lopusta.</p>
+<ol>
+<li>
+<p><strong>Lataa</strong> Ubuntu 24.04 LTS amd64 ISO-image <a href="https://ubuntu.com/download/desktop">Download Ubuntu Desktop</a> -sivulta (6 GB).</p>
+</li>
+<li>
+<p><strong>Polta ISO-image USB-tikulle</strong>. Tämä hoituu helposti Etcher-sovelluksella: <a href="https://etcher.balena.io/">Balena Etcher</a>. HUOM! Kaikki tikulla oleva data katoaa. Varmista, että tikulla ei ole tärkeitä tiedostoja.</p>
+</li>
+<li>
+<p><strong>Valmistele osio</strong>. Riippuen mihin asennat:</p>
+<ol>
+<li>(Option A:) <strong>Pienennä</strong> (engl. shrink) valitsemaasi NTFS-osiota noudattaen Windows Disk Managementillä (hotkey: Windows + X ja sitten K). Näin kiintolevylle vapautuu osioimatonta tilaa. Arvioi oma tilantarpeesi: riitttääkö 200 GB?</li>
+<li>(Option B:) <strong>Asenna</strong> tai identifioi hyödyntämätön <strong>SSD-asema</strong>. Poista mahdolliset osiot Windows Disk Managementillä tai myöhemmin Ubuntun asennusohjelmalla.</li>
+</ol>
+</li>
+<li>
+<p><strong>Kytke Fast Boot pois päältä</strong>. Asennus saattaa toimia ilman tätä steppiä, mutta kenelläpä elämässä niin kiire olisi, että Fast Boot pitää olla päällä. Mene <strong>Control Panel</strong>, klikkaa katerogian otsikkoa <strong>Hardware and Sound</strong>, klikkaa <strong>Power Options</strong>. Valitse vasemmasta menusta <strong>Choose what the power buttons do</strong>. Klikkaa admin-oikeuksia vaativaa <strong>Change settings that are currently unavailable</strong> nappia. Nyt voit ottaa ruksin pois fast startupista.</p>
+<div class="admonition warning">
+<p class="admonition-title">Huom!</p>
+<p><strong>Sammuta kone</strong>. Huomaa, että Fast Boot kytkeytyy päälle "after shutdown". Sammuta kone kokonaan. Ei siis Restart vaan Shutdown.</p>
+</div>
+</li>
+<li>
+<p><strong>Käynnistä USB-tikulta</strong>. Tähän on monta tapaa, mutta me noudatamme Windowsin menujen kautta Windows Recovery Environmentiin menoa. Avaa <strong>Settings</strong> (Windows + x, sitten n), valitse vasemmalta <strong>System</strong> ja avautuvasta listasta <strong>Recovery</strong>. Klikkaa <strong>Advanced startup</strong> -kohdasta <strong>Restart now</strong>. Pääset Windows Recovery Environmentiin. Jos luomasi USB-tikku ei ole USB-portissa, laita se USB-porttiin. Valitse <strong>Use a Device</strong>. Valitse USB-tikkusi listalta.</p>
+</li>
+</ol>
+<h3 id="vian-selvitys">Vian selvitys</h3>
+<p>Etkö päässyt Ubuntu Installeriin asti? Alla olevassa laatikossa on pari vaihtoehtoa vian selvitykseen. Huomaa, että Linuxia opetellessa omatoimisuus on valttia. Jos et pääse eteenpäin, kysy rohkeasti apua kanssaopiskelijoilta, käytä hakukonetta ja käytä jopa ChatGPT:tä tai vastaavaa kielimallia apuna. Muista dokumentoida kaikki kokeilemasi korjausyritykset.</p>
+<details class="tip">
+<summary>Vian selvitys</summary>
+<p>Mahdollisia vikakorjauksia tämän jälkeen ovat esimerkiksi:</p>
+<p><strong>Kone käynnistyy väkisin Windowsiin?</strong> </p>
+<p>Jos Ubuntu ei käynnisty USB-tikulta, eli et pääse GRUB-menuun valitsemaan "Try or install Ubuntu" vaan kone käynnistyy Windowsiin, niin käynnistä kone uusiksi tavallisesti. Kun UEFI-menut vilisevät ruudulla, noudata emolevysi ohjekirjan tai ruudulla näkyvien neuvojen ohjetta päästäksesi Boot Menuun. Yleensä tämä vaatii F2, F10, F12, Del tai jonkin muun näppäimen painamista lähes välittömästi koneen käynnistymisen jälkeen. </p>
+<p>Mikäli F2 ja muut näppäimet eivät päästä sinua UEFI-menuun, voit navigoida sinne Windowsin kautta. Mene Windows Recovery Environmentiin (kuten vaiheessa 5) ja valitse Troubleshoot =&gt; Advanced Options =&gt; UEFI Firmware Settings =&gt; Restart.</p>
+<p>Kun olet päässyt UEFI-menuun, etsi "Boot order". Vaihda USB-tikku ensimmäiseksi. Tallenna ja poistu. Koneesi pitäisi nyt käynnistyä USB-tikulta. Tarvittaessa lue emolevysi ohjekirjasta lisää. UEFI-menu on emolevystä riippuen erilainen.</p>
+<p><strong>Secure Boot vastustaa?</strong> </p>
+<p>Jos saat "The Secure Boot key you've entered is not valid."-tyylisiä valituksia ja Ubuntu-asennus keskeytyy, mahdollisia korjauksia ovat:</p>
+<ul>
+<li>
+<p><strong>Ehdotus 1:</strong> Valitse Ubuntun asennuksessa, että älä asenna kolmannen osapuolen ajureita. Asenna nämä myöhemmin itse.</p>
+</li>
+<li>
+<p><strong>Ehdotus 2:</strong> Kytke UEFI:n Secure Boot esimerkiksi "Other OS"-tilaan, jos vakiona on Windows.</p>
+</li>
+<li>
+<p><strong>Ehdotus 3:</strong> Kytke Secure Boot pois päältä UEFI-menusta. Asenna Ubuntu. Tämän jälkeen sinun tulisi voida kytkeä Secure Boot takaisin.</p>
+</li>
+</ul>
+<p><strong>Bitlocker vastustaa.</strong> </p>
+<p>Jos saat Bitlocker-avaimen kyselyitä, noudata ruudulla näkyviä ohjeita. Saatat joutua kirjautumaan Microsoft Accountiin ja näpyttelemään ruudulla näkyviä koodeja palveluun. Ubuntun dokumentaatiosta löytyy myös ohjeita tähän: <a href="https://ubuntu.com/tutorials/install-ubuntu-desktop#13-additional-installing-ubuntu-alongside-windows-with-bitlocker">(Additional) Installing Ubuntu alongside Windows with BitLocker</a></p>
+<p><strong>Intel RST (RAID)</strong></p>
+<p>Intel Rapid Storage Technology tai muut RAID-tekniikat saattavat aiheuttaa ongelmia Ubuntun asennuksessa. Jos saat virheilmoituksia, selvitä ohjeiden avulla, kuinka saat AHCI-ajurit käyttöön rikkomatta Windows-asennustasi. Yksi vanhahko ohje on <a href="https://triplescomputers.com/blog/uncategorized/solution-switch-windows-10-from-raidide-to-ahci-operation/">SOLUTION: Switch Windows 10 from RAID/IDE to AHCI operation</a>, mutta se voi hyvin olla yhä pätevä. Muistathan varmuuskopioida tärkeät tiedostosi ennen kuin ryhdyt muuttamaan asetuksia - ja muistathan että kannat vastuun mahdollisista seuraamuksista. </p>
+</details>
+<h3 id="seuraavat-vaiheet">Seuraavat vaiheet?</h3>
+<p>Olettaen, että pääsit nyt Live-CD:ltä ajettavaan Ubuntuun, sinulla pyörii nyt Ubuntu keskusmuistissa! Haluamme kuitenkin asentaa sen kiintolevylle pysyvästi. Asennuksen pitäisi käynnistyä itsestään. Jos ei, klikkaa "Install Ubuntu"-pikakuvaketta ruudun oikeassa alalaidassa. Nyt voit noudattaa samoja ohjeita kuin Ubuntua virtuaalikoneelle asennettaessa. Noudata ruudulla näkyviä ohjeita.</p>
+<p>Jos tarvitset ohjeistusta, lue alempaa Vaihe 6 ja eteenpäin.</p>
+<h2 id="pitka-kuvallinen-ohje">Pitkä kuvallinen ohje</h2>
+<p>Mikäli haluat yllä olevan ohjeen tueksi kuvia, pläräile myös tämä ohje läpi. Huomaa, että vaiheet ovat hyvin samoja kuin yllä linkitetyssä Youtube-videossa. Tässä ohjeessa käytetään C-aseman kutistamista. Mikäli asennat erilliselle SSD-levylle, jätä turhat vaiheet (kuten osion kutistaminen) väliin.</p>
+<h3 id="vaihe-1-lataa-ubuntu">Vaihe 1: Lataa Ubuntu</h3>
+<p>Mene <a href="https://ubuntu.com/download/desktop">Ubuntu.com</a> -sivulle ja lataa Ubuntu 24.04 LTS. Valitse 64-bit versiona. Lataus on noin 6 GB.</p>
+<h3 id="vaihe-2-polta-iso-image-usb-tikulle">Vaihe 2: Polta ISO-image USB-tikulle</h3>
+<p>Lataa <a href="https://etcher.balena.io/">Balena Etcher</a> ja polta Ubuntu ISO-image USB-tikulle. Huomaa, että kaikki tikulla oleva data katoaa. Varmista, että tikulla ei ole tärkeitä tiedostoja.</p>
+<p><img alt="Etcher" src="../../images/12-07-balenaEtcher.png" /></p>
+<p><strong>Kuvio 1:</strong> Balena Etcherin käyttöliittymä. Tarkista huolella, että valittu USB Device on oikea. Kuvan asennuksessa se on toista kymmentä vuotta vanha Kingston DataTraveler 2.0 kokoa 8 GB.</p>
+<h3 id="vaihe-3-valmistele-osio">Vaihe 3: Valmistele osio</h3>
+<p>Kutista C-asema Windows Disk Managementillä. Klikkaa aloitusmenun Windows-ikonia hiiren oikealla korvalla (tai hotkey <span class="keys"><kbd class="key-windows">Win</kbd><span>+</span><kbd class="key-x">X</kbd></span>) ja valitse "Disk Management". Klikkaa hiiren oikealla C-asemaa ja valitse "Shrink Volume".</p>
+<p><img alt="Disk Management" src="../../images/12-30-disk-management-shrink.png" /></p>
+<p><strong>Kuvio 2:</strong> Disk Managementin kutistus-toiminto löytyy Disk Managementin kontekstivalikosta.</p>
+<p><img alt="Disk Management Choose Shrink Size" src="../../images/12-34-shrink-amount.png" /></p>
+<p><strong>Kuvio 3:</strong> Valitse kuinka paljon haluat kutistaa C-asemaa. Kuvassa 974485 Mt osio on jaettu kahteen suunnilleen yhtä suureen osioon: 487,243 MB eli noin 476 GB.</p>
+<p><img alt="Disk Management After Shrink" src="../../images/12-35-disk-management-after-shrinking.png" /></p>
+<p><strong>Kuvio 4:</strong> Disk Managementin näkymä kutistuksen jälkeen. Huomaa, että kutistettu osio on "Unallocated". Kyseistä tilaa ei voi käyttää ennen kuin se on osioitu, jolloin se formatoidaan esimerkiksi ext4-tiedostojärjestelmällä (tai NTFS Windowsin käyttöön).</p>
+<p><img alt="Format warning" src="../../images/12-36-format-warning.png" /></p>
+<p><strong>Kuvio 5:</strong> Windows saattaa varoittaa, että osio on formatoitava ennen käyttöä. Tämä on normaalia. Klikkaa "Cancel" tai "OK" valituksesta riippuen.</p>
+<h3 id="vaihe-4-kytke-fast-boot-pois-paalta">Vaihe 4: Kytke Fast Boot pois päältä</h3>
+<p>Fast Boot nopeuttaa Windowsin käynnistymistä, mutta aiheuttaa mitä todennäköisemmin ongelmia Ubuntun asennuksessa. Mene <strong>Control Panel</strong>, klikkaa katerogian otsikkoa <strong>Hardware and Sound</strong>, klikkaa <strong>Power Options</strong>. Valitse vasemmasta menusta <strong>Choose what the power buttons do</strong>. Klikkaa admin-oikeuksia vaativaa <strong>Change settings that are currently unavailable</strong> nappia. Nyt voit ottaa ruksin pois fast startupista.</p>
+<p><img alt="Fast Boot toggle" src="../../images/12-37-fast-boot-disable.png" /></p>
+<p><strong>Kuvio 6:</strong> Fast Bootin poiskytkeminen Windowsin asetuksista.</p>
+<div class="admonition warning">
+<p class="admonition-title">HUOM!</p>
+<p>Fast Boot kytkeytyy päälle "after shutdown". Sammuta kone kokonaan. Ei siis Restart vaan Shutdown.</p>
+</div>
+<h3 id="vaihe-5-kaynnista-usb-tikulta">Vaihe 5: Käynnistä USB-tikulta</h3>
+<p>Kun käyttöjärjestelmäsi on käynnistynyt uudelleen, mene <strong>Windows Recovery Environmentiin</strong>. Avaa <strong>Settings</strong> (<span class="keys"><kbd class="key-windows">Win</kbd><span>+</span><kbd class="key-x">X</kbd></span>), valitse vasemmalta <strong>System</strong> ja avautuvasta listasta <strong>Recovery</strong>. Klikkaa <strong>Advanced startup</strong> -kohdasta <strong>Restart now</strong>. Pääset Windows Recovery Environmentiin. Jos luomasi USB-tikku ei ole USB-portissa, laita se USB-porttiin. Valitse <strong>Use a Device</strong>. Valitse USB-tikkusi listalta.</p>
+<p><img alt="Advanced Startup in Recovery menu" src="../../images/12-49-system-recovery.png" /></p>
+<p><strong>Kuvio 7:</strong> Kuvassa näkyy pop-up, joka avautuu, kun valitset "Advanced startup"-kohdasta "Restart now".</p>
+<p>Tässä välissä tietokoneesi käynnistyy uudestaan ja päädyt Windows Recovery Environmentiin. Valitse <strong>Use a Device</strong> ja valitse USB-tikku.</p>
+<p><img alt="Use a Device in Windows Recovery Environment" src="../../images/12-52-system-recovery.png" /></p>
+<p><strong>Kuvio 8:</strong> Kuvassa näkyy Windows Recovery Environmentin "Use a Device" kursorin alla. Valitse tämä.</p>
+<p><img alt="Select USB Device" src="../../images/12-53-system-recovery-device.png" /></p>
+<p><strong>Kuvio 9:</strong> Valitse USB-tikku, johon poltit Ubuntun.</p>
+<h3 id="vaihe-6-kaynnista-live-cd">Vaihe 6: Käynnistä Live-CD</h3>
+<p>Kun tietokoneesi käynnistyy tikulta, sinulle pitäisi avautua GBU GRUB Multiboot loader. UEFI on siirtänyt nyt vastuun käynnistyksestä GRUB:lle. Valitse "Try or Install Ubuntu". Tämä käynnistää Ubuntu Live-CD:n, joka on ei-persistentti Ubuntu-asennus. Tämä tarkoittaa, että kaikki muutokset katoavat, kun sammutat koneen. Tätä käytetään Linuxin asentamiseen pysyvästi SSD-levyllesi; jatkossa käynnistät koneesi suoraan SSD-levyltä, mihin asentuu GRUB bootloader sekä itse Ubuntu.</p>
+<p><img alt="GRUB Boot Menu" src="../../images/12-55-GRUB.png" /></p>
+<p><strong>Kuvio 10:</strong> GRUB Boot Menu. Valitse "Try or Install Ubuntu".</p>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<p>Mikäli et pääse tähän vaiheeseen, katso vianselvitysohjeet ylempää: <a href="#vian-selvitys">Vian selvitys</a>.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Jos sinulla on joskus ongelmia Linuxin kanssa, voit aina käynnistää Live-CD:n ja käyttää sitä apuna ongelmanratkaisussa. Tämä auttaa esimerkiksi niissä tilanteissa, että olet vahingossa sotknut <code>/etc/fstab</code>-tiedoston tai GRUB-konfiguraation <code>/boot/grub/grub.cfg</code>.</p>
+</div>
+<h3 id="vaihe-7-asenna-ubuntu">Vaihe 7: Asenna Ubuntu</h3>
+<p>Kun olet päässyt Ubuntu Live-CD:lle, klikkaa "Install Ubuntu" -pikakuvaketta, mikäli asennus ei käynnisty automaattisesti. Asennusohjelma saattaa myös tarjota päivitystä itselleen (eli siis asennusohjelma lataa itsestään uuden version.) Jos näin käy, asennusohjelma sammuu ja sinun tulee tuplaklikata "Install Ubuntu" -pikakuvaketta uudelleen.</p>
+<p>Alla on tyypilliset asennuksen valinnat vaihe vaiheelta. Mikäli haluat nähdä kuvat kaikista vaiheista, voit seurata Ubuntun omaa asennusohjetta alkaen vaiheesta <a href="https://ubuntu.com/tutorials/install-ubuntu-desktop#4-boot-from-usb-flash-drive">4. Boot from USB flash drive</a>.</p>
+<ul>
+<li><strong>Choose your language</strong><ul>
+<li>Valitse: English</li>
+</ul>
+</li>
+<li><strong>Accessibility in Ubuntu</strong><ul>
+<li>Klikkaa: Next (paitsi jos tarvitset ko. ominaisuuksia)</li>
+</ul>
+</li>
+<li><strong>Select your keyboard layout</strong><ul>
+<li>Valitse: Finnish</li>
+<li>Testaa alla olevassa kentässä että ääkköset toimivat.</li>
+</ul>
+</li>
+<li>
+<p><strong>Connect to the internet</strong></p>
+<ul>
+<li>Suositus: Kytke verkkokaapeli kiinni. Valitse Use wired connection.</li>
+<li>Vaihtoehto: Käytä wifiä.</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Riippuen wifi-adapterista saatat joutua säätämään ajureiden kanssa. Hyvässä lykyssä Ubuntun kernel tukee adapteriasi suoraan. Jos ei, valmistaudu etsimään ohjeita netistä. Tämä on yksi niistä tilanteista, jossa toinen tietokone on hyödyllinen.</p>
+</div>
+</li>
+<li>
+<p><strong>What do you want to do with Ubuntu?</strong></p>
+<ul>
+<li>Valitse: Install Ubuntu</li>
+</ul>
+</li>
+<li><strong>How would you like to install Ubuntu?</strong><ul>
+<li>Valitse: Interactive Installation</li>
+</ul>
+</li>
+<li><strong>What apps would you like to install to start with?</strong><ul>
+<li>Valitse: Default selection</li>
+</ul>
+</li>
+<li><strong>Install recommanded proprietary software?</strong><ul>
+<li>Ruksaa päälle: Install third-party software for graphics and Wi-Fi hardware</li>
+</ul>
+</li>
+<li>
+<p><strong>How do you want to install Ubuntu?</strong></p>
+<ul>
+<li>Valitse: Install Ubuntu alongside Windows Boot Manager.</li>
+</ul>
+<p><img alt="Install Alongside Windows" src="../../images/13-10-install-alongside-windows.png" /></p>
+<p><strong>Kuvio 11</strong>: Valitse "Install Ubuntu alongside Windows Boot Manager".</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p><strong>Älä valitse</strong> "Erase disk and install Ubuntu". Tämä tuhoaa kaiken Windowsin datan. Sen sijaan "Manual installation" voi olla hyvä valinta, jos haluat tarkemmin määritellä osiot. Tämä on kuitenkin edistyneempi vaihtoehto eikä pitäisi olla tarpeen, mikäli luet tätä ohjetta.</p>
+</div>
+</li>
+<li>
+<p><strong>Create your account</strong></p>
+<ul>
+<li>Your Name: Etunimi Sukunimi</li>
+<li>Your computer's name: Valitse jokin nimi koneellesi tai luota generoituun nimeen.</li>
+<li>Your username: [a-z] ja [0-9] -merkkejä, esim. sukunimesi pienellä.<ul>
+<li>Esimerkiksi: <code>sourander</code></li>
+</ul>
+</li>
+<li>
+<p>Choose a password: Valitse vahva salasana.</p>
+<ul>
+<li>Password: Kirjoita salasana uudelleen.</li>
+<li>Ruksaa päälle: Require my password to log in</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Hyvä salasana</p>
+<p>Hyvä salasana on pitkä, vaikeasti arvattava ja sisältää erikoismerkkejä - mutta kuitenkin kohtalaisen helppo kirjoittaa. Joudut kirjoittaa salasanaa aika-ajoin uudestaan: aina sisäänkirjautuessa ja silloin tällöin ajaessasi <code>sudo</code>-komentoja.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Ethän unohda salasanaasi! Laita se talteen salasananhallintaohjelmaan tai muuhun turvalliseen paikkaan.</p>
+</div>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Choose your Location</strong></p>
+<ul>
+<li>Location: Helsinki tai vaikka Kajaani</li>
+<li>Timezone: Europe/Helsinki</li>
+</ul>
+</li>
+<li><strong>Review your choices</strong><ul>
+<li>Tarkista asetukset.</li>
+<li>Klikkaa: Install</li>
+</ul>
+</li>
+</ul>
+<h3 id="vaihe-8-kaynnista-kone-uudelleen">Vaihe 8: Käynnistä kone uudelleen</h3>
+<p>Kun asennus on valmis, se tarjoaa mahdollisuutta käynnistää kone uudelleen. Klikkaa "Restart Now". Kun kone käynnistyy uudelleen, sinua pyydetään irrottamaan asennusmedia. Irrota USB-tikku ja paina Enter.</p>
+<p><img alt="Remove Installation Media" src="../../images/13-20-remove-installation-media.png" /></p>
+<p><strong>Kuvio 12:</strong> Irrota asennusmedia ja paina Enter.</p>
+<p>Kirjaudu Ubuntuun sisään käyttäen juuri luomaasi käyttäjätunnusta ja salasanaa. Onnea, olet nyt asentanut Ubuntu 24.04 LTS:n Windowsin rinnalle!</p>
+<h3 id="vaihe-9-kokeile-ubuntuun-ja-windowsiin-kaynnistysta">Vaihe 9: Kokeile Ubuntuun ja Windowsiin käynnistystä</h3>
+<p>Varmista vielä, että pääset yhä Windowsiin. Kun sammutat ja käynnistät koneesi uudestaan, sinulle pitäisi avautua GRUB-valikko, jossa voit valita käynnistetäänkö Ubuntu vai Windows (eli Windows Boot Manager). Käynnistä kone toistamiseen uusiksi ja kokeile, että pääset kumpaankin käyttöjärjestelmään.</p>
+<p>GRUB-menu käynnistyy olettaen että se on UEFI-asetuksissa ensimmäisenä boot-optiona. Mikäli GRUB-menu ei avaudu, sinun tulee mennä UEFI-asetuksiin ja valita GRUB bootloader ensimmäiseksi. UEFI-menuun pääseminen on neuvottu aiemmin vaiheessa 5.</p>
+<p><img alt="UEFI Boot Order" src="../../images/13-23-uefi-boot-order.png" /></p>
+<p><strong>Kuvio 13:</strong> UEFI Boot Order. Valitse GRUB bootloader ensimmäiseksi. Huomaa, että UEFI-menu on erilainen jokaisessa emolevyssä. Sinun näkymäsi voi poiketa tästä kuvasta hyvinkin merkittävällä tavalla.</p>
+<h2 id="kuinka-paasta-eroon-ubuntusta">Kuinka päästä eroon Ubuntusta?</h2>
+<p>Jos haluat joskus luopua dual bootista, vaiheet ovat hyvin tiivistetysti seuraavat:</p>
+<ol>
+<li>Vaihda UEFI-asetuksista Windowsin boot-järjestys ensimmäiseksi (ks. Kuvio 13).</li>
+<li>Kirjaudu Windowsiin.</li>
+<li>Poista Ubuntun luomat osiot Windows Disk Managementillä.</li>
+<li>Laajenna (engl. extend) Windowsin osio takaisin alkuperäiseen kokoon.</li>
+<li>Siirry Windows Recovery Environmentiin ja käynnistä sieltä Command Prompt.</li>
+<li>Kirjoita luotettavasta ohjeesta löytämäsi komennot ja paina Enter.</li>
+</ol>
+<p>Mikä sitten on luotettava ohje kohdan 6 komentoihin? Esimerkiksi Microsoftin tai jonkin tietokonevalmistajan ohje. Esimerkkinä olkoon Dellin <a href="https://www.dell.com/support/kbdoc/en-us/000124331/how-to-repair-the-efi-bootloader-on-a-gpt-hdd-for-windows-7-8-8-1-and-10-on-your-dell-pc">How to Repair the EFI Bootloader on a GPT Hard Drive for Windows Operating Systems on your Dell Computer</a>. Teethän kuitenkin oman tutkimustyösi ennen näiden tiiviiden ohjeiden noudattamista. Etsi tuore, luotettava ohje.</p>
+<p>Jos vaiheet 5-6 eivät onnistu, tarvitset Windowsin asennusmedian (eli USB-tikun jolle on poltettu Windowsin asennusmedia). Käynnistä kone Windowsin asennusmedialta ja etsi menuista "Command prompt". Aja komento kohdasta 6.</p>
+<p>Äärimmäisempi vaihtoehto on vetää koko levy sileäksi ja asentaa Windows uusiksi. Tämä onnistuu Windows-asennusmedian avulla.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2025 <a href="https://www.kamk.fi">Kajaanin Ammattikorkeakoulu Oy</a>. 
+Licenced under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">BY-NC-SA 4.0</a>
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.copy", "content.code.annotate", "content.tabs.link"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Kopioitu leikep\u00f6yd\u00e4lle", "clipboard.copy": "Kopioi leikep\u00f6yd\u00e4lle", "search.result.more.one": "1 lis\u00e4\u00e4 t\u00e4ll\u00e4 sivulla", "search.result.more.other": "# lis\u00e4\u00e4 t\u00e4ll\u00e4 sivulla", "search.result.none": "Ei t\u00e4sm\u00e4\u00e4vi\u00e4 dokumentteja", "search.result.one": "1 t\u00e4sm\u00e4\u00e4v\u00e4 dokumentti", "search.result.other": "# t\u00e4sm\u00e4\u00e4v\u00e4\u00e4 dokumenttia", "search.result.placeholder": "Kirjoita aloittaaksesi haun", "search.result.term.missing": "Puuttuu", "select.version": "Valitse versio"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
