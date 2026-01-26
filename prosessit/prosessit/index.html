@@ -1,0 +1,2277 @@
+
+<!doctype html>
+<html lang="fi" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../../paketinhallinta/cross-distro/">
+      
+      
+        <link rel="next" href="../systemd/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>Prosessit - Linux Perusteet</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#prosessit" class="md-skip">
+          Hyppää sisältöön
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Ylätunniste">
+    <a href="../.." title="Linux Perusteet" class="md-header__button md-logo" aria-label="Linux Perusteet" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Linux Perusteet
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Prosessit
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Hae" placeholder="Hae" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Haku">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Tyhjää" aria-label="Tyhjää" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Aloitetaan hakua
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigaatio" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Linux Perusteet" class="md-nav__button md-logo" aria-label="Linux Perusteet" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Linux Perusteet
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tervetuloa kurssille
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Asennus
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Asennus
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../asennus/aloita/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aloita tästä
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../asennus/dualboot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Option A: Dual Boot
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../asennus/virtualbox/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Option B: VirtualBox
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../asennus/opiskelukuntoon/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lopuksi: Ubuntu opiskelukuntoon
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Linux
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Linux
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/os/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/kernel/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kernel
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Peruskäyttö
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Peruskäyttö
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../peruskaytto/tiedostot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tiedostot
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../peruskaytto/komennot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Komennot
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../peruskaytto/kayttajat/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Käyttäjät
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../peruskaytto/kayttooikeudet/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Käyttöoikeudet
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CLI
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    CLI
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cli/terminaali/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Terminaali
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cli/standardivirrat/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Standardivirrat
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cli/startup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Startup-tiedostot
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Paketinhallinta
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Paketinhallinta
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../paketinhallinta/ohjelmat/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ohjelmat
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../paketinhallinta/ohjelmapaketit/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ohjelmapaketit
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../paketinhallinta/cross-distro/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cross-distro
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Prosessit
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Prosessit
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Prosessit
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Prosessit
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Sisällysluettelo">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Sisällysluettelo
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#komennot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Komennot
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Komennot">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ps-ja-pstree" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ps ja pstree
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#top" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        top
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#jumiutuneiden-ohjelmien-tappaminen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Jumiutuneiden ohjelmien tappaminen
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tausta-ajo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tausta-ajo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#avoimien-tiedostojen-etsiminen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Avoimien tiedostojen etsiminen
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tehtavat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tehtävät
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../systemd/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Systemd
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cron/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cron
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lokit/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lokit
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kontit/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kontit
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Etäkäyttö
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Etäkäyttö
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../etakaytto/ssh/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SSH
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../etakaytto/tmux/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tmux
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🚧 Tiedostojärjestelmä
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    🚧 Tiedostojärjestelmä
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tiedostojarjestelma/levyt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Levyt
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tiedostojarjestelma/osiot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Osiot
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tiedostojarjestelma/lvm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LVM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🚧 C-ohjelmointi
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    🚧 C-ohjelmointi
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../c_ohjelmointi/yleista/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Yleistä
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../c_ohjelmointi/muuttujat/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Muuttujat
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../c_ohjelmointi/merkkijonot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Merkkijonot
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../c_ohjelmointi/pointterit/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Osoittimet
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../c_ohjelmointi/streams/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Standardivirrat
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../c_ohjelmointi/args/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Argumentit
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../c_ohjelmointi/tiedostot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tiedostot
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../c_ohjelmointi/modularisointi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Modularisointi
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../exercises/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tehtäväkooste
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Sisällysluettelo">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Sisällysluettelo
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#komennot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Komennot
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Komennot">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ps-ja-pstree" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ps ja pstree
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#top" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        top
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#jumiutuneiden-ohjelmien-tappaminen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Jumiutuneiden ohjelmien tappaminen
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tausta-ajo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tausta-ajo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#avoimien-tiedostojen-etsiminen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Avoimien tiedostojen etsiminen
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tehtavat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tehtävät
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="prosessit">Prosessit</h1>
+<p>Linuxin kerneli luo jokaiselle käynnistetylle ohjelmalle oman prosessin, ja jokaisella prosessilla on oma tunniste (PID, Process ID). Ohjelma voi olla ajossa etualalla tai taustalla. Linuxissa on <code>init process</code>, joka käynnistää kaikki muut prosessit. Kaksi init-prosessia ovat:</p>
+<ul>
+<li>SysVinit (ja yhteensopivat init-järjestelmät kuten Upstart)</li>
+<li>Systemd (uusi korvaaja)</li>
+</ul>
+<h2 id="komennot">Komennot</h2>
+<p>Käytät useimmiten prosessien seurantaan seuraavia komentoja:</p>
+<ul>
+<li>ps</li>
+<li>pstree</li>
+<li>top</li>
+</ul>
+<h3 id="ps-ja-pstree">Ps ja pstree</h3>
+<p>Käyttämäsi shell, kuten GNU bash, on yksi monista ohjelmista, jonka voi käynnistää, ja siten se saa oman PID:n. Ympäristömuuttuja <code>$0</code> sisältää ohjelman nimen, kun taas <code>$$</code> sisältää ohjelman PID:n. Tutki alla olevaa koodia ajatuksella:</p>
+<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Last<span class="w"> </span>login:<span class="w"> </span>Fri<span class="w"> </span>Sep<span class="w"> </span><span class="m">15</span><span class="w"> </span><span class="m">09</span>:10:36<span class="w"> </span>on<span class="w"> </span>ttys005
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$0</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>-zsh<span class="w">        </span><span class="c1"># Tämän käyttäjän login shell ei olekaan bash vaan zsh</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$$</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="m">18039</span><span class="w">       </span><span class="c1"># Kyseisen shell-instanssin PID on tämä</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>$<span class="w"> </span>bash
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$0</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>bash<span class="w">        </span><span class="c1"># Bash-komento käynnisti bash-prosessin nykyisessä terminaalissa</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="nv">$echo</span><span class="w"> </span><span class="nv">$$</span>
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="m">18196</span><span class="w">       </span><span class="c1"># Tämän bash shell -instanssin PID on eri kuin zsh:n</span>
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>$<span class="w"> </span>pstree<span class="w"> </span><span class="m">18039</span>
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>-+<span class="o">=</span><span class="w"> </span><span class="m">18039</span><span class="w"> </span>opettaja<span class="w"> </span>-zsh
+</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="w"> </span><span class="se">\-</span>+<span class="o">=</span><span class="w"> </span><span class="m">18196</span><span class="w"> </span>opettaja<span class="w"> </span>bash
+</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="w">   </span><span class="se">\-</span>+<span class="o">=</span><span class="w"> </span><span class="m">18546</span><span class="w"> </span>opettaja<span class="w"> </span>pstree<span class="w"> </span><span class="m">18039</span>
+</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="w">     </span><span class="se">\-</span>--<span class="w"> </span><span class="m">18547</span><span class="w"> </span>root<span class="w"> </span>ps<span class="w"> </span>-axwwo<span class="w"> </span>user,pid,ppid,pgid,command
+</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>
+</span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$$</span>
+</span><span id="__span-0-22"><a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="m">18196</span><span class="w">       </span><span class="c1"># Bash shell -instanssin PID on yhä sama kuin aiemmin</span>
+</span><span id="__span-0-23"><a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>
+</span><span id="__span-0-24"><a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>$<span class="w"> </span><span class="nb">exit</span>
+</span><span id="__span-0-25"><a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a>$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$$</span>
+</span><span id="__span-0-26"><a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a><span class="m">18039</span><span class="w">       </span><span class="c1"># Myös Z Shellin PID on pysynyt samana.</span>
+</span></code></pre></div>
+<p>Yllä ajettu pstree paljastaa, että Z Shelli on parent process käynnistämällemme GNU Bash prosessille. Juuri ajettu <code>pstree</code>-komento sen sijaan on tämän prosessin child. Komento <code>pstree</code> on sisäisesti käynnistänyt prosessin <code>ps</code>. Kun näiden ohjelmien suorittaminen loppui, terminaaliin tuli takaisin aiemmin ajamamme <code>bash</code>-ohjelman prompt. PID:t <code>pstree (18039)</code> sekä <code>ps (18547)</code> ovat terminoituja, koska niiden suoritus on jo loppunut.</p>
+<p>Kokeillaan ajaa sama komento, minkä pstree ajoi sisäisesti. Jos haluat hieman lyhentää command-sarakkeen sisältöä, korvaa <code>command</code>-sana argumentista sanalla <code>comm</code>.</p>
+<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># Aja täysin sama komento</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>$<span class="w"> </span>sudo<span class="w"> </span>ps<span class="w"> </span>-axwwo<span class="w"> </span>user,pid,ppid,pgid,command
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>root<span class="w">                 </span><span class="m">1</span><span class="w">     </span><span class="m">0</span><span class="w">     </span><span class="m">1</span><span class="w"> </span>/sbin/launchd
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>root<span class="w">                </span><span class="m">88</span><span class="w">     </span><span class="m">1</span><span class="w">    </span><span class="m">88</span><span class="w"> </span>/usr/libexec/logd
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>root<span class="w">                </span><span class="m">89</span><span class="w">     </span><span class="m">1</span><span class="w">    </span><span class="m">89</span><span class="w"> </span>/usr/libexec/smd
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>...
+</span></code></pre></div>
+<p>Tutustu <code>ps</code>-komentoon <code>man</code>:n tai netistä löytyvien esimerkkien avulla. Selvitä muun muassa, mitä alla olevat komennot tekevät. Huomaa, että komento tukee kolmenlaista syntaksia optioneille: UNIX, BSD ja GNU. Jos kokeilet samaa komentoa macOS:lla, huomaat, että vain osa samoista optioneista toimii edes sinne päin samalla tavalla.</p>
+<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># Mitä tämä tekee?</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>$<span class="w"> </span>ps<span class="w"> </span>-u<span class="w"> </span><span class="k">$(</span>whoami<span class="k">)</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>python
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="c1"># Entä tämä?</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>$<span class="w"> </span>ps<span class="w"> </span>-o<span class="w"> </span><span class="nv">ppid</span><span class="o">=</span><span class="w"> </span>-p<span class="w"> </span><span class="m">1</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="c1"># Mites tämä?</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>$<span class="w"> </span>ps<span class="w"> </span>-x<span class="w"> </span>-o<span class="w"> </span>pid,user,%mem,%cpu,comm
+</span></code></pre></div>
+<h3 id="top">top</h3>
+<p>Windowsista tutun tehtävienhallinnan (task manager) tai macOS:stä tutun Activity Monitorin kaltaiset tiedot saa shellissä esiin komennolla <code>top</code>. Kyseinen komento näyttää järjestetyn eli sortatun listan järjestelmän prosesseista. Sorttaukseen käytettyä saraketta voi vaihtaa parametreillä tai pikanäppäimillä.</p>
+<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>$<span class="w"> </span>top<span class="w"> </span>-o<span class="w"> </span>mem<span class="w">   </span><span class="c1"># Järjestä muistinkäytön mukaan laskevasti</span>
+</span></code></pre></div>
+<p>Tutustu komentoon <code>man</code>-komennon avulla.</p>
+<p>Tutki myös, löytyykö käyttämästäsi työpöytäympäristöstäsi (esim. GNOME) vastaava graafinen sovellus kuten System Monitor.</p>
+<h2 id="jumiutuneiden-ohjelmien-tappaminen">Jumiutuneiden ohjelmien tappaminen</h2>
+<p>Mikäli jokin ohjelma on auttamattomasti jumissa, voit viime kädessä tappaa sen aina <code>kill -9 pid</code>-komennolla. Option <code>-9</code> on signaalille <code>KILL</code> annettu numero. </p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Kaikki kill-signaalit ja niiden numerot saat esille ajamalla <code>kill -l</code>. Mikäli output on yhdellä rivillä välilyönnillä erotettuna, muista, että voit putkittaa tulosteen toiselle ohjelmistolle. Kokeile ensin korvata välilyönnit rivinvaihdoilla, ja tämän jälkeen lisää rivinumerot.</p>
+</div>
+<p>Alla on joitakin poimintoja lyhyine selityksineen:</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Signaali</th>
+<th>Selitys</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>HUP</td>
+<td>Hang up. Aikoinaan tällä lyötiin "luuri korvaan" modeemissa. Nykyisin tällä voidaan esimerkiksi pakottaa daemon lataamaan konfiguraatiotiedostot uusiksi.</td>
+</tr>
+<tr>
+<td>2</td>
+<td>INT</td>
+<td>Interrupt. Sama kuin <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-c">C</kbd></span>. Ohjelmaa pyydetään sulkeutumaan nätisti.</td>
+</tr>
+<tr>
+<td>9</td>
+<td>KILL</td>
+<td>Kill. Ohjelmalta ei pyydetä mitään eikä ohjelma täten voi jättää tätä tekemättä. Kernel lopettaa prosessin ajon ja poistaa sen muistista.</td>
+</tr>
+<tr>
+<td>15</td>
+<td>TERM</td>
+<td>Terminate. Komennon <code>kill</code> default. Ohjelmaa pyydetään sulkemaan itsensä.</td>
+</tr>
+<tr>
+<td>19</td>
+<td>STOP</td>
+<td>Stop. Ohjelmaa pyydetään pysähtymään. Sama kuin <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-z">Z</kbd></span>.</td>
+</tr>
+</tbody>
+</table>
+<p>Tyypillisesti <code>kill</code>-komentoa ei pitäisi tarvita laisinkaan. Jos sitä kuitenkin tarvitsee, kokeile ensin <code>TERM</code>:n avulla eli <code>kill pid</code> eli <code>kill -15 pid</code>. Mikäli ohjelma ei näytä sammutan, aja perään <code>kill -9 pid</code>.</p>
+<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># Luo prosessi, joka nukkuu 24h</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>$<span class="w"> </span>sleep<span class="w"> </span><span class="k">$((</span><span class="m">60</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="m">60</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="m">24</span><span class="k">))</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="c1">###############################################</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="c1"># Avaa toinen pseudo- tai virtuaaliterminaali #</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="c1">###############################################</span>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>$<span class="w"> </span>ps
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>PID<span class="w">   </span>TTY<span class="w">           </span>TIME<span class="w"> </span>CMD
+</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="m">26967</span><span class="w"> </span>ttys008<span class="w">    </span><span class="m">0</span>:01.32<span class="w"> </span>/bin/zsh
+</span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="m">29527</span><span class="w"> </span>ttys008<span class="w">    </span><span class="m">0</span>:00.00<span class="w"> </span>sleep<span class="w"> </span><span class="m">86400</span><span class="w">    </span><span class="c1"># &lt;= Tämä</span>
+</span><span id="__span-4-12"><a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a>...
+</span><span id="__span-4-13"><a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a>
+</span><span id="__span-4-14"><a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a>$<span class="w"> </span><span class="nb">kill</span><span class="w"> </span>-TERM<span class="w"> </span><span class="m">29527</span>
+</span><span id="__span-4-15"><a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a><span class="c1"># tai kill -15 29527</span>
+</span><span id="__span-4-16"><a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a>
+</span><span id="__span-4-17"><a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a><span class="c1">###########################################</span>
+</span><span id="__span-4-18"><a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a><span class="c1"># Mene takaisin ensimmäiseen terminaaliin #</span>
+</span><span id="__span-4-19"><a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a><span class="c1"># #########################################</span>
+</span><span id="__span-4-20"><a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a>
+</span><span id="__span-4-21"><a id="__codelineno-4-21" name="__codelineno-4-21" href="#__codelineno-4-21"></a><span class="o">[</span><span class="m">1</span><span class="o">]</span><span class="w">    </span><span class="m">29527</span><span class="w"> </span>terminated<span class="w">  </span>sleep<span class="w"> </span><span class="k">$((</span><span class="m">60</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="m">60</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="m">24</span><span class="k">))</span>
+</span></code></pre></div>
+<h2 id="tausta-ajo">Tausta-ajo</h2>
+<p>Ohjelmia voi ajaa myös taustalla päättämällä komentiriviin <code>&amp;</code>-merkkiin. Ohjelma siirtyy tausta-ajoon myös siten, että etualalla ajettavan ohjelman kohdalla painetaan <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-z">Z</kbd></span> (<code>SIGTSTP</code>). Tosin tämä pysäyttää ohjelman ajon. Ohjelman saa takaisin etualalle komennolla <code>fg</code>, tai <code>fg %n</code>, jossa <code>n</code> on se hakasuluissa näytetty numero eli <code>JOB_SPEC</code>, joka on useimmiten <code>[1]</code>. Vaihtoehtoisesti ohjelman voi laittaa käyntiin <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-z">Z</kbd></span> painamisen jälkeen komennolla <code>bg %n</code>, jossa <code>n</code> on yhä <code>JOB_SPEC</code></p>
+<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>$<span class="w"> </span>sleep<span class="w"> </span><span class="k">$((</span><span class="m">60</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="m">60</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="m">24</span><span class="k">))</span><span class="w"> </span><span class="p">&amp;</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>$<span class="w"> </span>sleep<span class="w"> </span><span class="k">$((</span><span class="m">60</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="m">60</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="m">24</span><span class="k">))</span><span class="w"> </span><span class="p">&amp;</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>$<span class="w"> </span>sleep<span class="w"> </span><span class="k">$((</span><span class="m">60</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="m">60</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="m">24</span><span class="k">))</span><span class="w"> </span><span class="p">&amp;</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>$<span class="w"> </span>sleep<span class="w"> </span><span class="k">$((</span><span class="m">60</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="m">60</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="m">24</span><span class="k">))</span><span class="w"> </span><span class="p">&amp;</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>$<span class="w"> </span><span class="nb">jobs</span><span class="w"> </span>-l<span class="w">   </span><span class="c1"># -l listaa myös PID:t</span>
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="o">[</span><span class="m">1</span><span class="o">]</span><span class="w">    </span><span class="m">71338</span><span class="w"> </span>running<span class="w">    </span>sleep<span class="w"> </span><span class="k">$((</span><span class="m">60</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="m">60</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="m">24</span><span class="k">))</span>
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="o">[</span><span class="m">2</span><span class="o">]</span><span class="w">    </span><span class="m">71344</span><span class="w"> </span>running<span class="w">    </span>sleep<span class="w"> </span><span class="k">$((</span><span class="m">60</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="m">60</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="m">24</span><span class="k">))</span>
+</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="o">[</span><span class="m">3</span><span class="o">]</span><span class="w">  </span>-<span class="w"> </span><span class="m">71350</span><span class="w"> </span>running<span class="w">    </span>sleep<span class="w"> </span><span class="k">$((</span><span class="m">60</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="m">60</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="m">24</span><span class="k">))</span>
+</span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="o">[</span><span class="m">4</span><span class="o">]</span><span class="w">  </span>+<span class="w"> </span><span class="m">71435</span><span class="w"> </span>running<span class="w">    </span>sleep<span class="w"> </span><span class="k">$((</span><span class="m">60</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="m">60</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="m">24</span><span class="k">))</span>
+</span><span id="__span-5-11"><a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>
+</span><span id="__span-5-12"><a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a>$<span class="w"> </span><span class="nb">kill</span><span class="w"> </span>%4<span class="w">  </span><span class="c1"># JOB_SPEC-numeroon voi viitata %n:llä</span>
+</span><span id="__span-5-13"><a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a><span class="o">[</span><span class="m">4</span><span class="o">]</span><span class="w">  </span>+<span class="w"> </span><span class="m">71435</span><span class="w"> </span>terminated<span class="w">  </span>sleep<span class="w"> </span><span class="k">$((</span><span class="m">60</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="m">60</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="m">24</span><span class="k">))</span>
+</span><span id="__span-5-14"><a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a>
+</span><span id="__span-5-15"><a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a>$<span class="w"> </span><span class="nb">jobs</span>
+</span><span id="__span-5-16"><a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a><span class="o">[</span><span class="m">1</span><span class="o">]</span><span class="w">    </span>running<span class="w">    </span>sleep<span class="w"> </span><span class="k">$((</span><span class="m">60</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="m">60</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="m">24</span><span class="k">))</span>
+</span><span id="__span-5-17"><a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a><span class="o">[</span><span class="m">2</span><span class="o">]</span><span class="w">  </span>-<span class="w"> </span>running<span class="w">    </span>sleep<span class="w"> </span><span class="k">$((</span><span class="m">60</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="m">60</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="m">24</span><span class="k">))</span>
+</span><span id="__span-5-18"><a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a><span class="o">[</span><span class="m">3</span><span class="o">]</span><span class="w">  </span>+<span class="w"> </span>running<span class="w">    </span>sleep<span class="w"> </span><span class="k">$((</span><span class="m">60</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="m">60</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="m">24</span><span class="k">))</span>
+</span></code></pre></div>
+<p>Huomaa, että jos nyt loggaat ulos tai suljet shellin (<code>exit</code>), niin kyseiset prosessit päättyvät välittömästi. Tuoreimman jobin rivillä on <code>+</code>-merkki, joka viittaa siihen, että ilman parametrejä annettu komento (kuten <code>fg</code>) viittaa kyseiseen jobiin.</p>
+<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>$<span class="w"> </span><span class="nb">fg</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="o">[</span><span class="m">3</span><span class="o">]</span><span class="w">  </span>-<span class="w"> </span><span class="m">71350</span><span class="w"> </span>running<span class="w">    </span>sleep<span class="w"> </span><span class="k">$((</span><span class="m">60</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="m">60</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="m">24</span><span class="k">))</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="c1"># PAINA CTRL + Z</span>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="o">[</span><span class="m">3</span><span class="o">]</span><span class="w">  </span>+<span class="w"> </span><span class="m">71350</span><span class="w"> </span>suspended<span class="w">  </span>sleep<span class="w"> </span><span class="k">$((</span><span class="m">60</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="m">60</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="m">24</span><span class="k">))</span>
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>$<span class="w"> </span><span class="nb">bg</span><span class="w"> </span>%3
+</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="o">[</span><span class="m">3</span><span class="o">]</span><span class="w">  </span>-<span class="w"> </span><span class="m">71350</span><span class="w"> </span>continued<span class="w">  </span>sleep<span class="w"> </span><span class="k">$((</span><span class="m">60</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="m">60</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="m">24</span><span class="k">))</span>
+</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>
+</span><span id="__span-6-10"><a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a>$<span class="w"> </span><span class="nb">jobs</span>
+</span><span id="__span-6-11"><a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a><span class="o">[</span><span class="m">1</span><span class="o">]</span><span class="w">    </span>running<span class="w">    </span>sleep<span class="w"> </span><span class="k">$((</span><span class="m">60</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="m">60</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="m">24</span><span class="k">))</span>
+</span><span id="__span-6-12"><a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a><span class="o">[</span><span class="m">2</span><span class="o">]</span><span class="w">  </span>-<span class="w"> </span>running<span class="w">    </span>sleep<span class="w"> </span><span class="k">$((</span><span class="m">60</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="m">60</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="m">24</span><span class="k">))</span>
+</span><span id="__span-6-13"><a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a><span class="o">[</span><span class="m">3</span><span class="o">]</span><span class="w">  </span>+<span class="w"> </span>running<span class="w">    </span>sleep<span class="w"> </span><span class="k">$((</span><span class="m">60</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="m">60</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="m">24</span><span class="k">))</span>
+</span><span id="__span-6-14"><a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a>
+</span><span id="__span-6-15"><a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a>$<span class="w"> </span><span class="nb">kill</span><span class="w"> </span>%1<span class="w"> </span>%2<span class="w"> </span>%3
+</span><span id="__span-6-16"><a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a><span class="o">[</span><span class="m">1</span><span class="o">]</span><span class="w">    </span><span class="m">71338</span><span class="w"> </span>terminated<span class="w">  </span>sleep<span class="w"> </span><span class="k">$((</span><span class="m">60</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="m">60</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="m">24</span><span class="k">))</span>
+</span><span id="__span-6-17"><a id="__codelineno-6-17" name="__codelineno-6-17" href="#__codelineno-6-17"></a><span class="o">[</span><span class="m">3</span><span class="o">]</span><span class="w">  </span>+<span class="w"> </span><span class="m">71350</span><span class="w"> </span>terminated<span class="w">  </span>sleep<span class="w"> </span><span class="k">$((</span><span class="m">60</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="m">60</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="m">24</span><span class="k">))</span>
+</span><span id="__span-6-18"><a id="__codelineno-6-18" name="__codelineno-6-18" href="#__codelineno-6-18"></a><span class="o">[</span><span class="m">2</span><span class="o">]</span><span class="w">  </span>+<span class="w"> </span><span class="m">71344</span><span class="w"> </span>terminated<span class="w">  </span>sleep<span class="w"> </span><span class="k">$((</span><span class="m">60</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="m">60</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="m">24</span><span class="k">))</span>
+</span></code></pre></div>
+<p>Jos on tarve ajaa ohjelma siten, että se ei sammu terminaalin sulkeutumisen yhteydessä tai logoutin yhteydessä, niin komento <code>nohup</code> on avuksi. Ajetaan vanha tuttu <code>sleep</code> uusiksi, mutta ohjataan stdout bittiavaruuteen ja stderr tiedostoon <code>errors.log</code>. </p>
+<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>$<span class="w"> </span>nohup<span class="w"> </span>sleep<span class="w"> </span><span class="k">$((</span><span class="m">60</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="m">60</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="m">24</span><span class="k">))</span><span class="w"> </span>&gt;<span class="w"> </span>/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="w"> </span>errors.log<span class="w"> </span><span class="p">&amp;</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="o">[</span><span class="m">1</span><span class="o">]</span><span class="w"> </span><span class="m">71645</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>$<span class="w"> </span><span class="nb">jobs</span>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="o">[</span><span class="m">1</span><span class="o">]</span><span class="w">  </span>+<span class="w"> </span>running<span class="w">    </span>nohup<span class="w"> </span>sleep<span class="w"> </span><span class="k">$((</span><span class="m">60</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="m">60</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="m">24</span><span class="k">))</span><span class="w"> </span>&gt;<span class="w"> </span>/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="w"> </span>errors.log
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="c1">#######################################</span>
+</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="c1"># Uudelleenkäynnistä pseudoterminaali #</span>
+</span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="c1">#######################################</span>
+</span><span id="__span-7-10"><a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a>
+</span><span id="__span-7-11"><a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a>$<span class="w"> </span><span class="nb">jobs</span>
+</span><span id="__span-7-12"><a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a><span class="c1"># Ei tulosta mitään</span>
+</span><span id="__span-7-13"><a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a>
+</span><span id="__span-7-14"><a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a>$<span class="w"> </span>ps<span class="w"> </span><span class="m">71645</span>
+</span><span id="__span-7-15"><a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a>PID<span class="w">     </span>TT<span class="w">  </span>STAT<span class="w">      </span>TIME<span class="w"> </span>COMMAND
+</span><span id="__span-7-16"><a id="__codelineno-7-16" name="__codelineno-7-16" href="#__codelineno-7-16"></a><span class="m">71645</span><span class="w">   </span>??<span class="w">  </span>SN<span class="w">     </span><span class="m">0</span>:00.01<span class="w"> </span>sleep<span class="w"> </span><span class="m">86400</span>
+</span><span id="__span-7-17"><a id="__codelineno-7-17" name="__codelineno-7-17" href="#__codelineno-7-17"></a>
+</span><span id="__span-7-18"><a id="__codelineno-7-18" name="__codelineno-7-18" href="#__codelineno-7-18"></a>$<span class="w"> </span><span class="nb">kill</span><span class="w"> </span><span class="m">71645</span>
+</span><span id="__span-7-19"><a id="__codelineno-7-19" name="__codelineno-7-19" href="#__codelineno-7-19"></a>$<span class="w"> </span>rm<span class="w"> </span>errors.log
+</span></code></pre></div>
+<div class="admonition question">
+<p class="admonition-title">Kysymys</p>
+<p>Selvitä, mitä <code>disown</code>-komento tekee. Tarkista jonkin jobin id. Jos id on <code>1</code>, aja <code>disown %1</code>. </p>
+<p>Vihje: Komento liittyy toiminnallisesti <code>nohup</code>-komentoon.</p>
+</div>
+<h2 id="avoimien-tiedostojen-etsiminen">Avoimien tiedostojen etsiminen</h2>
+<p>Mikäli haluat saada tietää, mikä ohjelmaa lukee tai kirjoittaa paraikaa johonkin tiedostoon, tähän auttaa komento <code>lsof</code>. FD-kentässä olevat numerot viittaavat "Descriptor ID":hen, joista 0 on standard input, 1 on standard output ja 2 on standard error. Numeroa 2 suuremmat ovat ohjelmien itsensä avaamia uusia descriptoreita (esimerkiksi <code>open()</code>-funktion puolesta.)</p>
+<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Miau&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>kissa.txt
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>$<span class="w"> </span>tail<span class="w"> </span>-f<span class="w"> </span>kissa.txt<span class="w"> </span><span class="p">&amp;</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="o">[</span><span class="m">1</span><span class="o">]</span><span class="w"> </span><span class="m">71967</span>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>Miau
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>$<span class="w"> </span><span class="nb">jobs</span>
+</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="o">[</span><span class="m">1</span><span class="o">]</span><span class="w">  </span>+<span class="w"> </span>running<span class="w">    </span>tail<span class="w"> </span>-f<span class="w"> </span>kissa.txt
+</span><span id="__span-8-8"><a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>
+</span><span id="__span-8-9"><a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a>$<span class="w"> </span>lsof<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>kissa.txt
+</span><span id="__span-8-10"><a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a>tail<span class="w">      </span><span class="m">71967</span><span class="w">  </span>janisou1<span class="w">  </span>3r<span class="w">  </span>/Users/opettaja/kissa.txt<span class="w"> </span><span class="c1"># Lyhennetty</span>
+</span><span id="__span-8-11"><a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a>
+</span><span id="__span-8-12"><a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a>$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;MIAW&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>kissa.tx
+</span><span id="__span-8-13"><a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a>MIAW<span class="w">   </span><span class="c1"># Huomaathan, että bg ei estä ohjelmaa tulostamasta stdouttia tty:iin</span>
+</span><span id="__span-8-14"><a id="__codelineno-8-14" name="__codelineno-8-14" href="#__codelineno-8-14"></a>
+</span><span id="__span-8-15"><a id="__codelineno-8-15" name="__codelineno-8-15" href="#__codelineno-8-15"></a>$<span class="w"> </span><span class="nb">kill</span><span class="w"> </span>%1
+</span><span id="__span-8-16"><a id="__codelineno-8-16" name="__codelineno-8-16" href="#__codelineno-8-16"></a>$<span class="w"> </span>rm<span class="w"> </span>kissa.txt
+</span></code></pre></div>
+<h2 id="tehtavat">Tehtävät</h2>
+<div class="admonition question">
+<p class="admonition-title">Tehtävä: Selvitä oman shellisi PID</p>
+<p>Käytä <code>echo $$</code> -komentoa selvittääksesi, mikä on oman käynnissä olevan komentotulkintasi prosessitunniste (PID).</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Tehtävä: Käynnistä ja pysäytä prosessi taustalla</p>
+<p>Aja ohjelma taustalla käyttäen <code>&amp;</code>-merkkiä, tarkista sen tila <code>jobs</code>-komennolla ja tuo se takaisin etualalle <code>fg</code>-komennolla.</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Tehtävä: Tapa prosessi siististi ja väkisin</p>
+<p>Käynnistä pitkäkestoinen prosessi (esim. <code>sleep 600</code>) ja yritä ensin pysäyttää se <code>kill -TERM &lt;pid&gt;</code> -komennolla.<br />
+Jos se ei lopu, pakota lopetus <code>kill -9 &lt;pid&gt;</code> -komennolla.</p>
+</div>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2025 <a href="https://www.kamk.fi">Kajaanin Ammattikorkeakoulu Oy</a>. 
+Licenced under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">BY-NC-SA 4.0</a>
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.copy", "content.code.annotate", "content.tabs.link"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Kopioitu leikep\u00f6yd\u00e4lle", "clipboard.copy": "Kopioi leikep\u00f6yd\u00e4lle", "search.result.more.one": "1 lis\u00e4\u00e4 t\u00e4ll\u00e4 sivulla", "search.result.more.other": "# lis\u00e4\u00e4 t\u00e4ll\u00e4 sivulla", "search.result.none": "Ei t\u00e4sm\u00e4\u00e4vi\u00e4 dokumentteja", "search.result.one": "1 t\u00e4sm\u00e4\u00e4v\u00e4 dokumentti", "search.result.other": "# t\u00e4sm\u00e4\u00e4v\u00e4\u00e4 dokumenttia", "search.result.placeholder": "Kirjoita aloittaaksesi haun", "search.result.term.missing": "Puuttuu", "select.version": "Valitse versio"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
