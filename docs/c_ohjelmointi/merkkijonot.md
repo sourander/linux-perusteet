@@ -25,7 +25,7 @@ int main()
 }
 ```
 
-1. Kokeile myös esimerkiksi word[5] ja word[20]
+1. Kokeile myös esimerkiksi `word[5]` ja `word[20]`.
 2. Muokkaa koodia siten, että käytät lenght muuttujan arvon laskemiseen `strlen()` funktiota, joka löytyy `string.h` kirjastosta.
 
 !!! tip
